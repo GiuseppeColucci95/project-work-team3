@@ -1,13 +1,17 @@
 const express = require("express")
 const app = express()
+const port = 3000
 const cors = require("cors")
-const port = 3000;
+const routers = require("./routers/productsRouters")
 
 //attivo i permessi cors per il frontend in localhost
 app.use(cors({ origin: 'http://localhost:5173' }))
 
 //preparo il server a ricevere dati in formato json
 app.use(express.json())
+
+//using static foulder
+app.use(express.static('public'))
 
 // open server
 app.listen(port, () => {
@@ -17,9 +21,8 @@ app.listen(port, () => {
 // middleware
 
 // import routes
-app.use('/api/v1', (req, res) => {
-    console.log("home API")
-    res.json({ message: "home API" })
-})
+app.use('/api/v1', routers)
+
+
 
 // middleware per la gestione degli errori
