@@ -14,6 +14,12 @@ app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 })
 
-// import routes
-
 // middleware
+
+// import routes
+app.use('/api/v1', (req, res) => {
+    console.log("home API")
+    res.json({ message: "home API" })
+})
+
+// middleware per la gestione degli errori
