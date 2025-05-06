@@ -7,6 +7,6 @@
     "start": "node server.js",
     "dev": "node --watch server.js"
   },
-  "name": "my-app",
+  "name": "Eat_Your_Way",
   "version": "1.0.0"
 }
