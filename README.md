@@ -5,8 +5,8 @@
 - tags (id, name, description)
 - product_tag (id, product_id, tag_id)
 - users (id, firstName, lastName, mail, phone, address)
-- promotions (id, description, code, discount_percentage, from_data, to_data)
-- cart (id, user_id)
+- promotions (id, description, code, discount_percentage, start_date, end_date)
+- cart (id, user_id, total)
 - cart_product (id, cart_id, product_id)
 - wishlist (id, user_id)
 - wishlist_product (id, wishlist_id, product_id)
@@ -36,7 +36,6 @@
 
 ## Table name: `order_product`
 **Table columns**
-- id: (BIGINT) - primary key - auto increments - NOT NULL
 - order_id: (BIGINT) - foreign key - NOT NULL
 - product_id: (BIGINT) - foreign key - NOT NULL
 - quantity: (TINYINT) - UNSIGNED - NOT NULL
@@ -49,7 +48,6 @@
 
 ## Table name: `product_tag`
 **Table columns**
-- id: (BIGINT) - primary key - auto increments - NOT NULL
 - product_id: (BIGINT) - foreign key - NOT NULL
 - tag_id: (TINYINT) - foreign key - NOT NULL
 
@@ -67,4 +65,29 @@
 - id: (BIGINT) - primary key - auto increments - NOT NULL
 - description: VARCHAR(255) - NULL
 - code: VARCHAR(20) - NOT NULL
-- discount_percentage: (TINYINT) - UNSIGNED - NOT NULL
+- discount_percentage: (TINYINT) - UNSIGNED - NOT 
+- start_date: (DATETIME) - NOT NULL
+- end_date: (DATETIME) - NOT NULL
+
+## Table name: `cart`
+**Table columns**
+- id: (BIGINT) - primary key - auto increments - NOT NULL
+- user_id: (BIGINT) - foreign key - NOT NULL
+- total: DECIMAL(6,2) - NOT NULL
+
+## Table name: `cart_product`
+**Table columns**
+- cart_id: (BIGINT) - NOT NULL
+- product_id: (BIGINT) - foreign key - NOT NULL
+
+## Table name: `wishlist`
+**Table columns**
+- id: (BIGINT) - primary key - auto increments - NOT NULL
+- name: VARCHR(50) - NOT NULL - default
+- user_id: (BIGINT) - foreign key - NOT NULL
+
+## Table name: `wishlist_product`
+**Table columns**
+- wishlist_id: (BIGINT) - foreign key - NOT NULL
+- product_id: (BIGINT) - foreign key - NOT NULL
+
