@@ -1,0 +1,27 @@
+/* IMPORTS */
+@import 'bootstrap';
+@import 'bootstrap-icons';
+
+/* #region COMMON */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {}
+
+/* #endregion COMMON */
+
+/* #region HEADER */
+
+/* #endregion HEADER */
+
+/* #region MAIN */
+
+/* #endregion MAIN */
+
+/* #region FOOTER */
+
+/* #endregion FOOTER */
