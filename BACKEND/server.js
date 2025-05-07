@@ -11,7 +11,6 @@ const cors = require("cors")
 const productsRouters = require("./routers/productsRouters")
 const ordersRouters = require("./routers/ordersRouters")
 const usersRouters = require("./routers/userRouters")
-const wishlistRouters = require("./routers/wishlistRouters")
 const promotionsRouters = require("./routers/promotionsRouters")
 
 // create a server variable
@@ -38,7 +37,6 @@ app.listen(port, () => {
 app.use('/api/v1/products', productsRouters)
 app.use('/api/v1/orders', ordersRouters)
 app.use('/api/v1/users', usersRouters)
-app.use('/api/v1/wishlist', wishlistRouters)
 app.use('/api/v1/promotions', promotionsRouters)
 
 
