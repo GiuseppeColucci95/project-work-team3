@@ -5,7 +5,7 @@ const ordersController = require("../controllers/ordersController")
 
 //routes
 
-//index
-ordersRouters.get("/", ordersController.index)
+//create
+ordersRouters.post("/", ordersController.create)
 
 module.exports = ordersRouters
