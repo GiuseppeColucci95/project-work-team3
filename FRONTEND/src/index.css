@@ -1,3 +1,7 @@
+/* IMPORTS */
+@import 'bootstrap';
+@import 'bootstrap-icons';
+
 /* #region COMMON */
 
 * {
