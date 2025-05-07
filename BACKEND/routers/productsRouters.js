@@ -21,6 +21,6 @@ productsRouters.get("/recent", productsController.Recent)
 productsRouters.get("/best-sellers", productsController.bestSellers)
 
 //route for product details
-productsRouters.get("/:slug", productsController.getProductDetails)
+productsRouters.get("/:slug", productsController.getProduct)
 
 module.exports = productsRouters

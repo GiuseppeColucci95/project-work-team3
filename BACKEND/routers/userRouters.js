@@ -1,7 +1,7 @@
 //imports
 const express = require("express")
 const usersRouters = express.Router()
-const usersController = require("../controllers/usersController")
+const usersController = require("../controllers/userController")
 
 //routes
 
