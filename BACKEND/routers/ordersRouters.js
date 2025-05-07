@@ -1,13 +1,11 @@
 //imports
 const express = require("express")
 const ordersRouters = express.Router()
+const ordersController = require("../controllers/ordersController")
 
 //routes
 
 //index
-ordersRouters.get("/", (req, res) => {
-    console.log("Hello from the orders router")
-    res.json({ message: "Hello from the orders router" })
-})
+ordersRouters.get("/", ordersController.index)
 
 module.exports = ordersRouters
