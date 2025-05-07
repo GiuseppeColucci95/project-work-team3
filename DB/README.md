@@ -1,15 +1,13 @@
 ## ENTITIES
-- products (id, slug, name, description, quantity, category, image, price, discount_percentage, inserted_at, updated_at)
-- orders (id, user_id, promotion_id, total, status, created_at)
+- products (id, slug, name, description, quantity, image, price, discount_percentage, created_at, updated_at)
+- orders (id, user_id, promotion_id, total_not_discounted, total_discounted, shipping, final_price, status, created_at)
 - order_product (id, order_id, product_id, quantity)
 - tags (id, name, description)
 - product_tag (id, product_id, tag_id)
 - users (id, firstName, lastName, mail, phone, address)
 - promotions (id, description, code, discount_percentage, start_date, end_date)
-- cart (id, user_id, total)
-- cart_product (id, cart_id, product_id)
-- wishlist (id, user_id)
-- wishlist_product (id, wishlist_id, product_id)
+- categories (id, name, description)
+- category_product (category_id, product_id)
 
 ## Table name: `products`
 **Table columns**
@@ -30,7 +28,10 @@
 - id: (BIGINT) - primary key - auto increments - NOT NULL
 - user_id: (BIGINT) - foreign key - NOT NULL
 - promotion_id: (BIGINT) - foreign key - NULL
-- total: DECIMAL(6,2) - NOT NULL
+- total_not_discounted: DECIMAL(6,2) - NOT NULL
+- total_discounted: DECIMAL(6,2) - NOT NULL
+- shipping: DECIMAL(6,2) - NOT NULL - default(9,99)
+- final_price: DECIMAL(6,2) - NOT NULL
 - status: VARCHAR(50) - NOT NULL
 - created_at: (TIMESTAMP) - NOT NULL
 
@@ -69,25 +70,13 @@
 - start_date: (DATETIME) - NOT NULL
 - end_date: (DATETIME) - NOT NULL
 
-## Table name: `cart`
+## Table name: `categories`
 **Table columns**
 - id: (BIGINT) - primary key - auto increments - NOT NULL
-- user_id: (BIGINT) - foreign key - NOT NULL
-- total: DECIMAL(6,2) - NOT NULL
+- name: VARCHAR(50) - NOT NULL
+- description: VARCHAR(255) - NULL
 
-## Table name: `cart_product`
+## Table name: `category_product`
 **Table columns**
-- cart_id: (BIGINT) - NOT NULL
+- category_id: (BIGINT) - foreign key - NOT NULL
 - product_id: (BIGINT) - foreign key - NOT NULL
-
-## Table name: `wishlist`
-**Table columns**
-- id: (BIGINT) - primary key - auto increments - NOT NULL
-- name: VARCHR(50) - NOT NULL - default
-- user_id: (BIGINT) - foreign key - NOT NULL
-
-## Table name: `wishlist_product`
-**Table columns**
-- wishlist_id: (BIGINT) - foreign key - NOT NULL
-- product_id: (BIGINT) - foreign key - NOT NULL
-
