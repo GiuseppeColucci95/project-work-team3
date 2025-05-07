@@ -27,14 +27,14 @@ productsRouters.get("/recent", (req, res) => {
     res.json({ message: "Hello from the products router with recent" })
 })
 
-//route for products list filtered by most sold
-productsRouters.get("/mostsold", (req, res) => {
+//route for products list filtered by best sellers
+productsRouters.get("/best-sellers", (req, res) => {
     console.log("most sold")
     res.json({ message: "Hello from the products router with most sold" })
 })
 
 //route for product details
-productsRouters.get("/product/:slug", (req, res) => {
+productsRouters.get("/:slug", (req, res) => {
     const { slug } = req.params
     console.log(slug)
     res.json({ message: `Hello from the products router with slug ${slug}` })
