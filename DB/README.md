@@ -1,10 +1,9 @@
 ## ENTITIES
 - products (id, slug, name, description, quantity, image, price, discount_percentage, created_at, updated_at)
-- orders (id, user_id, promotion_id, total_not_discounted, total_discounted, shipping, final_price, status, created_at)
+- orders (id, promotion_id, first_name, last_name, mail, phone, address, total_not_discounted, total_discounted, shipping, final_price, status, created_at)
 - order_product (id, order_id, product_id, quantity)
 - tags (id, name, description)
 - product_tag (id, product_id, tag_id)
-- users (id, firstName, lastName, mail, phone, address)
 - promotions (id, description, code, discount_percentage, start_date, end_date)
 - categories (id, name, description)
 - category_product (category_id, product_id)
@@ -26,8 +25,12 @@
 ## Table name: `orders`
 **Table columns**
 - id: (BIGINT) - primary key - auto increments - NOT NULL
-- user_id: (BIGINT) - foreign key - NOT NULL
 - promotion_id: (BIGINT) - foreign key - NULL
+- first_name: VARCHAR(50) - NOT NULL
+- last_name: VARCHAR(50) - NOT NULL
+- mail: VARCHAR(50) - NOT NULL
+- phone: CHAR(10) - NOT NULL
+- address: VARCHAR(100) - NOT NULL
 - total_not_discounted: DECIMAL(6,2) - NOT NULL
 - total_discounted: DECIMAL(6,2) - NOT NULL
 - shipping: DECIMAL(6,2) - NOT NULL - default(9,99)
@@ -51,15 +54,6 @@
 **Table columns**
 - product_id: (BIGINT) - foreign key - NOT NULL
 - tag_id: (BIGINT) - foreign key - NOT NULL
-
-## Table name: `users`
-**Table columns**
-- id: (BIGINT) - primary key - auto increments - NOT NULL
-- firstName: VARCHAR(100) - NOT NULL
-- lastName: VARCHAR(100) - NOT NULL
-- mail: VARCHAR(100) - NOT NULL
-- phone: CHAR(10) - NULL
-- address: VARCHAR(255) - NOT NULL
 
 ## Table name: `promotions`
 **Table columns**
