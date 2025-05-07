@@ -18,7 +18,7 @@ function ProductProvider({ children }) {
   );
 }
 
-//use context hook
+//use custom context hook
 function useProduct() {
   return useContext(ProductContext);
 }
