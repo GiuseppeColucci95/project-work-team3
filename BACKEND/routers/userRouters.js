@@ -1,10 +1,11 @@
+//imports
 const express = require("express")
 const usersRouters = express.Router()
+const usersController = require("../controllers/usersController")
+
+//routes
 
 //index
-usersRouters.get("/", (req, res) => {
-    console.log("Hello from the users router")
-    res.json({ message: "Hello from the users router" })
-})
+usersRouters.get("/", usersController.index)
 
 module.exports = usersRouters

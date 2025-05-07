@@ -1,5 +1,8 @@
+//imports
 const express = require("express")
 const promotionsRouters = express.Router()
+
+//routes
 
 //index
 promotionsRouters.get("/", (req, res) => {

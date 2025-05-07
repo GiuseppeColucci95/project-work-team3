@@ -1,5 +1,8 @@
+// imports
 const express = require("express")
 const productsRouters = express.Router()
+
+//routes
 
 //index
 productsRouters.get("/", (req, res) => {
