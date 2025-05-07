@@ -49,7 +49,7 @@
 ## Table name: `product_tag`
 **Table columns**
 - product_id: (BIGINT) - foreign key - NOT NULL
-- tag_id: (TINYINT) - foreign key - NOT NULL
+- tag_id: (BIGINT) - foreign key - NOT NULL
 
 ## Table name: `users`
 **Table columns**
