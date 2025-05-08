@@ -90,20 +90,24 @@ li {
 
 main {
 
-  /* HOMEPAGE component */
+  /* ------------ HOMEPAGE component ------------ */
 
   #jumbotron {
-
     background-color: yellow;
-    min-height: 300px;
+    min-height: 500px;
   }
 
   #best-sellers {
     background-color: lightgrey;
-    min-height: 400px;
+    min-height: 500px;
+
   }
 
-  /* HOMEPAGE component */
+  #latest-products {
+    min-height: 500px;
+  }
+
+  /* ------------ HOMEPAGE component ------------ */
 }
 
 /* #endregion MAIN */

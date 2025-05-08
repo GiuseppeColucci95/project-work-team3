@@ -17,6 +17,7 @@ export default function Homepage() {
 
         </div >
       </section>
+      {/* JUMBOTRON SECTION */}
 
       <section id="description" className="my-5">
         <div className="container">
@@ -32,13 +33,111 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+      {/* HOMEPAGE DESCRIPTION SECTION */}
 
       <section id="best-sellers" className="py-5">
         <div className="container">
           <h3>BEST SELLERS</h3>
           <p>Here you can find our best sellers!</p>
+
+          <div className="row g-3">
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+          </div>
+          {/* PRODUCTS */}
         </div>
       </section>
+      {/* BEST SELLERS SECTION */}
+
+      <section id="latest-products" className="py-5">
+        <div className="container">
+          <h3>LATEST PRODUCTS</h3>
+          <p>Here you can find our latest products!</p>
+
+          <div className="row g-3">
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+          </div>
+          {/* PRODUCTS */}
+        </div>
+      </section>
+      {/* LATEST PRODUCTS SECTION */}
     </>
   );
 }
