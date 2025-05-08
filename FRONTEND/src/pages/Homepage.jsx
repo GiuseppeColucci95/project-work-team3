@@ -17,6 +17,7 @@ export default function Homepage() {
 
         </div >
       </section>
+      {/* JUMBOTRON SECTION */}
 
       <section id="description" className="my-5">
         <div className="container">
@@ -32,6 +33,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+      {/* HOMEPAGE DESCRIPTION SECTION */}
 
       <section id="best-sellers" className="py-5">
         <div className="container">
@@ -80,9 +82,10 @@ export default function Homepage() {
               <h6>13,48€</h6>
             </div>
           </div>
-
+          {/* PRODUCTS */}
         </div>
       </section>
+      {/* BEST SELLERS SECTION */}
 
       <section id="latest-products" className="py-5">
         <div className="container">
@@ -131,8 +134,10 @@ export default function Homepage() {
               <h6>13,48€</h6>
             </div>
           </div>
+          {/* PRODUCTS */}
         </div>
       </section>
+      {/* LATEST PRODUCTS SECTION */}
     </>
   );
 }
