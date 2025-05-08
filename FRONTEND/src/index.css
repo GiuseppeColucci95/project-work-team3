@@ -50,6 +50,7 @@ header {
       border-style: none;
       border-radius: 1rem;
       padding: 0.5rem;
+      width: 80%;
       font-size: 12px;
       background-color: rgb(232, 227, 227);
     }
@@ -67,6 +68,7 @@ header {
   }
   .search {
     border-style: none;
+    background-color: transparent !important;
     .icon-search {
       height: 24px;
     }
