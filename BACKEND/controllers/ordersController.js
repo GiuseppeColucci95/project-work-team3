@@ -1,3 +1,6 @@
+//import functions
+const { orderValidate, userValidate } = require('../Functions/Validate.js')
+
 //connection to the database
 
 //funtions to orders controller
@@ -19,6 +22,15 @@ function create(req, res) {
         phone,
         mail,
         address } = order
+
+
+
+    //validate order data
+    const errorList = userValidate(order)
+
+    if (Object.keys(errorList).length > 0) {
+        return res.status(422).json({ errors: errorList })
+    }
 
     // variable of query
 
