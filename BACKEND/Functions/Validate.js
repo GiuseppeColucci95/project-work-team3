@@ -40,38 +40,40 @@ function userValidate(user) {
     if (address.length < 15) validate.address = "address must be at least 15 characters long"
     if (address.length > 50) validate.address = "address must be at most 50 characters long"
 
-    // check to see if the user object is a valid email
-    if (!mail.includes('@')) validate.mail = "email must be a valid email, missing @"
-    if (!mail.includes('.')) validate.mail = "email must be a valid email, missing ."
-    if (mail.indexOf('@') === 0) validate.mail = "email must be a valid email, @ must not be the first character"
-    if (mail.indexOf('.') === 0) validate.mail = "email must be a valid email, . must not be the first character"
-
-    const beforeAt = mail.substring(0, mail.indexOf('@'))
-    const afterAt = mail.substring(mail.indexOf('@') + 1, mail.length)
-
-    if (beforeAt.length < 3) validate.mail = "email must be a valid email, before @ must be at least 3 characters long"
-    if (!afterAt.indexOf('.')) validate.mail = "email must be a valid email, missing . after @"
-    if (afterAt.indexOf('.') === 0) validate.mail = "email must be a valid email, . must not be the first character after @"
-
-    // check to see if the user object is a valid address
-    //"Via Roma 123, 00100 Roma, Italia"
-    // in street vado a inserire la sottostringa prima della prima virgola
-    // in cap vado a inserire la sottostringa formata da 5 caratteri dopo la prima virgola escludendo lo spazio
-    // in city vado a inserire la sottostringa presente dopo la seconda virgola escludendo lo spazio
-    const street = address.substring(0, address.indexOf(','))
-    const cap = address.substring(address.indexOf(',') + 1, address.indexOf(',') + 1 + 5)
-    const city = address.substring(address.indexOf(',') + 6, address.indexOf(',', address.indexOf(',') + 1))
-    const country = address.substring(address.indexOf(',', address.indexOf(',') + 1) + 1, address.length)
+    /**
+     * check to see if the user object is a valid email
+     * nel controllo uso una regular expression per controllare che l'email sia valida
+     * /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/ è una regular expression che controlla che l'email sia valida
+     * [a-zA-Z0-9._%+-] è una regular expression che identifica una stringa composta da lettere maiuscole e minuscole, numeri e i caratteri . _ % + -
+     * + lo si usa per eseguire una concatenzaione di più caratteri
+     * @ è il simbolo che identifica l'inizio di un dominio
+     * [a-zA-Z0-9-] è una regular expression che identifica una stringa composta da lettere maiuscole e minuscole, numeri e il carattere -
+     * \. è il simbolo che identifica il punto che separa il dominio dal suffisso
+     * [a-z]{2,} è una regular expression che identifica una stringa composta da lettere minuscole e che deve essere lunga almeno 2 caratteri
+     */
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(mail)) validate.mail = "email is invalid"
 
     // check to see if the user object is a valid address
-    if (!street) validate.address = "street is required"
-    if (!cap) validate.address = "cap is required"
-    if (!city) validate.address = "city is required"
-    if (!country) validate.address = "country is required"
+    //"Via Roma, 123, 00100 Roma Italia"
+    // Split sulle virgole
+    const parts = address.split(',')
+    const street = parts[0].trim() // "Via Roma"
+    const house_number = parts[1].trim() // "123"
+    // Split su cap, city e country
+    const restParts = parts[2].trim().split(' ');
+    const cap = restParts[0]; // "00100"
+    const city = restParts[1]; // "Roma"
+    const country = restParts.slice(2).join(' '); // "Italia"
 
-    if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) validate.address = "address must contain via or piazza"
+    // verifico che l'indirizzo sia completo
+    if (parts.length !== 5) {
+        validate.address = "missing a component"
+    } else {
+        if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) validate.address = "address must contain via or piazza"
 
-    if (cap.length !== 5) validate.address = "cap invalid"
+        // in questo controllo uso una regular expression per controllare che il cap sia composto da 5 numeri /^\d{5}$/
+        if (!/^\d{5}$/.test(cap)) validate.address = "cap is invalid"
+    }
 
     return validate
 }
