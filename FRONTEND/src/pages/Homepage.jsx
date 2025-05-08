@@ -37,6 +37,100 @@ export default function Homepage() {
         <div className="container">
           <h3>BEST SELLERS</h3>
           <p>Here you can find our best sellers!</p>
+
+          <div className="row g-3">
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="latest-products" className="py-5">
+        <div className="container">
+          <h3>LATEST PRODUCTS</h3>
+          <p>Here you can find our latest products!</p>
+
+          <div className="row g-3">
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+            <div className="col-3">
+              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
+              <h4>Example image title</h4>
+              <h6>13,48€</h6>
+            </div>
+          </div>
         </div>
       </section>
     </>
