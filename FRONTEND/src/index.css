@@ -44,13 +44,19 @@ header {
     justify-content: center;
     align-items: center;
     margin-left: 2rem;
+    .menu {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .active:hover {
+      color: var(--accent)
+    }
   }
   .menu-ce {
     .searchbar {
       border-style: none;
       border-radius: 1rem;
       padding: 0.5rem;
-      width: 80%;
       font-size: 12px;
       background-color: rgb(232, 227, 227);
     }

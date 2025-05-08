@@ -9,9 +9,9 @@ export default function Header() {
         <div className="menu-sx">
           <img src="https://picsum.photos/50/50" alt="" />
           <ul className="menu">
-            <li>Menu</li>
-            <li>Products</li>
-            <li>Contacts</li>
+            <li className="active">Home</li>
+            <li className="active">Products</li>
+            <li className="active">Contacts</li>
           </ul>
         </div>
         <div className="menu-ce">
