@@ -26,10 +26,14 @@ function create(req, res) {
 
 
     //validate order data
-    const errorList = userValidate(order)
+    const errorOrderList = orderValidate(order)
+    const errorUserList = userValidate(order)
 
-    if (Object.keys(errorList).length > 0) {
-        return res.status(422).json({ errors: errorList })
+    if (Object.keys(errorUserList).length > 0) {
+        return res.status(422).json(errorUserList)
+    }
+    if (Object.keys(errorOrderList).length > 0) {
+        return res.status(422).json(errorOrderList)
     }
 
     // variable of query

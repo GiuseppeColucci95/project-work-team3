@@ -1,3 +1,28 @@
+/*
+"promotion_id": 7,
+"total_not_discounted": 45.90,
+"total_discounted": 39.90,
+"shipping": 4.99,
+"final_price": 44.89,
+"status": "shipped",
+"products": [{id,qt}]
+*/
+function orderValidate(order) {
+
+    let validate = {}
+
+    const { total_not_discounted, total_discounted, shipping, final_price, status, products } = order
+
+    if (!total_not_discounted) validate.total_not_discounted = "total_not_discounted is required"
+    if (!total_discounted) validate.total_discounted = "total_discounted is required"
+    if (!shipping) validate.shipping = "shipping is required"
+    if (!final_price) validate.final_price = "final_price is required"
+    if (!status) validate.status = "status is required"
+    if (products.length === 0) validate.products = "not have a products"
+
+    return validate
+}
+
 /* 
 first_name
 last_name
@@ -5,9 +30,6 @@ phone
 mail
 address
 */
-
-function orderValidate(order) { }
-
 /** function to validate user data
  * @param {Object} user // user object to validate
  * @returns {Object} // returns true if valid, false otherwise
@@ -66,7 +88,7 @@ function userValidate(user) {
     const country = restParts.slice(2).join(' '); // "Italia"
 
     // verifico che l'indirizzo sia completo
-    if (parts.length !== 5) {
+    if (parts.length !== 3 || restParts.length !== 3) {
         validate.address = "missing a component"
     } else {
         if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) validate.address = "address must contain via or piazza"
