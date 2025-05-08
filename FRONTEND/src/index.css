@@ -15,7 +15,14 @@
   font-family: "Poppins", sans-serif;
 }
 
-:root {}
+:root {
+  --primary: rgb(103, 139, 39);
+  --accent: rgb(255, 153, 51);
+  --light: rgb(249, 249, 249);
+  --secondary: rgb(255, 201, 179);
+  --secondary-brown: rgb(183, 108, 73);
+  --dark: rgb(35, 25, 20);
+}
 
 /* #endregion COMMON */
 
@@ -24,8 +31,57 @@
 header {
 
   /* DA RIMUOVERE QUANDO SI STILIZZA L'HEADER */
-  min-height: 100px;
-  background-color: aqua;
+  min-height: 80px;
+  background-color: transparent;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  .menu-sx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+  }
+  .menu-ce {
+    .searchbar {
+      border-style: none;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      font-size: 12px;
+      background-color: rgb(232, 227, 227);
+    }
+    .searchbar:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  .menu-dx {
+    margin-right: 2rem;
+  }
+  .menu-icons {
+    width: 24px;
+    margin-left: 1rem;
+  }
+  .search {
+    border-style: none;
+    .icon-search {
+      height: 24px;
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0 !important;
+  }
+}
+
+li {
+  list-style: none;
 }
 
 /* #endregion HEADER */
