@@ -1,4 +1,8 @@
 //connection on the database
+const connection = require('../data/db')
+
+// variable to path
+const url_base_image = "http://localhost:3000/images/"
 
 //functions to products controller
 
@@ -7,8 +11,21 @@ function index(req, res) {
     //query to get all products from products table
     const sql = `SELECT * FROM products`;
 
-    console.log("Hello from the products controller")
-    res.json({ message: "Hello from the products controller" })
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+
+        /**
+         * * Map through the results and update the image URL for each product
+         * * This assumes that the image field in the database contains the image filename
+         */
+        const products = results.map(prodact => {
+            const url_image = `${url_base_image}${prodact.image}`
+            prodact.image = url_image
+            return prodact
+        })
+
+        res.json(products)
+    })
 }
 
 //route for products list filtered by tag(pathologies)
