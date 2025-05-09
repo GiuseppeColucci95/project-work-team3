@@ -10,6 +10,10 @@ function create(req, res) {
 
     const order = req.body
 
+    //query to insert an element into orders tables
+    const sql = `INSERT INTO orders (id, promotion_id, firstname, lastname, mail, phone, address, total_not_discounted, total_discounted, shipping, final_price, status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
     const { promotion_id,
         total_not_discounted,
         total_discounted,
