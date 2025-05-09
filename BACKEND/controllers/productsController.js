@@ -9,7 +9,7 @@ const url_base_image = "http://localhost:3000/images/"
 function index(req, res) {
 
     //query to get all products from products table
-    const sql = `SELECT * FROM products`;
+    const sql = `SELECT * FROM products`
 
     connection.query(sql, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
@@ -35,7 +35,7 @@ function filterByTag(req, res) {
     const sql = `SELECT products.* FROM products
     JOIN product_tag ON product_tag.product_id = products.id
     JOIN tags ON tags.id = product_tag.tag_id
-    WHERE tags.name = ?`;
+    WHERE tags.name = ?`
 
     const { tag } = req.params
 
@@ -64,7 +64,7 @@ function filterByCategory(req, res) {
     const sql = `SELECT products.* FROM products 
     JOIN category_product ON category_product.product_id = products.id
     JOIN categories ON categories.id = category_product.category_id
-    WHERE categories.name = ?`;
+    WHERE categories.name = ?`
 
     const { category } = req.params
     connection.query(sql, category, (err, results) => {
@@ -88,10 +88,23 @@ function filterByCategory(req, res) {
 function recents(req, res) {
 
     //query to get all recents products from products table
-    const sql = `SELECT * FROM products ORDER BY inserted_at DESC`;
+    const sql = `SELECT * FROM products ORDER BY created_at DESC`
 
-    console.log("recent")
-    res.json({ message: "Hello from the products controller with recent" })
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+
+        /**
+         * * Map through the results and update the image URL for each product
+         * * This assumes that the image field in the database contains the image filename
+         */
+        const products = results.map(product => {
+            const url_image = `${url_base_image}${product.image}`
+            product.image = url_image
+            return product
+        })
+
+        res.json(products)
+    })
 }
 
 //route for products list filtered by best sellers
@@ -101,10 +114,24 @@ function bestSellers(req, res) {
     const sql = `SELECT COUNT(product_id), products.* FROM products 
             JOIN order_product ON order_product.product_id = products.id 
             GROUP BY order_product.product_id 
-            ORDER BY COUNT(product_id)`;
+            ORDER BY COUNT(product_id)`
 
-    console.log("most sold")
-    res.json({ message: "Hello from the products controller with most sold" })
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+
+        /**
+         * * Map through the results and update the image URL for each product
+         * * This assumes that the image field in the database contains the image filename
+         */
+        const products = results.map(product => {
+            const url_image = `${url_base_image}${product.image}`
+            product.image = url_image
+            return product
+        })
+
+        res.json(products)
+    })
+
 }
 
 //route for product details
