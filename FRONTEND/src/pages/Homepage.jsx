@@ -62,7 +62,7 @@ export default function Homepage() {
                   (index < numberOfLatestProducts) &&
                   (
                     <div key={product.id} className="col" >
-                      <Link className="text-decoration-none" to={`/products/${product.slug}`}>
+                      <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                         <img className="w-100" src={product.image} alt={`${product.slug} image`} />
                         <h4>{product.name}</h4>
                         <h6>{product.price}</h6>
@@ -104,7 +104,7 @@ export default function Homepage() {
           </div>
           {/* BEST SELLER PRODUCTS */}
         </div>
-      </section >
+      </section>
       {/* LATEST PRODUCTS SECTION */}
     </>
   );
