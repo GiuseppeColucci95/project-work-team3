@@ -10,7 +10,7 @@ export default function Homepage() {
   //template
   return (
     <>
-      <section id="jumbotron" className="d-flex align-items-center">
+      <section id="jumbotron" className="d-flex align-items-center jumbotron-container">
         <div className="container">
 
           <h2>Eat Your Way</h2>
