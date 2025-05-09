@@ -189,7 +189,10 @@ footer {
   }
   .footer-logo {
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  .payoff {
+    width: 60% !important;
   }
   .footer-menu {
     h4 {
@@ -208,6 +211,9 @@ footer {
 /* schermi piccoli */
 
 @media (max-width: 480px) {
+  .payoff {
+    width: 100% !important;
+  }
   .footer-menu {
     gap: 1.5rem !important;
     h4 {
@@ -225,9 +231,6 @@ footer {
     margin-top: 0;
   }
 }
-  
-
-  
 
 
 /* #endregion FOOTER */
