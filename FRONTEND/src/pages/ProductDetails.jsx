@@ -25,7 +25,7 @@ export default function ProductDetails() {
             <div className="container">
               <div className="row">
                 <div className="col-6">
-                  <img src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
+                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
                 </div>
                 {/* IMAGE */}
                 <div className="col-6 d-flex flex-column justify-content-between">

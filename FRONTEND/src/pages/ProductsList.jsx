@@ -1,6 +1,8 @@
 //react import
 import { useEffect, useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
+import { Link } from "react-router-dom";
+
 //component exports
 export default function ProductList() {
 
@@ -47,87 +49,22 @@ export default function ProductList() {
             (viewMode === 'grid')
               ?
               (
-                <div className="row row-gap-4">
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
+                  {
+                    (products) &&
+                    (
+                      products.map(product => (
+                        <div key={product.id} className="col">
+                          <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <h4 className="mt-2">{product.name}</h4>
+                            <h6>13,48€</h6>
+                          </Link>
+                        </div>
+                      ))
+                    )
+                  }
+
                 </div>
               )
               :
