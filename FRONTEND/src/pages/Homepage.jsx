@@ -5,7 +5,7 @@ import { useProductContext } from "../contexts/ProductContext";
 export default function Homepage() {
 
   //logic
-  const { getNewestProducts, getBestSellersProducts } = useProduct();
+  const { getNewestProducts, getBestSellersProducts } = useProductContext();
 
   //template
   return (
