@@ -6,6 +6,6 @@ const promotionsController = require("../controllers/promotionsController")
 //routes
 
 //index
-promotionsRouters.get("/", promotionsController.index)
+promotionsRouters.post("/:code", promotionsController.promotionValidate)
 
 module.exports = promotionsRouters
