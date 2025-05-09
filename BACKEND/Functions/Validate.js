@@ -24,8 +24,8 @@ function orderValidate(order) {
 }
 
 /* 
-first_name
-last_name
+firstname
+lastname
 phone
 mail
 address
@@ -38,25 +38,25 @@ function userValidate(user) {
 
     let validate = {}
 
-    const { first_name, last_name, mail, address } = user
+    const { firstname, lastname, mail, address } = user
 
     // check to see if the user object is empty
-    if (!first_name) validate.first_name = "first name is required"
-    if (!last_name) validate.last_name = "last name is required"
+    if (!firstname) validate.firstname = "first name is required"
+    if (!lastname) validate.lastname = "last name is required"
     if (!mail) validate.mail = "email is required"
     if (!address) validate.address = "address is required"
 
     // check to see if the user object is a string
-    if (typeof first_name !== 'string') validate.first_name = "first name must be a string"
-    if (typeof last_name !== 'string') validate.last_name = "last name must be a string"
+    if (typeof firstname !== 'string') validate.firstname = "first name must be a string"
+    if (typeof lastname !== 'string') validate.lastname = "last name must be a string"
     if (typeof mail !== 'string') validate.mail = "email must be a string"
     if (typeof address !== 'string') validate.address = "address must be a string"
 
     // check to see if the user object ia a regular length
-    if (first_name.length < 3) validate.first_name = "first name must be at least 3 characters long"
-    if (first_name.length > 20) validate.first_name = "first name must be at most 20 characters long"
-    if (last_name.length < 3) validate.last_name = "last name must be at least 3 characters long"
-    if (last_name.length > 20) validate.last_name = "last name must be at most 20 characters long"
+    if (firstname.length < 3) validate.firstname = "first name must be at least 3 characters long"
+    if (firstname.length > 20) validate.firstname = "first name must be at most 20 characters long"
+    if (lastname.length < 3) validate.lastname = "last name must be at least 3 characters long"
+    if (lastname.length > 20) validate.lastname = "last name must be at most 20 characters long"
     if (mail.length < 10) validate.mail = "email must be at least 10 characters long"
     if (mail.length > 50) validate.mail = "email must be at most 50 characters long"
     if (address.length < 15) validate.address = "address must be at least 15 characters long"
