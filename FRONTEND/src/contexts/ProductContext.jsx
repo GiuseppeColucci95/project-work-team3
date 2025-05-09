@@ -17,7 +17,6 @@ function ProductProvider({ children }) {
   const [latestProducts, setLatestProduct] = useState(null);
   const [bestSellersProducts, setBestSellersProducts] = useState(null);
 
-
   //function to get all products from db
   function getAllProducts() {
 
@@ -26,8 +25,7 @@ function ProductProvider({ children }) {
       .then(data => {
 
         console.log(data);
-        console.log(products);
-
+        setProducts(data);
       })
       .catch(err => console.error(err));
   }
@@ -70,7 +68,6 @@ function ProductProvider({ children }) {
       })
       .catch(err => console.error(err));
   }
-
 
   //template
   return (

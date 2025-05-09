@@ -25,41 +25,42 @@ export default function ProductDetails() {
             <div className="container">
               <div className="row">
                 <div className="col-6">
-                  <img src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
+                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
                 </div>
                 {/* IMAGE */}
-                <div className="col-6 d-flex flex-column justify-content-center">
-                  <div>
+                <div className="col-6 d-flex flex-column justify-content-between">
+                  <div id="image-description">
                     <h2>{selectedProduct.name}</h2>
+                    <h5>{selectedProduct.description}</h5>
                   </div>
 
-                  <div>
-                    <ul>
+                  <div id="tags">
+                    <ul className="list-unstyled">
                       <li>tag 1</li>
                       <li>tag 2</li>
                       <li>tag 3</li>
                     </ul>
                   </div>
 
-                  <div>
-                    <h3>{`${selectedProduct.price}€`}</h3>
-                  </div>
-
-                  <div className="d-flex gap-3">
-                    <div className="d-flex justify-content-center align-items-center gap-1">
-                      <button className="btn btn-primary">-</button>
-                      <div className="px-2">0</div>
-                      <button className="btn btn-primary">+</button>
-                    </div>
+                  <div id="buttons">
                     <div>
-                      <button className="btn btn-primary px-5">ADD TO CART</button>
+                      <h2 className="mb-3">{`${selectedProduct.price}€`}</h2>
                     </div>
-                    <div>
-                      <button className="btn btn-primary">&#9825;</button>
+
+                    <div className="d-flex gap-3 justify-content-between">
+                      <div className="d-flex justify-content-center align-items-center gap-1">
+                        <button className="btn btn-primary">-</button>
+                        <div className="px-2">0</div>
+                        <button className="btn btn-primary">+</button>
+                      </div>
+                      <div>
+                        <button className="btn btn-primary px-5">ADD TO CART</button>
+                      </div>
+                      <div>
+                        <button className="btn btn-primary">&#9825;</button>
+                      </div>
                     </div>
                   </div>
-                  {/*  */}
-
                 </div>
                 {/* IMAGE DESCRIPTION, PRICE, ADD TO CART */}
               </div>
