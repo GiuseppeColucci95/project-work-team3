@@ -171,14 +171,21 @@ footer {
     }
   }
   .copyright {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 }
+
+/* schermi medi */
 
 @media (max-width: 768px) {
   footer {
     padding: 1rem;
     text-align: center;
+  }
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
   }
   .footer-logo {
     flex-direction: column;
@@ -194,9 +201,13 @@ footer {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
+  .copyright {
+    margin-top: 0;
+  }
 }
 
-/* Media query per schermi molto piccoli */
+/* schermi piccoli */
+
 @media (max-width: 480px) {
   .footer-menu {
     gap: 0.5rem !important;
@@ -210,6 +221,9 @@ footer {
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
+  }
+  .copyright {
+    margin-top: 0;
   }
 }
   
