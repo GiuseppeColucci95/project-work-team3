@@ -1,7 +1,11 @@
+//react imports
+import { useProductContext } from "../contexts/ProductContext";
+
 //component exports
 export default function Homepage() {
 
   //logic
+  const { getNewestProducts, getBestSellersProducts } = useProduct();
 
   //template
   return (

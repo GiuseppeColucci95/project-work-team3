@@ -1,8 +1,12 @@
 //react imports
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 //context creation
 const ProductContext = createContext();
+
+//connection variables
+const connection = "http://localhost:3000";
+const productsAddress = "/api/v1/products";
 
 //context provider
 function ProductProvider({ children }) {
@@ -10,18 +14,55 @@ function ProductProvider({ children }) {
   //logic
   const [products, setProducts] = useState(null);
 
+  //function to get all products from db
+  function getAllProducts() {
+
+    fetch(connection + productsAddress)
+      .then(res => res.json())
+      .then(data => {
+
+        console.log(data);
+        console.log(products);
+
+      })
+      .catch(err => console.error(err));
+  }
+
+  //function to get all products from db ordered by newest first
+  function getNewestProducts() {
+
+    fetch(`${connection}${productsAddress}/recents`)
+      .then(res => res.json())
+      .then(data => {
+
+        console.log(data);
+      })
+      .catch(err => console.error(err));
+  }
+
+  //function to get all products from db ordered by best sold first
+  function getBestSellersProducts() {
+    fetch(`${connection}${productsAddress}/best-sellers`)
+      .then(res => res.json())
+      .then(data => {
+
+        console.log(data);
+      })
+      .catch(err => console.error(err));
+  }
+
   //template
   return (
-    <ProductContext.Provider value={{ products, setProducts }}>
+    <ProductContext.Provider value={{ products, setProducts, getAllProducts, getNewestProducts, getBestSellersProducts }}>
       {children}
     </ProductContext.Provider>
   );
 }
 
 //use custom context hook
-function useProduct() {
+function useProductContext() {
   return useContext(ProductContext);
 }
 
 //export custom context
-export { ProductProvider, useProduct }
+export { ProductProvider, useProductContext }
