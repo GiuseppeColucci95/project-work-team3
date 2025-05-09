@@ -149,24 +149,10 @@ function getProduct(req, res) {
         const product = results[0];
 
         //modify image url to get the entire path of the image
-        const url_image = `${url_base_image}${product.image}`;
-        product.image = url_image;
+        product.image = `${url_base_image}${product.image}`;
 
         //return the result
         res.json(product);
-
-        // /**
-        //  * * Map through the results and update the image URL for each product
-        //  * * This assumes that the image field in the database contains the image filename
-        //  */
-        // const products = results.map(product => {
-        //     const url_image = `${url_base_image}${product.image}`
-        //     product.image = url_image
-        //     return product
-        // })
-
-        // res.json(products)
-        //MODIFICHE FATTE FINO A QUI-------------------------------------------------------------------------------------------------------------------------------
     })
 }
 
