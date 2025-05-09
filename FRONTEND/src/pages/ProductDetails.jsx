@@ -1,55 +1,73 @@
+//react imports
+import { useParams } from "react-router-dom";
+import { useProductContext } from "../contexts/ProductContext";
+import { useEffect } from "react";
+
+//component exports
 export default function ProductDetails() {
 
   //logic
+  const { slug } = useParams();
+
+  const { selectedProduct, getSelectedProduct } = useProductContext();
+
+  useEffect(() => {
+    getSelectedProduct(slug);
+  }, []);
 
   //template
   return (
     <>
-      <section id="product-description" className="my-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-6">
-              <img src="https://picsum.photos/500/500" alt="image" />
+      {
+        (selectedProduct) &&
+        (
+          <section id="product-description" className="my-5">
+            <div className="container">
+              <div className="row">
+                <div className="col-6">
+                  <img src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
+                </div>
+                {/* IMAGE */}
+                <div className="col-6 d-flex flex-column justify-content-center">
+                  <div>
+                    <h2>{selectedProduct.name}</h2>
+                  </div>
+
+                  <div>
+                    <ul>
+                      <li>tag 1</li>
+                      <li>tag 2</li>
+                      <li>tag 3</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3>{`${selectedProduct.price}€`}</h3>
+                  </div>
+
+                  <div className="d-flex gap-3">
+                    <div className="d-flex justify-content-center align-items-center gap-1">
+                      <button className="btn btn-primary">-</button>
+                      <div className="px-2">0</div>
+                      <button className="btn btn-primary">+</button>
+                    </div>
+                    <div>
+                      <button className="btn btn-primary px-5">ADD TO CART</button>
+                    </div>
+                    <div>
+                      <button className="btn btn-primary">&#9825;</button>
+                    </div>
+                  </div>
+                  {/*  */}
+
+                </div>
+                {/* IMAGE DESCRIPTION, PRICE, ADD TO CART */}
+              </div>
             </div>
-            {/* IMAGE */}
-            <div className="col-6 d-flex flex-column justify-content-between">
-              <div>
-                <h2>EXAMPLE PRODUCT TITLE</h2>
-              </div>
+          </section>
+        )
+      }
 
-              <div>
-                <ul>
-                  <li>tag 1</li>
-                  <li>tag 2</li>
-                  <li>tag 3</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3>price 13,98€</h3>
-              </div>
-
-              <div className="d-flex gap-3">
-                <div className="d-flex justify-content-center align-items-center gap-1">
-                  <button className="btn btn-primary">-</button>
-                  <div className="px-2">0</div>
-                  <button className="btn btn-primary">+</button>
-                </div>
-                <div>
-                  <button className="btn btn-primary px-5">ADD TO CART</button>
-                </div>
-                <div>
-                  <button className="btn btn-primary">&#9825;</button>
-                </div>
-              </div>
-              {/*  */}
-
-            </div>
-            {/* IMAGE DESCRIPTION, PRICE, ADD TO CART */}
-          </div>
-        </div>
-      </section>
-      {/* PRODUCT DESCRIPTION */}
 
       <section id="related-products" className="my-5">
         <div className="container mt-5">

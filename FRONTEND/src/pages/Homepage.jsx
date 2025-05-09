@@ -1,6 +1,7 @@
 //react imports
 import { useEffect, useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
+import { Link } from "react-router-dom";
 
 //component exports
 export default function Homepage() {
@@ -61,9 +62,11 @@ export default function Homepage() {
                   (index < numberOfLatestProducts) &&
                   (
                     <div key={product.id} className="col" >
-                      <img className="w-100" src={product.image} alt={`${product.slug} image`} />
-                      <h4>{product.name}</h4>
-                      <h6>{product.price}</h6>
+                      <Link className="text-decoration-none" to={`/products/${product.slug}`}>
+                        <img className="w-100" src={product.image} alt={`${product.slug} image`} />
+                        <h4>{product.name}</h4>
+                        <h6>{product.price}</h6>
+                      </Link>
                     </div>
                   )
                 ))

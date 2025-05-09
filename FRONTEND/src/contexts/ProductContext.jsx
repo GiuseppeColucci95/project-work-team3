@@ -13,8 +13,10 @@ function ProductProvider({ children }) {
 
   //logic
   const [products, setProducts] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState({});
   const [latestProducts, setLatestProduct] = useState(null);
   const [bestSellersProducts, setBestSellersProducts] = useState(null);
+
 
   //function to get all products from db
   function getAllProducts() {
@@ -26,6 +28,20 @@ function ProductProvider({ children }) {
         console.log(data);
         console.log(products);
 
+      })
+      .catch(err => console.error(err));
+  }
+
+  //function to get a selected element by slug
+  function getSelectedProduct(slug) {
+    console.log(`${connection}${productsAddress}/${slug}`);
+
+    fetch(`${connection}${productsAddress}/${slug}`)
+      .then(res => res.json())
+      .then(data => {
+
+        setSelectedProduct(data);
+        console.log(data);
       })
       .catch(err => console.error(err));
   }
@@ -55,9 +71,13 @@ function ProductProvider({ children }) {
       .catch(err => console.error(err));
   }
 
+
   //template
   return (
-    <ProductContext.Provider value={{ products, setProducts, latestProducts, setLatestProduct, bestSellersProducts, setBestSellersProducts, getAllProducts, getLatestProducts, getBestSellersProducts }}>
+    <ProductContext.Provider value={{
+      products, setProducts, selectedProduct, setSelectedProduct, latestProducts, setLatestProduct, bestSellersProducts,
+      setBestSellersProducts, getAllProducts, getSelectedProduct, getLatestProducts, getBestSellersProducts
+    }}>
       {children}
     </ProductContext.Provider>
   );

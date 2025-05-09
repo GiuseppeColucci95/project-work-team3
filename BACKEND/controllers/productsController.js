@@ -144,17 +144,29 @@ function getProduct(req, res) {
     connection.query(sql, slug, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
 
-        /**
-         * * Map through the results and update the image URL for each product
-         * * This assumes that the image field in the database contains the image filename
-         */
-        const products = results.map(product => {
-            const url_image = `${url_base_image}${product.image}`
-            product.image = url_image
-            return product
-        })
+        //MODIFICHE FATTE DA QUI-------------------------------------------------------------------------------------------------------------------------------
+        //const to save the product in a variable
+        const product = results[0];
 
-        res.json(products)
+        //modify image url to get the entire path of the image
+        const url_image = `${url_base_image}${product.image}`;
+        product.image = url_image;
+
+        //return the result
+        res.json(product);
+
+        // /**
+        //  * * Map through the results and update the image URL for each product
+        //  * * This assumes that the image field in the database contains the image filename
+        //  */
+        // const products = results.map(product => {
+        //     const url_image = `${url_base_image}${product.image}`
+        //     product.image = url_image
+        //     return product
+        // })
+
+        // res.json(products)
+        //MODIFICHE FATTE FINO A QUI-------------------------------------------------------------------------------------------------------------------------------
     })
 }
 
