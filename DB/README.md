@@ -1,9 +1,9 @@
 ## ENTITIES
 - products (id, slug, name, description, quantity, image, price, discount_percentage, created_at, updated_at)
 - orders (id, promotion_id, first_name, last_name, mail, phone, address, total_not_discounted, total_discounted, shipping, final_price, status, created_at)
-- order_product (id, order_id, product_id, quantity)
+- order_product (order_id, product_id, quantity)
 - tags (id, name, description)
-- product_tag (id, product_id, tag_id)
+- product_tag (product_id, tag_id)
 - promotions (id, description, code, discount_percentage, start_date, end_date)
 - categories (id, name, description)
 - category_product (category_id, product_id)
