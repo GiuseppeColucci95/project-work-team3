@@ -1,5 +1,5 @@
 //import functions
-const { orderValidate, userValidate } = require('../Functions/Validate.js')
+const { orderValidate, userValidate } = require('../functions/validate.js')
 
 //connection to the database
 
