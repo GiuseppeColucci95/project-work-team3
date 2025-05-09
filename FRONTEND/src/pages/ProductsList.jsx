@@ -1,11 +1,12 @@
 //react import
 import { useState } from "react";
-
+import { useProductContext } from "../contexts/ProductContext";
 //component exports
 export default function ProductList() {
 
   //logic
   const [viewMode, setViewMode] = useState('grid');
+  const { getAllProducts } = useProduct();
 
   //template
   return (
