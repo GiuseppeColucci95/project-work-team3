@@ -26,8 +26,7 @@ function ProductProvider({ children }) {
       .then(data => {
 
         console.log(data);
-        console.log(products);
-
+        setProducts(data);
       })
       .catch(err => console.error(err));
   }
