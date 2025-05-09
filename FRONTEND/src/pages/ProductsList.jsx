@@ -69,97 +69,28 @@ export default function ProductList() {
               )
               :
               (
-                <div className="row row-gap-4">
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
+                <div className="row row-cols-1 row-gap-4">
+                  {
+                    (products) &&
+                    (
+                      products.map(product => (
+                        <div key={product.id} className="col">
+                          <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                            <div className="row">
+                              <div className="col-4">
+                                <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt="image" />
+                              </div>
+                              <div className="col-8">
+                                <h2>{product.name}</h2>
+                                <p>{product.description}</p>
+                                <h4>{product.price}</h4>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      ))
+                    )
+                  }
                 </div>
               )
           }
