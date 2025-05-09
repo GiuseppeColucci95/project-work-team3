@@ -18,10 +18,10 @@ function index(req, res) {
          * * Map through the results and update the image URL for each product
          * * This assumes that the image field in the database contains the image filename
          */
-        const products = results.map(prodact => {
-            const url_image = `${url_base_image}${prodact.image}`
-            prodact.image = url_image
-            return prodact
+        const products = results.map(product => {
+            const url_image = `${url_base_image}${product.image}`
+            product.image = url_image
+            return product
         })
 
         res.json(products)
@@ -35,11 +35,26 @@ function filterByTag(req, res) {
     const sql = `SELECT products.* FROM products
     JOIN product_tag ON product_tag.product_id = products.id
     JOIN tags ON tags.id = product_tag.tag_id
-    WHERE tags.name = 'nut_free'`;
+    WHERE tags.name = ?`;
 
     const { tag } = req.params
-    console.log(tag)
-    res.json({ message: `Hello from the products controller with tag ${tag}` })
+
+    connection.query(sql, tag, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+
+        /**
+         * * Map through the results and update the image URL for each product
+         * * This assumes that the image field in the database contains the image filename
+         */
+        const products = results.map(product => {
+            const url_image = `${url_base_image}${product.image}`
+            product.image = url_image
+            return product
+        })
+
+        res.json(products)
+    })
+
 }
 
 //route for products list filtered by category
