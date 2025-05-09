@@ -68,6 +68,10 @@ header {
   .menu-icons {
     width: 24px;
     margin-left: 1rem;
+    cursor: pointer;
+  }
+  .menu-icons:hover {
+    color: var(--accent);
   }
   .search {
     border-style: none;
