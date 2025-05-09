@@ -67,8 +67,21 @@ function filterByCategory(req, res) {
     WHERE categories.name = ?`;
 
     const { category } = req.params
-    console.log(category)
-    res.json({ message: `Hello from the products controller with category ${category}` })
+    connection.query(sql, category, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+
+        /**
+         * * Map through the results and update the image URL for each product
+         * * This assumes that the image field in the database contains the image filename
+         */
+        const products = results.map(product => {
+            const url_image = `${url_base_image}${product.image}`
+            product.image = url_image
+            return product
+        })
+
+        res.json(products)
+    })
 }
 
 //route for products list filtered by most recent
