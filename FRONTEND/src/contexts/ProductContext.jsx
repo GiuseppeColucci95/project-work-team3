@@ -13,6 +13,8 @@ function ProductProvider({ children }) {
 
   //logic
   const [products, setProducts] = useState(null);
+  const [latestProducts, setLatestProduct] = useState(null);
+  const [bestSellersProducts, setBestSellersProducts] = useState(null);
 
   //function to get all products from db
   function getAllProducts() {
@@ -29,12 +31,13 @@ function ProductProvider({ children }) {
   }
 
   //function to get all products from db ordered by newest first
-  function getNewestProducts() {
+  function getLatestProducts() {
 
     fetch(`${connection}${productsAddress}/recents`)
       .then(res => res.json())
       .then(data => {
 
+        setLatestProduct(data);
         console.log(data);
       })
       .catch(err => console.error(err));
@@ -46,6 +49,7 @@ function ProductProvider({ children }) {
       .then(res => res.json())
       .then(data => {
 
+        setBestSellersProducts(data);
         console.log(data);
       })
       .catch(err => console.error(err));
@@ -53,7 +57,7 @@ function ProductProvider({ children }) {
 
   //template
   return (
-    <ProductContext.Provider value={{ products, setProducts, getAllProducts, getNewestProducts, getBestSellersProducts }}>
+    <ProductContext.Provider value={{ products, setProducts, latestProducts, setLatestProduct, bestSellersProducts, setBestSellersProducts, getAllProducts, getLatestProducts, getBestSellersProducts }}>
       {children}
     </ProductContext.Provider>
   );

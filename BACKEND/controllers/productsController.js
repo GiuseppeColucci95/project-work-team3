@@ -114,7 +114,7 @@ function bestSellers(req, res) {
     const sql = `SELECT COUNT(product_id), products.* FROM products 
             JOIN order_product ON order_product.product_id = products.id 
             GROUP BY order_product.product_id 
-            ORDER BY COUNT(product_id)`
+            ORDER BY COUNT(product_id) DESC`
 
     connection.query(sql, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
