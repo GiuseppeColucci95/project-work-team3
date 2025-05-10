@@ -1,15 +1,24 @@
 //react imports
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../contexts/ProductContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //component exports
 export default function ProductDetails() {
 
   //logic
-  const { slug } = useParams();
 
-  const { selectedProduct, getSelectedProduct } = useProductContext();
+  //getting dynamic params
+  const { slug } = useParams();
+  //imports from custom context
+  const {
+    selectedProduct, getSelectedProduct,
+    tagProducts, getProductsByTag,
+    categoryProducts, getProductsByCategory
+  } = useProductContext();
+  //use state variables for buttons to expands the results
+  const [numberOfRelatedTagProducts, setNumberOfRelatedTagProducts] = useState(4);
+  const [numberOfRelatedCategoryProducts, setNumberOfRelatedCategoryProducts] = useState(4);
 
   useEffect(() => {
     getSelectedProduct(slug);
@@ -25,7 +34,7 @@ export default function ProductDetails() {
             <div className="container w-75">
               <div className="row">
                 <div className="col-12 col-xl-6">
-                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
+                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100 rounded-3" />
                 </div>
                 {/* IMAGE */}
                 <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
@@ -70,7 +79,7 @@ export default function ProductDetails() {
           </section>
         )
       }
-
+      {/* PRODUCT DETAILS */}
 
       <section id="related-products" className="my-5">
         <div className="container mt-5">
@@ -79,48 +88,62 @@ export default function ProductDetails() {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus id quidem quod tenetur tempore nobis beatae exercitationem laborum. Sint sed et ad. Incidunt omnis alias beatae libero quas illo doloribus.
           </h4>
 
-          <div className="row row-gap-3 my-5">
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
+          <section id="tag-related-products" className="my-5">
+            <h3>TAG RELATED PRODUCTS</h3>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
+              {
+
+                (tagProducts) ?
+                  (
+                    tagProducts.map((product, index) => (
+                      (index < numberOfRelatedTagProducts) &&
+                      (
+                        <div className="col">
+                          <img src={product.image} alt="image" className="mb-3 w-100" />
+                          <h4>{product.name}</h4>
+                          <h6>{`${product.price}€`}</h6>
+                        </div>
+                      )
+                    ))
+                  )
+                  :
+                  (
+                    <div>No tag related products found!</div>
+                  )
+              }
+
             </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
+          </section>
+          {/* TAG RELATED PRODUCTS */}
+
+          <section id="category-related-products" className="my-5">
+            <h3>CATEGORY RELATED PRODUCTS</h3>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
+              {
+
+                (categoryProducts) ?
+                  (
+                    categoryProducts.map((product, index) => (
+                      (index < numberOfRelatedCategoryProducts) &&
+                      (
+                        <div className="col">
+                          <img src={product.image} alt="image" className="mb-3 w-100" />
+                          <h4>{product.name}</h4>
+                          <h6>{`${product.price}€`}</h6>
+                        </div>
+                      )
+                    ))
+                  )
+                  :
+                  (
+                    <div>No category related products found!</div>
+                  )
+              }
+
             </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-          </div>
+          </section>
+          {/* CATEGORY RELATED PRODUCTS */}
+
         </div>
       </section>
       {/* RELATED PRODUCTS */}

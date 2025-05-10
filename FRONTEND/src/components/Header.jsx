@@ -1,3 +1,7 @@
+//react imports
+import { Link, NavLink } from "react-router-dom";
+
+//component exports
 export default function Header() {
 
   //logic
@@ -9,9 +13,9 @@ export default function Header() {
         <div className="menu-sx">
           <img src="https://picsum.photos/50/50" alt="" />
           <ul className="menu">
-            <li className="active">Home</li>
-            <li className="active">Products</li>
-            <li className="active">Contacts</li>
+            <li className="active"><NavLink className="text-decoration-none text-unstyled" to={'/'}>Home</NavLink></li>
+            <li className="active"><NavLink className="text-decoration-none" to={'/products/all'}>Products</NavLink></li>
+            <li className="active"><NavLink className="text-decoration-none" to={'/'}>Contacts</NavLink></li>
           </ul>
         </div>
         <div className="menu-ce">
