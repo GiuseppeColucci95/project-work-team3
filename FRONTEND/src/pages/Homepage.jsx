@@ -46,7 +46,7 @@ export default function Homepage() {
             </div>
             <div className="col-sm-12 col-md-12 col-lg-6">
               <p className="description-text">
-                <strong>Eat Your Way</strong> is your go-to online destination for delicious, safe, and carefully curated food products designed for people with specific dietary needs. Whether you're managing diabetes, living with celiac disease, or navigating food intolerances, we make it easy to shop with confidence. <br />Our mission is to put health and flavor on the same plate. Because everyone deserves to enjoy food without compromise.
+                <strong>Eat Your Way</strong> is your go-to online destination for delicious, safe, and carefully curated food products designed for people with specific dietary needs. Whether you're managing diabetes, living with celiac disease, or navigating food intolerances, we make it easy to shop with confidence. <br />Our mission is to put health and flavor on the same plate. Because everyone deserves to enjoy food <strong>without compromise.</strong>
               </p>
             </div>
           </div>

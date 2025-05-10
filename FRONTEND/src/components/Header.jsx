@@ -11,7 +11,7 @@ export default function Header() {
     <>
       <header>
         <div className="menu-sx">
-          <img src="https://picsum.photos/50/50" alt="" />
+          <img className="logo" src="/img/logo.png" alt="" />
           <ul className="menu">
             <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
             <li><NavLink className="text-decoration-none active" to={'/products/all'}>Products</NavLink></li>
