@@ -22,14 +22,14 @@ export default function ProductDetails() {
         (selectedProduct) &&
         (
           <section id="product-description" className="my-5">
-            <div className="container">
+            <div className="container w-75">
               <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-xl-6">
                   <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100" />
                 </div>
                 {/* IMAGE */}
-                <div className="col-6 d-flex flex-column justify-content-between">
-                  <div id="image-description">
+                <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
+                  <div id="image-description" className="mt-3">
                     <h2>{selectedProduct.name}</h2>
                     <h5>{selectedProduct.description}</h5>
                   </div>
@@ -42,7 +42,7 @@ export default function ProductDetails() {
                     </ul>
                   </div>
 
-                  <div id="buttons">
+                  <div id="buttons" className="mb-3">
                     <div>
                       <h2 className="mb-3">{`${selectedProduct.price}€`}</h2>
                     </div>
@@ -62,7 +62,9 @@ export default function ProductDetails() {
                     </div>
                   </div>
                 </div>
-                {/* IMAGE DESCRIPTION, PRICE, ADD TO CART */}
+                {/* IMAGE NAME, PRICE, ADD TO CART */}
+
+
               </div>
             </div>
           </section>
