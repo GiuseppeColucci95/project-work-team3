@@ -49,6 +49,9 @@ header {
       color: var(--accent)
     }
   }
+  .logo {
+    width: 100px;
+  }
   .menu-ce {
     .searchbar {
       border-style: none;

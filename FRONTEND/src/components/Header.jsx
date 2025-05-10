@@ -7,7 +7,7 @@ export default function Header() {
     <>
       <header>
         <div className="menu-sx">
-          <img src="https://picsum.photos/50/50" alt="" />
+          <img className="logo" src="/img/logo.png" alt="" />
           <ul className="menu">
             <li className="active">Home</li>
             <li className="active">Products</li>
