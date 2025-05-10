@@ -11,27 +11,32 @@ export default function Homepage() {
   return (
     <>
       <section id="jumbotron" className="d-flex align-items-center jumbotron-container">
-        <div className="container">
-
-          <h2>Eat Your Way</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima similique dicta id dolorem magnam asperiores eius qui dolor, eos fuga praesentium impedit repellendus. Beatae sint officiis neque magni accusamus iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda rem sequi porro corporis, rerum placeat aliquam quam iure excepturi maiores nihil necessitatibus dolorem ducimus consectetur veniam molestias quaerat voluptate totam.
+        <div className="jumbo-container">
+          <h2 className="jumbo-title">EAT <span style={{ color: "rgb(103, 139, 39" }}>YOUR </span>WAY</h2>
+          <p className="jumbo-text">
+            Don't <br />compromise.
           </p>
-
+          <button className="explore-btn">EXPLORE OUR PRODUCTS</button>
         </div >
       </section>
+      <div className="allergens">
+        <img src="img/gluten-free.png" className="food-allergens" alt="gluten-free" />
+        <img src="img/sugar-free.png" className="food-allergens" alt="sugar-free" />
+        <img src="img/lactose-free.png" className="food-allergens" alt="lactose-free" />
+        <img src="img/nuts-free.png" className="food-allergens" alt="nuts-free" />
+        <img src="img/nickel-free.png" className="food-allergens" alt="nickel-free" />
+      </div>
       {/* JUMBOTRON SECTION */}
 
-      <section id="description" className="my-5">
+      <section className="description">
         <div className="container">
           <div className="row d-flex align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-6">
-              <img src="https://picsum.photos/400/300" alt="description image" className="w-100" />
+              <img src="img/people.svg" alt="description image" className="w-100" />
             </div>
             <div className="col-sm-12 col-md-12 col-lg-6">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa asperiores suscipit aliquid eveniet libero ratione quia, sed ducimus ullam harum fugiat omnis similique sapiente deserunt reiciendis placeat accusamus corporis voluptates nihil quaerat id voluptate nulla odit. Eum eos non vitae laboriosam enim officiis ratione magnam doloribus, saepe architecto reiciendis, velit delectus dolorem sit, aliquid maiores cumque tenetur a id. Nobis temporibus amet fuga ipsam magni quaerat voluptas dicta debitis illo, consectetur, odio, corporis placeat laborum unde accusamus nesciunt voluptate ea.
+              <p className="description-text">
+                <strong>Eat Your Way</strong> is your go-to online destination for delicious, safe, and carefully curated food products designed for people with specific dietary needs. Whether you're managing diabetes, living with celiac disease, or navigating food intolerances, we make it easy to shop with confidence. <br />Our mission is to put health and flavor on the same plate. Because everyone deserves to enjoy food without compromise.
               </p>
             </div>
           </div>

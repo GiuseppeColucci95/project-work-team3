@@ -17,7 +17,7 @@
 
 :root {
   --primary: rgb(103, 139, 39);
-  --accent: rgb(255, 153, 51);
+  --accent: rgb(248, 174, 41);
   --light: rgb(249, 249, 249);
   --secondary: rgb(255, 201, 179);
   --secondary-brown: rgb(183, 108, 73);
@@ -106,12 +106,57 @@ main {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 500px;
+    .jumbo-container {
+      width: 50%;
+      padding-left: 7rem;
+      .jumbo-title {
+        color: var(--dark);
+        font-weight: 800;
+        font-size: 70px;
+        line-height: 4rem;
+        padding-bottom: 0.5rem;
+      }
+      .jumbo-text {
+        font-size: 40px;
+        color: var(--dark);
+        line-height: 2.5rem;
+        padding-bottom: 1.5rem;
+      }
+      .explore-btn {
+        border-style: none;
+        border-radius: 1rem;
+        padding: 0.5rem 1.5rem 0.5rem;
+        font-weight: 600;
+        background: var(--primary);
+        color: var(--light);
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+      }
+      .explore-btn:hover {
+        background-color: var(--accent);
+      }
+    }
   }
+  .description {
+    margin: 4rem;
+  }
+  .description-text {
+    font-size: 25px !important;
+    padding-left: 2rem;
+  }
+  .allergens {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: space-around;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    .food-allergens {
+      width: 150px;
+      cursor: pointer;
+    }
+  }
+}
 
   #best-sellers {
     background-color: lightgrey;
@@ -124,7 +169,7 @@ main {
   }
 
   /* ------------ HOMEPAGE component ------------ */
-}
+
 
 /* #endregion MAIN */
 
