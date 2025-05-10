@@ -106,7 +106,7 @@ main {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 800px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
