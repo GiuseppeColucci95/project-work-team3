@@ -138,8 +138,12 @@ main {
       }
     }
   }
+  .description {
+    margin: 4rem;
+  }
   .description-text {
-    font-size: 20px !important;
+    font-size: 25px !important;
+    padding-left: 2rem;
   }
   .allergens {
     background-color: var(--dark);

@@ -12,7 +12,7 @@ export default function Homepage() {
     <>
       <section id="jumbotron" className="d-flex align-items-center jumbotron-container">
         <div className="jumbo-container">
-          <h2 className="jumbo-title">EAT YOUR WAY</h2>
+          <h2 className="jumbo-title">EAT <span style={{ color: "rgb(103, 139, 39" }}>YOUR </span>WAY</h2>
           <p className="jumbo-text">
             Don't <br />compromise.
           </p>
@@ -28,11 +28,11 @@ export default function Homepage() {
       </div>
       {/* JUMBOTRON SECTION */}
 
-      <section id="description" className="my-5">
+      <section className="description">
         <div className="container">
           <div className="row d-flex align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-6">
-              <img src="https://picsum.photos/400/300" alt="description image" className="w-100" />
+              <img src="img/people.svg" alt="description image" className="w-100" />
             </div>
             <div className="col-sm-12 col-md-12 col-lg-6">
               <p className="description-text">
