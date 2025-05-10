@@ -115,7 +115,7 @@ main {
         font-weight: 800;
         font-size: 70px;
         line-height: 4rem;
-        padding-bottom: 0.rem;
+        padding-bottom: 0.5rem;
       }
       .jumbo-text {
         font-size: 40px;
@@ -138,6 +138,21 @@ main {
       }
     }
   }
+  .description-text {
+    font-size: 20px !important;
+  }
+  .allergens {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: space-around;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    .food-allergens {
+      width: 150px;
+      cursor: pointer;
+    }
+  }
+}
 
   #best-sellers {
     background-color: lightgrey;
@@ -150,7 +165,7 @@ main {
   }
 
   /* ------------ HOMEPAGE component ------------ */
-}
+
 
 /* #endregion MAIN */
 
