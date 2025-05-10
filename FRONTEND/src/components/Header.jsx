@@ -13,9 +13,9 @@ export default function Header() {
         <div className="menu-sx">
           <img src="https://picsum.photos/50/50" alt="" />
           <ul className="menu">
-            <li className="active"><NavLink className="text-decoration-none text-unstyled" to={'/'}>Home</NavLink></li>
-            <li className="active"><NavLink className="text-decoration-none" to={'/products/all'}>Products</NavLink></li>
-            <li className="active"><NavLink className="text-decoration-none" to={'/'}>Contacts</NavLink></li>
+            <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
+            <li><NavLink className="text-decoration-none active" to={'/products/all'}>Products</NavLink></li>
+            <li><NavLink className="text-decoration-none active" to={'/'}>Contacts</NavLink></li>
           </ul>
         </div>
         <div className="menu-ce">

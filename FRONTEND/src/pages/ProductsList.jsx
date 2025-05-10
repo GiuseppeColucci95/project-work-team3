@@ -82,8 +82,8 @@ export default function ProductList() {
                               </div>
                               <div className="col-8">
                                 <h2>{product.name}</h2>
-                                <p>{product.description}</p>
-                                <h4>{product.price}</h4>
+                                <p className="d-none d-md-block">{product.description}</p>
+                                <h4>{`${product.price}€`}</h4>
                               </div>
                             </div>
                           </Link>

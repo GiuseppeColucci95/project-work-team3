@@ -36,19 +36,23 @@ header {
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem;
+
   .menu-sx {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 2rem;
+
     .menu {
       font-weight: 600;
       cursor: pointer;
     }
+
     .active:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
   }
+
   .menu-ce {
     .searchbar {
       border-style: none;
@@ -57,41 +61,54 @@ header {
       font-size: 12px;
       background-color: rgb(232, 227, 227);
     }
+
     .searchbar:focus {
       border: none;
       outline: none;
     }
   }
+
   .menu-dx {
     margin-right: 2rem;
   }
+
   .menu-icons {
     width: 24px;
     margin-left: 1rem;
     cursor: pointer;
   }
+
   .menu-icons:hover {
     color: var(--accent);
   }
+
   .search {
     border-style: none;
     background-color: transparent !important;
+
     .icon-search {
       height: 24px;
     }
   }
+
   ul {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     margin-bottom: 0 !important;
+
+    li {
+      list-style: none;
+
+      a {
+        color: var(--dark);
+      }
+    }
   }
 }
 
-li {
-  list-style: none;
-}
+
 
 /* #endregion HEADER */
 
@@ -137,46 +154,58 @@ footer {
   background-color: var(--secondary-brown);
   padding: 2rem;
   color: var(--light);
+
   .footer-container {
     display: flex;
     align-items: flex-start;
   }
+
   .footer-logo {
     display: flex;
     align-items: center;
     gap: 1rem;
+
     .payoff {
       width: 70%;
     }
   }
+
   a {
     text-decoration: none;
     color: var(--light);
   }
+
   .footer-menu {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
+
     ul {
       padding-left: 0;
+
       li {
-        margin-bottom: 0.5rem;;
+        margin-bottom: 0.5rem;
+        ;
       }
     }
+
     .footer-menu-ce {
       display: flex;
       flex-direction: column;
     }
   }
+
   .footer-contacts {
     display: flex;
     flex-direction: column;
+
     .bi {
       color: var(--light);
       width: 24px;
       padding-right: 0.75rem;
     }
   }
+
   .copyright {
     margin-top: 1.5rem;
   }
@@ -191,27 +220,33 @@ footer {
     padding: 1rem;
     text-align: center;
   }
+
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center !important;
   }
+
   .footer-logo {
     flex-direction: column;
     margin-bottom: 2rem;
   }
+
   .payoff {
     width: 60% !important;
   }
+
   .footer-menu {
     h4 {
       font-size: 26px;
     }
   }
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
+
   .copyright {
     margin-top: 0;
   }
@@ -223,19 +258,24 @@ footer {
   .payoff {
     width: 100% !important;
   }
+
   .footer-menu {
     gap: 1.5rem !important;
+
     h4 {
       font-size: 24px;
     }
   }
+
   .footer-menu ul {
     padding-left: 0;
   }
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
+
   .copyright {
     margin-top: 0;
   }
