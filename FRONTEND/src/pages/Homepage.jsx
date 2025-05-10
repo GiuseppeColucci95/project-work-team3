@@ -11,13 +11,12 @@ export default function Homepage() {
   return (
     <>
       <section id="jumbotron" className="d-flex align-items-center jumbotron-container">
-        <div className="container">
-
-          <h2>Eat Your Way</h2>
+        <div className="jumbo-container">
+          <h2 className="jumbo-title">EAT YOUR WAY</h2>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima similique dicta id dolorem magnam asperiores eius qui dolor, eos fuga praesentium impedit repellendus. Beatae sint officiis neque magni accusamus iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda rem sequi porro corporis, rerum placeat aliquam quam iure excepturi maiores nihil necessitatibus dolorem ducimus consectetur veniam molestias quaerat voluptate totam.
+            Eat Your Way is your go-to online destination for delicious, safe, and carefully curated food products designed for people with specific dietary needs. Whether you're managing diabetes, living with celiac disease, or navigating food intolerances, we make it easy to shop with confidence. Our mission is to put health and flavor on the same plate. Because everyone deserves to enjoy food without compromise.
           </p>
+          <button className="explore-btn">EXPLORE OUR PRODUCTS</button>
 
         </div >
       </section>

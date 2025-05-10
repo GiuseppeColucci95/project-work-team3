@@ -17,7 +17,7 @@
 
 :root {
   --primary: rgb(103, 139, 39);
-  --accent: rgb(255, 153, 51);
+  --accent: rgb(248, 174, 41);
   --light: rgb(249, 249, 249);
   --secondary: rgb(255, 201, 179);
   --secondary-brown: rgb(183, 108, 73);
@@ -107,10 +107,25 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     min-height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    .jumbo-container {
+      width: 50%;
+      padding-left: 3rem;
+      .jumbo-title {
+        color: var(--primary);
+        font-weight: 800;
+      }
+      .explore-btn {
+        border-style: none;
+        border-radius: 1rem;
+        padding: 0.5rem 2rem 0.5rem;
+        font-weight: 600;
+        background-color: var(--accent);
+        color: var(--light);
+      }
+      .explore-btn:hover {
+        background-color: var(--primary);
+      }
+    }
   }
 
   #best-sellers {
