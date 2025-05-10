@@ -1,11 +1,21 @@
 //react imports
+import { useEffect, useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
+import { Link } from "react-router-dom";
 
 //component exports
 export default function Homepage() {
 
   //logic
-  const { getNewestProducts, getBestSellersProducts } = useProductContext();
+  const { latestProducts, getLatestProducts, bestSellersProducts, getBestSellersProducts } = useProductContext();
+  const [numberOfLatestProducts, setNumberOfLatestProducts] = useState(8);
+  const [numberOfBestSellersProducts, setNumberOfBestSellersProducts] = useState(8);
+
+  //useEffect to get products on the start page
+  useEffect(() => {
+    getLatestProducts();
+    getBestSellersProducts();
+  }, []);
 
   //template
   return (
@@ -44,106 +54,62 @@ export default function Homepage() {
       </section>
       {/* HOMEPAGE DESCRIPTION SECTION */}
 
-      <section id="best-sellers" className="py-5">
-        <div className="container">
-          <h3>BEST SELLERS</h3>
-          <p>Here you can find our best sellers!</p>
-
-          <div className="row g-3">
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-          </div>
-          {/* PRODUCTS */}
-        </div>
-      </section>
-      {/* BEST SELLERS SECTION */}
-
       <section id="latest-products" className="py-5">
         <div className="container">
           <h3>LATEST PRODUCTS</h3>
           <p>Here you can find our latest products!</p>
 
-          <div className="row g-3">
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
-            <div className="col-3">
-              <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-              <h4>Example image title</h4>
-              <h6>13,48€</h6>
-            </div>
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+            {
+              (latestProducts) &&
+              (
+                latestProducts.map((product, index) => (
+                  (index < numberOfLatestProducts) &&
+                  (
+                    <div key={product.id} className="col" >
+                      <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                        <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt={`${product.slug} image`} />
+                        <h4 className="mt-2">{product.name}</h4>
+                        <h6>{product.price}</h6>
+                      </Link>
+                    </div>
+                  )
+                ))
+              )
+            }
+
           </div>
-          {/* PRODUCTS */}
+          {/* LATEST PRODUCTS */}
+        </div>
+      </section >
+      {/* BEST SELLERS SECTION */}
+
+      <section id="best-sellers" className="py-5" >
+        <div className="container">
+          <h3>BEST SELLERS</h3>
+          <p>Here you can find our best sellers!</p>
+
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+            {
+              (bestSellersProducts) &&
+              (
+                bestSellersProducts.map((product, index) => (
+                  (index < numberOfBestSellersProducts) &&
+                  (
+                    <div key={product.id} className="col" >
+                      <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                        <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt={`${product.slug} image`} />
+                        <h4 className="mt-2">{product.name}</h4>
+                        <h6>{product.price}</h6>
+                      </Link>
+                    </div>
+                  )
+                ))
+              )
+            }
+
+          </div>
+          {/* BEST SELLER PRODUCTS */}
         </div>
       </section>
       {/* LATEST PRODUCTS SECTION */}
