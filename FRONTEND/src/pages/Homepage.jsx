@@ -13,8 +13,8 @@ export default function Homepage() {
       <section id="jumbotron" className="d-flex align-items-center jumbotron-container">
         <div className="jumbo-container">
           <h2 className="jumbo-title">EAT YOUR WAY</h2>
-          <p>
-            Eat Your Way is your go-to online destination for delicious, safe, and carefully curated food products designed for people with specific dietary needs. Whether you're managing diabetes, living with celiac disease, or navigating food intolerances, we make it easy to shop with confidence. Our mission is to put health and flavor on the same plate. Because everyone deserves to enjoy food without compromise.
+          <p className="jumbo-text">
+            Don't <br />compromise.
           </p>
           <button className="explore-btn">EXPLORE OUR PRODUCTS</button>
 
@@ -30,7 +30,7 @@ export default function Homepage() {
             </div>
             <div className="col-sm-12 col-md-12 col-lg-6">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa asperiores suscipit aliquid eveniet libero ratione quia, sed ducimus ullam harum fugiat omnis similique sapiente deserunt reiciendis placeat accusamus corporis voluptates nihil quaerat id voluptate nulla odit. Eum eos non vitae laboriosam enim officiis ratione magnam doloribus, saepe architecto reiciendis, velit delectus dolorem sit, aliquid maiores cumque tenetur a id. Nobis temporibus amet fuga ipsam magni quaerat voluptas dicta debitis illo, consectetur, odio, corporis placeat laborum unde accusamus nesciunt voluptate ea.
+                <strong>Eat Your Way</strong> is your go-to online destination for delicious, safe, and carefully curated food products designed for people with specific dietary needs. Whether you're managing diabetes, living with celiac disease, or navigating food intolerances, we make it easy to shop with confidence. <br />Our mission is to put health and flavor on the same plate. Because everyone deserves to enjoy food without compromise.
               </p>
             </div>
           </div>
