@@ -235,6 +235,39 @@ footer {
 /* schermi medi */
 
 @media (max-width: 768px) {
+  main #jumbotron {
+    min-height: 250px;
+    max-height: 250px !important;
+  }
+  .jumbo-title {
+    font-size: 35px !important;
+    padding-bottom: 0 !important;
+  }
+  .jumbo-text {
+    font-size: 25px !important;
+    padding-bottom: 0 !important;
+    line-height: 1.5rem !important;
+  }
+  .food-allergens {
+      width: 100px !important;
+      cursor: pointer;
+    }
+  }
+  .img-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+  .img-descr {
+    width: 80% !important;
+    height: auto;
+  }
+  .description-text {
+    font-size: 25px !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+    }
   footer {
     padding: 1rem;
     text-align: center;
@@ -263,7 +296,6 @@ footer {
   .copyright {
     margin-top: 0;
   }
-}
 
 /* schermi piccoli */
 

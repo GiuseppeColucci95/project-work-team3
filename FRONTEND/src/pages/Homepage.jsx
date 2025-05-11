@@ -31,8 +31,8 @@ export default function Homepage() {
       <section className="description">
         <div className="container">
           <div className="row d-flex align-items-center">
-            <div className="col-sm-12 col-md-12 col-lg-6">
-              <img src="img/people.svg" alt="description image" className="w-100" />
+            <div className="col-sm-12 col-md-12 col-lg-6 img-description">
+              <img src="img/people.svg" alt="description image" className="w-100 img-descr" />
             </div>
             <div className="col-sm-12 col-md-12 col-lg-6">
               <p className="description-text">
