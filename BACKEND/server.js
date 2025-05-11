@@ -18,6 +18,11 @@ const port = 3000
 // *****************
 // middleware
 
+//importing the error middelware
+const serverError = require('./middelware/serverError')
+
+const notFound = require('./middelware/notFound')
+
 //attivo i permessi cors per il frontend in localhost
 app.use(cors({ origin: 'http://localhost:5173' }))
 
@@ -39,3 +44,6 @@ app.use('/api/v1/promotions', promotionsRouters)
 
 
 // middleware per la gestione degli errori
+app.use(serverError)
+
+app.use(notFound)
