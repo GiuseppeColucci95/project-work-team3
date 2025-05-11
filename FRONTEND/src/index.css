@@ -36,22 +36,27 @@ header {
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem;
+
   .menu-sx {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 2rem;
+
     .menu {
       font-weight: 600;
       cursor: pointer;
     }
+
     .active:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
   }
+
   .logo {
     width: 90px;
   }
+
   .menu-ce {
     .searchbar {
       border-style: none;
@@ -60,41 +65,54 @@ header {
       font-size: 12px;
       background-color: rgb(232, 227, 227);
     }
+
     .searchbar:focus {
       border: none;
       outline: none;
     }
   }
+
   .menu-dx {
     margin-right: 2rem;
   }
+
   .menu-icons {
     width: 24px;
     margin-left: 1rem;
     cursor: pointer;
   }
+
   .menu-icons:hover {
     color: var(--accent);
   }
+
   .search {
     border-style: none;
     background-color: transparent !important;
+
     .icon-search {
       height: 24px;
     }
   }
+
   ul {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     margin-bottom: 0 !important;
+
+    li {
+      list-style: none;
+
+      a {
+        color: var(--dark);
+      }
+    }
   }
 }
 
-li {
-  list-style: none;
-}
+
 
 /* #endregion HEADER */
 
@@ -110,9 +128,11 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     min-height: 500px;
+
     .jumbo-container {
       width: 50%;
       padding-left: 7rem;
+
       .jumbo-title {
         color: var(--dark);
         font-weight: 800;
@@ -120,12 +140,14 @@ main {
         line-height: 4rem;
         padding-bottom: 0.5rem;
       }
+
       .jumbo-text {
         font-size: 40px;
         color: var(--dark);
         line-height: 2.5rem;
         padding-bottom: 1.5rem;
       }
+
       .explore-btn {
         border-style: none;
         border-radius: 1rem;
@@ -136,24 +158,35 @@ main {
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
         cursor: pointer;
       }
+
       .explore-btn:hover {
         background-color: var(--accent);
       }
     }
   }
+
+  #tag-jumbotron {
+    /* DA ELIMINARE PER LO STILE */
+    min-height: 500px;
+    background-color: yellow;
+  }
+
   .description {
     margin: 4rem;
   }
+
   .description-text {
     font-size: 25px !important;
     padding-left: 2rem;
   }
+
   .allergens {
     background-color: var(--dark);
     display: flex;
     justify-content: space-around;
     padding-top: 3rem;
     padding-bottom: 3rem;
+
     .food-allergens {
       width: 150px;
       cursor: pointer;
@@ -161,17 +194,17 @@ main {
   }
 }
 
-  #best-sellers {
-    background-color: lightgrey;
-    min-height: 500px;
+#best-sellers {
+  background-color: lightgrey;
+  min-height: 500px;
 
-  }
+}
 
-  #latest-products {
-    min-height: 500px;
-  }
+#latest-products {
+  min-height: 500px;
+}
 
-  /* ------------ HOMEPAGE component ------------ */
+/* ------------ HOMEPAGE component ------------ */
 
 
 /* #endregion MAIN */
@@ -189,42 +222,54 @@ footer {
     display: flex;
     align-items: flex-start;
   }
+
   .footer-logo {
     display: flex;
     align-items: center;
     gap: 1rem;
+
     .payoff {
       width: 70%;
     }
   }
+
   a {
     text-decoration: none;
-    color: var(--light);
+    color: var(--dark);
   }
+
   .footer-menu {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
+    padding-left: 4rem;
+
     ul {
       padding-left: 0;
+
       li {
-        margin-bottom: 0.5rem;;
+        margin-bottom: 0.5rem;
+        list-style: none;
       }
     }
+
     .footer-menu-ce {
       display: flex;
       flex-direction: column;
     }
   }
+
   .footer-contacts {
     display: flex;
     flex-direction: column;
+
     .bi {
       color: var(--dark);
       width: 24px;
       padding-right: 0.75rem;
     }
   }
+
   .copyright {
     margin-top: 1.5rem;
   }
@@ -275,30 +320,36 @@ footer {
       color: var(--dark);
     }
   }
+
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center !important;
   }
+
   .footer-logo {
     flex-direction: column;
     margin-bottom: 2rem;
   }
+
   .payoff {
     width: 100% !important;
   }
+
   .footer-menu {
+    padding-left: 0 !important;
     h4 {
       font-size: 26px;
     }
   }
   .footer-logo-img {
-    width: 30px !important;
+    width: 130px !important;
   }
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
+
   .copyright {
     margin-top: 0;
   }
@@ -311,19 +362,24 @@ footer {
   .payoff {
     width: 100% !important;
   }
+
   .footer-menu {
     gap: 1.5rem !important;
+
     h4 {
       font-size: 24px;
     }
   }
+
   .footer-menu ul {
     padding-left: 0;
   }
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
+
   .copyright {
     margin-top: 0;
   }
