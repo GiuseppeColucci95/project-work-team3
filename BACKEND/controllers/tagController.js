@@ -18,12 +18,12 @@ function index(req, res) {
 function getByName(req, res) {
 
     const sql = `SELECT * FROM tags
-                WHERE name = ?`
+                WHERE slug = ?`
 
-    const tagName = req.params.tag
+    const tagSlug = req.params.tag
 
 
-    connection.query(sql, tagName, (err, results) => {
+    connection.query(sql, tagSlug, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
 
         res.json(results[0])
