@@ -235,26 +235,27 @@ footer {
 
   a {
     text-decoration: none;
-    color: var(--light);
+    color: var(--dark);
   }
 
   .footer-menu {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
+    padding-left: 7rem;
 
     ul {
       padding-left: 0;
 
       li {
         margin-bottom: 0.5rem;
-        ;
+        list-style: none;
       }
     }
 
     .footer-menu-ce {
       display: flex;
-      flex-direction: column;
+      gap: 3rem;
     }
   }
 
@@ -336,12 +337,13 @@ footer {
   }
 
   .footer-menu {
+    padding-left: 0 !important;
     h4 {
       font-size: 26px;
     }
   }
   .footer-logo-img {
-    width: 30px !important;
+    width: 130px !important;
   }
   .mb-4 {
     margin-bottom: 0 !important;
