@@ -151,6 +151,62 @@ function filterByCategory(req, res) {
     })
 }
 
+//route for products list filtered by pattern
+function search(req, res) {
+    //query to get all products from a given category
+    const sql = `SELECT DISTINCT p.*
+        FROM products p
+        LEFT JOIN product_tag pt ON pt.product_id = p.id
+        LEFT JOIN tags t ON t.id = pt.tag_id
+        LEFT JOIN category_product cp ON cp.product_id = p.id
+        LEFT JOIN categories c ON c.id = cp.category_id
+        WHERE p.name LIKE ?
+           OR t.name LIKE ?
+           OR c.name LIKE ?`
+
+    // Query per i tag
+    const sqlTags = `
+                    SELECT t.name, t.description
+                    FROM product_tag pt
+                    JOIN tags t ON pt.tag_id = t.id
+                    WHERE pt.product_id = ?
+                `
+    // Query per le categorie
+    const sqlCategories = `
+                    SELECT c.name, c.description
+                    FROM category_product cp
+                    JOIN categories c ON cp.category_id = c.id
+                    WHERE cp.product_id = ?
+                `
+
+    const pattern = req.query.q
+
+    connection.query(sql, [`%${pattern}%`, `%${pattern}%`, `%${pattern}%`], async (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' })
+
+        // Usa Promise.all per gestire le query asincrone
+        const products = await Promise.all(results.map(product => {
+            return new Promise((resolve, reject) => {
+                connection.query(sqlTags, [product.id], (err, tags) => {
+                    if (err) return reject(err)
+                    connection.query(sqlCategories, [product.id], (err, categories) => {
+                        if (err) return reject(err)
+                        /**
+                          This assumes that the image field in the database contains the image filename
+                         */
+                        product.image = `${url_base_image}${product.image}`
+                        product.tags = tags
+                        product.categories = categories
+                        resolve(product)
+                    })
+                })
+            })
+        }))
+
+        res.json(products)
+    })
+}
+
 //route for products list filtered by most recent
 function recents(req, res) {
 
@@ -300,6 +356,7 @@ module.exports = {
     index,
     filterByTag,
     filterByCategory,
+    search,
     recents,
     bestSellers,
     getProduct

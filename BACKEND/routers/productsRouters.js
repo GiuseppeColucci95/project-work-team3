@@ -14,6 +14,9 @@ productsRouters.get("/pathologies/:tag", productsController.filterByTag)
 //route for products list filtered by category
 productsRouters.get("/categories/:category", productsController.filterByCategory)
 
+//route for products list filtered by category
+productsRouters.get("/search", productsController.search)
+
 //route for products list filtered by most recent
 productsRouters.get("/recents", productsController.recents)
 
