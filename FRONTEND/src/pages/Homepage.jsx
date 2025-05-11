@@ -29,14 +29,18 @@ export default function Homepage() {
           <button className="explore-btn">EXPLORE OUR PRODUCTS</button>
         </div >
       </section>
-      <div className="allergens">
-        <img src="img/gluten-free.png" className="food-allergens" alt="gluten-free" />
-        <img src="img/sugar-free.png" className="food-allergens" alt="sugar-free" />
-        <img src="img/lactose-free.png" className="food-allergens" alt="lactose-free" />
-        <img src="img/nuts-free.png" className="food-allergens" alt="nuts-free" />
-        <img src="img/nickel-free.png" className="food-allergens" alt="nickel-free" />
-      </div>
       {/* JUMBOTRON SECTION */}
+
+      <section id="diseases">
+        <div className="allergens">
+          <Link to={`/diseases/gluten-free`}><img src="img/gluten-free.png" className="food-allergens" alt="gluten-free" /></Link>
+          <Link to={`/diseases/sugar-free`}><img src="img/sugar-free.png" className="food-allergens" alt="sugar-free" /></Link>
+          <Link to={`/diseases/lactose-free`}><img src="img/lactose-free.png" className="food-allergens" alt="lactose-free" /></Link>
+          <Link to={`/diseases/nuts-free`}><img src="img/nuts-free.png" className="food-allergens" alt="nuts-free" /></Link>
+          <Link to={`/diseases/nickel-free`}><img src="img/nickel-free.png" className="food-allergens" alt="nickel-free" /></Link>
+        </div>
+      </section>
+      {/* DISEASES SECTION */}
 
       <section className="description">
         <div className="container">
@@ -56,7 +60,7 @@ export default function Homepage() {
 
       <section id="latest-products" className="py-5">
         <div className="container">
-          <h3>LATEST PRODUCTS</h3>
+          <h2 className="mb-0">LATEST PRODUCTS</h2>
           <p>Here you can find our latest products!</p>
 
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
@@ -70,7 +74,7 @@ export default function Homepage() {
                       <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                         <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt={`${product.slug} image`} />
                         <h4 className="mt-2">{product.name}</h4>
-                        <h6>{product.price}</h6>
+                        <h6>{`${product.price}€`}</h6>
                       </Link>
                     </div>
                   )
@@ -86,7 +90,7 @@ export default function Homepage() {
 
       <section id="best-sellers" className="py-5" >
         <div className="container">
-          <h3>BEST SELLERS</h3>
+          <h2 className="mb-0">BEST SELLERS</h2>
           <p>Here you can find our best sellers!</p>
 
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
@@ -100,7 +104,7 @@ export default function Homepage() {
                       <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                         <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt={`${product.slug} image`} />
                         <h4 className="mt-2">{product.name}</h4>
-                        <h6>{product.price}</h6>
+                        <h6>{`${product.price}€`}</h6>
                       </Link>
                     </div>
                   )

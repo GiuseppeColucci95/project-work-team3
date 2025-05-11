@@ -52,9 +52,11 @@ header {
       color: var(--accent);
     }
   }
+
   .logo {
     width: 90px;
   }
+
   .menu-ce {
     .searchbar {
       border-style: none;
@@ -126,9 +128,11 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     min-height: 500px;
+
     .jumbo-container {
       width: 50%;
       padding-left: 7rem;
+
       .jumbo-title {
         color: var(--dark);
         font-weight: 800;
@@ -136,12 +140,14 @@ main {
         line-height: 4rem;
         padding-bottom: 0.5rem;
       }
+
       .jumbo-text {
         font-size: 40px;
         color: var(--dark);
         line-height: 2.5rem;
         padding-bottom: 1.5rem;
       }
+
       .explore-btn {
         border-style: none;
         border-radius: 1rem;
@@ -152,24 +158,35 @@ main {
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
         cursor: pointer;
       }
+
       .explore-btn:hover {
         background-color: var(--accent);
       }
     }
   }
+
+  #tag-jumbotron {
+    /* DA ELIMINARE PER LO STILE */
+    min-height: 500px;
+    background-color: yellow;
+  }
+
   .description {
     margin: 4rem;
   }
+
   .description-text {
     font-size: 25px !important;
     padding-left: 2rem;
   }
+
   .allergens {
     background-color: var(--dark);
     display: flex;
     justify-content: space-around;
     padding-top: 3rem;
     padding-bottom: 3rem;
+
     .food-allergens {
       width: 150px;
       cursor: pointer;
@@ -177,17 +194,17 @@ main {
   }
 }
 
-  #best-sellers {
-    background-color: lightgrey;
-    min-height: 500px;
+#best-sellers {
+  background-color: lightgrey;
+  min-height: 500px;
 
-  }
+}
 
-  #latest-products {
-    min-height: 500px;
-  }
+#latest-products {
+  min-height: 500px;
+}
 
-  /* ------------ HOMEPAGE component ------------ */
+/* ------------ HOMEPAGE component ------------ */
 
 
 /* #endregion MAIN */

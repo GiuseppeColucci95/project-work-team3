@@ -8,7 +8,7 @@ export default function ProductDetails() {
 
   //logic
 
-  //getting dynamic params
+  //getting dynamic slug param
   const { slug } = useParams();
   //imports from custom context
   const {

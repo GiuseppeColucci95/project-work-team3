@@ -16,12 +16,16 @@ const categoryPath = '/categories';
 function ProductProvider({ children }) {
 
   //logic
+
+  //usestate variables to use
   const [products, setProducts] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [latestProducts, setLatestProduct] = useState(null);
   const [bestSellersProducts, setBestSellersProducts] = useState(null);
   const [tagProducts, setTagProducts] = useState(null);
   const [categoryProducts, setCategoryProducts] = useState(null);
+  const [selectedTag, setSelectedTag] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   //function to get all products from db
   function getAllProducts() {
@@ -95,12 +99,23 @@ function ProductProvider({ children }) {
       .catch(err => console.error(err));
   }
 
+  //function to get a selected tag
+  function getSelectedTag(tag) {
+
+  }
+
+  //function to get a selected category
+  function getSelectedCategory(category) {
+
+  }
+
   //template
   return (
     <ProductContext.Provider value={{
       products, setProducts, getAllProducts, selectedProduct, setSelectedProduct, getSelectedProduct, latestProducts,
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
-      tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory
+      tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
+      selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory
     }}>
       {children}
     </ProductContext.Provider>
