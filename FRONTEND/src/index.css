@@ -204,6 +204,14 @@ main {
   min-height: 500px;
 }
 
+#tags {
+
+  i {
+    color: var(--secondary-brown);
+  }
+}
+
+
 /* ------------ HOMEPAGE component ------------ */
 
 
@@ -218,6 +226,7 @@ footer {
   background-color: var(--secondary);
   padding: 2rem;
   color: var(--dark);
+
   .footer-container {
     display: flex;
     align-items: flex-start;
@@ -284,19 +293,22 @@ footer {
     min-height: 250px;
     max-height: 250px !important;
   }
+
   .jumbo-title {
     font-size: 35px !important;
     padding-bottom: 0 !important;
   }
+
   .jumbo-text {
     font-size: 25px !important;
     padding-bottom: 0 !important;
     line-height: 1.5rem !important;
   }
+
   .food-allergens {
-      width: 100px !important;
-      cursor: pointer;
-    }
+    width: 100px !important;
+    cursor: pointer;
+  }
 
   .img-description {
     display: flex;
@@ -304,18 +316,22 @@ footer {
     align-items: center;
     padding-bottom: 3rem;
   }
+
   .img-descr {
     width: 80% !important;
     height: auto;
   }
+
   .description-text {
     font-size: 25px !important;
     padding-left: 0 !important;
     margin-bottom: 0 !important;
-    }
+  }
+
   footer {
     padding: 1rem;
     text-align: center;
+
     a {
       color: var(--dark);
     }
@@ -338,13 +354,16 @@ footer {
 
   .footer-menu {
     padding-left: 0 !important;
+
     h4 {
       font-size: 26px;
     }
   }
+
   .footer-logo-img {
     width: 130px !important;
   }
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
