@@ -10,7 +10,6 @@ const cors = require("cors")
 // import routes
 const productsRouters = require("./routers/productsRouters")
 const ordersRouters = require("./routers/ordersRouters")
-const usersRouters = require("./routers/userRouters")
 const promotionsRouters = require("./routers/promotionsRouters")
 
 // create a server variable
@@ -18,6 +17,11 @@ const port = 3000
 
 // *****************
 // middleware
+
+//importing the error middelware
+const serverError = require('./middelware/serverError')
+
+const notFound = require('./middelware/notFound')
 
 //attivo i permessi cors per il frontend in localhost
 app.use(cors({ origin: 'http://localhost:5173' }))
@@ -36,8 +40,10 @@ app.listen(port, () => {
 // use routes
 app.use('/api/v1/products', productsRouters)
 app.use('/api/v1/orders', ordersRouters)
-app.use('/api/v1/users', usersRouters)
 app.use('/api/v1/promotions', promotionsRouters)
 
 
 // middleware per la gestione degli errori
+app.use(serverError)
+
+app.use(notFound)

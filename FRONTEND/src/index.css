@@ -242,7 +242,7 @@ footer {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
-    padding-left: 4rem;
+    padding-left: 7rem;
 
     ul {
       padding-left: 0;
@@ -255,7 +255,7 @@ footer {
 
     .footer-menu-ce {
       display: flex;
-      flex-direction: column;
+      gap: 3rem;
     }
   }
 

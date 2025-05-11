@@ -1,12 +1,18 @@
 //react import
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
+import { Link } from "react-router-dom";
+
 //component exports
 export default function ProductList() {
 
   //logic
   const [viewMode, setViewMode] = useState('grid');
-  const { getAllProducts } = useProduct();
+  const { products, getAllProducts } = useProductContext();
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   //template
   return (
@@ -43,182 +49,48 @@ export default function ProductList() {
             (viewMode === 'grid')
               ?
               (
-                <div className="row row-gap-4">
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
-                  <div className="col-3">
-                    <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
-                    <h4>Example image title</h4>
-                    <h6>13,48€</h6>
-                  </div>
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
+                  {
+                    (products) &&
+                    (
+                      products.map(product => (
+                        <div key={product.id} className="col">
+                          <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <h4 className="mt-2">{product.name}</h4>
+                            <h6>13,48€</h6>
+                          </Link>
+                        </div>
+                      ))
+                    )
+                  }
+
                 </div>
               )
               :
               (
-                <div className="row row-gap-4">
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="row">
-                      <div className="col-4">
-                        <img src="https://picsum.photos/300/400" alt="image" />
-                      </div>
-                      <div className="col-8">
-                        <h2>EXAMPLE PRODUCT NAME</h2>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti iure eligendi sunt explicabo consequatur incidunt! Tempore quas molestiae rerum commodi accusamus, aperiam id, adipisci quasi eum earum natus? Cum!
-                          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius odio pariatur architecto reiciendis perspiciatis, deserunt asperiores consequuntur culpa, impedit aut tempore sit. Provident fugiat optio molestiae itaque? Dicta, voluptas ipsum!
-                        </p>
-                        <h4>13,98€</h4>
-                      </div>
-                    </div>
-                  </div>
+                <div className="row row-cols-1 row-gap-4">
+                  {
+                    (products) &&
+                    (
+                      products.map(product => (
+                        <div key={product.id} className="col">
+                          <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                            <div className="row">
+                              <div className="col-4">
+                                <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt="image" />
+                              </div>
+                              <div className="col-8">
+                                <h2>{product.name}</h2>
+                                <p className="d-none d-md-block">{product.description}</p>
+                                <h4>{`${product.price}€`}</h4>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      ))
+                    )
+                  }
                 </div>
               )
           }

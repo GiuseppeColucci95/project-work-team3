@@ -22,7 +22,7 @@ export default function Footer() {
 
           {/* menu */}
           <div className="footer-menu">
-            <div className="footer-menu ce">
+            <div className="footer-menu-ce">
               <div className="footer-menu-sx">
                 <h4 className="text-gray-800 font-semibold mb-3">Products</h4>
                 <ul className="text-sm text-gray-600">
