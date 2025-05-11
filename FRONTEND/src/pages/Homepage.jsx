@@ -50,42 +50,42 @@ export default function Homepage() {
           <p>Here you can find our best sellers!</p>
 
           <div className="row g-3">
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
             </div>
-            <div className="col-3">
+            <div className="col-6 col-md-3">
               <img src="https://picsum.photos/300/400" alt="image" className="mb-3 w-100" />
               <h4>Example image title</h4>
               <h6>13,48€</h6>
