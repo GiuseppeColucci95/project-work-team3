@@ -58,7 +58,7 @@ export default function ProductList() {
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                             <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
                             <h4 className="mt-2">{product.name}</h4>
-                            <h6>13,48€</h6>
+                            <h6>{`${product.price}€`}</h6>
                           </Link>
                         </div>
                       ))

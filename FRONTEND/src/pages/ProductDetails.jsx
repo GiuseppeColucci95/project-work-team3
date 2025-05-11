@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../contexts/ProductContext";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 //component exports
 export default function ProductDetails() {
@@ -22,7 +23,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     getSelectedProduct(slug);
-  }, []);
+  }, [slug]);
 
   //template
   return (
@@ -45,9 +46,11 @@ export default function ProductDetails() {
 
                   <div id="tags">
                     <ul className="list-unstyled">
-                      <li>tag 1</li>
-                      <li>tag 2</li>
-                      <li>tag 3</li>
+                      {
+                        selectedProduct.tags.map(tag => (
+                          <li key={`${tag.name}-tag`}><i className="bi bi-check-circle"></i>{` ${tag.name}`}</li>
+                        ))
+                      }
                     </ul>
                   </div>
 
@@ -93,22 +96,25 @@ export default function ProductDetails() {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
               {
 
-                (tagProducts) ?
+                (tagProducts?.length > 1) ?
                   (
                     tagProducts.map((product, index) => (
-                      (index < numberOfRelatedTagProducts) &&
+                      ((index < numberOfRelatedTagProducts) && (product.name !== selectedProduct.name)) &&
                       (
-                        <div className="col">
-                          <img src={product.image} alt="image" className="mb-3 w-100" />
-                          <h4>{product.name}</h4>
-                          <h6>{`${product.price}€`}</h6>
+                        <div key={product.id} className="col">
+                          <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <h4 className="mt-2">{product.name}</h4>
+                            <h6>{`${product.price}€`}</h6>
+                          </Link>
+
                         </div>
                       )
                     ))
                   )
                   :
                   (
-                    <div>No tag related products found!</div>
+                    <div className="w-100">No tag related products found!</div>
                   )
               }
 
@@ -121,22 +127,24 @@ export default function ProductDetails() {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
               {
 
-                (categoryProducts) ?
+                (categoryProducts?.length > 1) ?
                   (
                     categoryProducts.map((product, index) => (
-                      (index < numberOfRelatedCategoryProducts) &&
+                      ((index < numberOfRelatedCategoryProducts) && (product.name !== selectedProduct.name)) &&
                       (
-                        <div className="col">
-                          <img src={product.image} alt="image" className="mb-3 w-100" />
-                          <h4>{product.name}</h4>
-                          <h6>{`${product.price}€`}</h6>
+                        <div key={product.id} className="col">
+                          <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <h4 className="mt-2">{product.name}</h4>
+                            <h6>{`${product.price}€`}</h6>
+                          </Link>
                         </div>
                       )
                     ))
                   )
                   :
                   (
-                    <div>No category related products found!</div>
+                    <div className="w-100">No category related products found!</div>
                   )
               }
 

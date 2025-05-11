@@ -47,8 +47,11 @@ function ProductProvider({ children }) {
 
         setSelectedProduct(data);
         console.log('selected product', data);
+        getProductsByTag(data.tags[0].slug);
+        getProductsByCategory(data.categories[0].slug);
       })
       .catch(err => console.error(err));
+
   }
 
   //function to get all products from db ordered by newest first
@@ -89,7 +92,7 @@ function ProductProvider({ children }) {
 
   //function to get all products filtered by category
   function getProductsByCategory(category) {
-    fetch(`${connection}${productsPath}${tagPath}/${category}`)
+    fetch(`${connection}${productsPath}${categoryPath}/${category}`)
       .then(res => res.json())
       .then(data => {
 
