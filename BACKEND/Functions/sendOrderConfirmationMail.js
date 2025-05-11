@@ -1,4 +1,4 @@
-
+//importo modulo per gestire l'email
 const nodemailer = require('nodemailer')
 
 // Funzione per inviare la mail
@@ -7,14 +7,14 @@ async function sendOrderConfirmationMail(order, orderId) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'tuamail@gmail.com',
-            pass: 'tuapassword'
+            user: process.env.MAIL_USERNAME,
+            pass: process.env.MAIL_PASSWORD
         }
     });
 
     // Imposta i dettagli della mail
     let mailOptions = {
-        from: 'tuamail@gmail.com',
+        from: process.env.MAIL_USERNAME,
         to: order.mail,
         subject: 'Conferma ordine',
         text: `Ciao ${order.firstname}, il tuo ordine #${orderId} è stato ricevuto con successo!`
@@ -24,6 +24,4 @@ async function sendOrderConfirmationMail(order, orderId) {
     await transporter.sendMail(mailOptions);
 }
 
-module.exports = {
-    sendOrderConfirmationMail
-}
+module.exports = sendOrderConfirmationMail
