@@ -19,4 +19,4 @@ connection.connect((err) => {
 })
 
 //exports function to connect on db
-module.exports = connection;
+module.exports = connection

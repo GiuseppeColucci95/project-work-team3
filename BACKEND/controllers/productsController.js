@@ -55,7 +55,7 @@ function filterByTag(req, res) {
     const sql = `SELECT products.* FROM products
                 JOIN product_tag ON product_tag.product_id = products.id
                 JOIN tags ON tags.id = product_tag.tag_id
-                WHERE tags.name = ?`
+                WHERE tags.slug = ?`
     // Query per i tag
     const sqlTags = `
                     SELECT t.name, t.description
@@ -108,7 +108,7 @@ function filterByCategory(req, res) {
     const sql = `SELECT products.* FROM products 
                 JOIN category_product ON category_product.product_id = products.id
                 JOIN categories ON categories.id = category_product.category_id
-                WHERE categories.name = ?`
+                WHERE categories.slug = ?`
     // Query per i tag
     const sqlTags = `
                     SELECT t.name, t.description
