@@ -7,11 +7,11 @@ export default function Footer() {
     <>
       <footer className="footer mt-12 border-t border-gray-200">
         <div className="footer-container max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          
+
           {/* logo */}
           <div className="footer-logo col-span-2 flex flex-col items-start">
             <img
-              src="img/logo.png"
+              src="/img/logo.png"
               alt="Brand Logo"
               className="mb-4 footer-logo-img"
             />
