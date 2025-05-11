@@ -71,6 +71,7 @@ function create(req, res) {
                 } catch (mailErr) {
                     // Log dell'errore, ma non blocca la risposta
                     console.error('Errore invio mail:', mailErr)
+                    res.status(500).json({ error: 'filled send mail' })
                 }
                 res.status(201).json({ message: 'order and order_products created successfully ', orderId: order_id })
             })
