@@ -107,7 +107,6 @@ export default function ProductDetails() {
                             <h4 className="mt-2">{product.name}</h4>
                             <h6>{`${product.price}€`}</h6>
                           </Link>
-
                         </div>
                       )
                     ))
