@@ -58,14 +58,14 @@ function filterByTag(req, res) {
                 WHERE tags.slug = ?`
     // Query per i tag
     const sqlTags = `
-                    SELECT t.name, t.description
+                    SELECT t.slug, t.name, t.description
                     FROM product_tag pt
                     JOIN tags t ON pt.tag_id = t.id
                     WHERE pt.product_id = ?
                 `
     // Query per le categorie
     const sqlCategories = `
-                    SELECT c.name, c.description
+                    SELECT c.slug, c.name, c.description
                     FROM category_product cp
                     JOIN categories c ON cp.category_id = c.id
                     WHERE cp.product_id = ?
@@ -111,14 +111,14 @@ function filterByCategory(req, res) {
                 WHERE categories.slug = ?`
     // Query per i tag
     const sqlTags = `
-                    SELECT t.name, t.description
+                    SELECT t.slug, t.name, t.description
                     FROM product_tag pt
                     JOIN tags t ON pt.tag_id = t.id
                     WHERE pt.product_id = ?
                 `
     // Query per le categorie
     const sqlCategories = `
-                    SELECT c.name, c.description
+                    SELECT c.slug, c.name, c.description
                     FROM category_product cp
                     JOIN categories c ON cp.category_id = c.id
                     WHERE cp.product_id = ?
