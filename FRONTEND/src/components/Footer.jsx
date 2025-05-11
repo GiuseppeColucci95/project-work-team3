@@ -11,12 +11,12 @@ export default function Footer() {
           {/* logo */}
           <div className="footer-logo col-span-2 flex flex-col items-start">
             <img
-              src="https://picsum.photos/50/50"
+              src="img/logo.png"
               alt="Brand Logo"
-              className="mb-4"
+              className="mb-4 footer-logo-img"
             />
             <p className="payoff text-sm text-gray-600">
-              Prodotti alimentari selezionati per diabetici, celiaci e persone con intolleranze.<br /> <strong>Salute e gusto, insieme.</strong>
+              Products made with <strong>love</strong>.<br /> <strong>Don't choose between health and taste.</strong>
             </p>
           </div>
 

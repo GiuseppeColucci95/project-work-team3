@@ -215,10 +215,9 @@ footer {
 
   /* DA RIMUOVERE QUANDO SI STILIZZA IL FOOTER */
   min-height: 100px;
-  background-color: var(--secondary-brown);
+  background-color: var(--secondary);
   padding: 2rem;
-  color: var(--light);
-
+  color: var(--dark);
   .footer-container {
     display: flex;
     align-items: flex-start;
@@ -264,7 +263,7 @@ footer {
     flex-direction: column;
 
     .bi {
-      color: var(--light);
+      color: var(--dark);
       width: 24px;
       padding-right: 0.75rem;
     }
@@ -280,9 +279,45 @@ footer {
 /* schermi medi */
 
 @media (max-width: 768px) {
+  main #jumbotron {
+    min-height: 250px;
+    max-height: 250px !important;
+  }
+  .jumbo-title {
+    font-size: 35px !important;
+    padding-bottom: 0 !important;
+  }
+  .jumbo-text {
+    font-size: 25px !important;
+    padding-bottom: 0 !important;
+    line-height: 1.5rem !important;
+  }
+  .food-allergens {
+      width: 100px !important;
+      cursor: pointer;
+    }
+
+  .img-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+  .img-descr {
+    width: 80% !important;
+    height: auto;
+  }
+  .description-text {
+    font-size: 25px !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+    }
   footer {
     padding: 1rem;
     text-align: center;
+    a {
+      color: var(--dark);
+    }
   }
 
   .footer-container {
@@ -297,7 +332,7 @@ footer {
   }
 
   .payoff {
-    width: 60% !important;
+    width: 100% !important;
   }
 
   .footer-menu {
@@ -305,7 +340,9 @@ footer {
       font-size: 26px;
     }
   }
-
+  .footer-logo-img {
+    width: 30px !important;
+  }
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
@@ -315,6 +352,7 @@ footer {
     margin-top: 0;
   }
 }
+
 
 /* schermi piccoli */
 
