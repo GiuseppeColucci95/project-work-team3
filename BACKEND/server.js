@@ -12,6 +12,7 @@ const productsRouters = require("./routers/productsRouters")
 const ordersRouters = require("./routers/ordersRouters")
 const promotionsRouters = require("./routers/promotionsRouters")
 const tagRouters = require("./routers/tagRouters")
+const categoryRouters = require("./routers/categoryRouters")
 
 // create a server variable
 const port = 3000
@@ -43,6 +44,8 @@ app.use('/api/v1/products', productsRouters)
 app.use('/api/v1/orders', ordersRouters)
 app.use('/api/v1/promotions', promotionsRouters)
 app.use('/api/v1/tags', tagRouters)
+app.use('/api/v1/categories', categoryRouters)
+
 
 
 // middleware per la gestione degli errori
