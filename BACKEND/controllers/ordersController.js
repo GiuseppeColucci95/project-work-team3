@@ -1,5 +1,6 @@
 //import functions
 const { orderValidate, userValidate } = require('../functions/validate.js')
+const sendOrderConfirmationMail = require('../functions/sendOrderConfirmationMail.js')
 
 //connection to the database
 
@@ -64,7 +65,13 @@ function create(req, res) {
         // Attendi che tutte le query siano completate
         // con la funzione promise.all ciclo all'intero dell'array di promise per andare a gestire ogni singola promise
         Promise.all(insertProductPromises)
-            .then(inseredOrderProduct => {
+            .then(async inseredOrderProduct => {
+                try {
+                    await sendOrderConfirmationMail(order, order_id)
+                } catch (mailErr) {
+                    // Log dell'errore, ma non blocca la risposta
+                    console.error('Errore invio mail:', mailErr)
+                }
                 res.status(201).json({ message: 'order and order_products created successfully ', orderId: order_id })
             })
             .catch(() => {
