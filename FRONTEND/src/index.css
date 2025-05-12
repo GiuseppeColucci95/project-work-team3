@@ -195,12 +195,33 @@ main {
 }
 
   #best-sellers {
-    background-color: lightgrey;
     min-height: 500px;
+    .best-sellers-title {
+      color: var(--dark);
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+    }
+    .best-sellers-sub {
+      color: var(--dark);
+      padding-bottom: 2rem;
+    }
   }
 
   #latest-products {
     min-height: 500px;
+    background-color: var(--secondary-brown);
+    .latest-products-title {
+      color: var(--light);
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+    }
+    .latest-products-sub {
+      color: var(--light);
+      padding-bottom: 2rem;
+    }
+    .product-name, .product-price {
+      color: var(--light);
+    }
   }
 
   .col {
