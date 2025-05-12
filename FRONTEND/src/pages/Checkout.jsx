@@ -3,15 +3,33 @@ import { useState } from "react";
 
 export default function Checkout() {
 
+  //variabili del form utente
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [userEmail, setUserEmail] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
   const [street, setStreet] = useState("")
   const [streetNumber, setStreetNumber] = useState("")
   const [city, setCity] = useState("")
   const [province, setProvince] = useState("")
   const [postalCode, setPostalCode] = useState("")
 
+  //variabili del form payment
+  const [cardHolder, setCardHolder] = useState("")
+  const [cardNumber, setCardNumber] = useState("")
+  const [expirationDate, setExpirationDate] = useState("")
+  const [cvv, setCvv] = useState("")
+
+  //function on submit form
+  function formSubmit(e) {
+    /* e.prevent()
+
+    const formData = {
+      firstName: firstName,
+      lastName: lastName,
+
+    } */
+  }
 
   return (
     <>
@@ -21,7 +39,9 @@ export default function Checkout() {
           <div className="row">
             <div className="col col-8 p-3">
 
-              <form className="row g-3 needs-validation" >
+              <form className="row g-3 needs-validation" /* onSubmit={formSubmit(e)} */>
+
+                <h3>Your info</h3>
 
                 <div className="col-md-6">
                   <label htmlFor="firstName" className="form-label">First name</label>
@@ -47,7 +67,7 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <div className="col-md-12">
+                <div className="col-md-8">
                   <label htmlFor="email" className="form-label">Email</label>
                   <input
                     type="email"
@@ -62,6 +82,18 @@ export default function Checkout() {
                   <small id="emailHelpId" className="form-text text-muted">
                     example@email.com
                   </small>
+                </div>
+
+                <div className="col-md-4">
+                  <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+                  <input type="text" className="form-control" id="phoneNumber"
+                    placeholder="3496587652"
+                    value={phoneNumber}
+                    onChange={e => setPhoneNumber(e.target.value)}
+                  />
+                  <div className="valid-feedback">
+                    Valid Last name
+                  </div>
                 </div>
 
                 <div className="col-md-9">
@@ -124,12 +156,64 @@ export default function Checkout() {
                   </div>
                 </div>
 
+                <h3>Payment</h3>
+
+                <div className="col-md-12">
+                  <label htmlFor="cardHolder" className="form-label">Card Holder</label>
+                  <input type="text" className="form-control" id="cardHolder"
+                    placeholder="MasterCard"
+                    value={cardHolder}
+                    onChange={e => setCardHolder(e.target.value)}
+                    required />
+                  <div className="valid-feedback">
+                    Valid card Holder
+                  </div>
+                </div>
+
+                <div className="col-md-12">
+                  <label htmlFor="cardNumber" className="form-label">Card Number</label>
+                  <input type="text" className="form-control" id="cardNumber"
+                    placeholder="1234-3216-7856-4545"
+                    value={cardNumber}
+                    onChange={e => setCardNumber(e.target.value)}
+                    required />
+                  <div className="valid-feedback">
+                    Valid card Number
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <label htmlFor="expirationDate" className="form-label">Expiration Date</label>
+                  <input type="text" className="form-control" id="expirationDate"
+                    placeholder="12/06"
+                    value={expirationDate}
+                    onChange={e => setExpirationDate(e.target.value)}
+                    required />
+                  <div className="valid-feedback">
+                    Valid Expiration Date
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <label htmlFor="cvv" className="form-label">CVV</label>
+                  <input type="text" className="form-control" id="cvv"
+                    placeholder="360"
+                    value={cvv}
+                    onChange={e => setCvv(e.target.value)}
+                    required />
+                  <div className="valid-feedback">
+                    Valid CVV
+                  </div>
+                </div>
 
                 <div className="col-12">
-                  <button className="btn btn-primary" type="submit">Submit form</button>
+                  <button className="btn btn-primary" type="submit">PAY NOW</button>
                 </div>
+
               </form>
             </div>
+
+
             <div className="col col-4">
               Summary
             </div>
