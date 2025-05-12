@@ -1,10 +1,15 @@
 //react imports
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 //component exports
 export default function Header() {
 
   //logic
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
 
   //template
   return (
@@ -29,26 +34,26 @@ export default function Header() {
           </form>
         </div>
         <div className="pos-f-t">
-          <div className="collapse" id="exampleCollapse">
+          <div className={`overlay ${menuOpen ? "show" : ""}`} onClick={toggleMenu}></div>
+          <div className={`collapse menu-container ${menuOpen ? "show" : ""}`} id="exampleCollapse">
             <div className="bg-light p-4">
               <ul className="list-unstyled">
-                <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
-                <li><NavLink className="text-decoration-none active" to={'/products/all'}>Products</NavLink></li>
-                <li><NavLink className="text-decoration-none active" to={'/'}>Contacts</NavLink></li>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/products/all">Products</NavLink></li>
+                <li><NavLink to="/contacts">Contacts</NavLink></li>
               </ul>
             </div>
           </div>
-          <nav className="navbar navbar-light bg-light">
+          <nav className="navbar navbar-light">
             <button
-              className="navbar-toggler"
+              className="toggler"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#exampleCollapse"
+              onClick={toggleMenu}
               aria-controls="exampleCollapse"
-              aria-expanded="false"
+              aria-expanded={menuOpen}
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"></span>
+              <span className="toggler-icon"><img className="hamburger" src="/img/hamburger.svg" alt="" srcset="" /></span>
             </button>
           </nav>
         </div>
