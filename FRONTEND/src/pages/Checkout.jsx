@@ -21,9 +21,22 @@ export default function Checkout() {
   const [expirationDate, setExpirationDate] = useState("")
   const [cvv, setCvv] = useState("")
 
+
   //function on submit form
   function formSubmit(e) {
     e.preventDefault()
+
+    const errorList = Validate(
+      firstName,
+      lastName,
+      userEmail,
+      street,
+      streetNumber,
+      country,
+      city,
+      province,
+      postalCode
+    )
 
     const formData = {
       firstName: firstName,
@@ -33,7 +46,30 @@ export default function Checkout() {
       adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    console.log(formData);
+
+    console.log(formData)
+
+  }
+
+  function Validate(firstName, lastName, userEmail, street, streetNumber, country, city, province, postalCode) {
+    const error = {}
+
+    if (!firstName) error.firstName = "first Name is require"
+    if (!lastName) error.lastName = "last Name is require"
+    if (!userEmail) error.userEmail = "Email is require"
+    if (!street) error.street = "street is require"
+    if (!streetNumber) error.streetNumber = "street Number is require"
+    if (!country) error.country = "country is require"
+    if (!city) error.city = "city is require"
+    if (!province) error.province = "province is require"
+    if (!postalCode) error.postalCode = "postal code is require"
+
+    if (Object.keys(error).length > 0) return error
+
+
+
+
+
 
   }
 
