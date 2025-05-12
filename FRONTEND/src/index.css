@@ -284,15 +284,18 @@ footer {
   }
 }
 
-.collapse.show {
-  display: none; 
-}
+  .navbar-toggler {
+    display: none;
+  }
 
 /* #endregion FOOTER */
 
 /* schermi medi */
 
 @media (max-width: 768px) {
+  .navbar-toggler {
+    display: none;
+  }
   main #jumbotron {
     min-height: 250px;
     max-height: 250px !important;
