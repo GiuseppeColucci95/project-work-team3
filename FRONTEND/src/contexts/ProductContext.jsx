@@ -141,6 +141,62 @@ function ProductProvider({ children }) {
     getWishlistProducts();
   }
 
+  //function to get cart products
+  function getCartProducts() {
+
+    //get the elements from cart
+    const cart = localStorage.getItem('cart');
+    const parsedCart = JSON.parse(cart);
+
+    setCart(parsedCart);
+  }
+
+  //function to add an element to cart
+  function addCartProduct(productToAdd) {
+    //product to add
+    console.log('prodotto da aggiornare da aggiungere', productToAdd);
+
+    //check if the product is already in the cart
+    getCartProducts();
+    const cartArray = cart;
+    const foundProduct = parsedCart.find(product => {
+      return product.name === productToAdd.name;
+    });
+
+    //if the product is already in the cart
+    if (foundProduct) {
+      parsedCart.map(product => {
+        if (foundProduct.name === product.name) {
+          product.cartQuantity++;
+          console.log(product.cartQuantity);
+
+          //modify the order total
+          const total = localStorage.getItem('totalPrice');
+          let parsedTotal = Number(JSON.parse(total));
+          parsedTotal = Number(parsedTotal) + Number(product.price);
+          const stringifiedTotalPrice = JSON.stringify(parsedTotal.toFixed(2));
+          localStorage.setItem('totalPrice', stringifiedTotalPrice);
+        }
+      })
+      const stringifiedCart = JSON.stringify(parsedCart);
+      localStorage.setItem('cart', stringifiedCart);
+
+    } else {
+      //if the product is not in the cart add it
+      productToAdd.cartQuantity++;
+      parsedCart.push(productToAdd);
+      const stringifiedCart = JSON.stringify(parsedCart);
+      localStorage.setItem('cart', stringifiedCart);
+
+      //modify the order total
+      const total = localStorage.getItem('totalPrice');
+      let parsedTotal = Number(JSON.parse(total));
+      parsedTotal = Number(parsedTotal) + Number(product.price);
+      const stringifiedTotalPrice = JSON.stringify(parsedTotal.toFixed(2));
+      localStorage.setItem('totalPrice', stringifiedTotalPrice);
+    }
+  }
+
   //template
   return (
     <ProductContext.Provider value={{
