@@ -112,7 +112,32 @@ header {
   }
 }
 
+.menu .dropdown {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  display: none;
+}
 
+.menu li:hover .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  padding: 5px 10px;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown li a:hover {
+  color: #007bff;
+}
 
 /* #endregion HEADER */
 
@@ -194,41 +219,41 @@ main {
   }
 }
 
-  #best-sellers {
-    background-color: lightgrey;
-    min-height: 500px;
-  }
+#best-sellers {
+  background-color: lightgrey;
+  min-height: 500px;
+}
 
-  #latest-products {
-    min-height: 500px;
-  }
+#latest-products {
+  min-height: 500px;
+}
 
-  .col {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-  }
+.col {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
 
-  .col:hover {
-    transform: scale(1.05);
-  }
+.col:hover {
+  transform: scale(1.05);
+}
 
-  .col img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-    padding-bottom: 1.5rem;
-    border-radius: 10px;
-  }
+.col img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  padding-bottom: 1.5rem;
+  border-radius: 10px;
+}
 
-  .col:hover img {
-    transform: scale(1.1);
-  }
+.col:hover img {
+  transform: scale(1.1);
+}
 
-  h6 {
-    padding-bottom: 1rem;
-  }
+h6 {
+  padding-bottom: 1rem;
+}
 
 #tags {
 
@@ -317,9 +342,9 @@ footer {
   }
 }
 
-  .toggler {
-    display: none;
-  }
+.toggler {
+  display: none;
+}
 
 /* #endregion FOOTER */
 
@@ -329,12 +354,15 @@ footer {
   .navbar-toggler {
     display: none;
   }
+
   .menu-sx {
     margin-left: 0.5rem !important;
   }
+
   .searchbar {
     padding: 0.5rem !important;
   }
+
   main #jumbotron {
     min-height: 250px;
     max-height: 250px !important;
@@ -425,27 +453,34 @@ footer {
 @media (max-width: 576px) {
   header {
     padding: 0.75rem;
+
     .logo {
       width: 70px;
       margin-right: 0;
     }
   }
+
   .collapse.show {
     display: block;
   }
+
   .hamburger {
     width: 24px;
     margin: 0 !important;
   }
+
   .search {
     margin-left: 0.25rem !important;
   }
+
   .menu {
     display: none;
   }
+
   .menu-dx {
     display: none;
   }
+
   .toggler {
     display: block;
     z-index: 1050;
@@ -453,11 +488,13 @@ footer {
     background-color: transparent !important;
     border-style: none;
   }
+
   .list-unstyled {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
+
   .overlay {
     position: fixed;
     top: 0;
@@ -465,65 +502,83 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1040; /* sopra il contenuto, sotto il menu */
-    display: none; /* nascondo di default */
+    z-index: 1040;
+    /* sopra il contenuto, sotto il menu */
+    display: none;
+    /* nascondo di default */
   }
+
   .overlay.show {
     display: block;
   }
+
   .menu-container {
     position: absolute;
-    top: 60px; /* posizione dell'hamburger menu (sotto) */
+    top: 60px;
+    /* posizione dell'hamburger menu (sotto) */
     right: 10px;
     background-color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    z-index: 1050; /* sopra l'overlay */
-    display: none; /* nascondo di default */
+    z-index: 1050;
+    /* sopra l'overlay */
+    display: none;
+    /* nascondo di default */
     width: 200px;
   }
+
   /* mostro il menu */
   .menu-container.show {
     display: block;
   }
+
   .menu-container ul {
     list-style: none;
     padding: 1rem;
     margin: 0;
   }
+
   .menu-container ul li {
     margin-bottom: 1rem;
   }
+
   .menu-container ul li a {
     text-decoration: none;
     color: var(--dark);
     font-size: 16px;
   }
+
   .menu-sx {
     margin-left: 0 !important;
   }
+
   main #jumbotron {
     min-height: 200px;
     max-height: 200px !important;
     background-size: cover;
   }
+
   .jumbo-container {
     width: 100% !important;
     padding: 1rem 0 1rem 3rem !important;
   }
+
   .jumbo-title {
     font-size: 25px !important;
     padding-bottom: 0 !important;
     line-height: 2rem !important;
   }
+
   .jumbo-text {
     font-size: 16px !important;
     padding-bottom: 0 !important;
     line-height: 1rem !important;
   }
+
   .explore-btn {
     font-size: 10px !important;
   }
+
   .food-allergens {
     width: 80px !important;
     cursor: pointer;
@@ -535,18 +590,22 @@ footer {
     align-items: center;
     padding-bottom: 3rem;
   }
+
   .img-descr {
     width: 80% !important;
     height: auto;
   }
+
   .description-text {
     font-size: 25px !important;
     padding-left: 0 !important;
     margin-bottom: 0 !important;
-    }
+  }
+
   footer {
     padding: 1rem;
     text-align: center;
+
     a {
       color: var(--dark);
     }
@@ -569,13 +628,16 @@ footer {
 
   .footer-menu {
     padding-left: 0 !important;
+
     h4 {
       font-size: 26px;
     }
   }
+
   .footer-logo-img {
     width: 130px !important;
   }
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
@@ -591,35 +653,43 @@ footer {
 @media (max-width: 480px) {
   header {
     padding: 0.75rem;
+
     .logo {
       width: 70px;
       margin-right: 0;
     }
   }
+
   .collapse.show {
     display: block;
   }
+
   .navbar-toggler {
     display: block;
     z-index: 1050;
   }
+
   .hamburger {
     width: 24px;
     margin: 0 !important;
   }
+
   .search {
     margin-left: 0.25rem !important;
   }
+
   .toggler {
     color: var(--secondary-brown);
     background-color: transparent !important;
     border-style: none;
   }
+
   .list-unstyled {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
+
   .overlay {
     position: fixed;
     top: 0;
@@ -627,35 +697,46 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1040; /* sopra il contenuto, sotto il menu */
-    display: none; /* nascondo di default */
+    z-index: 1040;
+    /* sopra il contenuto, sotto il menu */
+    display: none;
+    /* nascondo di default */
   }
+
   .overlay.show {
     display: block;
   }
+
   .menu-container {
     position: absolute;
-    top: 60px; /* posizione dell'hamburger menu (sotto) */
+    top: 60px;
+    /* posizione dell'hamburger menu (sotto) */
     right: 10px;
     background-color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    z-index: 1050; /* sopra l'overlay */
-    display: none; /* nascondo di default */
+    z-index: 1050;
+    /* sopra l'overlay */
+    display: none;
+    /* nascondo di default */
     width: 200px;
   }
+
   /* mostro il menu */
   .menu-container.show {
     display: block;
   }
+
   .menu-container ul {
     list-style: none;
     padding: 1rem;
     margin: 0;
   }
+
   .menu-container ul li {
     margin-bottom: 1rem;
   }
+
   .menu-container ul li a {
     text-decoration: none;
     color: var(--dark);
@@ -665,44 +746,54 @@ footer {
   .menu-sx {
     margin-left: 0 !important;
   }
+
   main #jumbotron {
     min-height: 200px;
     max-height: 200px !important;
     background-size: cover;
   }
+
   .jumbo-container {
     width: 100% !important;
     padding: 1rem 0 1rem 3rem !important;
   }
+
   .jumbo-title {
     font-size: 25px !important;
     padding-bottom: 0 !important;
     line-height: 2rem !important;
   }
+
   .jumbo-text {
     font-size: 16px !important;
     padding-bottom: 0 !important;
     line-height: 1rem !important;
   }
+
   .explore-btn {
     font-size: 10px !important;
   }
+
   .img-description {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 3rem;
   }
+
   .menu {
     display: none;
   }
+
   .menu-dx {
     display: none;
   }
+
   .food-allergens {
     width: 60px !important;
     cursor: pointer;
   }
+
   .payoff {
     width: 100% !important;
   }

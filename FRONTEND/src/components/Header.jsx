@@ -7,9 +7,19 @@ export default function Header() {
 
   //logic
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-  }
+  };
+
+  const handleMouseEnter = (menu) => {
+    setDropdownOpen(menu);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownOpen(null);
+  };
 
   //template
   return (
@@ -19,8 +29,34 @@ export default function Header() {
           <img className="logo" src="/img/logo.png" alt="" />
           <ul className="menu">
             <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
-            <li><NavLink className="text-decoration-none active" to={'/products/all'}>Products</NavLink></li>
-            <li><NavLink className="text-decoration-none active" to={'/'}>Contacts</NavLink></li>
+            <li
+              onMouseEnter={() => handleMouseEnter('pathology')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink>
+              {dropdownOpen === 'pathology' && (
+                <ul className="dropdown">
+                  <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
+                  <li><NavLink to="/diseases/sugar-free">Sugar-free</NavLink></li>
+                  <li><NavLink to="/diseases/lactose-free">Lactose-free</NavLink></li>
+                  <li><NavLink to="/diseases/nut-free">Nuts-free</NavLink></li>
+                  <li><NavLink to="/diseases/nickel-free">Nickel-free</NavLink></li>
+                </ul>
+              )}
+            </li>
+            <li
+              onMouseEnter={() => handleMouseEnter('category')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink>
+              {dropdownOpen === 'category' && (
+                <ul className="dropdown">
+                  <li><NavLink to="/category/snacks">Snacks</NavLink></li>
+                  <li><NavLink to="/category/beverages">Beverages</NavLink></li>
+                  <li><NavLink to="/category/bakery">Bakery</NavLink></li>
+                </ul>
+              )}
+            </li>
           </ul>
         </div>
         <div className="menu-ce">
