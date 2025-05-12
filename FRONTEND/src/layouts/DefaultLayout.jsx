@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 export default function DefaultLayout() {
 
   //logic
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
   //template
   return (
