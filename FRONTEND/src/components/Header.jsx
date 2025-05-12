@@ -28,6 +28,30 @@ export default function Header() {
             <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="" /></button>
           </form>
         </div>
+        <div className="pos-f-t">
+          <div className="collapse" id="exampleCollapse">
+            <div className="bg-light p-4">
+              <ul className="list-unstyled">
+                <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
+                <li><NavLink className="text-decoration-none active" to={'/products/all'}>Products</NavLink></li>
+                <li><NavLink className="text-decoration-none active" to={'/'}>Contacts</NavLink></li>
+              </ul>
+            </div>
+          </div>
+          <nav className="navbar navbar-light bg-light">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#exampleCollapse"
+              aria-controls="exampleCollapse"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </nav>
+        </div>
         <div className="menu-dx">
           <img className="menu-icons" src="/img/favourites.svg" alt="" />
           <img className="menu-icons" src="/img/cart.svg" alt="" />
