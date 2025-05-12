@@ -327,6 +327,8 @@ function getProduct(req, res) {
     let product = {}
     connection.query(sql, slug, async (err, result) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
+        if (result.length === 0) return res.status(404).json({ error: 'Product not found' })
+
 
         product = result[0]
 
