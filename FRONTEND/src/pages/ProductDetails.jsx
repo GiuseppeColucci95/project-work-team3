@@ -17,7 +17,7 @@ export default function ProductDetails() {
     tagProducts, getProductsByTag,
     categoryProducts, getProductsByCategory,
     addWishlistProduct, removeWishlistProduct,
-    wishlist
+    wishlist, addCartProduct
   } = useProductContext();
   //use state variables for buttons to expands the results
   const [numberOfRelatedTagProducts, setNumberOfRelatedTagProducts] = useState(4);
@@ -81,14 +81,14 @@ export default function ProductDetails() {
                       <h2 className="mb-3">{`${selectedProduct.price}€`}</h2>
                     </div>
 
-                    <div className="d-flex gap-3 justify-content-between">
-                      <div className="d-flex justify-content-center align-items-center gap-1">
+                    <div className="d-flex gap-3 justify-content-start">
+                      {/* <div className="d-flex justify-content-center align-items-center gap-1">
                         <button className="btn btn-primary">-</button>
                         <div className="px-2">0</div>
                         <button className="btn btn-primary">+</button>
-                      </div>
+                      </div> */}
                       <div>
-                        <button className="btn btn-primary px-5">ADD TO CART</button>
+                        <button onClick={() => addCartProduct(selectedProduct)} className="btn btn-primary px-5">ADD TO CART</button>
                       </div>
                       <div>
                         <button onClick={() => addWishlistProduct(selectedProduct)}

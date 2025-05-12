@@ -204,12 +204,18 @@ function ProductProvider({ children }) {
   //function to remove an element from cart
   function removeCartProduct(productToRemove) {
     const products = localStorage.getItem('cart');
-    const arrayToCheck = JSON.parse(products);
+    const parsedProducts = JSON.parse(products);
 
     //find the element to remove
-    const foundProduct = arrayToCheck.find(product => {
+    const foundProduct = parsedProducts.find(product => {
       return product.name == productToRemove.name;
     });
+
+    if (foundProduct) {
+      if (foundProduct.cartQuantity > 1) {
+
+      }
+    }
   }
 
   //function to add an element to cart
@@ -247,8 +253,13 @@ function ProductProvider({ children }) {
         })
       } else {
         //if the product is not in the cart add it
-        productToAdd.cartQuantity = 1;
-        cartArray.push(productToAdd);
+        const newProductToAdd = {
+          img: productToAdd.image,
+          name: productToAdd.name,
+          price: productToAdd.price,
+          cartQuantity: 1
+        };
+        cartArray.push(newProductToAdd);
         const stringifiedCart = JSON.stringify(cartArray);
         localStorage.setItem('cart', stringifiedCart);
         getCartProducts();
@@ -263,8 +274,13 @@ function ProductProvider({ children }) {
     } else {
       const cartArray = [];
       //if the product is not in the cart add it
-      productToAdd.cartQuantity = 1;
-      cartArray.push(productToAdd);
+      const newProductToAdd = {
+        img: productToAdd.image,
+        name: productToAdd.name,
+        price: productToAdd.price,
+        cartQuantity: 1
+      };
+      cartArray.push(newProductToAdd);
       const stringifiedCart = JSON.stringify(cartArray);
       localStorage.setItem('cart', stringifiedCart);
       getCartProducts();
