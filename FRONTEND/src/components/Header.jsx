@@ -29,8 +29,8 @@ export default function Header() {
           </form>
         </div>
         <div className="menu-dx">
-          <img className="menu-icons" src="/img/favourites.svg" alt="" />
-          <img className="menu-icons" src="/img/cart.svg" alt="" />
+          <Link to={'/wishlist'}><img className="menu-icons" src="/img/favourites.svg" alt="wishlist image" /></Link>
+          <img className="menu-icons" src="/img/cart.svg" alt="cart image" />
         </div>
       </header>
     </>

@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import ProductsList from './pages/ProductsList';
 import ProductDetails from './pages/ProductDetails';
 import TagProductsList from './pages/TagProductsList';
+import Wishlist from './pages/Wishlist';
 
 //component exports
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
               <Route path='/products/all' Component={ProductsList}></Route>
               <Route path='/products/:slug' Component={ProductDetails}></Route>
               <Route path='/diseases/:tag' Component={TagProductsList}></Route>
+              <Route path='/wishlist' Component={Wishlist}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
