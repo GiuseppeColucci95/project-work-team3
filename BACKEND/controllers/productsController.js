@@ -178,8 +178,15 @@ function search(req, res) {
                     JOIN categories c ON cp.category_id = c.id
                     WHERE cp.product_id = ?
                 `
-
+    //q&category&tag&orderby&order
     const pattern = req.query.q
+    const category = req.query.category
+    const tag = req.query.tag
+    let orderBy = req.query.orderby //price, name, recets
+    const order = req.query.order //asc, desc
+
+    console.log(category, tag, orderBy, order)
+
 
     connection.query(sql, [`%${pattern}%`, `%${pattern}%`, `%${pattern}%`], async (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
@@ -203,7 +210,73 @@ function search(req, res) {
             })
         }))
 
-        res.json(products)
+        //dichiaro e iniziallizzo un'array per il filtro
+        let filteredProducts = products
+
+        //controllo se esiste un parametro category
+        if (category) {
+            //primo filter per interare nell'array
+            filteredProducts = filteredProducts.filter(product => {
+                //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
+                return product.categories.some(cat => cat.name.includes(category))
+            })
+        }
+
+        if (tag) {
+            //primo filter per interare nell'array
+            filteredProducts = filteredProducts.filter(product => {
+                //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
+                return product.tags.some(cat => cat.name.includes(tag))
+            })
+        }
+
+        if (order && orderBy) {
+            if (orderBy === 'recents') orderBy = "created_at"
+            filteredProducts.sort((a, b) => {
+                let valA = a[orderBy];
+                let valB = b[orderBy];
+
+                // Gestione per il campo 'name'
+                if (orderBy === 'name') {
+                    valA = valA.toLowerCase();
+                    valB = valB.toLowerCase();
+                    if (order === 'asc') {
+                        return valA.localeCompare(valB);
+                    } else {
+                        return valB.localeCompare(valA);
+                    }
+                }
+
+                // Gestione per il campo 'price'
+                if (orderBy === 'price') {
+                    valA = parseFloat(valA);
+                    valB = parseFloat(valB);
+                }
+
+                // Gestione per il campo 'created_at'
+                if (orderBy === 'created_at') {
+                    valA = new Date(valA);
+                    valB = new Date(valB);
+                }
+
+                //gestione dell'ordinamento
+                if (order === 'asc') {
+                    //crescente
+                    //ritorna 1 se valA è maggiore di valB quindi valA è un elemento che va messo dopo valB
+                    //ritorna -1 se valA è minore di valB quindi valA è un elemento che messo prima di valB
+                    //ritorna 0 se valA = valB quindi hanno la stessa grandezza
+                    return valA > valB ? 1 : valA < valB ? -1 : 0;
+                } else {
+                    //descrescente
+                    //ritorna 1 se valA è minore di valB quindi valA è un elemento che messo prima di valB
+                    //ritorna -1 se valA è maggiore di valB quindi valA è un elemento che va messo dopo valB
+                    //ritorna 0 se valA = valB quindi hanno la stessa grandezza
+                    return valA < valB ? 1 : valA > valB ? -1 : 0;
+                }
+            })
+        }
+
+        res.json(filteredProducts)
     })
 }
 
