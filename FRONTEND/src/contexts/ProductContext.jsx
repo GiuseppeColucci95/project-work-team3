@@ -216,15 +216,18 @@ function ProductProvider({ children }) {
     } else {
       parsedProducts.splice(parsedProducts.indexOf(foundProduct), 1);
     }
+    let total = JSON.parse(localStorage.getItem('totalPrice'));
+    total = Number(total) - Number(productToRemove.price);
+    const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+    localStorage.setItem('totalPrice', stringifiedTotalPrice);
     const stringifiedProducts = JSON.stringify(parsedProducts);
     localStorage.setItem('cart', stringifiedProducts);
     getCartProducts();
+    getTotalPrice();
   }
 
   //function to add an element to cart
   function addCartProduct(productToAdd) {
-    //product to add
-    console.log('prodotto da aggiornare da aggiungere', productToAdd);
 
     //check if the cart exist in local storage
     if (cart) {
