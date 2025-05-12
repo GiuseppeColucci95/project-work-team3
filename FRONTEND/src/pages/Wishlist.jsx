@@ -2,9 +2,26 @@
 export default function Wishlist() {
 
   //logic
-  const products = localStorage.getItem('products');
+
+  //get the elements from wishlist
+  const products = localStorage.getItem('wishlist');
   const productsParsed = JSON.parse(products);
   console.log(productsParsed);
+
+  //function to add an element in the cart
+  function addProductToCart(product) {
+
+    //log product to add
+    console.log('prodotto da aggiornare da aggiungere', product);
+
+    //
+    const productToAdd = product;
+    productToAdd.quantity++;
+    console.log('prodotto aggiornato da aggiungere', productToAdd);
+
+    const stringifiedProductToAdd = JSON.stringify(productToAdd);
+    localStorage.setItem('cart', stringifiedProductToAdd);
+  }
 
   //template
   return (
@@ -24,9 +41,9 @@ export default function Wishlist() {
                       <div className="col-2">
                         <img src={product.img} alt="image" className="w-100 rounded-4" />
                       </div>
-                      <div className="col-6 d-flex align-items-start flex-column gap-2">
+                      <div className="col-6 d-flex flex-column align-items-start justify-content-center gap-2">
                         <h3>{product.name}</h3>
-                        <button className="btn btn-primary">ADD TO CART</button>
+                        <button onClick={() => addProductToCart(product)} className="btn btn-primary">ADD TO CART</button>
                         <button className="btn btn-primary">REMOVE FROM WISHLIST</button>
                       </div>
                     </div>
@@ -37,7 +54,7 @@ export default function Wishlist() {
           </div>
         </div>
       </section>
-
+      {/* WISHLIST SECTION */}
     </>
   );
 }
