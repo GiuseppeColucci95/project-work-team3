@@ -95,7 +95,7 @@ export default function Header() {
         </div>
         <div className="menu-dx">
           <Link to={'/wishlist'}><img className="menu-icons" src="/img/favourites.svg" alt="wishlist image" /></Link>
-          <img className="menu-icons" src="/img/cart.svg" alt="cart image" />
+          <Link to={'/cart'}><img className="menu-icons" src="/img/cart.svg" alt="cart image" /></Link>
         </div>
       </header>
     </>

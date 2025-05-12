@@ -15,15 +15,37 @@ export default function ProductDetails() {
   const {
     selectedProduct, getSelectedProduct,
     tagProducts, getProductsByTag,
-    categoryProducts, getProductsByCategory
+    categoryProducts, getProductsByCategory,
+    addWishlistProduct, removeWishlistProduct,
+    wishlist, addCartProduct, removeCartProduct
   } = useProductContext();
   //use state variables for buttons to expands the results
   const [numberOfRelatedTagProducts, setNumberOfRelatedTagProducts] = useState(4);
   const [numberOfRelatedCategoryProducts, setNumberOfRelatedCategoryProducts] = useState(4);
 
+  //useEffect on page start
   useEffect(() => {
     getSelectedProduct(slug);
   }, [slug]);
+
+  //function to check if a product is in wishlist
+  function isInWishlist(selectedProduct) {
+    console.log('wishlist', wishlist);
+
+    if (wishlist) {
+      if (wishlist.length > 0) {
+
+        const nameToCheck = selectedProduct.name;
+        const isInWishlist = wishlist.find(product => {
+          return product.name == nameToCheck;
+        })
+        if (isInWishlist) return true;
+      }
+    } else {
+      return false;
+    }
+    return false;
+  }
 
   //template
   return (
@@ -59,17 +81,24 @@ export default function ProductDetails() {
                       <h2 className="mb-3">{`${selectedProduct.price}€`}</h2>
                     </div>
 
-                    <div className="d-flex gap-3 justify-content-between">
-                      <div className="d-flex justify-content-center align-items-center gap-1">
+                    <div className="d-flex gap-3 justify-content-start">
+                      {/* <div className="d-flex justify-content-center align-items-center gap-1">
                         <button className="btn btn-primary">-</button>
                         <div className="px-2">0</div>
                         <button className="btn btn-primary">+</button>
+                      </div> */}
+                      <div>
+                        <button onClick={() => addCartProduct(selectedProduct)} className="btn btn-primary px-5 me-1">ADD TO CART</button>
                       </div>
                       <div>
-                        <button className="btn btn-primary px-5">ADD TO CART</button>
-                      </div>
-                      <div>
-                        <button className="btn btn-primary">&#9825;</button>
+                        <button onClick={() => addWishlistProduct(selectedProduct)}
+                          className={`${isInWishlist(selectedProduct) ? ('d-none') : ('btn btn-primary')}`}>
+                          <i className="bi bi-heart"></i>
+                        </button>
+                        <button onClick={() => removeWishlistProduct(selectedProduct)}
+                          className={`${isInWishlist(selectedProduct) ? ('btn btn-primary') : ('d-none')}`}>
+                          <i className="bi bi-heart-fill"></i>
+                        </button>
                       </div>
                     </div>
                   </div>
