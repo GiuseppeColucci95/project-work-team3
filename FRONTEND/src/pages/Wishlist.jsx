@@ -11,13 +11,12 @@ export default function Wishlist() {
   //function to add an element in the cart
   function addProductToCart(product) {
 
-    //log product to add
+    //product to add
     console.log('prodotto da aggiornare da aggiungere', product);
 
-    //
-    const productToAdd = product;
-    productToAdd.quantity++;
-    console.log('prodotto aggiornato da aggiungere', productToAdd);
+    //check if the product is already in the cart
+    const cart = localStorage.getItem('cart');
+    const parsedCart = JSON.parse(cart);
 
     const stringifiedProductToAdd = JSON.stringify(productToAdd);
     localStorage.setItem('cart', stringifiedProductToAdd);
@@ -41,9 +40,10 @@ export default function Wishlist() {
                       <div className="col-2">
                         <img src={product.img} alt="image" className="w-100 rounded-4" />
                       </div>
-                      <div className="col-6 d-flex flex-column align-items-start justify-content-center gap-2">
-                        <h3>{product.name}</h3>
-                        <button onClick={() => addProductToCart(product)} className="btn btn-primary">ADD TO CART</button>
+                      <div className="col-6 d-flex flex-column align-items-start justify-content-center">
+                        <h3 className="mb-0">{product.name}</h3>
+                        <div>{`${product.price}€`}</div>
+                        <button onClick={() => addProductToCart(product)} className="btn btn-primary mb-2">ADD TO CART</button>
                         <button className="btn btn-primary">REMOVE FROM WISHLIST</button>
                       </div>
                     </div>
