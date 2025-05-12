@@ -10,7 +10,7 @@ export default function Checkout() {
   const [streetNumber, setStreetNumber] = useState("")
   const [city, setCity] = useState("")
   const [province, setProvince] = useState("")
-  const [postalCode, setPostalCode] = ("")
+  const [postalCode, setPostalCode] = useState("")
 
 
   return (
