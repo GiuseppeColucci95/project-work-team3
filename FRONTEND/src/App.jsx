@@ -6,6 +6,11 @@ import Homepage from './pages/Homepage';
 import ProductsList from './pages/ProductsList';
 import ProductDetails from './pages/ProductDetails';
 import TagProductsList from './pages/TagProductsList';
+import CategoryProductsList from './pages/CategoryProductsList';
+import Wishlist from './pages/Wishlist';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import OrderConfirmation from './pages/OrderConfirmation';
 
 //component exports
 export default function App() {
@@ -21,6 +26,11 @@ export default function App() {
               <Route path='/products/all' Component={ProductsList}></Route>
               <Route path='/products/:slug' Component={ProductDetails}></Route>
               <Route path='/diseases/:tag' Component={TagProductsList}></Route>
+              <Route path='/category/:category' Component={CategoryProductsList}></Route>
+              <Route path='/wishlist' Component={Wishlist}></Route>
+              <Route path='/cart' Component={Cart}></Route>
+              <Route path='/checkout' Component={Checkout}></Route>
+              <Route path='/order-confirmation' Component={OrderConfirmation}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
