@@ -38,6 +38,13 @@ export default function Checkout() {
       postalCode
     )
 
+    //se errorList non è vuota mando un allert
+    if (Object.keys(errorList).length > 0) {
+      alert(Object.values(errorList).join('\n'));
+      return // interrompe la funzione se ci sono errori
+    }
+
+
     const formData = {
       firstName: firstName,
       lastName: lastName,
@@ -52,8 +59,10 @@ export default function Checkout() {
   }
 
   function Validate(firstName, lastName, userEmail, street, streetNumber, country, city, province, postalCode) {
+    //variabile d'appoggio
     const error = {}
 
+    // verifico che tutti i campi obligatori siano popolati
     if (!firstName) error.firstName = "first Name is require"
     if (!lastName) error.lastName = "last Name is require"
     if (!userEmail) error.userEmail = "Email is require"
@@ -64,13 +73,36 @@ export default function Checkout() {
     if (!province) error.province = "province is require"
     if (!postalCode) error.postalCode = "postal code is require"
 
+    //se manca un campo esci dalla funzione restituendo l'oggetto error
     if (Object.keys(error).length > 0) return error
 
+    //verifico le grandezze
+    if (firstName.length < 3) error.firstName = "first name must be at least 3 characters long"
+    if (firstName.length > 20) error.firstName = "first name must be at most 20 characters long"
+    if (lastName.length < 3) error.lastName = "last name must be at least 3 characters long"
+    if (lastName.length > 20) error.lastName = "last name must be at most 20 characters long"
+    if (userEmail.length < 10) error.userEmail = "Email must be at least 10 characters long"
+    if (userEmail.length > 50) error.userEmail = "Email must be at most 50 characters long"
+    if (street.length < 5) error.street = "street must be at least 5 characters long"
+    if (street.length > 10) error.street = "street must be at most 10 characters long"
+    if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
+    if (streetNumber.length > 3) error.streetNumber = "streetNumber must be at most 3 characters long"
+    if (country.length < 4) error.country = "country must be at least 4 characters long"
+    if (country.length > 10) error.country = "country must be at most 10 characters long"
+    if (city.length < 1) error.city = "city must be at least 1 characters long"
+    if (city.length > 10) error.city = "city must be at most 10 characters long"
+    if (province.length !== 2) error.province = "province must be a 2 characters long"
+    if (postalCode.length !== 5) error.postalCode = "postal Code must be a 5 characters long"
 
+    //se almeno un campo ha la lunghezza sbagliata esce dalla funzione
+    if (Object.keys(error).length > 0) return error
 
+    //controllo che le variabili sodisfino i requisiti di formato
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
+    if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) error.street = "street must contain via or piazza"
 
-
-
+    //faccio un return di error
+    return error
   }
 
   return (
