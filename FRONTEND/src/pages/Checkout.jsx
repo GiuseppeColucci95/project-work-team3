@@ -10,6 +10,7 @@ export default function Checkout() {
   const [phoneNumber, setPhoneNumber] = useState("")
   const [street, setStreet] = useState("")
   const [streetNumber, setStreetNumber] = useState("")
+  const [country, setCountry] = useState("")
   const [city, setCity] = useState("")
   const [province, setProvince] = useState("")
   const [postalCode, setPostalCode] = useState("")
@@ -22,13 +23,18 @@ export default function Checkout() {
 
   //function on submit form
   function formSubmit(e) {
-    /* e.prevent()
+    e.preventDefault()
 
     const formData = {
       firstName: firstName,
       lastName: lastName,
+      phone: phoneNumber,
+      mail: userEmail,
+      adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
+    }
 
-    } */
+    console.log(formData);
+
   }
 
   return (
@@ -39,7 +45,7 @@ export default function Checkout() {
           <div className="row">
             <div className="col col-8 p-3">
 
-              <form className="row g-3 needs-validation" /* onSubmit={formSubmit(e)} */>
+              <form className="row g-3 needs-validation" onSubmit={formSubmit} >
 
                 <h3>Your info</h3>
 
@@ -96,7 +102,7 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <div className="col-md-9">
+                <div className="col-md-6">
                   <label htmlFor="street" className="form-label">Street</label>
                   <input type="text" className="form-control" id="street"
                     placeholder="Via Roma"
@@ -117,6 +123,18 @@ export default function Checkout() {
                     required />
                   <div className="valid-feedback">
                     Valid Street Number
+                  </div>
+                </div>
+
+                <div className="col-md-3">
+                  <label htmlFor="country" className="form-label">Country</label>
+                  <input type="text" className="form-control" id="country"
+                    placeholder="Italy"
+                    value={country}
+                    onChange={e => setCountry(e.target.value)}
+                    required />
+                  <div className="valid-feedback">
+                    Valid Country
                   </div>
                 </div>
 
