@@ -35,7 +35,7 @@ export default function ProductList() {
 
           <div className="text-center mb-5">
             <h3 >ALL EAT YOUR WAY PRODUCTS</h3>
-            <p>Here you can find all out prodcuts!</p>
+            <p>Here you can find all out products!</p>
           </div>
           {/* SECTION DESCRIPTION */}
 

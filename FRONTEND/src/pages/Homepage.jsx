@@ -26,7 +26,7 @@ export default function Homepage() {
           <p className="jumbo-text">
             Don't <br />compromise.
           </p>
-          <button className="explore-btn">EXPLORE OUR PRODUCTS</button>
+          <Link to={`/products/all`}><button className="explore-btn">EXPLORE OUR PRODUCTS</button></Link>
         </div >
       </section>
       {/* JUMBOTRON SECTION */}
