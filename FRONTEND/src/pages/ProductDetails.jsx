@@ -89,8 +89,6 @@ export default function ProductDetails() {
                       </div> */}
                       <div>
                         <button onClick={() => addCartProduct(selectedProduct)} className="btn btn-primary px-5 me-1">ADD TO CART</button>
-                        <button onClick={() => removeCartProduct(selectedProduct)} className="btn btn-primary px-5">REMOVE</button>
-
                       </div>
                       <div>
                         <button onClick={() => addWishlistProduct(selectedProduct)}

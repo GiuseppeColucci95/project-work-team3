@@ -161,7 +161,7 @@ function ProductProvider({ children }) {
       if (!found) {
         //otherwise add it in the wishlist
         products.push({
-          img: productToAdd.image,
+          image: productToAdd.image,
           name: productToAdd.name,
           price: productToAdd.price
         });
@@ -175,7 +175,7 @@ function ProductProvider({ children }) {
       //create an empty array and populate it
       const products = [];
       products.push({
-        img: productToAdd.image,
+        image: productToAdd.image,
         name: productToAdd.name,
         price: productToAdd.price
       });
@@ -260,7 +260,7 @@ function ProductProvider({ children }) {
       } else {
         //if the product is not in the cart add it
         const newProductToAdd = {
-          img: productToAdd.image,
+          image: productToAdd.image,
           name: productToAdd.name,
           price: productToAdd.price,
           cartQuantity: 1
@@ -281,7 +281,7 @@ function ProductProvider({ children }) {
       const cartArray = [];
       //if the product is not in the cart add it
       const newProductToAdd = {
-        img: productToAdd.image,
+        image: productToAdd.image,
         name: productToAdd.name,
         price: productToAdd.price,
         cartQuantity: 1
@@ -328,7 +328,7 @@ function ProductProvider({ children }) {
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
-      getCartProducts, addCartProduct, removeCartProduct
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice
     }}>
       {children}
     </ProductContext.Provider>

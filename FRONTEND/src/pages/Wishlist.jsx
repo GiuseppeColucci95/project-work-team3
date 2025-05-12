@@ -29,7 +29,7 @@ export default function Wishlist() {
                   <div key={`${product.name}-product`} className="col">
                     <div className="row d-flex justify-content-center">
                       <div className="col-2">
-                        <img src={product.img} alt="image" className="w-100 rounded-4" />
+                        <img src={product.image} alt="image" className="w-100 rounded-4" />
                       </div>
                       <div className="col-6 d-flex flex-column align-items-start justify-content-center">
                         <h3 className="mb-0">{product.name}</h3>
