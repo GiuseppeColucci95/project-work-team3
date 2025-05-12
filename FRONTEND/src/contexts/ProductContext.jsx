@@ -142,6 +142,22 @@ function ProductProvider({ children }) {
     getWishlistProducts();
   }
 
+  //function to add an element in the wishlist
+  function addWishlistProduct(productToAdd) {
+
+    //get the elements from wishlist
+    const products = localStorage.getItem('wishlist');
+    const productsParsed = JSON.parse(products);
+
+    //construct the element to add
+
+    const productsModified = products;
+    productsModified
+
+    console.log(productToAdd);
+
+  }
+
   //function to get cart products
   function getCartProducts() {
 
@@ -219,7 +235,7 @@ function ProductProvider({ children }) {
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
-      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, cart, setCart, getCartProducts, addCartProduct
+      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart, getCartProducts, addCartProduct
     }}>
       {children}
     </ProductContext.Provider>

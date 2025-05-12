@@ -15,7 +15,8 @@ export default function ProductDetails() {
   const {
     selectedProduct, getSelectedProduct,
     tagProducts, getProductsByTag,
-    categoryProducts, getProductsByCategory
+    categoryProducts, getProductsByCategory,
+    addWishlistProduct
   } = useProductContext();
   //use state variables for buttons to expands the results
   const [numberOfRelatedTagProducts, setNumberOfRelatedTagProducts] = useState(4);
@@ -69,7 +70,7 @@ export default function ProductDetails() {
                         <button className="btn btn-primary px-5">ADD TO CART</button>
                       </div>
                       <div>
-                        <button className="btn btn-primary">&#9825;</button>
+                        <button onClick={() => addWishlistProduct(selectedProduct)} className="btn btn-primary">&#9825;</button>
                       </div>
                     </div>
                   </div>

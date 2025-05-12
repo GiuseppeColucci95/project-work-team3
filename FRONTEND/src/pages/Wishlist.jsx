@@ -13,12 +13,6 @@ export default function Wishlist() {
     getWishlistProducts();
   }, []);
 
-  //function to add an element in the cart
-  function addProductToCart(productToAdd) {
-
-
-  }
-
   //template
   return (
     <>
