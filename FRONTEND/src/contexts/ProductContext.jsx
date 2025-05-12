@@ -28,6 +28,7 @@ function ProductProvider({ children }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [wishlist, setWishlist] = useState(null);
   const [cart, setCart] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   //function to get all products from db
   function getAllProducts() {
@@ -158,43 +159,57 @@ function ProductProvider({ children }) {
 
     //check if the product is already in the cart
     getCartProducts();
-    const cartArray = cart;
-    const foundProduct = parsedCart.find(product => {
+    const cartArray = JSON.parse(localStorage.getItem('cart'));
+
+    const foundProduct = cartArray.find(product => {
       return product.name === productToAdd.name;
     });
 
     //if the product is already in the cart
     if (foundProduct) {
-      parsedCart.map(product => {
+      //modify his quantity by summing 1
+      cartArray.map(product => {
         if (foundProduct.name === product.name) {
           product.cartQuantity++;
-          console.log(product.cartQuantity);
+
+          //set the new cart
+          const stringifiedCart = JSON.stringify(cartArray);
+          localStorage.setItem('cart', stringifiedCart);
+          getCartProducts();
 
           //modify the order total
-          const total = localStorage.getItem('totalPrice');
-          let parsedTotal = Number(JSON.parse(total));
-          parsedTotal = Number(parsedTotal) + Number(product.price);
-          const stringifiedTotalPrice = JSON.stringify(parsedTotal.toFixed(2));
+          let total = totalPrice;
+          total = Number(total) + Number(product.price);
+          const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
           localStorage.setItem('totalPrice', stringifiedTotalPrice);
+          getTotalPrice();
         }
       })
-      const stringifiedCart = JSON.stringify(parsedCart);
-      localStorage.setItem('cart', stringifiedCart);
-
     } else {
       //if the product is not in the cart add it
       productToAdd.cartQuantity++;
-      parsedCart.push(productToAdd);
-      const stringifiedCart = JSON.stringify(parsedCart);
+      cartArray.push(productToAdd);
+      const stringifiedCart = JSON.stringify(cartArray);
       localStorage.setItem('cart', stringifiedCart);
+      getCartProducts();
 
       //modify the order total
-      const total = localStorage.getItem('totalPrice');
-      let parsedTotal = Number(JSON.parse(total));
-      parsedTotal = Number(parsedTotal) + Number(product.price);
+      let total = totalPrice;
+      total = Number(total) + Number(productToAdd.price);
       const stringifiedTotalPrice = JSON.stringify(parsedTotal.toFixed(2));
       localStorage.setItem('totalPrice', stringifiedTotalPrice);
+      getTotalPrice();
     }
+  }
+
+  //function to get the total
+  function getTotalPrice() {
+
+    //get the total from localStorage and set it in his variable
+    const total = localStorage.getItem('totalPrice');
+    const parsedTotal = Number(JSON.parse(total));
+
+    setTotalPrice(parsedTotal);
   }
 
   //template
@@ -204,7 +219,7 @@ function ProductProvider({ children }) {
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
-      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct
+      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, cart, setCart, getCartProducts, addCartProduct
     }}>
       {children}
     </ProductContext.Provider>

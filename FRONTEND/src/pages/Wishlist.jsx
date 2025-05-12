@@ -6,7 +6,7 @@ import { useProductContext } from "../contexts/ProductContext";
 export default function Wishlist() {
 
   //logic
-  const { wishlist, getWishlistProducts, removeWishlistProduct } = useProductContext();
+  const { wishlist, getWishlistProducts, removeWishlistProduct, addCartProduct } = useProductContext();
 
   //useEffect on component start
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function Wishlist() {
                       <div className="col-6 d-flex flex-column align-items-start justify-content-center">
                         <h3 className="mb-0">{product.name}</h3>
                         <div>{`${product.price}€`}</div>
-                        <button onClick={() => addProductToCart(product)} className="btn btn-primary mb-2">ADD TO CART</button>
+                        <button onClick={() => addCartProduct(product)} className="btn btn-primary mb-2">ADD TO CART</button>
                         <button onClick={() => removeWishlistProduct(product)} className="btn btn-primary">REMOVE FROM WISHLIST</button>
                       </div>
                     </div>
