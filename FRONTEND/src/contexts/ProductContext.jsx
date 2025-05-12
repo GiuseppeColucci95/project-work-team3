@@ -201,6 +201,17 @@ function ProductProvider({ children }) {
     setCart(parsedCart);
   }
 
+  //function to remove an element from cart
+  function removeCartProduct(productToRemove) {
+    const products = localStorage.getItem('cart');
+    const arrayToCheck = JSON.parse(products);
+
+    //find the element to remove
+    const foundProduct = arrayToCheck.find(product => {
+      return product.name == productToRemove.name;
+    });
+  }
+
   //function to add an element to cart
   function addCartProduct(productToAdd) {
     //product to add
