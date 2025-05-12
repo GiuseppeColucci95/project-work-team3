@@ -36,7 +36,7 @@ export default function Homepage() {
           <Link to={`/diseases/gluten-free`}><img src="img/gluten-free.png" className="food-allergens" alt="gluten-free" /></Link>
           <Link to={`/diseases/sugar-free`}><img src="img/sugar-free.png" className="food-allergens" alt="sugar-free" /></Link>
           <Link to={`/diseases/lactose-free`}><img src="img/lactose-free.png" className="food-allergens" alt="lactose-free" /></Link>
-          <Link to={`/diseases/nuts-free`}><img src="img/nuts-free.png" className="food-allergens" alt="nuts-free" /></Link>
+          <Link to={`/diseases/nut-free`}><img src="img/nuts-free.png" className="food-allergens" alt="nuts-free" /></Link>
           <Link to={`/diseases/nickel-free`}><img src="img/nickel-free.png" className="food-allergens" alt="nickel-free" /></Link>
         </div>
       </section>
