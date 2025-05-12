@@ -124,6 +124,23 @@ function ProductProvider({ children }) {
     setWishlist(productsParsed);
   }
 
+  //function to remove an element from wishlist
+  function removeWishlistProduct(productToRemove) {
+
+    //copy products array
+    const array = wishlist;
+
+    //find the element to remove
+    const foundProduct = array.find(product => {
+      return product.name = productToRemove.name;
+    });
+
+    array.splice(array.indexOf(foundProduct), 1);
+    const stringifiedProducts = JSON.stringify(array);
+    localStorage.setItem('wishlist', stringifiedProducts);
+    getWishlistProducts();
+  }
+
   //template
   return (
     <ProductContext.Provider value={{
@@ -131,7 +148,7 @@ function ProductProvider({ children }) {
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
-      wishlist, setWishlist, getWishlistProducts, cart, setCart
+      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct
     }}>
       {children}
     </ProductContext.Provider>

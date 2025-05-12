@@ -6,7 +6,7 @@ import { useProductContext } from "../contexts/ProductContext";
 export default function Wishlist() {
 
   //logic
-  const { wishlist, setWishlist, getWishlistProducts } = useProductContext();
+  const { wishlist, getWishlistProducts, removeWishlistProduct } = useProductContext();
 
   //useEffect on component start
   useEffect(() => {
@@ -60,21 +60,6 @@ export default function Wishlist() {
     }
   }
 
-  //function to remove an element from wishlist
-  function removeProductFromWishlist(productToRemove) {
-    const products = localStorage.getItem('wishlist');
-    const productsParsed = JSON.parse(products);
-
-    const foundProduct = productsParsed.find(product => {
-      return product.name = productToRemove.name;
-    });
-
-    productsParsed.splice(productsParsed.indexOf(foundProduct), 1);
-
-    const stringifiedProducts = JSON.stringify(productsParsed);
-    localStorage.setItem('wishlist', stringifiedProducts);
-  }
-
   //template
   return (
     <>
@@ -97,7 +82,7 @@ export default function Wishlist() {
                         <h3 className="mb-0">{product.name}</h3>
                         <div>{`${product.price}€`}</div>
                         <button onClick={() => addProductToCart(product)} className="btn btn-primary mb-2">ADD TO CART</button>
-                        <button onClick={() => removeProductFromWishlist(product)} className="btn btn-primary">REMOVE FROM WISHLIST</button>
+                        <button onClick={() => removeWishlistProduct(product)} className="btn btn-primary">REMOVE FROM WISHLIST</button>
                       </div>
                     </div>
                   </div>
