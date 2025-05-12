@@ -113,7 +113,7 @@ export default function Checkout() {
           <div className="row">
             <div className="col col-8 p-3">
 
-              <form className="row g-3 needs-validation" onSubmit={formSubmit} >
+              <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
                 <h3>Your info</h3>
 
@@ -144,7 +144,7 @@ export default function Checkout() {
                 <div className="col-md-8">
                   <label htmlFor="email" className="form-label">Email</label>
                   <input
-                    type="email"
+                    type="text"
                     className="form-control"
                     name="email"
                     id="email"
