@@ -275,7 +275,7 @@ footer {
   }
 }
 
-.collapse {
+.collapse.show {
   display: none; 
 }
 
