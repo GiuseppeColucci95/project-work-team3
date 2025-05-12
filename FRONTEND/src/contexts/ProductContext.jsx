@@ -130,16 +130,16 @@ function ProductProvider({ children }) {
   //function to remove an element from wishlist
   function removeWishlistProduct(productToRemove) {
 
-    //copy products array
-    const array = wishlist;
+    const products = localStorage.getItem('wishlist');
+    const arrayToCheck = JSON.parse(products);
 
     //find the element to remove
-    const foundProduct = array.find(product => {
-      return product.name = productToRemove.name;
+    const foundProduct = arrayToCheck.find(product => {
+      return product.name == productToRemove.name;
     });
 
-    array.splice(array.indexOf(foundProduct), 1);
-    const stringifiedProducts = JSON.stringify(array);
+    arrayToCheck.splice(arrayToCheck.indexOf(foundProduct), 1);
+    const stringifiedProducts = JSON.stringify(arrayToCheck);
     localStorage.setItem('wishlist', stringifiedProducts);
     getWishlistProducts();
   }
@@ -152,14 +152,13 @@ function ProductProvider({ children }) {
       //if exist try to find the product
       const products = wishlist;
       const found = products.find(product => {
+        console.log('find product name', product.name, 'product to add name', productToAdd.name);
+
         return product.name === productToAdd.name;
       })
 
       //if already exist 
-      if (found) {
-        //delete it from wishlist
-        removeWishlistProduct(productToAdd);
-      } else {
+      if (!found) {
         //otherwise add it in the wishlist
         products.push({
           img: productToAdd.image,
@@ -171,6 +170,7 @@ function ProductProvider({ children }) {
         localStorage.setItem('wishlist', stringifiedProducts);
       }
     } else {
+      console.log('LA WISHLIST NON ESISTE');
       //if wishlist does not exist
       //create an empty array and populate it
       const products = [];
@@ -186,7 +186,6 @@ function ProductProvider({ children }) {
     }
 
     getWishlistProducts();
-    console.log(productToAdd);
   }
 
   //function to get cart products
