@@ -239,14 +239,19 @@ main {
 
 footer {
 
-  /* DA RIMUOVERE QUANDO SI STILIZZA IL FOOTER */
   min-height: 100px;
-  background-color: var(--secondary);
+  background-image: url("/img/footer-bg.svg");
+  background-position: center;
+  background-size: cover;
   padding: 2rem;
   color: var(--dark);
   .footer-container {
     display: flex;
     align-items: flex-start;
+  }
+
+  .footer-logo-img {
+    width: 200px;
   }
 
   .footer-logo {
@@ -297,7 +302,9 @@ footer {
   }
 
   .copyright {
+    color: var(--light);
     margin-top: 1.5rem;
+    font-size: 12px !important;
   }
 }
 
