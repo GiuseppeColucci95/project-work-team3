@@ -17,7 +17,7 @@ export default function ProductDetails() {
     tagProducts, getProductsByTag,
     categoryProducts, getProductsByCategory,
     addWishlistProduct, removeWishlistProduct,
-    wishlist, addCartProduct
+    wishlist, addCartProduct, removeCartProduct
   } = useProductContext();
   //use state variables for buttons to expands the results
   const [numberOfRelatedTagProducts, setNumberOfRelatedTagProducts] = useState(4);
@@ -88,7 +88,9 @@ export default function ProductDetails() {
                         <button className="btn btn-primary">+</button>
                       </div> */}
                       <div>
-                        <button onClick={() => addCartProduct(selectedProduct)} className="btn btn-primary px-5">ADD TO CART</button>
+                        <button onClick={() => addCartProduct(selectedProduct)} className="btn btn-primary px-5 me-1">ADD TO CART</button>
+                        <button onClick={() => removeCartProduct(selectedProduct)} className="btn btn-primary px-5">REMOVE</button>
+
                       </div>
                       <div>
                         <button onClick={() => addWishlistProduct(selectedProduct)}

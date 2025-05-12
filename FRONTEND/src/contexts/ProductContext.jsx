@@ -211,11 +211,14 @@ function ProductProvider({ children }) {
       return product.name == productToRemove.name;
     });
 
-    if (foundProduct) {
-      if (foundProduct.cartQuantity > 1) {
-
-      }
+    if (parsedProducts[parsedProducts.indexOf(foundProduct)].cartQuantity > 1) {
+      parsedProducts[parsedProducts.indexOf(foundProduct)].cartQuantity--;
+    } else {
+      parsedProducts.splice(parsedProducts.indexOf(foundProduct), 1);
     }
+    const stringifiedProducts = JSON.stringify(parsedProducts);
+    localStorage.setItem('cart', stringifiedProducts);
+    getCartProducts();
   }
 
   //function to add an element to cart
@@ -321,7 +324,8 @@ function ProductProvider({ children }) {
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
-      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart, getCartProducts, addCartProduct
+      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
+      getCartProducts, addCartProduct, removeCartProduct
     }}>
       {children}
     </ProductContext.Provider>
