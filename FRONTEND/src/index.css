@@ -194,15 +194,41 @@ main {
   }
 }
 
-#best-sellers {
-  background-color: lightgrey;
-  min-height: 500px;
+  #best-sellers {
+    background-color: lightgrey;
+    min-height: 500px;
+  }
 
-}
+  #latest-products {
+    min-height: 500px;
+  }
 
-#latest-products {
-  min-height: 500px;
-}
+  .col {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+  }
+
+  .col:hover {
+    transform: scale(1.05);
+  }
+
+  .col img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    padding-bottom: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .col:hover img {
+    transform: scale(1.1);
+  }
+
+  h6 {
+    padding-bottom: 1rem;
+  }
 
 /* ------------ HOMEPAGE component ------------ */
 
@@ -275,7 +301,7 @@ footer {
   }
 }
 
-  .navbar-toggler {
+  .toggler {
     display: none;
   }
 
