@@ -275,6 +275,10 @@ footer {
   }
 }
 
+.collapse {
+  display: none; 
+}
+
 /* #endregion FOOTER */
 
 /* schermi medi */
@@ -359,6 +363,61 @@ footer {
 /* schermi piccoli */
 
 @media (max-width: 480px) {
+  header {
+    padding: 0.75rem;
+    .logo {
+      width: 70px;
+      margin-right: 0;
+    }
+  }
+  .collapse.show {
+    display: block;
+  }
+  .navbar-toggler {
+    z-index: 1050;
+  }
+  .menu-sx {
+    margin-left: 0 !important;
+  }
+  main #jumbotron {
+    min-height: 200px;
+    max-height: 200px !important;
+    background-size: cover;
+  }
+  .jumbo-container {
+    width: 100% !important;
+    padding: 1rem 0 1rem 3rem !important;
+  }
+  .jumbo-title {
+    font-size: 25px !important;
+    padding-bottom: 0 !important;
+    line-height: 2rem !important;
+  }
+  .jumbo-text {
+    font-size: 16px !important;
+    padding-bottom: 0 !important;
+    line-height: 1rem !important;
+  }
+  .explore-btn {
+    font-size: 10px !important;
+  }
+  .img-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+  .menu {
+    display: none;
+  }
+  .menu-dx {
+    display: none;
+  }
+  .food-allergens {
+    width: 60px !important;
+    cursor: pointer;
+  }
+  }
   .payoff {
     width: 100% !important;
   }
@@ -383,4 +442,3 @@ footer {
   .copyright {
     margin-top: 0;
   }
-}
