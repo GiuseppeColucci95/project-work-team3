@@ -122,6 +122,8 @@ function ProductProvider({ children }) {
     const products = localStorage.getItem('wishlist');
     const productsParsed = JSON.parse(products);
 
+    console.log('wishlist', productsParsed);
+
     setWishlist(productsParsed);
   }
 
@@ -145,17 +147,46 @@ function ProductProvider({ children }) {
   //function to add an element in the wishlist
   function addWishlistProduct(productToAdd) {
 
-    //get the elements from wishlist
-    const products = localStorage.getItem('wishlist');
-    const productsParsed = JSON.parse(products);
+    //check if the wishlist already exist
+    if (wishlist) {
+      //if exist try to find the product
+      const products = wishlist;
+      const found = products.find(product => {
+        return product.name === productToAdd.name;
+      })
 
-    //construct the element to add
+      //if already exist 
+      if (found) {
+        //delete it from wishlist
+        removeWishlistProduct(productToAdd);
+      } else {
+        //otherwise add it in the wishlist
+        products.push({
+          img: productToAdd.image,
+          name: productToAdd.name,
+          price: productToAdd.price
+        });
 
-    const productsModified = products;
-    productsModified
+        const stringifiedProducts = JSON.stringify(products);
+        localStorage.setItem('wishlist', stringifiedProducts);
+      }
+    } else {
+      //if wishlist does not exist
+      //create an empty array and populate it
+      const products = [];
+      products.push({
+        img: productToAdd.image,
+        name: productToAdd.name,
+        price: productToAdd.price
+      });
 
+      //save it in local storage
+      const stringifiedProducts = JSON.stringify(products);
+      localStorage.setItem('wishlist', stringifiedProducts);
+    }
+
+    getWishlistProducts();
     console.log(productToAdd);
-
   }
 
   //function to get cart products
@@ -165,6 +196,9 @@ function ProductProvider({ children }) {
     const cart = localStorage.getItem('cart');
     const parsedCart = JSON.parse(cart);
 
+    console.log('cart', parsedCart);
+
+
     setCart(parsedCart);
   }
 
@@ -173,37 +207,53 @@ function ProductProvider({ children }) {
     //product to add
     console.log('prodotto da aggiornare da aggiungere', productToAdd);
 
-    //check if the product is already in the cart
-    getCartProducts();
-    const cartArray = JSON.parse(localStorage.getItem('cart'));
+    //check if the cart exist in local storage
+    if (cart) {
+      const cartArray = cart;
 
-    const foundProduct = cartArray.find(product => {
-      return product.name === productToAdd.name;
-    });
+      const foundProduct = cartArray.find(product => {
+        return product.name === productToAdd.name;
+      });
 
-    //if the product is already in the cart
-    if (foundProduct) {
-      //modify his quantity by summing 1
-      cartArray.map(product => {
-        if (foundProduct.name === product.name) {
-          product.cartQuantity++;
+      //if the product is already in the cart
+      if (foundProduct) {
+        //modify his quantity by summing 1
+        cartArray.map(product => {
+          if (foundProduct.name === product.name) {
+            product.cartQuantity++;
 
-          //set the new cart
-          const stringifiedCart = JSON.stringify(cartArray);
-          localStorage.setItem('cart', stringifiedCart);
-          getCartProducts();
+            //set the new cart
+            const stringifiedCart = JSON.stringify(cartArray);
+            localStorage.setItem('cart', stringifiedCart);
+            getCartProducts();
 
-          //modify the order total
-          let total = totalPrice;
-          total = Number(total) + Number(product.price);
-          const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
-          localStorage.setItem('totalPrice', stringifiedTotalPrice);
-          getTotalPrice();
-        }
-      })
+            //modify the order total
+            let total = totalPrice;
+            total = Number(total) + Number(product.price);
+            const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+            localStorage.setItem('totalPrice', stringifiedTotalPrice);
+            getTotalPrice();
+          }
+        })
+      } else {
+        //if the product is not in the cart add it
+        productToAdd.cartQuantity = 1;
+        cartArray.push(productToAdd);
+        const stringifiedCart = JSON.stringify(cartArray);
+        localStorage.setItem('cart', stringifiedCart);
+        getCartProducts();
+
+        //modify the order total
+        let total = totalPrice;
+        total = Number(total) + Number(productToAdd.price);
+        const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+        localStorage.setItem('totalPrice', stringifiedTotalPrice);
+        getTotalPrice();
+      }
     } else {
+      const cartArray = [];
       //if the product is not in the cart add it
-      productToAdd.cartQuantity++;
+      productToAdd.cartQuantity = 1;
       cartArray.push(productToAdd);
       const stringifiedCart = JSON.stringify(cartArray);
       localStorage.setItem('cart', stringifiedCart);
@@ -212,10 +262,11 @@ function ProductProvider({ children }) {
       //modify the order total
       let total = totalPrice;
       total = Number(total) + Number(productToAdd.price);
-      const stringifiedTotalPrice = JSON.stringify(parsedTotal.toFixed(2));
+      const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
       localStorage.setItem('totalPrice', stringifiedTotalPrice);
       getTotalPrice();
     }
+
   }
 
   //function to get the total
@@ -225,8 +276,17 @@ function ProductProvider({ children }) {
     const total = localStorage.getItem('totalPrice');
     const parsedTotal = Number(JSON.parse(total));
 
+    console.log('totalPrice', total);
+
     setTotalPrice(parsedTotal);
   }
+
+  //useEffect to get cart and wishlist at start of the page
+  useEffect(() => {
+    getWishlistProducts();
+    getCartProducts();
+    getTotalPrice();
+  }, []);
 
   //template
   return (

@@ -40,8 +40,8 @@ export default function ProductList() {
           {/* SECTION DESCRIPTION */}
 
           <div className="mb-5 d-flex justify-content-end gap-2">
-            <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i class="bi bi-grid"></i></button>
-            <button onClick={() => setViewMode('list')} className="btn btn-primary"><i class="bi bi-list-task"></i></button>
+            <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i className="bi bi-grid"></i></button>
+            <button onClick={() => setViewMode('list')} className="btn btn-primary"><i className="bi bi-list-task"></i></button>
           </div>
           {/* GRID AND LIST BUTTONS */}
 
