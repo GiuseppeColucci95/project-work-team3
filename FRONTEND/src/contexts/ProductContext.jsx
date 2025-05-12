@@ -26,6 +26,8 @@ function ProductProvider({ children }) {
   const [categoryProducts, setCategoryProducts] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [wishlist, setWishlist] = useState(null);
+  const [cart, setCart] = useState(null);
 
   //function to get all products from db
   function getAllProducts() {
@@ -112,13 +114,24 @@ function ProductProvider({ children }) {
 
   }
 
+  //function to get wishlist products
+  function getWishlistProducts() {
+
+    //get the elements from wishlist
+    const products = localStorage.getItem('wishlist');
+    const productsParsed = JSON.parse(products);
+
+    setWishlist(productsParsed);
+  }
+
   //template
   return (
     <ProductContext.Provider value={{
       products, setProducts, getAllProducts, selectedProduct, setSelectedProduct, getSelectedProduct, latestProducts,
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
-      selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory
+      selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
+      wishlist, setWishlist, getWishlistProducts, cart, setCart
     }}>
       {children}
     </ProductContext.Provider>
