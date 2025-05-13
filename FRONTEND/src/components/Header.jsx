@@ -14,7 +14,7 @@ export default function Header() {
   //imports from custom context
   const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
 
-    const toggleDropdown = (menu) => {
+  const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
   };
 
@@ -38,7 +38,7 @@ export default function Header() {
 
   //function to handle change
   function handleChange(e) {
-    console.log(e.target);
+    console.log(e.target.value);
 
     setSearchChangeFunction(e.target);
   }
@@ -117,9 +117,9 @@ export default function Header() {
                     Category
                   </button>
                   <ul className="dropdown-menu">
-                  <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
-                  <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
-                  <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
+                    <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
+                    <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
+                    <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
                   </ul>
                 </div>
                 <li><Link to={'/wishlist'}>Favourites</Link></li>

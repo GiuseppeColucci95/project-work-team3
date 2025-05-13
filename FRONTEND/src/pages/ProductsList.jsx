@@ -8,7 +8,7 @@ export default function ProductList() {
 
   //logic
   const [viewMode, setViewMode] = useState('grid');
-  const { products, getAllProducts } = useProductContext();
+  const { products, getAllProducts, setSearchChangeFunction } = useProductContext();
 
   //useEffect on page start
   useEffect(() => {
@@ -17,6 +17,9 @@ export default function ProductList() {
 
   //function to handle select change
   function handleSelectChange(e) {
+
+    console.log('target name', e.target.name, 'target value', e.target.value);
+
 
     setSearchChangeFunction(e.target);
   }
@@ -63,7 +66,7 @@ export default function ProductList() {
                 <option value="">Select a category</option>
                 <option value="lactose free">Lactose free</option>
                 <option value="sugar free">Sugar free</option>
-                <option value="sluten free">Gluten free</option>
+                <option value="gluten free">Gluten free</option>
                 <option value="nickel free">Nickel free</option>
                 <option value="nuts free">Nuts free</option>
                 <option value="fish free">Fish free</option>
