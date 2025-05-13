@@ -43,7 +43,7 @@ export default function Cart() {
                 }
               </div>
             </div>
-            <div className="col-4 d-flex flex-column justify-content-center">
+            <div className="col-4 d-flex flex-column justify-content-start align-items-center pt-4 gap-3">
               <h3>ORDER SUMMARY</h3>
 
               <h5>Total products: {totalPrice.toFixed(2)}€ </h5>
