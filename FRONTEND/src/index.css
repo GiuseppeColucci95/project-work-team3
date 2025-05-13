@@ -294,6 +294,75 @@ h6 {
   min-height: 500px;
 }
 
+/* #region PRODUCT DETAILS component */
+
+#product-description {
+  background-color: var(--primary);
+  padding: 3rem 0 3rem;
+  color: var(--light);
+}
+
+.product-container {
+  width: 60%;
+}
+
+#tags {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.check-icon {
+  width: 30px;
+}
+
+.btn-add {
+  border-style: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--dark);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: var(--primary);
+}
+
+.favourites {
+  border-style: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  background: var(--accent);
+  color: var(--light);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  width: 70px;
+}
+
+.favourites:hover {
+  background-color: var(--primary);
+}
+
+h2 {
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
+.product-img {
+  width: 90% !important;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+h3 {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+/* #endregion PRODUCT DETAILS component */
+
+
 
 /* ------------ HOMEPAGE component ------------ */
 
@@ -380,6 +449,8 @@ footer {
 
 /* #endregion FOOTER */
 
+/* schermi molto grandi */
+
 @media (max-width: 1440px) {
   #jumbotron {
     max-height: 350px !important;
@@ -401,34 +472,135 @@ footer {
   }
 }
 
-@media (max-width: 992px) {
-
-  .payoff {
-    display: none !important;
-  }
-}
-
 /* schermi medi */
 
 @media (max-width: 768px) {
-  .toggler {
+  header {
+    padding: 0.75rem;
+
+    .logo {
+      width: 70px;
+      margin-right: 0;
+    }
+  }
+
+  .collapse.show {
+    display: block;
+  }
+
+  .hamburger {
+    width: 24px;
+    margin: 0 !important;
+  }
+
+  .search {
+    margin-left: 0.25rem !important;
+  }
+
+  .menu {
     display: none;
+  }
+
+  .menu-dx {
+    display: none;
+  }
+
+  .toggler {
+    display: block;
+    z-index: 1050;
+    color: var(--secondary-brown);
+    background-color: transparent !important;
+    border-style: none;
+  }
+
+  .list-unstyled {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    /* sopra il contenuto, sotto il menu */
+    display: none;
+    /* nascondo di default */
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  .menu-container {
+    position: absolute;
+    top: 60px;
+    /* posizione dell'hamburger menu (sotto) */
+    right: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1050;
+    /* sopra l'overlay */
+    display: none;
+    /* nascondo di default */
+    width: 200px;
+  }
+
+  /* mostro il menu */
+  .menu-container.show {
+    display: block;
+  }
+
+  .menu-container ul {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .menu-container ul li {
+    margin-bottom: 1rem;
+  }
+
+  .menu-container ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 16px;
+  }
+
+  .menu-sx {
+    margin-left: 0 !important;
   }
 
   main #jumbotron {
     min-height: 250px;
     max-height: 250px !important;
+    background-size: cover;
+  }
+
+  .jumbo-container {
+    width: 100% !important;
+    padding: 1rem 0 1rem 3rem !important;
   }
 
   .jumbo-title {
-    font-size: 35px !important;
+    font-size: 30px !important;
     padding-bottom: 0 !important;
+    line-height: 2rem !important;
   }
 
   .jumbo-text {
-    font-size: 25px !important;
+    font-size: 20px !important;
     padding-bottom: 0 !important;
     line-height: 1.5rem !important;
+  }
+
+  .explore-btn {
+    font-size: 10px !important;
   }
 
   .food-allergens {
@@ -809,6 +981,24 @@ footer {
 
   .copyright {
     margin-top: 0;
+  }
+}
+
+/* schermi molto piccoli */
+
+@media (max-width: 360px) {
+  .logo {
+    width: 50px !important;
+  }
+
+  .searchbar {
+    padding: 0.5rem 1rem 0.5rem 0.5rem !important;
+    font-size: 9px !important;
+  }
+
+  .food-allergens {
+    width: 40px !important;
+    cursor: pointer;
   }
 }
 
