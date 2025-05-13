@@ -1,7 +1,48 @@
-import { useState } from "react";
+//import hooks
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+//import context
+import { useProductContext } from "../contexts/ProductContext"
+import { useOrderContext } from "../contexts/OrdersContex"
 
 
 export default function Checkout() {
+
+  const { cart, totalPrice } = useProductContext()
+  const { order, setOrder, subtimOrder, orderResponse } = useOrderContext()
+  const navigate = useNavigate()
+
+  //varibili momentanee
+  const [promotion, setPromotion] = useState({
+    promotion_id: 0,
+    promotionCode: "",
+    discount_percentage: 0
+  })
+
+  const [totalNotDiscounted, setTotalNotDiscounted] = useState()
+  const [totalDiscounted, setTotalDiscounted] = useState()
+  const [shipping, setShipping] = useState()
+  const [finalPrice, setFinalPrice] = useState()
+  const [status, setSatus] = useState("shipped")
+  const [productList, setProductList] = useState([])
+
+  useEffect(() => {
+    setProductList(cart?.map(product => {
+      return {
+        product_id: product.id,
+        quantity: product.cartQuantity
+      }
+
+    }))
+  }, [cart])
+
+  useEffect(() => {
+    setTotalNotDiscounted(totalPrice)
+    setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
+    setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
+    setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
+  }, [totalPrice, totalNotDiscounted])
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
@@ -21,11 +62,20 @@ export default function Checkout() {
   const [expirationDate, setExpirationDate] = useState("")
   const [cvv, setCvv] = useState("")
 
+  useEffect(() => {
+    if (orderResponse.orderId) {
+      navigate("/order-confirmation")
+      return
+    } else if (Object.keys(orderResponse).length > 0) {
+      alert(Object.values(orderResponse).join('\n'))
+    }
+  }, [orderResponse])
 
   //function on submit form
   function formSubmit(e) {
     e.preventDefault()
 
+    //validazione dei dati
     const errorList = Validate(
       firstName,
       lastName,
@@ -44,17 +94,27 @@ export default function Checkout() {
       return // interrompe la funzione se ci sono errori
     }
 
+    console.log("check validate")
 
     const formData = {
-      firstName: firstName,
-      lastName: lastName,
+      ...(promotion.promotion_id ? { promotion_id: promotion.promotion_id } : {}),
+      total_not_discounted: totalNotDiscounted,
+      total_discounted: totalDiscounted,
+      shipping: shipping,
+      final_price: finalPrice,
+      status: status,
+      products: productList,
+      firstname: firstName,
+      lastname: lastName,
       phone: phoneNumber,
       mail: userEmail,
-      adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
+      address: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
+    console.log("check create formData", formData)
 
-    console.log(formData)
+    subtimOrder(formData)
+    console.log("checkout create order", order)
 
   }
 
@@ -84,7 +144,7 @@ export default function Checkout() {
     if (userEmail.length < 10) error.userEmail = "Email must be at least 10 characters long"
     if (userEmail.length > 50) error.userEmail = "Email must be at most 50 characters long"
     if (street.length < 5) error.street = "street must be at least 5 characters long"
-    if (street.length > 10) error.street = "street must be at most 10 characters long"
+    if (street.length > 20) error.street = "street must be at most 20 characters long"
     if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
     if (streetNumber.length > 3) error.streetNumber = "streetNumber must be at most 3 characters long"
     if (country.length < 4) error.country = "country must be at least 4 characters long"
@@ -103,6 +163,15 @@ export default function Checkout() {
 
     //faccio un return di error
     return error
+  }
+
+  function CodeValidate() {
+
+    //esegue chiamata funzion API 
+
+    //gestisce la risposta
+
+
   }
 
   return (
@@ -250,7 +319,7 @@ export default function Checkout() {
                     placeholder="MasterCard"
                     value={cardHolder}
                     onChange={e => setCardHolder(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid card Holder
                   </div>
@@ -262,7 +331,7 @@ export default function Checkout() {
                     placeholder="1234-3216-7856-4545"
                     value={cardNumber}
                     onChange={e => setCardNumber(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid card Number
                   </div>
@@ -274,7 +343,7 @@ export default function Checkout() {
                     placeholder="12/06"
                     value={expirationDate}
                     onChange={e => setExpirationDate(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid Expiration Date
                   </div>
@@ -286,7 +355,7 @@ export default function Checkout() {
                     placeholder="360"
                     value={cvv}
                     onChange={e => setCvv(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid CVV
                   </div>
@@ -301,11 +370,57 @@ export default function Checkout() {
 
 
             <div className="col col-4">
-              Summary
+              <section>
+                <h3>Summary</h3>
+                <div className="summayDetails">
+                  <p>
+                    total products: &euro;{totalNotDiscounted}
+                  </p>
+                  <p>
+                    total shipping: &euro;{shipping}
+                  </p>
+                  <p>
+                    total discounted: &euro;{totalNotDiscounted * (promotion.discount_percentage / 100)}
+                  </p>
+                  <p>
+                    final price: &euro;{finalPrice}
+                  </p>
+                  <div className="promotionValidate">
+                    <div className="mb-3">
+                      <label htmlFor="promotion" className="form-label">PromotionCode</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="promotion"
+                        id="promotion"
+                        placeholder="insert your promotion code"
+                        value={promotion.promotionCode}
+                        onChange={e => setPromotion({
+                          promotion_id: 0,
+                          promotionCode: e.target.value,
+                          discount_percentage: 0
+                        })}
+                      />
+                    </div>
+                    <div className="d-grid gap-2 ">
+                      <button
+                        type="button"
+                        name="Verify"
+                        id="Verify"
+                        className="btn btn-primary btnVerify"
+                        onClick={CodeValidate}
+                      >
+                        Verify
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </section>
       </div>
     </>
-  );
+  )
 }
