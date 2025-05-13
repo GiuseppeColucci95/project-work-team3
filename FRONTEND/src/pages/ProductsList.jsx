@@ -142,14 +142,14 @@ export default function ProductList() {
                       products.map(product => (
                         <div key={product.id} className="col">
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                            <div className="row">
-                              <div className="col-4">
+                            <div className="row justify-content-start align-items-start">
+                              <div className="col-1">
                                 <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt="image" />
                               </div>
-                              <div className="col-8">
-                                <h2>{product.name}</h2>
-                                <p className="d-none d-md-block">{product.description}</p>
-                                <h4>{`${product.price}€`}</h4>
+                              <div className="col-11">
+                                <h4 className="p-0 m-0">{product.name}</h4>
+                                <p className="d-none d-md-block p-0 m-0 text-truncate">{product.description}</p>
+                                <h6 className="p-0 m-0">{`${product.price}€`}</h6>
                               </div>
                             </div>
                           </Link>
