@@ -65,7 +65,8 @@ export default function Checkout() {
   useEffect(() => {
     if (orderResponse.orderId) {
       navigate("/order-confirmation")
-    } else if (oObject.keys(orderResponse).length > 0) {
+      return
+    } else if (Object.keys(orderResponse).length > 0) {
       alert(Object.values(orderResponse).join('\n'))
     }
   }, [orderResponse])

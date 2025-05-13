@@ -10,7 +10,6 @@ export default function OrderConfirmation() {
   return (
     <>
       <h1>Order confirmetion</h1>
-      {alert(Object.values(orderResponse).join('\n'))}
     </>
   );
 }
