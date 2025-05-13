@@ -361,9 +361,9 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <div className="col-12">
+                {/* <div className="col-12">
                   <button className="btn btn-primary" type="submit">PAY NOW</button>
-                </div>
+                </div> */}
 
               </form>
             </div>
@@ -416,6 +416,10 @@ export default function Checkout() {
 
                   </div>
                 </div>
+
+
+                <button className="btn btn-primary mt-3" type="submit">PAY NOW</button>
+
               </section>
             </div>
           </div>
