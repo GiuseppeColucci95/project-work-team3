@@ -384,15 +384,18 @@ footer {
   #jumbotron {
     max-height: 350px !important;
   }
+
   .jumbo-title {
     font-size: 50px !important;
     padding-bottom: 0 !important;
   }
+
   .jumbo-text {
     font-size: 25px !important;
     padding-bottom: 1rem !important;
     line-height: 2rem !important;
   }
+
   .explore-btn {
     font-size: 20px !important;
   }
@@ -761,27 +764,28 @@ footer {
     width: 60px !important;
     cursor: pointer;
   }
+
   .payoff {
     width: 100% !important;
   }
-  
+
   .footer-menu {
     gap: 1.5rem !important;
-  
+
     h4 {
       font-size: 24px;
     }
   }
-  
+
   .footer-menu ul {
     padding-left: 0;
   }
-  
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
-  
+
   .copyright {
     margin-top: 0;
   }
