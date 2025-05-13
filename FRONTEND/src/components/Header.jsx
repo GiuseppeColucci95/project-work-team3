@@ -1,5 +1,5 @@
 //react imports
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
 
@@ -13,6 +13,7 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   //imports from custom context
   const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
+  const navigate = useNavigate();
 
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
@@ -32,8 +33,12 @@ export default function Header() {
 
   //function to handle submit
   function handleSubmit(e) {
+    //prevent the default behavior
     e.preventDefault();
 
+    if (search.q.length > 0) {
+      navigate(`/search?q=${search.q}`);
+    }
   }
 
   //function to handle change

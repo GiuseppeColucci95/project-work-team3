@@ -1,17 +1,37 @@
 //react import
 import { useEffect, useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 //component exports
 export default function ProductList() {
 
   //logic
   const [viewMode, setViewMode] = useState('grid');
-  const { products, getAllProducts, setSearchChangeFunction } = useProductContext();
+  const { products, getAllProducts, setSearchChangeFunction, setSearch, getSearchedProducts } = useProductContext();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   //useEffect on page start
   useEffect(() => {
+
+    const object = {};
+
+    object.q = searchParams.get('q') ? object.q = searchParams.get('q') : '';
+    object.category = searchParams.get('category') ? object.category = searchParams.get('category') : '';
+    object.tag = searchParams.get('tag') ? object.tag = searchParams.get('tag') : '';
+    object.orderby = searchParams.get('orderby') ? object.orderby = searchParams.get('orderby') : '';
+    object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
+    object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
+
+    // object.tag = searchParams.get('tag');
+    // object.orderby = searchParams.get('orderby');
+    // object.order = searchParams.get('order');
+    // object.promotion = searchParams.get('promotion');
+
+    console.log('object', object);
+    setSearch(object);
+
+    getSearchedProducts(object);
     getAllProducts();
   }, []);
 
@@ -19,6 +39,7 @@ export default function ProductList() {
   function handleSelectChange(e) {
 
     console.log('target name', e.target.name, 'target value', e.target.value);
+    setSearchParams(e.target.name, e.target.value);
 
 
     setSearchChangeFunction(e.target);
