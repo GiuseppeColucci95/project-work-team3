@@ -339,11 +339,25 @@ function ProductProvider({ children }) {
     const objectToSet = search;
 
     if (target.name === 'orderby') {
-      nameToSplit = target.value;
+      const nameToSplit = target.value;
 
+      const splitted = nameToSplit.split(' ');
+      if (splitted[0] === 'ascending' || splitted[0] === 'least') {
+        objectToSet.order = 'asc';
+      } else {
+        objectToSet.order = 'desc';
+      }
+      if (splitted[1] === 'price') {
+        objectToSet.orderby = 'price';
+      } else if (splitted[1] === 'name') {
+        objectToSet.orderby = 'name';
+      } else {
+        objectToSet.orderby = 'recents';
+      }
+
+    } else {
+      objectToSet[target.name] = target.value;
     }
-
-    objectToSet[target.name] = target.value;
 
     setSearch(objectToSet);
     getSearchedProducts(objectToSet);
@@ -359,7 +373,6 @@ function ProductProvider({ children }) {
       })
       .catch(err => console.error(err));
   }
-
 
   //useEffect to get cart and wishlist at start of the page
   useEffect(() => {
