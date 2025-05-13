@@ -30,6 +30,7 @@ function ProductProvider({ children }) {
   const [wishlist, setWishlist] = useState(null);
   const [cart, setCart] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [orderBy, setOrderBy] = useState('');
   const [search, setSearch] = useState({
     q: '',
     category: '',
@@ -339,6 +340,7 @@ function ProductProvider({ children }) {
     const objectToSet = search;
 
     if (target.name === 'orderby') {
+      setOrderBy(target.value);
       const nameToSplit = target.value;
 
       if (nameToSplit === '') {
@@ -363,7 +365,7 @@ function ProductProvider({ children }) {
       objectToSet[target.name] = target.value;
     }
 
-    console.log(objectToSet);
+    console.log('nuovo oggetto ricerca', objectToSet);
 
     setSearch(objectToSet);
     getSearchedProducts(objectToSet);
@@ -395,7 +397,8 @@ function ProductProvider({ children }) {
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
-      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice, orderBy, setOrderBy,
+      search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice
     }}>
       {children}
     </ProductContext.Provider>
