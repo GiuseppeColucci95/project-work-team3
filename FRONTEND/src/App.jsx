@@ -43,7 +43,7 @@ export default function App() {
                 <Route path='/search' Component={ProductsList}></Route>
                 <Route path='/products/:slug' Component={ProductDetails}></Route>
                 <Route path='/diseases/:tag' Component={TagProductsList}></Route>
-                <Route path='/category/:category' Component={CategoryProductsList}></Route>
+                <Route path='/categories/:category' Component={CategoryProductsList}></Route>
                 <Route path='/wishlist' Component={Wishlist}></Route>
                 <Route path='/cart' Component={Cart}></Route>
                 <Route path='/checkout' Component={Checkout}></Route>
