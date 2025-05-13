@@ -63,7 +63,7 @@ export default function ProductDetails() {
                 <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
                   <div id="image-description" className="mt-3">
                     <h2>{selectedProduct.name}</h2>
-                    <h5>{selectedProduct.description}</h5>
+                    <p>{selectedProduct.description}</p>
                   </div>
 
                   <div id="tags">
@@ -88,16 +88,16 @@ export default function ProductDetails() {
                         <button className="btn btn-primary">+</button>
                       </div> */}
                       <div>
-                        <button onClick={() => addCartProduct(selectedProduct)} className="btn btn-primary px-5 me-1">ADD TO CART</button>
+                        <button onClick={() => addCartProduct(selectedProduct)} className="btn-add px-5 me-1">ADD TO CART</button>
                       </div>
                       <div>
                         <button onClick={() => addWishlistProduct(selectedProduct)}
-                          className={`${isInWishlist(selectedProduct) ? ('d-none') : ('btn btn-primary')}`}>
-                          <i className="bi bi-heart"></i>
+                          className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
+                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="wishlist image" />
                         </button>
                         <button onClick={() => removeWishlistProduct(selectedProduct)}
-                          className={`${isInWishlist(selectedProduct) ? ('btn btn-primary') : ('d-none')}`}>
-                          <i className="bi bi-heart-fill"></i>
+                          className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
+                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="wishlist image" />
                         </button>
                       </div>
                     </div>
@@ -115,10 +115,10 @@ export default function ProductDetails() {
 
       <section id="related-products" className="my-5">
         <div className="container mt-5">
-          <h2>RELATED PRODUCTS</h2>
+{/*           <h2>RELATED PRODUCTS</h2>
           <h4>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus id quidem quod tenetur tempore nobis beatae exercitationem laborum. Sint sed et ad. Incidunt omnis alias beatae libero quas illo doloribus.
-          </h4>
+          </h4> */}
 
           <section id="tag-related-products" className="my-5">
             <h3>TAG RELATED PRODUCTS</h3>
