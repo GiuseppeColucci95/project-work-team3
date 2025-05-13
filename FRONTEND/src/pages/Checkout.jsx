@@ -1,37 +1,40 @@
-import { useState } from "react"
+//import hooks
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+//import context
 import { useProductContext } from "../contexts/ProductContext"
+import { useOrderContext } from "../contexts/OrdersContex"
 
 
 export default function Checkout() {
 
-
-  /*
-"promotion_id"
-"total_not_discounted"
-"total_discounted"
-"shipping":
-"final_price":
-"status":
-*/
-
   const { cart, totalPrice } = useProductContext()
+  const { setOrder, subtimOrder, orderResponse } = useOrderContext()
 
   //varibili momentanee
   const [promotion, setPromotion] = useState({
     promotion_id: 0,
+    promotionCode: "",
     discount_percentage: 0
   })
-  const [totalDiscounted, setTotalDiscounted] = useState(totalPrice)
-  const [shipping, setShipping] = useState(9.99)
-  const [finalPrice, setFinalPrice] = useState(totalDiscounted + shipping)
-  const [status, setSatus] = useState("shipping")
-  const [productList, setProductList] = useState(cart.map(product => {
-    return {
-      id: product.id,
-      quntity: product.cartQuantity
-    }
 
-  }))
+  const [totalNotDiscounted, setTotalNotDiscounted] = useState(totalPrice)
+  const [totalDiscounted, setTotalDiscounted] = useState(totalNotDiscounted * (promotion.discount_percentage / 100))
+  const [shipping, setShipping] = useState(totalNotDiscounted < 39.99 ? 9.99 : 0)
+  const [finalPrice, setFinalPrice] = useState(totalNotDiscounted + shipping - totalDiscounted)
+  const [status, setSatus] = useState("shipped")
+  const [productList, setProductList] = useState([])
+
+  useEffect(() => {
+    setProductList(cart?.map(product => {
+      return {
+        product_id: product.id,
+        quantity: product.cartQuantity
+      }
+
+    }))
+  }, [cart])
 
   console.log("cart checkuot", cart)
   console.log("checkuot", productList)
@@ -81,12 +84,13 @@ export default function Checkout() {
 
 
     const formData = {
-      "promotion_id": 2,
-      "total_not_discounted": 45.90,
-      "total_discounted": 39.90,
-      "shipping": 4.99,
-      "final_price": 44.89,
-      "status": "shipped",
+      promotion_id: promotion.promotion_id,
+      total_not_discounted: totalNotDiscounted,
+      total_discounted: totalDiscounted,
+      shipping: shipping,
+      final_price: finalPrice,
+      status: status,
+      products: productList,
       firstName: firstName,
       lastName: lastName,
       phone: phoneNumber,
@@ -94,8 +98,9 @@ export default function Checkout() {
       adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-
     console.log(formData)
+
+    useNavigate("/order-confirmation")
 
   }
 
@@ -144,6 +149,15 @@ export default function Checkout() {
 
     //faccio un return di error
     return error
+  }
+
+  function CodeValidate() {
+
+    //esegue chiamata funzion API 
+
+    //gestisce la risposta
+
+
   }
 
   return (
@@ -342,11 +356,57 @@ export default function Checkout() {
 
 
             <div className="col col-4">
-              Summary
+              <section>
+                <h3>Summary</h3>
+                <div className="summayDetails">
+                  <p>
+                    total products: &euro;{totalNotDiscounted}
+                  </p>
+                  <p>
+                    total shipping: &euro;{shipping}
+                  </p>
+                  <p>
+                    total discounted: &euro;{totalNotDiscounted * (promotion.discount_percentage / 100)}
+                  </p>
+                  <p>
+                    final price: &euro;{finalPrice}
+                  </p>
+                  <div className="promotionValidate">
+                    <div className="mb-3">
+                      <label htmlFor="promotion" className="form-label">PromotionCode</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="promotion"
+                        id="promotion"
+                        placeholder="insert your promotion code"
+                        value={promotion.promotionCode}
+                        onChange={e => setPromotion({
+                          promotion_id: 0,
+                          promotionCode: e.target.value,
+                          discount_percentage: 0
+                        })}
+                      />
+                    </div>
+                    <div class="d-grid gap-2 ">
+                      <button
+                        type="button"
+                        name="Verify"
+                        id="Verify"
+                        class="btn btn-primary btnVerify"
+                        onClick={CodeValidate}
+                      >
+                        Verify
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </section>
       </div>
     </>
-  );
+  )
 }
