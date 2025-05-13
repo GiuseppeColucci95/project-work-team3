@@ -472,6 +472,18 @@ footer {
   }
 }
 
+@media (min-width: 992px) {
+  .payoff {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .payoff {
+    display: block !important;
+  }
+}
+
 /* schermi medi */
 
 @media (max-width: 768px) {
