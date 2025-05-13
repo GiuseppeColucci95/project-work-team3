@@ -472,9 +472,17 @@ footer {
   }
 }
 
-@media (min-width: 992px) {
+
+@media (min-width: 770px) {
   .payoff {
     display: none !important;
+  }
+
+
+  .footer-menu-ce {
+    flex-wrap: wrap !important;
+    gap: 2rem;
+    justify-content: center;
   }
 }
 
@@ -866,6 +874,7 @@ footer {
 
   .payoff {
     width: 100% !important;
+    display: none !important;
   }
 
   .footer-menu {
