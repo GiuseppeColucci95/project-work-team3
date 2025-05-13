@@ -10,7 +10,7 @@ import { useOrderContext } from "../contexts/OrdersContex"
 export default function Checkout() {
 
   const { cart, totalPrice } = useProductContext()
-  const { setOrder, subtimOrder, orderResponse } = useOrderContext()
+  const { order, setOrder, subtimOrder, orderResponse } = useOrderContext()
 
   //varibili momentanee
   const [promotion, setPromotion] = useState({
@@ -35,11 +35,6 @@ export default function Checkout() {
 
     }))
   }, [cart])
-
-  console.log("cart checkuot", cart)
-  console.log("checkuot", productList)
-
-
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
@@ -98,7 +93,16 @@ export default function Checkout() {
       adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    console.log(formData)
+    setOrder(formData)
+
+    console.log("checkout", order)
+
+    subtimOrder()
+
+    if (!orderResponse.orderId) {
+      alert(Object.values(orderResponse).join('\n'))
+      return
+    }
 
     useNavigate("/order-confirmation")
 
@@ -388,12 +392,12 @@ export default function Checkout() {
                         })}
                       />
                     </div>
-                    <div class="d-grid gap-2 ">
+                    <div className="d-grid gap-2 ">
                       <button
                         type="button"
                         name="Verify"
                         id="Verify"
-                        class="btn btn-primary btnVerify"
+                        className="btn btn-primary btnVerify"
                         onClick={CodeValidate}
                       >
                         Verify

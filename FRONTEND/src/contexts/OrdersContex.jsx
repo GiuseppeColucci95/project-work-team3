@@ -12,7 +12,7 @@ function OrderProvider({ children }) {
     const [order, setOrder] = useState({})
     const [orderResponse, setOrderResponse] = useState({})
 
-    function subtimOrder() {
+    async function subtimOrder() {
 
         const api_header = {
             headers: {
@@ -34,7 +34,7 @@ function OrderProvider({ children }) {
 
     return (
         <OrderContext.Provider value={{
-            setOrder, subtimOrder, orderResponse
+            order, setOrder, subtimOrder, orderResponse
         }}>
             {children}
         </OrderContext.Provider>
