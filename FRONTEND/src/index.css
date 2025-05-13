@@ -343,7 +343,7 @@ h6 {
 }
 
 .btn-add:hover {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .favourites {
@@ -358,7 +358,7 @@ h6 {
 }
 
 .favourites:hover {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 h2 {
@@ -486,11 +486,24 @@ footer {
   .explore-btn {
     font-size: 20px !important;
   }
+  #product-title {
+    font-size: 26px;
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
+  }
+  #product-text {
+    font-size: 14px;
+    line-height: 1.5rem;
+  }
 }
 
-@media (min-width: 992px) {
-  .payoff {
-    display: none !important;
+/* schermi medio-grandi */
+@media (max-width: 1280px) {
+  .product-container {
+    width: 70%;
+  }
+  .product-img {
+    margin-bottom: 1rem;
   }
 }
 
@@ -517,11 +530,35 @@ footer {
   .jumbo-container {
     width: 100% !important;
   }
-}
-
-@media (max-width: 1200px) {
-  .payoff {
-    display: none !important;
+  .jumbo-title {
+    font-size: 40px !important;
+    padding-bottom: 0 !important;
+  }
+  .jumbo-text {
+    font-size: 20px !important;
+    padding-bottom: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  .explore-btn {
+    font-size: 15px !important;
+  }
+  .food-allergens {
+    width: 90px !important;
+  }
+  .product-container {
+    width: 70%;
+  }
+  .product-img {
+    margin-bottom: 1rem;
+  }
+  .img-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+  .img-descr {
+    width: 80% !important;
   }
 }
 
@@ -536,28 +573,19 @@ footer {
       margin-right: 0;
     }
   }
-
-  .collapse.show {
-    display: block;
-  }
-
   .hamburger {
     width: 24px;
     margin: 0 !important;
   }
-
   .search {
     margin-left: 0.25rem !important;
   }
-
   .menu {
     display: none;
   }
-
   .menu-dx {
     display: none;
   }
-
   .toggler {
     display: block;
     z-index: 1050;
@@ -565,13 +593,11 @@ footer {
     background-color: transparent !important;
     border-style: none;
   }
-
   .list-unstyled {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-
   .overlay {
     position: fixed;
     top: 0;
@@ -584,11 +610,9 @@ footer {
     display: none;
     /* nascondo di default */
   }
-
   .overlay.show {
     display: block;
   }
-
   .menu-container {
     position: absolute;
     top: 60px;
@@ -603,82 +627,73 @@ footer {
     /* nascondo di default */
     width: 200px;
   }
-
   /* mostro il menu */
   .menu-container.show {
     display: block;
   }
-
   .menu-container ul {
     list-style: none;
     padding: 1rem;
     margin: 0;
   }
-
   .menu-container ul li {
     margin-bottom: 1rem;
   }
-
   .menu-container ul li a {
     text-decoration: none;
     color: var(--dark);
     font-size: 16px;
   }
-
   .menu-sx {
     margin-left: 0 !important;
   }
-
   main #jumbotron {
     min-height: 250px;
     max-height: 250px !important;
     background-size: cover;
   }
-
   .jumbo-container {
     width: 100% !important;
     padding: 1rem 0 1rem 3rem !important;
   }
-
   .jumbo-title {
     font-size: 30px !important;
     padding-bottom: 0 !important;
     line-height: 2rem !important;
   }
-
   .jumbo-text {
     font-size: 20px !important;
     padding-bottom: 0 !important;
     line-height: 1.5rem !important;
   }
-
   .explore-btn {
     font-size: 10px !important;
   }
-
   .food-allergens {
     width: 100px !important;
     cursor: pointer;
   }
-
   .img-description {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 3rem;
   }
-
   .img-descr {
     width: 80% !important;
     height: auto;
   }
-
   .description-text {
     font-size: 25px !important;
     padding-left: 0 !important;
     margin-bottom: 0 !important;
   }
-
+  .product-container {
+    width: 70%;
+  }
+  .product-img {
+    margin-bottom: 1rem;
+  }
   footer {
     padding: 1rem;
     text-align: center;
@@ -687,23 +702,19 @@ footer {
       color: var(--dark);
     }
   }
-
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center !important;
   }
-
   .footer-logo {
     flex-direction: column;
     margin-bottom: 2rem;
   }
-
   .payoff {
     width: 100% !important;
     display: block !important;
   }
-
   .footer-menu {
     padding-left: 0 !important;
 
@@ -711,20 +722,13 @@ footer {
       font-size: 26px;
     }
   }
-
-  .footer-menu-ce {
-    padding-bottom: 2rem !important;
-  }
-
   .footer-logo-img {
     width: 130px !important;
   }
-
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
-
   .copyright {
     margin-top: 0;
   }
@@ -883,7 +887,20 @@ footer {
     padding-left: 0 !important;
     margin-bottom: 0 !important;
   }
-
+  .product-container {
+    width: 80% !important;
+  }
+  .product-img {
+    margin-bottom: 1rem;
+  }
+  .btn-add {
+    padding: 0.75rem 2rem 0.75rem !important;
+    font-size: 16px;
+  }
+  button.favourites {
+    padding: 0.75rem 2rem 0.75rem !important;
+    width: 90px;
+  }
   footer {
     padding: 1rem;
     text-align: center;
@@ -959,7 +976,6 @@ footer {
     display: block;
     z-index: 1050;
   }
-
   .menu-sx {
     margin-left: 0 !important;
   }
@@ -1010,7 +1026,13 @@ footer {
     width: 60px !important;
     cursor: pointer;
   }
-
+  .product-container {
+    width: 80% !important;
+  }
+  .btn-add {
+    padding: 0.65rem 1.5rem 0.65rem !important;
+    font-size: 12px;
+  }
   .payoff {
     width: 100% !important;
   }
@@ -1053,14 +1075,11 @@ footer {
     width: 40px !important;
     cursor: pointer;
   }
-}
-
-@media (max-width: 375px) {
-  .payoff {
-    display: none !important;
+  .product-container {
+    width: 80% !important;
   }
-
-  .footer-menu-ce {
-    padding-bottom: 3rem !important;
+  .btn-add {
+    padding: 0.65rem 1.5rem 0.65rem !important;
+    font-size: 12px;
   }
 }

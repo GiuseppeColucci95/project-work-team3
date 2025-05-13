@@ -62,8 +62,8 @@ export default function ProductDetails() {
                 {/* IMAGE */}
                 <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
                   <div id="image-description" className="mt-3">
-                    <h2>{selectedProduct.name}</h2>
-                    <p>{selectedProduct.description}</p>
+                    <h2 id="product-title">{selectedProduct.name}</h2>
+                    <p id="product-text">{selectedProduct.description}</p>
                   </div>
 
                   <div id="tags">
@@ -93,11 +93,11 @@ export default function ProductDetails() {
                       <div>
                         <button onClick={() => addWishlistProduct(selectedProduct)}
                           className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
-                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="wishlist icon" />
+                          <img className="menu-icons add-wishlist" src="/img/favourites-empty.svg" alt="wishlist icon" />
                         </button>
                         <button onClick={() => removeWishlistProduct(selectedProduct)}
                           className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
-                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="favourites icon" />
+                          <img className="menu-icons add-wishlist" src="/img/favourites-full.svg" alt="favourites icon" />
                         </button>
                       </div>
                     </div>
