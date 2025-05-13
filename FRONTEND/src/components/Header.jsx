@@ -96,8 +96,8 @@ export default function Header() {
           </nav>
         </div>
         <div className="menu-dx">
-          <Link to={'/wishlist'}><img className="menu-icons" src="/img/favourites.svg" alt="wishlist image" /></Link>
-          <Link to={'/cart'}><img className="menu-icons" src="/img/cart.svg" alt="cart image" /></Link>
+          <Link to={'/wishlist'}><img className="text-decoration-none active menu-icons wishlist" src="/img/favourites.svg" alt="wishlist image" /></Link>
+          <Link to={'/cart'}><img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image" /></Link>
         </div>
       </header>
     </>
