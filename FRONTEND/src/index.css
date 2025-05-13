@@ -822,6 +822,14 @@ footer {
 
 /* schermi medio-piccoli */
 
+@media (max-width: 605px) {
+
+  .footer-menu-ce {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+}
+
 @media (max-width: 576px) {
   header {
     padding: 0.75rem;
@@ -1022,7 +1030,7 @@ footer {
     padding-left: 0 !important;
 
     h4 {
-      font-size: 26px;
+      font-size: 20px;
       margin-bottom: 0.5rem !important;
     }
   }
