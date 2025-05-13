@@ -17,12 +17,25 @@ export default function Checkout() {
   const { cart, totalPrice } = useProductContext()
 
   //varibili momentanee
+  const [promotion, setPromotion] = useState({
+    promotion_id: 0,
+    discount_percentage: 0
+  })
   const [totalDiscounted, setTotalDiscounted] = useState(totalPrice)
   const [shipping, setShipping] = useState(9.99)
   const [finalPrice, setFinalPrice] = useState(totalDiscounted + shipping)
   const [status, setSatus] = useState("shipping")
+  const [productList, setProductList] = useState(cart.map(product => {
+    return {
+      id: product.id,
+      quntity: product.cartQuantity
+    }
+
+  }))
 
   console.log("cart checkuot", cart)
+  console.log("checkuot", productList)
+
 
 
   //variabili del form utente
@@ -68,6 +81,12 @@ export default function Checkout() {
 
 
     const formData = {
+      "promotion_id": 2,
+      "total_not_discounted": 45.90,
+      "total_discounted": 39.90,
+      "shipping": 4.99,
+      "final_price": 44.89,
+      "status": "shipped",
       firstName: firstName,
       lastName: lastName,
       phone: phoneNumber,
