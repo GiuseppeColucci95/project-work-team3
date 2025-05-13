@@ -182,7 +182,7 @@ function search(req, res) {
     const pattern = req.query.q
     const category = req.query.category
     const tag = req.query.tag
-    let orderBy = req.query.orderby //price, name, recets
+    let orderBy = req.query.orderby //price, name, recents
     const order = req.query.order //asc, desc
 
     console.log(category, tag, orderBy, order)
@@ -231,24 +231,24 @@ function search(req, res) {
         }
 
         if (order && orderBy) {
-            if (orderBy === 'recents') orderBy = "created_at"
+            if (orderBy.toLowerCase() === 'recents') orderBy = "created_at"
             filteredProducts.sort((a, b) => {
                 let valA = a[orderBy];
                 let valB = b[orderBy];
 
                 // Gestione per il campo 'name'
-                if (orderBy === 'name') {
+                if (orderBy.toLowerCase() === 'name') {
                     valA = valA.toLowerCase();
                     valB = valB.toLowerCase();
-                    if (order === 'asc') {
-                        return valA.localeCompare(valB);
+                    if (order.toLowerCase() === 'asc') {
+                        return valA.localeCompare(valB)
                     } else {
-                        return valB.localeCompare(valA);
+                        return valB.localeCompare(valA)
                     }
                 }
 
                 // Gestione per il campo 'price'
-                if (orderBy === 'price') {
+                if (orderBy.toLowerCase() === 'price') {
                     valA = parseFloat(valA);
                     valB = parseFloat(valB);
                 }
@@ -260,7 +260,7 @@ function search(req, res) {
                 }
 
                 //gestione dell'ordinamento
-                if (order === 'asc') {
+                if (order.toLowerCase() === 'asc') {
                     //crescente
                     //ritorna 1 se valA è maggiore di valB quindi valA è un elemento che va messo dopo valB
                     //ritorna -1 se valA è minore di valB quindi valA è un elemento che messo prima di valB
