@@ -179,7 +179,7 @@ function search(req, res) {
                     WHERE cp.product_id = ?
                 `
     //q&category&tag&orderby&order
-    const pattern = req.query.q
+    const pattern = req.query.q.toLowerCase()
     const category = req.query.category
     const tag = req.query.tag
     let orderBy = req.query.orderby //price, name, recents
@@ -218,7 +218,7 @@ function search(req, res) {
             //primo filter per interare nell'array
             filteredProducts = filteredProducts.filter(product => {
                 //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
-                return product.name.includes(pattern)
+                return product.name.toLowerCase().includes(pattern)
             })
         }
 
