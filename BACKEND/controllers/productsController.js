@@ -213,6 +213,15 @@ function search(req, res) {
         //dichiaro e iniziallizzo un'array per il filtro
         let filteredProducts = products
 
+        //filter by product name
+        if (pattern) {
+            //primo filter per interare nell'array
+            filteredProducts = filteredProducts.filter(product => {
+                //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
+                return product.name.includes(pattern)
+            })
+        }
+
         //controllo se esiste un parametro category
         if (category) {
             //primo filter per interare nell'array
