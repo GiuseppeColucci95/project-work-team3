@@ -196,15 +196,15 @@ export default function Checkout() {
 
   return (
     <>
-      <div className="container">
+      <div className="container mb-5">
         <section className="checkout">
           <h3 className="text-center">Checkout</h3>
           <div className="row">
-            <div className="col-8 p-3">
+            <div className="col-8 p-3 bg-body-tertiary">
 
               <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
-                <h3>Your info</h3>
+                <h3 className="text-success">Your info</h3>
 
                 <div className="col-md-6">
                   <label htmlFor="firstName" className="form-label">First name</label>
@@ -331,7 +331,7 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <h3>Payment</h3>
+                <h3 className="text-success">Payment</h3>
 
                 <div className="col-md-12">
                   <label htmlFor="cardHolder" className="form-label">Card Holder</label>
@@ -389,9 +389,9 @@ export default function Checkout() {
             </div>
 
 
-            <div className="col-4 bg-success text-white">
+            <div className="col-4 bg-body-secondary">
               <section>
-                <h3>Summary</h3>
+                <h3 className="text-success p-3">Summary</h3>
                 <div className="summayDetails">
                   <p>
                     total products: &euro;{totalNotDiscounted}
