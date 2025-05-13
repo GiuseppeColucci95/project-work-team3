@@ -418,7 +418,7 @@ export default function Checkout() {
                 </div>
 
 
-                <button className="btn btn-primary mt-3" type="submit">PAY NOW</button>
+                <button className="btn btn-primary mt-3" type="submit" onClick={formSubmit}>PAY NOW</button>
 
               </section>
             </div>
