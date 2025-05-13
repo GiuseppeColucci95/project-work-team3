@@ -14,6 +14,10 @@ export default function Header() {
   //imports from custom context
   const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
 
+    const toggleDropdown = (menu) => {
+    setDropdownOpen(dropdownOpen === menu ? null : menu);
+  };
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -96,8 +100,28 @@ export default function Header() {
             <div className="bg-light menu-hamburger p-4">
               <ul className="list-unstyled">
                 <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
-                <li><NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink></li>
-                <li><NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink></li>
+                <div className="dropdown-center">
+                  <button type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Pathology
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
+                    <li><NavLink to="/diseases/sugar-free">Sugar-free</NavLink></li>
+                    <li><NavLink to="/diseases/lactose-free">Lactose-free</NavLink></li>
+                    <li><NavLink to="/diseases/nut-free">Nuts-free</NavLink></li>
+                    <li><NavLink to="/diseases/nickel-free">Nickel-free</NavLink></li>
+                  </ul>
+                </div>
+                <div className="dropdown-center">
+                  <button type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                  </button>
+                  <ul className="dropdown-menu">
+                  <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
+                  <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
+                  <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
+                  </ul>
+                </div>
                 <li><Link to={'/wishlist'}>Favourites</Link></li>
                 <li><Link to={'/cart'}>Cart</Link></li>
               </ul>
