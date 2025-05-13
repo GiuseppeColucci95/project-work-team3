@@ -336,13 +336,22 @@ function ProductProvider({ children }) {
   //function to set search variable state and call the fetch function
   function setSearchChangeFunction(target) {
 
-    setSearch(searchToSet);
-    getSearchedProducts(searchToSet);
+    const objectToSet = search;
+
+    if (target.name === 'orderby') {
+      nameToSplit = target.value;
+
+    }
+
+    objectToSet[target.name] = target.value;
+
+    setSearch(objectToSet);
+    getSearchedProducts(objectToSet);
   }
 
   //function to get searched products
   function getSearchedProducts(searchObject) {
-    fetch(`${connection}${productsPath}${searchPath}?q=${searchObject.q}`)
+    fetch(`${connection}${productsPath}${searchPath}?q=${searchObject.q}&category=${searchObject.category}&tag=${searchObject.tag}&orderby=${searchObject.orderby}&order=${searchObject.order}&promotion=${searchObject.promotion}`)
       .then(res => res.json())
       .then(data => {
 

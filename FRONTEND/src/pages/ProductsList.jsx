@@ -18,6 +18,7 @@ export default function ProductList() {
   //function to handle select change
   function handleSelectChange(e) {
 
+    setSearchChangeFunction(e.target);
   }
 
   //template
@@ -48,14 +49,34 @@ export default function ProductList() {
           <div className="mb-5 d-flex justify-content-between">
             <div className="d-flex justify-content-center align-items-center gap-2">
               Order by:
-              <select onChange={handleSelectChange} name="order" id="order" className="ms-1 px-2">
+              <select onChange={handleSelectChange} name="orderby" id="orderby" className="px-1 me-3">
                 <option value="">Select an order</option>
-                <option value="Ascending price">Ascending price</option>
-                <option value="Descending price">Descending price</option>
-                <option value="Ascending name">Ascending name</option>
-                <option value="Descending name">Descending name</option>
-                <option value="Most recents">Most recents</option>
-                <option value="Least recents">Least recents</option>
+                <option value="ascending price">Ascending price</option>
+                <option value="descending price">Descending price</option>
+                <option value="ascending name">Ascending name</option>
+                <option value="descending name">Descending name</option>
+                <option value="most recents">Most recents</option>
+                <option value="least recents">Least recents</option>
+              </select>
+              Tag:
+              <select onChange={handleSelectChange} name="tag" id="tag" className="px-1 me-3">
+                <option value="">Select a category</option>
+                <option value="lactose free">Lactose free</option>
+                <option value="sugar free">Sugar free</option>
+                <option value="sluten free">Gluten free</option>
+                <option value="nickel free">Nickel free</option>
+                <option value="nuts free">Nuts free</option>
+                <option value="fish free">Fish free</option>
+                <option value="egg free">Egg free</option>
+                <option value="soy free">Soy free</option>
+                <option value="shellfish free">Shellfish free</option>
+              </select>
+              Category:
+              <select onChange={handleSelectChange} name="category" id="category" className="px-1 me-3">
+                <option value="">Select a category</option>
+                <option value="snacks">Snacks</option>
+                <option value="beverages">Beverages</option>
+                <option value="bakery">Bakery</option>
               </select>
             </div>
 
