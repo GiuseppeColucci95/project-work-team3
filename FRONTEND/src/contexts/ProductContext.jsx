@@ -240,8 +240,8 @@ function ProductProvider({ children }) {
   //function to clear cart and totalPrice
   function clearCartTotalPrice() {
 
-    localStorage.setItem('cart', '');
-    localStorage.setItem('totalPrice', '');
+    localStorage.removeItem('cart');
+    localStorage.removeItem('totalPrice');
   }
 
   //function to add an element to cart
