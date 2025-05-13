@@ -519,6 +519,12 @@ footer {
   }
 }
 
+@media (max-width: 1200px) {
+  .payoff {
+    display: none !important;
+  }
+}
+
 /* schermi medi */
 
 @media (max-width: 825px) {
