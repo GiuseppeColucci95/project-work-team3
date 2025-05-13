@@ -15,7 +15,7 @@ export default function Checkout() {
 
   //varibili momentanee
   const [promotion, setPromotion] = useState({
-    promotion_id: 1,
+    promotion_id: 0,
     promotionCode: "",
     discount_percentage: 0
   })
@@ -97,7 +97,7 @@ export default function Checkout() {
     console.log("check validate")
 
     const formData = {
-      promotion_id: promotion.promotion_id,
+      ...(promotion.promotion_id ? { promotion_id: promotion.promotion_id } : {}),
       total_not_discounted: totalNotDiscounted,
       total_discounted: totalDiscounted,
       shipping: shipping,
