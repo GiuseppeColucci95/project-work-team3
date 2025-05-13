@@ -116,16 +116,6 @@ export default function Checkout() {
     subtimOrder(formData)
     console.log("checkout create order", order)
 
-    //console.log("checkout submitOrder", orderResponse)
-
-
-    /* if (!orderResponse.orderId) {
-      alert(Object.values(orderResponse).join('\n'))
-      return
-    }
-
-    useNavigate("/order-confirmation") */
-
   }
 
   function Validate(firstName, lastName, userEmail, street, streetNumber, country, city, province, postalCode) {
