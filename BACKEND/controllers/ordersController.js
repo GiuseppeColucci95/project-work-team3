@@ -13,6 +13,9 @@ function create(req, res) {
 
     const order = req.body
 
+    console.log(order);
+
+
     //query to insert an element into orders tables
     const insertOrder = `INSERT INTO orders (promotion_id, firstname, lastname, mail, phone, address, total_not_discounted, total_discounted, shipping, final_price, status, created_at)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`

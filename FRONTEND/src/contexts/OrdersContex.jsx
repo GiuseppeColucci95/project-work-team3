@@ -12,7 +12,9 @@ function OrderProvider({ children }) {
     const [order, setOrder] = useState({})
     const [orderResponse, setOrderResponse] = useState({})
 
-    async function subtimOrder() {
+    async function subtimOrder(formData) {
+
+        setOrder(formData)
 
         const api_header = {
             headers: {
@@ -23,7 +25,7 @@ function OrderProvider({ children }) {
             body: JSON.stringify(order)
         }
 
-        fetch(api_url_orders, api_header)
+        await fetch(api_url_orders, api_header)
             .then(res => res.json())
             .then(data => {
                 console.log('orderResponse', data)

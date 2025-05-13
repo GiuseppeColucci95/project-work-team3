@@ -18,7 +18,7 @@ function orderValidate(order) {
     if (!shipping) validate.shipping = "shipping is required"
     if (!final_price) validate.final_price = "final_price is required"
     if (!status) validate.status = "status is required"
-    if (products.length === 0) validate.products = "not have a products"
+    if (products?.length === 0 || !products) validate.products = "not have a products"
 
     return validate
 }
@@ -46,11 +46,16 @@ function userValidate(user) {
     if (!mail) validate.mail = "email is required"
     if (!address) validate.address = "address is required"
 
+    //se manca un campo esci dalla funzione restituendo l'oggetto validate
+    if (Object.keys(validate).length > 0) return validate
+
     // check to see if the user object is a string
     if (typeof firstname !== 'string') validate.firstname = "first name must be a string"
     if (typeof lastname !== 'string') validate.lastname = "last name must be a string"
     if (typeof mail !== 'string') validate.mail = "email must be a string"
     if (typeof address !== 'string') validate.address = "address must be a string"
+
+    if (Object.keys(validate).length > 0) return validate
 
     // check to see if the user object ia a regular length
     if (firstname.length < 3) validate.firstname = "first name must be at least 3 characters long"
@@ -61,6 +66,8 @@ function userValidate(user) {
     if (mail.length > 50) validate.mail = "email must be at most 50 characters long"
     if (address.length < 15) validate.address = "address must be at least 15 characters long"
     if (address.length > 50) validate.address = "address must be at most 50 characters long"
+
+    if (Object.keys(validate).length > 0) return validate
 
     /**
      * check to see if the user object is a valid email
@@ -74,6 +81,8 @@ function userValidate(user) {
      * [a-z]{2,} è una regular expression che identifica una stringa composta da lettere minuscole e che deve essere lunga almeno 2 caratteri
      */
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(mail)) validate.mail = "email is invalid"
+
+    if (Object.keys(validate).length > 0) return validate
 
     // check to see if the user object is a valid address
     //"Via Roma, 123, 00100 Roma Italia"

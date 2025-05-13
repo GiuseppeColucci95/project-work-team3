@@ -59,6 +59,7 @@ export default function Checkout() {
   function formSubmit(e) {
     e.preventDefault()
 
+    //validazione dei dati
     const errorList = Validate(
       firstName,
       lastName,
@@ -77,6 +78,7 @@ export default function Checkout() {
       return // interrompe la funzione se ci sono errori
     }
 
+    console.log("check validate")
 
     const formData = {
       promotion_id: promotion.promotion_id,
@@ -93,11 +95,13 @@ export default function Checkout() {
       adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    setOrder(formData)
+    console.log("check create formData", formData)
 
-    console.log("checkout", order)
+    subtimOrder(formData)
+    console.log("checkout create order", order)
 
-    subtimOrder()
+    console.log("checkout submitOrder", orderResponse)
+
 
     if (!orderResponse.orderId) {
       alert(Object.values(orderResponse).join('\n'))
@@ -134,7 +138,7 @@ export default function Checkout() {
     if (userEmail.length < 10) error.userEmail = "Email must be at least 10 characters long"
     if (userEmail.length > 50) error.userEmail = "Email must be at most 50 characters long"
     if (street.length < 5) error.street = "street must be at least 5 characters long"
-    if (street.length > 10) error.street = "street must be at most 10 characters long"
+    if (street.length > 20) error.street = "street must be at most 20 characters long"
     if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
     if (streetNumber.length > 3) error.streetNumber = "streetNumber must be at most 3 characters long"
     if (country.length < 4) error.country = "country must be at least 4 characters long"
