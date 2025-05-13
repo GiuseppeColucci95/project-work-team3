@@ -11,37 +11,29 @@ export default function ProductList() {
   const { products, getAllProducts, setSearchChangeFunction, search, setSearch, getSearchedProducts } = useProductContext();
   const [searchParams, setSearchParams] = useSearchParams();
 
-
-
   //useEffect on page start
   useEffect(() => {
 
-    const object = {};
+    // //create an empty object
+    // const object = {};
 
-    object.q = searchParams.get('q') ? object.q = searchParams.get('q') : '';
-    object.category = searchParams.get('category') ? object.category = searchParams.get('category') : '';
-    object.tag = searchParams.get('tag') ? object.tag = searchParams.get('tag') : '';
-    object.orderby = searchParams.get('orderby') ? object.orderby = searchParams.get('orderby') : '';
-    object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
-    object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
+    // //populate the object with searchParams values in the url if presents
+    // object.q = searchParams.get('q') ? object.q = searchParams.get('q') : '';
+    // object.category = searchParams.get('category') ? object.category = searchParams.get('category') : '';
+    // object.tag = searchParams.get('tag') ? object.tag = searchParams.get('tag') : '';
+    // object.orderby = searchParams.get('orderby') ? object.orderby = searchParams.get('orderby') : '';
+    // object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
+    // object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
 
-    setSearch(object);
-
-    getSearchedProducts(object);
-
-    console.log(searchParams, typeof searchParams);
-
+    // //set the new search with basically searchParams and do the search
+    // setSearch(object);
+    // getSearchedProducts(object);
   }, []);
 
   //function to handle select change
   function handleSelectChange(e) {
 
-    const searchParamsObjectToSet = searchParams;
-
-    searchParamsObjectToSet[e.target.name] = e.target.value.toLowerCase();
-
     setSearchChangeFunction(e.target);
-    setSearchParams(search);
   }
 
   //template

@@ -341,20 +341,24 @@ function ProductProvider({ children }) {
     if (target.name === 'orderby') {
       const nameToSplit = target.value;
 
-      const splitted = nameToSplit.split(' ');
-      if (splitted[0] === 'ascending' || splitted[0] === 'least') {
-        objectToSet.order = 'asc';
+      if (nameToSplit === '') {
+        objectToSet.order = '';
+        objectToSet.orderby = '';
       } else {
-        objectToSet.order = 'desc';
+        const splitted = nameToSplit.split(' ');
+        if (splitted[0] === 'ascending' || splitted[0] === 'least') {
+          objectToSet.order = 'asc';
+        } else {
+          objectToSet.order = 'desc';
+        }
+        if (splitted[1] === 'price') {
+          objectToSet.orderby = 'price';
+        } else if (splitted[1] === 'name') {
+          objectToSet.orderby = 'name';
+        } else {
+          objectToSet.orderby = 'recents';
+        }
       }
-      if (splitted[1] === 'price') {
-        objectToSet.orderby = 'price';
-      } else if (splitted[1] === 'name') {
-        objectToSet.orderby = 'name';
-      } else {
-        objectToSet.orderby = 'recents';
-      }
-
     } else {
       objectToSet[target.name] = target.value;
     }
