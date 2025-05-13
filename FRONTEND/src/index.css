@@ -378,7 +378,30 @@ h3 {
 
 /* #endregion PRODUCT DETAILS component */
 
+/* #region ORDERCONFIRMATION component */
 
+.checkout-container {
+  background-image: url("/img/confirmation-bg.svg");
+  background-size: cover;
+  padding: 3rem 0 3rem;
+  color: var(--dark);
+}
+.confirmation-img {
+  width: 250px;
+  padding-bottom: 2rem;
+}
+.btn-homepage {
+  border: none;
+  background-color: var(--accent);
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  font-weight: 600;
+  color: var(--dark);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* #endregion ORDERCONFIRMATION component */
 
 /* ------------ HOMEPAGE component ------------ */
 
@@ -1081,5 +1104,11 @@ footer {
   .btn-add {
     padding: 0.65rem 1.5rem 0.65rem !important;
     font-size: 12px;
+  }
+  .confirmation-img {
+    width: 150px !important;
+  }
+  .btn-homepage {
+    margin-bottom: 0 !important;
   }
 }
