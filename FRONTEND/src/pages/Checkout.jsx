@@ -1,7 +1,29 @@
-import { useState } from "react";
+import { useState } from "react"
+import { useProductContext } from "../contexts/ProductContext"
 
 
 export default function Checkout() {
+
+
+  /*
+"promotion_id"
+"total_not_discounted"
+"total_discounted"
+"shipping":
+"final_price":
+"status":
+*/
+
+  const { cart, totalPrice } = useProductContext()
+
+  //varibili momentanee
+  const [totalDiscounted, setTotalDiscounted] = useState(totalPrice)
+  const [shipping, setShipping] = useState(9.99)
+  const [finalPrice, setFinalPrice] = useState(totalDiscounted + shipping)
+  const [status, setSatus] = useState("shipping")
+
+  console.log("cart checkuot", cart)
+
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
