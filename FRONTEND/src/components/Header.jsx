@@ -72,7 +72,7 @@ export default function Header() {
         <div className="pos-f-t">
           <div className={`overlay ${menuOpen ? "show" : ""}`} onClick={toggleMenu}></div>
           <div className={`collapse menu-container ${menuOpen ? "show" : ""}`} id="exampleCollapse">
-            <div className="bg-light p-4">
+            <div className="bg-light menu-hamburger p-4">
               <ul className="list-unstyled">
                 <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
                 <li><NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink></li>
