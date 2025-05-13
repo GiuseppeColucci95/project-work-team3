@@ -367,7 +367,7 @@ function ProductProvider({ children }) {
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
-      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchChangeFunction, getSearchedProducts
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice
     }}>
       {children}
     </ProductContext.Provider>
