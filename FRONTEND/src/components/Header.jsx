@@ -80,6 +80,7 @@ export default function Header() {
             <input
               onChange={handleChange}
               type="text"
+              name="q"
               className="searchbar"
               placeholder="Search your products"
               value={search}

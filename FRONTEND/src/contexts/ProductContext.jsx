@@ -31,11 +31,12 @@ function ProductProvider({ children }) {
   const [cart, setCart] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
   const [search, setSearch] = useState({
-    query: '',
+    q: '',
     category: '',
     tag: '',
-    orderBy: '',
-    order: ''
+    orderby: '',
+    order: '',
+    promotion: ''
   });
 
   //function to get all products from db
@@ -326,14 +327,14 @@ function ProductProvider({ children }) {
   }
 
   //function to set search variable state and call the fetch function
-  function setSearchFunction(searchToSet) {
+  function setSearchChangeFunction(searchToSet) {
     setSearch(searchToSet);
     getSearchedProducts(searchToSet);
   }
 
   //function to get searched products
-  function getSearchedProducts(searchToSet) {
-    fetch(`${connection}${productsPath}${searchPath}?q=${searchToSet}`)
+  function getSearchedProducts(searchObject) {
+    fetch(`${connection}${productsPath}${searchPath}?q=${searchObject.q}`)
       .then(res => res.json())
       .then(data => {
 
@@ -358,7 +359,7 @@ function ProductProvider({ children }) {
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
-      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchFunction, getSearchedProducts
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchChangeFunction, getSearchedProducts
     }}>
       {children}
     </ProductContext.Provider>
