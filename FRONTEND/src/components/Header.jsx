@@ -12,7 +12,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   //imports from custom context
-  const { search, setSearchFunction, getSearchedProducts } = useProductContext();
+  const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -34,7 +34,9 @@ export default function Header() {
 
   //function to handle change
   function handleChange(e) {
-    setSearchFunction(e.target.value);
+    console.log(e.target);
+
+    setSearchChangeFunction(e.target);
   }
 
   //template
@@ -83,7 +85,7 @@ export default function Header() {
               name="q"
               className="searchbar"
               placeholder="Search your products"
-              value={search}
+              value={search.q}
             />
             <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="search image" /></button>
           </form>

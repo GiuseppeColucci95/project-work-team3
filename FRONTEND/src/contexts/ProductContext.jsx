@@ -237,6 +237,13 @@ function ProductProvider({ children }) {
     getTotalPrice();
   }
 
+  //function to clear cart and totalPrice
+  function clearCartTotalPrice() {
+
+    localStorage.setItem('cart', '');
+    localStorage.setItem('totalPrice', '');
+  }
+
   //function to add an element to cart
   function addCartProduct(productToAdd) {
 
@@ -327,7 +334,8 @@ function ProductProvider({ children }) {
   }
 
   //function to set search variable state and call the fetch function
-  function setSearchChangeFunction(searchToSet) {
+  function setSearchChangeFunction(target) {
+
     setSearch(searchToSet);
     getSearchedProducts(searchToSet);
   }
