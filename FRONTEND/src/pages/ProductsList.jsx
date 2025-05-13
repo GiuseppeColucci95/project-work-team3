@@ -64,22 +64,22 @@ export default function ProductList() {
               Tag:
               <select onChange={handleSelectChange} name="tag" id="tag" className="px-1 me-3">
                 <option value="">Select a category</option>
-                <option value="lactose free">Lactose free</option>
-                <option value="sugar free">Sugar free</option>
-                <option value="gluten free">Gluten free</option>
-                <option value="nickel free">Nickel free</option>
-                <option value="nuts free">Nuts free</option>
-                <option value="fish free">Fish free</option>
-                <option value="egg free">Egg free</option>
-                <option value="soy free">Soy free</option>
-                <option value="shellfish free">Shellfish free</option>
+                <option value="Lactose free">Lactose free</option>
+                <option value="Sugar free">Sugar free</option>
+                <option value="Gluten free">Gluten free</option>
+                <option value="Nickel free">Nickel free</option>
+                <option value="Nuts free">Nuts free</option>
+                <option value="Fish free">Fish free</option>
+                <option value="Egg free">Egg free</option>
+                <option value="Soy free">Soy free</option>
+                <option value="Shellfish free">Shellfish free</option>
               </select>
               Category:
               <select onChange={handleSelectChange} name="category" id="category" className="px-1 me-3">
                 <option value="">Select a category</option>
-                <option value="snacks">Snacks</option>
-                <option value="beverages">Beverages</option>
-                <option value="bakery">Bakery</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Beverages">Beverages</option>
+                <option value="Bakery">Bakery</option>
               </select>
             </div>
 

@@ -359,6 +359,8 @@ function ProductProvider({ children }) {
       objectToSet[target.name] = target.value;
     }
 
+    console.log(objectToSet);
+
     setSearch(objectToSet);
     getSearchedProducts(objectToSet);
   }
