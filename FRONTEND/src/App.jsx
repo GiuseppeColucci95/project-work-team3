@@ -1,33 +1,33 @@
 //import function
-import { Route, Routes, BrowserRouter } from "react-router-dom"
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 //import context Provider
-import { OrderProvider } from './contexts/OrdersContex'
-import { ProductProvider } from './contexts/ProductContext'
+import { OrderProvider } from './contexts/OrdersContex';
+import { ProductProvider } from './contexts/ProductContext';
 //import Layout
-import DefaultLayout from './layouts/DefaultLayout'
+import DefaultLayout from './layouts/DefaultLayout';
 //import Pages
-import Homepage from './pages/Homepage'
-import ProductsList from './pages/ProductsList'
-import ProductDetails from './pages/ProductDetails'
-import TagProductsList from './pages/TagProductsList'
-import CategoryProductsList from './pages/CategoryProductsList'
-import Wishlist from './pages/Wishlist'
-import Cart from './pages/Cart'
-import Checkout from './pages/Checkout'
-import OrderConfirmation from './pages/OrderConfirmation'
-import PrivacyPolicy from "./pages/PrivacyPolicy"
-import TermsOfService from "./pages/TermsOfService"
-import CookiePolicy from "./pages/CookiePolicy"
-import Accessibility from "./pages/Accessibility"
-import AboutUs from "./pages/AboutUs"
-import OurMission from "./pages/OurMission"
-import Careers from "./pages/Careers"
-import Press from "./pages/Press"
-import Contacts from "./pages/Contacts"
-import Shipping from "./pages/Shipping"
-import ReturnPolicy from "./pages/ReturnPolicy"
-import FAQs from "./pages/FAQs"
-import NotFound from "./Error/notfound404"
+import Homepage from './pages/Homepage';
+import ProductsList from './pages/ProductsList';
+import ProductDetails from './pages/ProductDetails';
+import TagProductsList from './pages/TagProductsList';
+import CategoryProductsList from './pages/CategoryProductsList';
+import Wishlist from './pages/Wishlist';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import OrderConfirmation from './pages/OrderConfirmation';
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
+import Accessibility from "./pages/Accessibility";
+import AboutUs from "./pages/AboutUs";
+import OurMission from "./pages/OurMission";
+import Careers from "./pages/Careers";
+import Press from "./pages/Press";
+import Contacts from "./pages/Contacts";
+import Shipping from "./pages/Shipping";
+import ReturnPolicy from "./pages/ReturnPolicy";
+import FAQs from "./pages/FAQs";
+import NotFound from "./errors/Notfound404";
 
 //component exports
 export default function App() {
@@ -61,9 +61,8 @@ export default function App() {
                 <Route path="/shipping" Component={Shipping} />
                 <Route path="/return-policy" Component={ReturnPolicy} />
                 <Route path="/faqs" Component={FAQs} />
+                <Route path="*" Component={NotFound} />
               </Route>
-
-              <Route path="*" Component={NotFound} />
             </Routes>
           </BrowserRouter>
         </OrderProvider>

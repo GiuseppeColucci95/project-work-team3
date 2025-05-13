@@ -18,7 +18,7 @@ export default function TagProductsList() {
   useEffect(() => {
     getProductsByTag(tag);
     getSelectedTag(tag);
-  }, []);
+  }, [tag]);
 
   //template
   return (
