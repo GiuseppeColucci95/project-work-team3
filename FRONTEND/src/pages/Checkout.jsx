@@ -42,7 +42,7 @@ export default function Checkout() {
     setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
     setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
     setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
-  }, [totalPrice, totalNotDiscounted])
+  }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted])
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
