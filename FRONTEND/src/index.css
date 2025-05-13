@@ -152,7 +152,7 @@ main {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 500px;
+    min-height: 350px;
 
     .jumbo-container {
       width: 50%;
@@ -379,6 +379,24 @@ footer {
 }
 
 /* #endregion FOOTER */
+
+@media (max-width: 1440px) {
+  #jumbotron {
+    max-height: 350px !important;
+  }
+  .jumbo-title {
+    font-size: 50px !important;
+    padding-bottom: 0 !important;
+  }
+  .jumbo-text {
+    font-size: 25px !important;
+    padding-bottom: 1rem !important;
+    line-height: 2rem !important;
+  }
+  .explore-btn {
+    font-size: 20px !important;
+  }
+}
 
 /* schermi medi */
 
