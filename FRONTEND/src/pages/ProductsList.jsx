@@ -23,16 +23,10 @@ export default function ProductList() {
     object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
     object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
 
-    // object.tag = searchParams.get('tag');
-    // object.orderby = searchParams.get('orderby');
-    // object.order = searchParams.get('order');
-    // object.promotion = searchParams.get('promotion');
-
     console.log('object', object);
     setSearch(object);
 
     getSearchedProducts(object);
-    getAllProducts();
   }, []);
 
   //function to handle select change
