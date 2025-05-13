@@ -27,6 +27,7 @@ import Contacts from "./pages/Contacts"
 import Shipping from "./pages/Shipping"
 import ReturnPolicy from "./pages/ReturnPolicy"
 import FAQs from "./pages/FAQs"
+import NotFound from "./Error/notfound404"
 
 //component exports
 export default function App() {
@@ -61,6 +62,8 @@ export default function App() {
                 <Route path="/return-policy" Component={ReturnPolicy} />
                 <Route path="/faqs" Component={FAQs} />
               </Route>
+
+              <Route path="*" Component={NotFound} />
             </Routes>
           </BrowserRouter>
         </OrderProvider>
