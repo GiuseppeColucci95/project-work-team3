@@ -26,7 +26,7 @@ export default function Header() {
     <>
       <header>
         <div className="menu-sx">
-          <img className="logo" src="/img/logo.png" alt="" />
+          <NavLink className="text-decoration-none active" to={'/'}><img className="logo" src="/img/logo.png" alt="" /></NavLink>
           <ul className="menu">
             <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
             <li
@@ -74,9 +74,11 @@ export default function Header() {
           <div className={`collapse menu-container ${menuOpen ? "show" : ""}`} id="exampleCollapse">
             <div className="bg-light p-4">
               <ul className="list-unstyled">
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/products/all">Products</NavLink></li>
-                <li><NavLink to="/contacts">Contacts</NavLink></li>
+                <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
+                <li><NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink></li>
+                <li><NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink></li>
+                <li><Link to={'/wishlist'}>Favourites</Link></li>
+                <li><Link to={'/cart'}>Cart</Link></li>
               </ul>
             </div>
           </div>

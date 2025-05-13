@@ -46,8 +46,8 @@ export default function Cart() {
               <h3>ORDER SUMMARY</h3>
               <h5>Shipping: {(totalPrice > 39.99) ? ('0.00') : ('9,99')}€ </h5>
 
-              <h5>Total products: {totalPrice}€ </h5>
-              <h5>Total order: {(totalPrice > 39.99) ? (totalPrice) : (totalPrice + 9.99)}€ </h5>
+              <h5>Total products: {totalPrice.toFixed(2)}€ </h5>
+              <h5>Total order: {(totalPrice > 39.99) ? (totalPrice.toFixed(2)) : ((totalPrice + 9.99).toFixed(2))}€ </h5>
 
 
             </div>
