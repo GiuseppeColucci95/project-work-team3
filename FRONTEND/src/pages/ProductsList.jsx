@@ -37,6 +37,10 @@ export default function ProductList() {
     const searchParamsObjectToSet = searchParams;
     searchParamsObjectToSet[e.target.name] = e.target.value;
 
+    console.log(searchParamsObjectToSet);
+
+
+
     setSearchChangeFunction(e.target);
   }
 
