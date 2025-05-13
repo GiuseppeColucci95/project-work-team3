@@ -339,7 +339,7 @@ footer {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
-    padding-left: 7rem;
+    padding-left: 2rem;
 
     ul {
       padding-left: 0;
@@ -398,6 +398,13 @@ footer {
 
   .explore-btn {
     font-size: 20px !important;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .footer-contacts {
+    display: none !important;
   }
 }
 
@@ -665,6 +672,10 @@ footer {
   .footer-logo {
     flex-direction: column;
     margin-bottom: 2rem;
+  }
+
+  .footer-contacts {
+    display: none !important;
   }
 
   .payoff {
