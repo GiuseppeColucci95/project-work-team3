@@ -1,13 +1,18 @@
 //react imports
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useProductContext } from "../contexts/ProductContext";
 
 //component exports
 export default function Header() {
 
   //logic
+
+  //usestate variables
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  //imports from custom context
+  const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -21,6 +26,19 @@ export default function Header() {
     setDropdownOpen(null);
   };
 
+  //function to handle submit
+  function handleSubmit(e) {
+    e.preventDefault();
+
+  }
+
+  //function to handle change
+  function handleChange(e) {
+    console.log(e.target);
+
+    setSearchChangeFunction(e.target);
+  }
+
   //template
   return (
     <>
@@ -33,7 +51,7 @@ export default function Header() {
               onMouseEnter={() => handleMouseEnter('pathology')}
               onMouseLeave={handleMouseLeave}
             >
-              <NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink>
+              <NavLink className="text-decoration-none active" to={'/search'}>Pathology</NavLink>
               {dropdownOpen === 'pathology' && (
                 <ul className="dropdown">
                   <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
@@ -51,28 +69,31 @@ export default function Header() {
               <NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink>
               {dropdownOpen === 'category' && (
                 <ul className="dropdown">
-                  <li><NavLink to="/category/snacks">Snacks</NavLink></li>
-                  <li><NavLink to="/category/beverages">Beverages</NavLink></li>
-                  <li><NavLink to="/category/bakery">Bakery</NavLink></li>
+                  <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
+                  <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
+                  <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
                 </ul>
               )}
             </li>
           </ul>
         </div>
         <div className="menu-ce">
-          <form className="onSubmit">
+          <form onSubmit={handleSubmit} className="onSubmit">
             <input
+              onChange={handleChange}
               type="text"
+              name="q"
               className="searchbar"
               placeholder="Search your products"
+              value={search.q}
             />
-            <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="" /></button>
+            <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="search image" /></button>
           </form>
         </div>
         <div className="pos-f-t">
           <div className={`overlay ${menuOpen ? "show" : ""}`} onClick={toggleMenu}></div>
           <div className={`collapse menu-container ${menuOpen ? "show" : ""}`} id="exampleCollapse">
-            <div className="bg-light p-4">
+            <div className="bg-light menu-hamburger p-4">
               <ul className="list-unstyled">
                 <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
                 <li><NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink></li>
@@ -91,7 +112,7 @@ export default function Header() {
               aria-expanded={menuOpen}
               aria-label="Toggle navigation"
             >
-              <span className="toggler-icon"><img className="hamburger" src="/img/hamburger.svg" alt="" srcset="" /></span>
+              <span className="toggler-icon"><img className="hamburger" src="/img/hamburger.svg" alt="" /></span>
             </button>
           </nav>
         </div>

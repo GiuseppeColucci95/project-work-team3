@@ -294,6 +294,75 @@ h6 {
   min-height: 500px;
 }
 
+/* #region PRODUCT DETAILS component */
+
+#product-description {
+  background-color: var(--primary);
+  padding: 3rem 0 3rem;
+  color: var(--light);
+}
+
+.product-container {
+  width: 60%;
+}
+
+#tags {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.check-icon {
+  width: 30px;
+}
+
+.btn-add {
+  border-style: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--dark);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: var(--primary);
+}
+
+.favourites {
+  border-style: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  background: var(--accent);
+  color: var(--light);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  width: 70px;
+}
+
+.favourites:hover {
+  background-color: var(--primary);
+}
+
+h2 {
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
+.product-img {
+  width: 90% !important;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+h3 {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+/* #endregion PRODUCT DETAILS component */
+
+
 
 /* ------------ HOMEPAGE component ------------ */
 
@@ -339,7 +408,7 @@ footer {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
-    padding-left: 7rem;
+    padding-left: 2rem;
 
     ul {
       padding-left: 0;
@@ -369,7 +438,7 @@ footer {
 
   .copyright {
     color: var(--light);
-    margin-top: 1.5rem;
+    margin-bottom: 0;
     font-size: 12px !important;
   }
 }
@@ -386,62 +455,38 @@ footer {
   #jumbotron {
     max-height: 350px !important;
   }
+
   .jumbo-title {
     font-size: 50px !important;
     padding-bottom: 0 !important;
   }
+
   .jumbo-text {
     font-size: 25px !important;
     padding-bottom: 1rem !important;
     line-height: 2rem !important;
   }
+
   .explore-btn {
     font-size: 20px !important;
   }
 }
 
-/* schermi grandi */
+@media (min-width: 992px) {
+  .payoff {
+    display: none !important;
+  }
+}
 
-@media (max-width: 992px) {
-  .searchbar {
-    padding: 0.5rem 3rem 0.5rem 0.5rem !important;
-  }
-  #jumbotron {
-    min-height: 280px !important;
-    max-height: 300px !important;
-  }
-  .jumbo-container {
-    width: 100% !important;
-  }
-  .jumbo-title {
-    font-size: 40px !important;
-    padding-bottom: 0 !important;
-  }
-  .jumbo-text {
-    font-size: 20px !important;
-    padding-bottom: 1rem !important;
-    line-height: 1.5rem !important;
-  }
-  .explore-btn {
-    font-size: 15px !important;
-  }
-  .food-allergens {
-    width: 90px !important;
-  }
-  .img-description {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 3rem;
-  }
-  .img-descr {
-    width: 80% !important;
+@media (min-width: 1200px) {
+  .payoff {
+    display: block !important;
   }
 }
 
 /* schermi medi */
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   header {
     padding: 0.75rem;
 
@@ -615,6 +660,7 @@ footer {
 
   .payoff {
     width: 100% !important;
+    display: block !important;
   }
 
   .footer-menu {
@@ -623,6 +669,10 @@ footer {
     h4 {
       font-size: 26px;
     }
+  }
+
+  .footer-menu-ce {
+    padding-bottom: 2rem !important;
   }
 
   .footer-logo-img {
@@ -810,7 +860,8 @@ footer {
 
   .footer-logo {
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
   }
 
   .payoff {
@@ -822,11 +873,19 @@ footer {
 
     h4 {
       font-size: 26px;
+      margin-bottom: 0.5rem !important;
     }
   }
 
+  .footer-menu-ce {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem !important;
+    padding-bottom: 2rem !important;
+  }
+
   .footer-logo-img {
-    width: 130px !important;
+    width: 100px !important;
   }
 
   .mb-4 {
@@ -910,27 +969,28 @@ footer {
     width: 60px !important;
     cursor: pointer;
   }
+
   .payoff {
     width: 100% !important;
   }
-  
+
   .footer-menu {
     gap: 1.5rem !important;
-  
+
     h4 {
       font-size: 24px;
     }
   }
-  
+
   .footer-menu ul {
     padding-left: 0;
   }
-  
+
   .mb-4 {
     margin-bottom: 0 !important;
     margin-top: 1rem !important;
   }
-  
+
   .copyright {
     margin-top: 0;
   }
@@ -942,12 +1002,24 @@ footer {
   .logo {
     width: 50px !important;
   }
+
   .searchbar {
     padding: 0.5rem 1rem 0.5rem 0.5rem !important;
     font-size: 9px !important;
   }
+
   .food-allergens {
     width: 40px !important;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 375px) {
+  .payoff {
+    display: none !important;
+  }
+
+  .footer-menu-ce {
+    padding-bottom: 3rem !important;
   }
 }
