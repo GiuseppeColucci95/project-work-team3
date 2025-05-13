@@ -12,7 +12,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   //imports from custom context
-  const { search, setSearch } = useProductContext();
+  const { search, setSearchFunction, getSearchedProducts } = useProductContext();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -29,6 +29,12 @@ export default function Header() {
   //function to handle submit
   function handleSubmit(e) {
     e.preventDefault();
+
+  }
+
+  //function to handle change
+  function handleChange(e) {
+    setSearchFunction(e.target.value);
   }
 
   //template
@@ -43,7 +49,7 @@ export default function Header() {
               onMouseEnter={() => handleMouseEnter('pathology')}
               onMouseLeave={handleMouseLeave}
             >
-              <NavLink className="text-decoration-none active" to={'/products/all'}>Pathology</NavLink>
+              <NavLink className="text-decoration-none active" to={'/search'}>Pathology</NavLink>
               {dropdownOpen === 'pathology' && (
                 <ul className="dropdown">
                   <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
@@ -61,9 +67,9 @@ export default function Header() {
               <NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink>
               {dropdownOpen === 'category' && (
                 <ul className="dropdown">
-                  <li><NavLink to="/category/snacks">Snacks</NavLink></li>
-                  <li><NavLink to="/category/beverages">Beverages</NavLink></li>
-                  <li><NavLink to="/category/bakery">Bakery</NavLink></li>
+                  <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
+                  <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
+                  <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
                 </ul>
               )}
             </li>
@@ -72,7 +78,7 @@ export default function Header() {
         <div className="menu-ce">
           <form onSubmit={handleSubmit} className="onSubmit">
             <input
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={handleChange}
               type="text"
               className="searchbar"
               placeholder="Search your products"

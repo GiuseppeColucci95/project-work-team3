@@ -11,6 +11,7 @@ const bestSellersPath = '/best-sellers';
 const recentsPath = '/recents';
 const tagPath = '/pathologies';
 const categoryPath = '/categories';
+const searchPath = '/search';
 
 //context provider
 function ProductProvider({ children }) {
@@ -29,7 +30,13 @@ function ProductProvider({ children }) {
   const [wishlist, setWishlist] = useState(null);
   const [cart, setCart] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState({
+    query: '',
+    category: '',
+    tag: '',
+    orderBy: '',
+    order: ''
+  });
 
   //function to get all products from db
   function getAllProducts() {
@@ -318,11 +325,23 @@ function ProductProvider({ children }) {
     setTotalPrice(parsedTotal);
   }
 
-  //function to get searched products
-  function getSearchedProducts() {
-
-
+  //function to set search variable state and call the fetch function
+  function setSearchFunction(searchToSet) {
+    setSearch(searchToSet);
+    getSearchedProducts(searchToSet);
   }
+
+  //function to get searched products
+  function getSearchedProducts(searchToSet) {
+    fetch(`${connection}${productsPath}${searchPath}?q=${searchToSet}`)
+      .then(res => res.json())
+      .then(data => {
+
+        setProducts(data);
+      })
+      .catch(err => console.error(err));
+  }
+
 
   //useEffect to get cart and wishlist at start of the page
   useEffect(() => {
@@ -339,7 +358,7 @@ function ProductProvider({ children }) {
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
-      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchFunction, getSearchedProducts
     }}>
       {children}
     </ProductContext.Provider>
