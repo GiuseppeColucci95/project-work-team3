@@ -161,6 +161,7 @@ function ProductProvider({ children }) {
       if (!found) {
         //otherwise add it in the wishlist
         products.push({
+          id: productToAdd.id,
           image: productToAdd.image,
           name: productToAdd.name,
           price: productToAdd.price
@@ -175,6 +176,7 @@ function ProductProvider({ children }) {
       //create an empty array and populate it
       const products = [];
       products.push({
+        id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
         price: productToAdd.price
@@ -260,6 +262,7 @@ function ProductProvider({ children }) {
       } else {
         //if the product is not in the cart add it
         const newProductToAdd = {
+          id: productToAdd.id,
           image: productToAdd.image,
           name: productToAdd.name,
           price: productToAdd.price,
@@ -281,6 +284,7 @@ function ProductProvider({ children }) {
       const cartArray = [];
       //if the product is not in the cart add it
       const newProductToAdd = {
+        id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
         price: productToAdd.price,
