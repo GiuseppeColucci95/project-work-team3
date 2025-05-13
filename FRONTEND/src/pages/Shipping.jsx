@@ -34,7 +34,7 @@ export default function Shipping() {
 
                 <section className="mb-4">
                     <h2 className="fw-semibold" style={{ color: "#444" }}>5. Tracking Your Order</h2>
-                    <p>Once your order has been shipped, you will receive a tracking number via email. You can use this number to track your order on our <a href="/order-tracking" style={{ color: "#678b27" }}>Order Tracking</a> page.</p>
+                    <p>Once your order has been shipped, you will receive a tracking number via email. You can use this number to track your order on our Order Tracking page.</p>
                 </section>
 
                 <section className="mb-4">
