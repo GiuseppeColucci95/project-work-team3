@@ -523,6 +523,17 @@ footer {
 
 /* schermi grandi */
 
+@media (max-width: 1200px) {
+
+  .footer {
+    padding-top: 3rem !important;
+  }
+
+  .payoff {
+    display: none !important;
+  }
+}
+
 @media (max-width: 1023px) {
   .menu {
     padding: 0 0 0 1rem;
@@ -586,6 +597,10 @@ footer {
 
   .img-descr {
     width: 80% !important;
+  }
+
+  .footer-menu-ce {
+    gap: 1.5rem !important;
   }
 
   .payoff {
@@ -1117,6 +1132,10 @@ footer {
     h4 {
       font-size: 24px;
     }
+  }
+
+  .footer-menu-ce {
+    padding-bottom: 6rem !important;
   }
 
   .footer-menu ul {
