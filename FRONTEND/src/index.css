@@ -374,7 +374,7 @@ footer {
   }
 }
 
-.navbar-toggler {
+.toggler {
   display: none;
 }
 
@@ -383,7 +383,7 @@ footer {
 /* schermi medi */
 
 @media (max-width: 768px) {
-  .navbar-toggler {
+  .toggler {
     display: none;
   }
 
