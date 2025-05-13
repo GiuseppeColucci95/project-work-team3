@@ -382,14 +382,14 @@ function ProductProvider({ children }) {
       .catch(err => console.error(err));
   }
 
-  //useEffect to get cart and wishlist at start of the page
+  //useEffect to get cart and wishlist at page start
   useEffect(() => {
     getWishlistProducts();
     getCartProducts();
     getTotalPrice();
   }, []);
 
-  //template
+  //template with values to return
   return (
     <ProductContext.Provider value={{
       products, setProducts, getAllProducts, selectedProduct, setSelectedProduct, getSelectedProduct, latestProducts,
@@ -405,10 +405,10 @@ function ProductProvider({ children }) {
   );
 }
 
-//use custom context hook
+//function to use custom context
 function useProductContext() {
   return useContext(ProductContext);
 }
 
-//export custom context
+//custom context exports
 export { ProductProvider, useProductContext }
