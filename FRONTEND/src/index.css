@@ -688,7 +688,7 @@ footer {
     display: block;
   }
 
-  .navbar-toggler {
+  .toggler {
     display: block;
     z-index: 1050;
   }
@@ -743,29 +743,28 @@ footer {
     width: 60px !important;
     cursor: pointer;
   }
-}
-
-.payoff {
-  width: 100% !important;
-}
-
-.footer-menu {
-  gap: 1.5rem !important;
-
-  h4 {
-    font-size: 24px;
+  .payoff {
+    width: 100% !important;
   }
-}
-
-.footer-menu ul {
-  padding-left: 0;
-}
-
-.mb-4 {
-  margin-bottom: 0 !important;
-  margin-top: 1rem !important;
-}
-
-.copyright {
-  margin-top: 0;
+  
+  .footer-menu {
+    gap: 1.5rem !important;
+  
+    h4 {
+      font-size: 24px;
+    }
+  }
+  
+  .footer-menu ul {
+    padding-left: 0;
+  }
+  
+  .mb-4 {
+    margin-bottom: 0 !important;
+    margin-top: 1rem !important;
+  }
+  
+  .copyright {
+    margin-top: 0;
+  }
 }
