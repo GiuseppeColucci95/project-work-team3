@@ -43,18 +43,18 @@ export default function App() {
               <Route path='/cart' Component={Cart}></Route>
               <Route path='/checkout' Component={Checkout}></Route>
               <Route path='/order-confirmation' Component={OrderConfirmation}></Route>
-              <Route path="/privacy-policy" Component={PrivacyPolicy} />
-              <Route path="/terms-of-service" Component={TermsOfService} />
-              <Route path="/cookie-policy" Component={CookiePolicy} />
-              <Route path="/accessibility" Component={Accessibility} />
-              <Route path="/about-us" Component={AboutUs} />
-              <Route path="/our-mission" Component={OurMission} />
-              <Route path="/careers" Component={Careers} />
-              <Route path="/press" Component={Press} />
-              <Route path="/contacts" Component={Contacts} />
-              <Route path="/shipping" Component={Shipping} />
-              <Route path="/return-policy" Component={ReturnPolicy} />
-              <Route path="/faqs" Component={FAQs} />
+              <Route path="/privacy-policy" Component={PrivacyPolicy}></Route>
+              <Route path="/terms-of-service" Component={TermsOfService}></Route>
+              <Route path="/cookie-policy" Component={CookiePolicy}></Route>
+              <Route path="/accessibility" Component={Accessibility}></Route>
+              <Route path="/about-us" Component={AboutUs}></Route>
+              <Route path="/our-mission" Component={OurMission}></Route>
+              <Route path="/careers" Component={Careers}></Route>
+              <Route path="/press" Component={Press}></Route>
+              <Route path="/contacts" Component={Contacts}></Route>
+              <Route path="/shipping" Component={Shipping}></Route>
+              <Route path="/return-policy" Component={ReturnPolicy}></Route>
+              <Route path="/faqs" Component={FAQs}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

@@ -1,13 +1,18 @@
 //react imports
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useProductContext } from "../contexts/ProductContext";
 
 //component exports
 export default function Header() {
 
   //logic
+
+  //usestate variables
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  //imports from custom context
+  const { search, setSearch } = useProductContext();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -20,6 +25,11 @@ export default function Header() {
   const handleMouseLeave = () => {
     setDropdownOpen(null);
   };
+
+  //function to handle submit
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
 
   //template
   return (
@@ -60,13 +70,15 @@ export default function Header() {
           </ul>
         </div>
         <div className="menu-ce">
-          <form className="onSubmit">
+          <form onSubmit={handleSubmit} className="onSubmit">
             <input
+              onChange={(e) => setSearch(e.target.value)}
               type="text"
               className="searchbar"
               placeholder="Search your products"
+              value={search}
             />
-            <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="" /></button>
+            <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="search image" /></button>
           </form>
         </div>
         <div className="pos-f-t">
@@ -91,7 +103,7 @@ export default function Header() {
               aria-expanded={menuOpen}
               aria-label="Toggle navigation"
             >
-              <span className="toggler-icon"><img className="hamburger" src="/img/hamburger.svg" alt="" srcset="" /></span>
+              <span className="toggler-icon"><img className="hamburger" src="/img/hamburger.svg" alt="" /></span>
             </button>
           </nav>
         </div>
