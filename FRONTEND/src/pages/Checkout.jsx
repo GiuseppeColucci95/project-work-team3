@@ -11,6 +11,7 @@ export default function Checkout() {
 
   const { cart, totalPrice } = useProductContext()
   const { order, setOrder, subtimOrder, orderResponse } = useOrderContext()
+  const navigate = useNavigate()
 
   //varibili momentanee
   const [promotion, setPromotion] = useState({
@@ -19,7 +20,7 @@ export default function Checkout() {
     discount_percentage: 0
   })
 
-  const [totalNotDiscounted, setTotalNotDiscounted] = useState(totalPrice)
+  const [totalNotDiscounted, setTotalNotDiscounted] = useState()
   const [totalDiscounted, setTotalDiscounted] = useState(totalNotDiscounted * (promotion.discount_percentage / 100))
   const [shipping, setShipping] = useState(totalNotDiscounted < 39.99 ? 9.99 : 0)
   const [finalPrice, setFinalPrice] = useState(totalNotDiscounted + shipping - totalDiscounted)
@@ -35,6 +36,10 @@ export default function Checkout() {
 
     }))
   }, [cart])
+
+  useEffect(() => {
+    setTotalNotDiscounted(totalPrice)
+  }, [totalPrice])
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
@@ -54,6 +59,13 @@ export default function Checkout() {
   const [expirationDate, setExpirationDate] = useState("")
   const [cvv, setCvv] = useState("")
 
+  useEffect(() => {
+    if (orderResponse && orderResponse.orderId) {
+      navigate("/order-confirmation")
+    } else if (orderResponse && Object.keys(orderResponse).length > 0 && !orderResponse.orderId) {
+      alert(Object.values(orderResponse).join('\n'))
+    }
+  }, [orderResponse])
 
   //function on submit form
   function formSubmit(e) {
@@ -88,11 +100,11 @@ export default function Checkout() {
       final_price: finalPrice,
       status: status,
       products: productList,
-      firstName: firstName,
-      lastName: lastName,
+      firstname: firstName,
+      lastname: lastName,
       phone: phoneNumber,
       mail: userEmail,
-      adress: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
+      address: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
     console.log("check create formData", formData)
@@ -100,15 +112,15 @@ export default function Checkout() {
     subtimOrder(formData)
     console.log("checkout create order", order)
 
-    console.log("checkout submitOrder", orderResponse)
+    //console.log("checkout submitOrder", orderResponse)
 
 
-    if (!orderResponse.orderId) {
+    /* if (!orderResponse.orderId) {
       alert(Object.values(orderResponse).join('\n'))
       return
     }
 
-    useNavigate("/order-confirmation")
+    useNavigate("/order-confirmation") */
 
   }
 

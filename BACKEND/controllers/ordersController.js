@@ -13,7 +13,7 @@ function create(req, res) {
 
     const order = req.body
 
-    console.log(order);
+    console.log(order)
 
 
     //query to insert an element into orders tables
@@ -76,6 +76,8 @@ function create(req, res) {
                     console.error('Errore invio mail:', mailErr)
                     res.status(500).json({ error: 'filled send mail' })
                 }
+                console.log("order confirmed")
+
                 res.status(201).json({ message: 'order and order_products created successfully ', orderId: order_id })
             })
             .catch(() => {
