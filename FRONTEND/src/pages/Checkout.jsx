@@ -75,6 +75,7 @@ export default function Checkout() {
   function formSubmit(e) {
     e.preventDefault()
 
+
     //validazione dei dati
     const errorList = Validate(
       firstName,
@@ -119,7 +120,7 @@ export default function Checkout() {
 
   }
 
-  function Validate(firstName, lastName, userEmail, street, streetNumber, country, city, province, postalCode) {
+  function Validate(firstName, lastName, userEmail, phoneNumber, street, streetNumber, country, city, province, postalCode) {
     //variabile d'appoggio
     const error = {}
 
@@ -136,6 +137,19 @@ export default function Checkout() {
 
     //se manca un campo esci dalla funzione restituendo l'oggetto error
     if (Object.keys(error).length > 0) return error
+
+    console.log(
+      firstName,
+      lastName,
+      userEmail,
+      phoneNumber,
+      street,
+      streetNumber,
+      country,
+      city,
+      province,
+      postalCode
+    )
 
     //verifico le grandezze
     if (firstName.length < 3) error.firstName = "first name must be at least 3 characters long"
@@ -157,6 +171,8 @@ export default function Checkout() {
 
     //se almeno un campo ha la lunghezza sbagliata esce dalla funzione
     if (Object.keys(error).length > 0) return error
+
+    console.log("verify length");
 
     //controllo che le variabili sodisfino i requisiti di formato
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
