@@ -30,6 +30,7 @@ function ProductProvider({ children }) {
   const [wishlist, setWishlist] = useState(null);
   const [cart, setCart] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [orderBy, setOrderBy] = useState('');
   const [search, setSearch] = useState({
     q: '',
     category: '',
@@ -339,27 +340,32 @@ function ProductProvider({ children }) {
     const objectToSet = search;
 
     if (target.name === 'orderby') {
+      setOrderBy(target.value);
       const nameToSplit = target.value;
 
-      const splitted = nameToSplit.split(' ');
-      if (splitted[0] === 'ascending' || splitted[0] === 'least') {
-        objectToSet.order = 'asc';
+      if (nameToSplit === '') {
+        objectToSet.order = '';
+        objectToSet.orderby = '';
       } else {
-        objectToSet.order = 'desc';
+        const splitted = nameToSplit.split(' ');
+        if (splitted[0] === 'ascending' || splitted[0] === 'least') {
+          objectToSet.order = 'asc';
+        } else {
+          objectToSet.order = 'desc';
+        }
+        if (splitted[1] === 'price') {
+          objectToSet.orderby = 'price';
+        } else if (splitted[1] === 'name') {
+          objectToSet.orderby = 'name';
+        } else {
+          objectToSet.orderby = 'recents';
+        }
       }
-      if (splitted[1] === 'price') {
-        objectToSet.orderby = 'price';
-      } else if (splitted[1] === 'name') {
-        objectToSet.orderby = 'name';
-      } else {
-        objectToSet.orderby = 'recents';
-      }
-
     } else {
       objectToSet[target.name] = target.value;
     }
 
-    console.log(objectToSet);
+    console.log('nuovo oggetto ricerca', objectToSet);
 
     setSearch(objectToSet);
     getSearchedProducts(objectToSet);
@@ -391,7 +397,8 @@ function ProductProvider({ children }) {
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
-      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice, orderBy, setOrderBy,
+      search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice
     }}>
       {children}
     </ProductContext.Provider>
