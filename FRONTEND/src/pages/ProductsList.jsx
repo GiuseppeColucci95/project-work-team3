@@ -27,7 +27,7 @@ export default function ProductList() {
     setSearch(object);
 
     getSearchedProducts(object);
-  }, [searchParams]);
+  }, []);
 
   //function to handle select change
   function handleSelectChange(e) {
@@ -36,7 +36,6 @@ export default function ProductList() {
 
     const searchParamsObjectToSet = searchParams;
     searchParamsObjectToSet[e.target.name] = e.target.value;
-    setSearchParams(searchParamsObjectToSet, true);
 
     setSearchChangeFunction(e.target);
   }
