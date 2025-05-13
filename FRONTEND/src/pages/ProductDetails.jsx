@@ -53,11 +53,11 @@ export default function ProductDetails() {
       {
         (selectedProduct) &&
         (
-          <section id="product-description" className="my-5">
-            <div className="container w-75">
-              <div className="row">
+          <section id="product-description">
+            <div className="container product-container">
+              <div className="row product-image">
                 <div className="col-12 col-xl-6">
-                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100 rounded-3" />
+                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100 rounded-3 product-img" />
                 </div>
                 {/* IMAGE */}
                 <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
@@ -70,7 +70,7 @@ export default function ProductDetails() {
                     <ul className="list-unstyled">
                       {
                         selectedProduct.tags.map(tag => (
-                          <li key={`${tag.name}-tag`}><i className="bi bi-check-circle"></i>{` ${tag.name}`}</li>
+                          <li key={`${tag.name}-tag`}><img className="check-icon" src="/img/check.svg" alt="check icon" />{` ${tag.name}`}</li>
                         ))
                       }
                     </ul>
@@ -78,7 +78,7 @@ export default function ProductDetails() {
 
                   <div id="buttons" className="mb-3">
                     <div>
-                      <h2 className="mb-3">{`${selectedProduct.price}€`}</h2>
+                      <h2 className="mb-1">{`${selectedProduct.price}€`}</h2>
                     </div>
 
                     <div className="d-flex gap-3 justify-content-start">
@@ -93,11 +93,11 @@ export default function ProductDetails() {
                       <div>
                         <button onClick={() => addWishlistProduct(selectedProduct)}
                           className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
-                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="wishlist image" />
+                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="wishlist icon" />
                         </button>
                         <button onClick={() => removeWishlistProduct(selectedProduct)}
                           className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
-                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="wishlist image" />
+                          <img className="menu-icons" src="/img/favourites-empty.svg" alt="favourites icon" />
                         </button>
                       </div>
                     </div>
