@@ -356,28 +356,134 @@ footer {
 /* schermi medi */
 
 @media (max-width: 768px) {
-  .navbar-toggler {
+  header {
+    padding: 0.75rem;
+
+    .logo {
+      width: 70px;
+      margin-right: 0;
+    }
+  }
+
+  .collapse.show {
+    display: block;
+  }
+
+  .hamburger {
+    width: 24px;
+    margin: 0 !important;
+  }
+
+  .search {
+    margin-left: 0.25rem !important;
+  }
+
+  .menu {
     display: none;
   }
+
+  .menu-dx {
+    display: none;
+  }
+
+  .toggler {
+    display: block;
+    z-index: 1050;
+    color: var(--secondary-brown);
+    background-color: transparent !important;
+    border-style: none;
+  }
+
+  .list-unstyled {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    /* sopra il contenuto, sotto il menu */
+    display: none;
+    /* nascondo di default */
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  .menu-container {
+    position: absolute;
+    top: 60px;
+    /* posizione dell'hamburger menu (sotto) */
+    right: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1050;
+    /* sopra l'overlay */
+    display: none;
+    /* nascondo di default */
+    width: 200px;
+  }
+
+  /* mostro il menu */
+  .menu-container.show {
+    display: block;
+  }
+
+  .menu-container ul {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .menu-container ul li {
+    margin-bottom: 1rem;
+  }
+
+  .menu-container ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 16px;
+  }
+
   .menu-sx {
-    margin-left: 0.5rem !important;
+    margin-left: 0 !important;
   }
-  .searchbar {
-    padding: 0.5rem !important;
-  }
+
   main #jumbotron {
     min-height: 250px;
     max-height: 250px !important;
+    background-size: cover;
   }
+
+  .jumbo-container {
+    width: 100% !important;
+    padding: 1rem 0 1rem 3rem !important;
+  }
+
   .jumbo-title {
-    font-size: 35px !important;
+    font-size: 30px !important;
     padding-bottom: 0 !important;
+    line-height: 2rem !important;
   }
+
   .jumbo-text {
-    font-size: 25px !important;
+    font-size: 20px !important;
     padding-bottom: 0 !important;
     line-height: 1.5rem !important;
   }
+
+  .explore-btn {
+    font-size: 10px !important;
+  }
+
   .food-allergens {
     width: 100px !important;
     cursor: pointer;
