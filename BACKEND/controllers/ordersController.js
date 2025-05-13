@@ -50,7 +50,10 @@ function create(req, res) {
     // variable of query
 
     connection.query(insertOrder, [promotion_id, firstname, lastname, mail, phone.replaceAll(' ', ''), address, total_not_discounted, total_discounted, shipping, final_price, status], (err, results) => {
-        if (err) return res.status(500).json({ error: 'Database query failed insert order' })
+        if (err) {
+            console.log(err)
+            return res.status(500).json({ error: 'Database query failed insert order' })
+        }
 
         const order_id = results.insertId
 

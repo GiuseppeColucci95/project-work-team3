@@ -14,8 +14,8 @@ function orderValidate(order) {
     const { total_not_discounted, total_discounted, shipping, final_price, status, products } = order
 
     if (!total_not_discounted) validate.total_not_discounted = "total_not_discounted is required"
-    if (!total_discounted && total_discounted != 0) validate.total_discounted = "total_discounted is required"
-    if (!shipping) validate.shipping = "shipping is required"
+    if (!total_discounted && total_discounted !== 0) validate.total_discounted = "total_discounted is required"
+    if (!shipping && shipping !== 0) validate.shipping = "shipping is required"
     if (!final_price) validate.final_price = "final_price is required"
     if (!status) validate.status = "status is required"
     if (products?.length === 0 || !products) validate.products = "not have a products"

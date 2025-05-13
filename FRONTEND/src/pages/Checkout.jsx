@@ -15,15 +15,15 @@ export default function Checkout() {
 
   //varibili momentanee
   const [promotion, setPromotion] = useState({
-    promotion_id: 0,
+    promotion_id: 1,
     promotionCode: "",
     discount_percentage: 0
   })
 
   const [totalNotDiscounted, setTotalNotDiscounted] = useState()
-  const [totalDiscounted, setTotalDiscounted] = useState(totalNotDiscounted * (promotion.discount_percentage / 100))
-  const [shipping, setShipping] = useState(totalNotDiscounted < 39.99 ? 9.99 : 0)
-  const [finalPrice, setFinalPrice] = useState(totalNotDiscounted + shipping - totalDiscounted)
+  const [totalDiscounted, setTotalDiscounted] = useState()
+  const [shipping, setShipping] = useState()
+  const [finalPrice, setFinalPrice] = useState()
   const [status, setSatus] = useState("shipped")
   const [productList, setProductList] = useState([])
 
@@ -39,7 +39,10 @@ export default function Checkout() {
 
   useEffect(() => {
     setTotalNotDiscounted(totalPrice)
-  }, [totalPrice])
+    setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
+    setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
+    setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
+  }, [totalPrice, totalNotDiscounted])
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
@@ -60,9 +63,9 @@ export default function Checkout() {
   const [cvv, setCvv] = useState("")
 
   useEffect(() => {
-    if (orderResponse && orderResponse.orderId) {
+    if (orderResponse.orderId) {
       navigate("/order-confirmation")
-    } else if (orderResponse && Object.keys(orderResponse).length > 0 && !orderResponse.orderId) {
+    } else if (oObject.keys(orderResponse).length > 0) {
       alert(Object.values(orderResponse).join('\n'))
     }
   }, [orderResponse])
@@ -325,7 +328,7 @@ export default function Checkout() {
                     placeholder="MasterCard"
                     value={cardHolder}
                     onChange={e => setCardHolder(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid card Holder
                   </div>
@@ -337,7 +340,7 @@ export default function Checkout() {
                     placeholder="1234-3216-7856-4545"
                     value={cardNumber}
                     onChange={e => setCardNumber(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid card Number
                   </div>
@@ -349,7 +352,7 @@ export default function Checkout() {
                     placeholder="12/06"
                     value={expirationDate}
                     onChange={e => setExpirationDate(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid Expiration Date
                   </div>
@@ -361,7 +364,7 @@ export default function Checkout() {
                     placeholder="360"
                     value={cvv}
                     onChange={e => setCvv(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid CVV
                   </div>
