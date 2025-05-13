@@ -80,6 +80,7 @@ export default function Checkout() {
       firstName,
       lastName,
       userEmail,
+      phoneNumber,
       street,
       streetNumber,
       country,
@@ -160,6 +161,9 @@ export default function Checkout() {
     //controllo che le variabili sodisfino i requisiti di formato
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
     if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) error.street = "street must contain via or piazza"
+    if (!/^\d{5}$/.test(postalCode)) error.postalCode = "postalCode is invalid"
+    if (phoneNumber && !/^\d{10}$/.test(phoneNumber) || /^\d{9}$/.test(phoneNumber)) error.phoneNumber = "phoneNumber is invalid"
+
 
     //faccio un return di error
     return error
@@ -418,7 +422,7 @@ export default function Checkout() {
                 </div>
 
 
-                <button className="btn btn-primary mt-3" type="submit">PAY NOW</button>
+                <button className="btn btn-primary mt-3" type="submit" onClick={formSubmit}>PAY NOW</button>
 
               </section>
             </div>
