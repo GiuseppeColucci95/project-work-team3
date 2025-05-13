@@ -8,8 +8,10 @@ export default function ProductList() {
 
   //logic
   const [viewMode, setViewMode] = useState('grid');
-  const { products, getAllProducts, setSearchChangeFunction, setSearch, getSearchedProducts } = useProductContext();
+  const { products, getAllProducts, setSearchChangeFunction, search, setSearch, getSearchedProducts } = useProductContext();
   const [searchParams, setSearchParams] = useSearchParams();
+
+
 
   //useEffect on page start
   useEffect(() => {
@@ -23,25 +25,23 @@ export default function ProductList() {
     object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
     object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
 
-    console.log('object', object);
     setSearch(object);
 
     getSearchedProducts(object);
+
+    console.log(searchParams, typeof searchParams);
+
   }, []);
 
   //function to handle select change
   function handleSelectChange(e) {
 
-    console.log('target name', e.target.name, 'target value', e.target.value);
-
     const searchParamsObjectToSet = searchParams;
-    searchParamsObjectToSet[e.target.name] = e.target.value;
 
-    console.log(searchParamsObjectToSet);
-
-
+    searchParamsObjectToSet[e.target.name] = e.target.value.toLowerCase();
 
     setSearchChangeFunction(e.target);
+    setSearchParams(search);
   }
 
   //template
