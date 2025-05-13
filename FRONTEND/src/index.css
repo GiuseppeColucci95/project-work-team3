@@ -472,8 +472,7 @@ footer {
   }
 }
 
-
-@media (min-width: 770px) {
+@media (min-width: 992px) {
   .payoff {
     display: none !important;
   }
@@ -494,7 +493,7 @@ footer {
 
 /* schermi medi */
 
-@media (max-width: 770px) {
+@media (max-width: 825px) {
   header {
     padding: 0.75rem;
 
@@ -502,10 +501,6 @@ footer {
       width: 70px;
       margin-right: 0;
     }
-  }
-
-  .collapse.show {
-    display: block;
   }
 
   .hamburger {
@@ -709,10 +704,6 @@ footer {
     }
   }
 
-  .collapse.show {
-    display: block;
-  }
-
   .hamburger {
     width: 24px;
     margin: 0 !important;
@@ -797,10 +788,6 @@ footer {
     font-size: 16px;
   }
 
-  .menu-sx {
-    margin-left: 0 !important;
-  }
-
   main #jumbotron {
     min-height: 200px;
     max-height: 200px !important;
@@ -813,23 +800,23 @@ footer {
   }
 
   .jumbo-title {
-    font-size: 25px !important;
-    padding-bottom: 0 !important;
+    font-size: 30px !important;
+    padding-bottom: 0.5rem !important;
     line-height: 2rem !important;
   }
 
   .jumbo-text {
-    font-size: 16px !important;
+    font-size: 20px !important;
     padding-bottom: 0 !important;
-    line-height: 1rem !important;
+    line-height: 1.5rem !important;
   }
 
   .explore-btn {
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
 
   .food-allergens {
-    width: 80px !important;
+    width: 70px !important;
     cursor: pointer;
   }
 
@@ -882,15 +869,7 @@ footer {
 
     h4 {
       font-size: 26px;
-      margin-bottom: 0.5rem !important;
     }
-  }
-
-  .footer-menu-ce {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem !important;
-    padding-bottom: 2rem !important;
   }
 
   .footer-logo-img {

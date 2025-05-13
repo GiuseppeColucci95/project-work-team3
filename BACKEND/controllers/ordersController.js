@@ -13,6 +13,9 @@ function create(req, res) {
 
     const order = req.body
 
+    console.log(order)
+
+
     //query to insert an element into orders tables
     const insertOrder = `INSERT INTO orders (promotion_id, firstname, lastname, mail, phone, address, total_not_discounted, total_discounted, shipping, final_price, status, created_at)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`
@@ -47,7 +50,10 @@ function create(req, res) {
     // variable of query
 
     connection.query(insertOrder, [promotion_id, firstname, lastname, mail, phone.replaceAll(' ', ''), address, total_not_discounted, total_discounted, shipping, final_price, status], (err, results) => {
-        if (err) return res.status(500).json({ error: 'Database query failed insert order' })
+        if (err) {
+            console.log(err)
+            return res.status(500).json({ error: 'Database query failed insert order' })
+        }
 
         const order_id = results.insertId
 
@@ -73,6 +79,8 @@ function create(req, res) {
                     console.error('Errore invio mail:', mailErr)
                     res.status(500).json({ error: 'filled send mail' })
                 }
+                console.log("order confirmed")
+
                 res.status(201).json({ message: 'order and order_products created successfully ', orderId: order_id })
             })
             .catch(() => {
