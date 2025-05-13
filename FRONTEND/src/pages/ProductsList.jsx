@@ -10,14 +10,20 @@ export default function ProductList() {
   const [viewMode, setViewMode] = useState('grid');
   const { products, getAllProducts } = useProductContext();
 
+  //useEffect on page start
   useEffect(() => {
     getAllProducts();
   }, []);
 
+  //function to handle select change
+  function handleSelectChange(e) {
+
+  }
+
   //template
   return (
     <>
-      <section id="jumbotron" className="d-flex align-items-center">
+      {/* <section id="jumbotron" className="d-flex align-items-center">
         <div className="container">
 
           <h2>EAT YOUR WAY ALL PRODUCTS</h2>
@@ -27,10 +33,10 @@ export default function ProductList() {
           </p>
 
         </div >
-      </section>
+      </section> */}
       {/* JUMBOTRON SECTION */}
 
-      <section id="all-products" className="py-5">
+      <section id="all-products" className="pb-5">
         <div className="container">
 
           <div className="text-center mb-5">
@@ -39,11 +45,26 @@ export default function ProductList() {
           </div>
           {/* SECTION DESCRIPTION */}
 
-          <div className="mb-5 d-flex justify-content-end gap-2">
-            <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i class="bi bi-grid"></i></button>
-            <button onClick={() => setViewMode('list')} className="btn btn-primary"><i class="bi bi-list-task"></i></button>
+          <div className="mb-5 d-flex justify-content-between">
+            <div className="d-flex justify-content-center align-items-center gap-2">
+              Order by:
+              <select onChange={handleSelectChange} name="order" id="order" className="ms-1 px-2">
+                <option value="">Select an order</option>
+                <option value="Ascending price">Ascending price</option>
+                <option value="Descending price">Descending price</option>
+                <option value="Ascending name">Ascending name</option>
+                <option value="Descending name">Descending name</option>
+                <option value="Most recents">Most recents</option>
+                <option value="Least recents">Least recents</option>
+              </select>
+            </div>
+
+            <div className="d-flex gap-2">
+              <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i className="bi bi-grid"></i></button>
+              <button onClick={() => setViewMode('list')} className="btn btn-primary"><i className="bi bi-list-task"></i></button>
+            </div>
           </div>
-          {/* GRID AND LIST BUTTONS */}
+          {/* SELECT, GRID AND LIST BUTTONS */}
 
           {
             (viewMode === 'grid')

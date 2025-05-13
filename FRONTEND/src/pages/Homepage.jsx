@@ -26,7 +26,7 @@ export default function Homepage() {
           <p className="jumbo-text">
             Don't <br />compromise.
           </p>
-          <Link to={`/products/all`}><button className="explore-btn">EXPLORE OUR PRODUCTS</button></Link>
+          <Link to={`/search`}><button className="explore-btn">EXPLORE OUR PRODUCTS</button></Link>
         </div >
       </section>
       {/* JUMBOTRON SECTION */}
@@ -60,8 +60,8 @@ export default function Homepage() {
 
       <section id="latest-products" className="py-5">
         <div className="container">
-          <h2 className="mb-0">LATEST PRODUCTS</h2>
-          <p>Here you can find our latest products!</p>
+          <h2 className="mb-0 latest-products-title">LATEST PRODUCTS</h2>
+          <p className="latest-products-sub">Here you can find our latest products!</p>
 
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
             {
@@ -73,8 +73,8 @@ export default function Homepage() {
                     <div key={product.id} className="col" >
                       <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                         <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt={`${product.slug} image`} />
-                        <h4 className="mt-2">{product.name}</h4>
-                        <h6>{`${product.price}€`}</h6>
+                        <h4 className="mt-2 product-name">{product.name}</h4>
+                        <h6 className="product-price">{`${product.price}€`}</h6>
                       </Link>
                     </div>
                   )
@@ -90,8 +90,8 @@ export default function Homepage() {
 
       <section id="best-sellers" className="py-5" >
         <div className="container">
-          <h2 className="mb-0">BEST SELLERS</h2>
-          <p>Here you can find our best sellers!</p>
+          <h2 className="mb-0 best-sellers-title">BEST SELLERS</h2>
+          <p className="best-sellers-sub">Here you can find our best sellers!</p>
 
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
             {

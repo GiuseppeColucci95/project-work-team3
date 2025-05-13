@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
 
   //logic
@@ -23,34 +25,55 @@ export default function Footer() {
           {/* menu */}
           <div className="footer-menu">
             <div className="footer-menu-ce">
+              {/* Colonna "Company" */}
               <div className="footer-menu-sx">
-                <h4 className="text-gray-800 font-semibold mb-3">Products</h4>
+                <h4 className="text-gray-800 font-semibold mb-3">Company</h4>
                 <ul className="text-sm text-gray-600">
-                  <li><a href="#">All products</a></li>
-                  <li><a href="#">Sugar-free</a></li>
-                  <li><a href="#">Lactose-free</a></li>
-                  <li><a href="#">Gluten-free</a></li>
-                  <li><a href="#">Nickel-free</a></li>
-                  <li><a href="#">Nuts-free</a></li>
+                  <li><Link to="/about-us">About Us</Link></li>
+                  <li><Link to="/our-mission">Our Mission</Link></li>
+                  <li><Link to="/careers">Careers</Link></li>
+                  <li><Link to="/press">Press</Link></li>
                 </ul>
               </div>
+
+              {/* Colonna "Support" */}
               <div className="footer-menu-dx">
                 <h4 className="text-gray-800 font-semibold mb-3">Support</h4>
                 <ul className="text-sm text-gray-600">
-                  <li><a href="#">Contacts</a></li>
-                  <li><a href="#">Shipping</a></li>
-                  <li><a href="#">Return policy</a></li>
+                  <li><Link to="/contacts">Contacts</Link></li>
+                  <li><Link to="/shipping">Shipping</Link></li>
+                  <li><Link to="/return-policy">Return Policy</Link></li>
+                  <li><Link to="/faqs">FAQs</Link></li>
                 </ul>
               </div>
-            </div>
-            <div className="footer-contacts">
-              <h4 className="text-gray-800 font-semibold mb-3">Contacts</h4>
-              <ul className="text-sm text-gray-600">
-                <li><a href="#">Email</a></li>
-                <li><a href="#">Phone</a></li>
-                <li><a href="#">Address</a></li>
-                <li><a href="#"><i className="bi bi-instagram"></i></a><a href="#"><i className="bi bi-twitter"></i></a><a href="#"><i className="bi bi-facebook"></i></a></li>
-              </ul>
+
+              {/* Colonna "Legal" */}
+              <div className="footer-legal">
+                <h4 className="text-gray-800 font-semibold mb-3">Legal</h4>
+                <ul className="text-sm text-gray-600">
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link to="/terms-of-service">Terms of Service</Link></li>
+                  <li><Link to="/cookie-policy">Cookie Policy</Link></li>
+                  <li><Link to="/accessibility">Accessibility</Link></li>
+                </ul>
+              </div>
+
+              {/* Colonna "Contacts" */}
+              <div className="footer-contacts">
+                <h4 className="text-gray-800 font-semibold mb-3">Contacts</h4>
+                <ul className="text-sm text-gray-600">
+                  <li><a href="mailto:info@eatyourway.com">Email: info@eatyourway.com</a></li>
+                  <li><a href="tel:+123456789">Phone: +1 234 567 89</a></li>
+                  <li><a href="#">Address: 123 Healthy Way, Food City</a></li>
+                  <li>
+                    <a href="#"><i className="bi bi-instagram"></i></a>
+                    <a href="#"><i className="bi bi-twitter"></i></a>
+                    <a href="#"><i className="bi bi-facebook"></i></a>
+                    <a href="#"><i className="bi bi-linkedin"></i></a>
+                  </li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>

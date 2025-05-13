@@ -11,6 +11,7 @@ const bestSellersPath = '/best-sellers';
 const recentsPath = '/recents';
 const tagPath = '/pathologies';
 const categoryPath = '/categories';
+const searchPath = '/search';
 
 //context provider
 function ProductProvider({ children }) {
@@ -26,6 +27,17 @@ function ProductProvider({ children }) {
   const [categoryProducts, setCategoryProducts] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [wishlist, setWishlist] = useState(null);
+  const [cart, setCart] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [search, setSearch] = useState({
+    q: '',
+    category: '',
+    tag: '',
+    orderby: '',
+    order: '',
+    promotion: ''
+  });
 
   //function to get all products from db
   function getAllProducts() {
@@ -112,13 +124,250 @@ function ProductProvider({ children }) {
 
   }
 
+  //function to get wishlist products
+  function getWishlistProducts() {
+
+    //get the elements from wishlist
+    const products = localStorage.getItem('wishlist');
+    const productsParsed = JSON.parse(products);
+
+    console.log('wishlist', productsParsed);
+
+    setWishlist(productsParsed);
+  }
+
+  //function to remove an element from wishlist
+  function removeWishlistProduct(productToRemove) {
+
+    const products = localStorage.getItem('wishlist');
+    const arrayToCheck = JSON.parse(products);
+
+    //find the element to remove
+    const foundProduct = arrayToCheck.find(product => {
+      return product.name == productToRemove.name;
+    });
+
+    arrayToCheck.splice(arrayToCheck.indexOf(foundProduct), 1);
+    const stringifiedProducts = JSON.stringify(arrayToCheck);
+    localStorage.setItem('wishlist', stringifiedProducts);
+    getWishlistProducts();
+  }
+
+  //function to add an element in the wishlist
+  function addWishlistProduct(productToAdd) {
+
+    //check if the wishlist already exist
+    if (wishlist) {
+      //if exist try to find the product
+      const products = wishlist;
+      const found = products.find(product => {
+        console.log('find product name', product.name, 'product to add name', productToAdd.name);
+
+        return product.name === productToAdd.name;
+      })
+
+      //if already exist 
+      if (!found) {
+        //otherwise add it in the wishlist
+        products.push({
+          id: productToAdd.id,
+          image: productToAdd.image,
+          name: productToAdd.name,
+          price: productToAdd.price
+        });
+
+        const stringifiedProducts = JSON.stringify(products);
+        localStorage.setItem('wishlist', stringifiedProducts);
+      }
+    } else {
+      console.log('LA WISHLIST NON ESISTE');
+      //if wishlist does not exist
+      //create an empty array and populate it
+      const products = [];
+      products.push({
+        id: productToAdd.id,
+        image: productToAdd.image,
+        name: productToAdd.name,
+        price: productToAdd.price
+      });
+
+      //save it in local storage
+      const stringifiedProducts = JSON.stringify(products);
+      localStorage.setItem('wishlist', stringifiedProducts);
+    }
+
+    getWishlistProducts();
+  }
+
+  //function to get cart products
+  function getCartProducts() {
+
+    //get the elements from cart
+    const cart = localStorage.getItem('cart');
+    const parsedCart = JSON.parse(cart);
+
+    console.log('cart', parsedCart);
+
+
+    setCart(parsedCart);
+  }
+
+  //function to remove an element from cart
+  function removeCartProduct(productToRemove) {
+    const products = localStorage.getItem('cart');
+    const parsedProducts = JSON.parse(products);
+
+    //find the element to remove
+    const foundProduct = parsedProducts.find(product => {
+      return product.name == productToRemove.name;
+    });
+
+    if (parsedProducts[parsedProducts.indexOf(foundProduct)].cartQuantity > 1) {
+      parsedProducts[parsedProducts.indexOf(foundProduct)].cartQuantity--;
+    } else {
+      parsedProducts.splice(parsedProducts.indexOf(foundProduct), 1);
+    }
+    let total = JSON.parse(localStorage.getItem('totalPrice'));
+    total = Number(total) - Number(productToRemove.price);
+    const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+    localStorage.setItem('totalPrice', stringifiedTotalPrice);
+    const stringifiedProducts = JSON.stringify(parsedProducts);
+    localStorage.setItem('cart', stringifiedProducts);
+    getCartProducts();
+    getTotalPrice();
+  }
+
+  //function to clear cart and totalPrice
+  function clearCartTotalPrice() {
+
+    localStorage.setItem('cart', '');
+    localStorage.setItem('totalPrice', '');
+  }
+
+  //function to add an element to cart
+  function addCartProduct(productToAdd) {
+
+    //check if the cart exist in local storage
+    if (cart) {
+      const cartArray = cart;
+
+      const foundProduct = cartArray.find(product => {
+        return product.name === productToAdd.name;
+      });
+
+      //if the product is already in the cart
+      if (foundProduct) {
+        //modify his quantity by summing 1
+        cartArray.map(product => {
+          if (foundProduct.name === product.name) {
+            product.cartQuantity++;
+
+            //set the new cart
+            const stringifiedCart = JSON.stringify(cartArray);
+            localStorage.setItem('cart', stringifiedCart);
+            getCartProducts();
+
+            //modify the order total
+            let total = totalPrice;
+            total = Number(total) + Number(product.price);
+            const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+            localStorage.setItem('totalPrice', stringifiedTotalPrice);
+            getTotalPrice();
+          }
+        })
+      } else {
+        //if the product is not in the cart add it
+        const newProductToAdd = {
+          id: productToAdd.id,
+          image: productToAdd.image,
+          name: productToAdd.name,
+          price: productToAdd.price,
+          cartQuantity: 1
+        };
+        cartArray.push(newProductToAdd);
+        const stringifiedCart = JSON.stringify(cartArray);
+        localStorage.setItem('cart', stringifiedCart);
+        getCartProducts();
+
+        //modify the order total
+        let total = totalPrice;
+        total = Number(total) + Number(productToAdd.price);
+        const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+        localStorage.setItem('totalPrice', stringifiedTotalPrice);
+        getTotalPrice();
+      }
+    } else {
+      const cartArray = [];
+      //if the product is not in the cart add it
+      const newProductToAdd = {
+        id: productToAdd.id,
+        image: productToAdd.image,
+        name: productToAdd.name,
+        price: productToAdd.price,
+        cartQuantity: 1
+      };
+      cartArray.push(newProductToAdd);
+      const stringifiedCart = JSON.stringify(cartArray);
+      localStorage.setItem('cart', stringifiedCart);
+      getCartProducts();
+
+      //modify the order total
+      let total = totalPrice;
+      total = Number(total) + Number(productToAdd.price);
+      const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+      localStorage.setItem('totalPrice', stringifiedTotalPrice);
+      getTotalPrice();
+    }
+
+  }
+
+  //function to get the total
+  function getTotalPrice() {
+
+    //get the total from localStorage and set it in his variable
+    const total = localStorage.getItem('totalPrice');
+    const parsedTotal = Number(JSON.parse(total));
+
+    console.log('totalPrice', total);
+
+    setTotalPrice(parsedTotal);
+  }
+
+  //function to set search variable state and call the fetch function
+  function setSearchChangeFunction(target) {
+
+    setSearch(searchToSet);
+    getSearchedProducts(searchToSet);
+  }
+
+  //function to get searched products
+  function getSearchedProducts(searchObject) {
+    fetch(`${connection}${productsPath}${searchPath}?q=${searchObject.q}`)
+      .then(res => res.json())
+      .then(data => {
+
+        setProducts(data);
+      })
+      .catch(err => console.error(err));
+  }
+
+
+  //useEffect to get cart and wishlist at start of the page
+  useEffect(() => {
+    getWishlistProducts();
+    getCartProducts();
+    getTotalPrice();
+  }, []);
+
   //template
   return (
     <ProductContext.Provider value={{
       products, setProducts, getAllProducts, selectedProduct, setSelectedProduct, getSelectedProduct, latestProducts,
       setLatestProduct, getLatestProducts, bestSellersProducts, setBestSellersProducts, getBestSellersProducts,
       tagProducts, setTagProducts, getProductsByTag, categoryProducts, setCategoryProducts, getProductsByCategory,
-      selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory
+      selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
+      wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
+      getCartProducts, addCartProduct, removeCartProduct, totalPrice, search, setSearch, setSearchChangeFunction, getSearchedProducts
     }}>
       {children}
     </ProductContext.Provider>

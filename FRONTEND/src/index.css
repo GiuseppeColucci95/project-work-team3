@@ -112,7 +112,32 @@ header {
   }
 }
 
+.menu .dropdown {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  display: none;
+}
 
+.menu li:hover .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  padding: 5px 10px;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown li a:hover {
+  color: var(--accent);
+}
 
 /* #endregion HEADER */
 
@@ -127,7 +152,7 @@ main {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 500px;
+    min-height: 350px;
 
     .jumbo-container {
       width: 50%;
@@ -195,13 +220,66 @@ main {
 }
 
 #best-sellers {
-  background-color: lightgrey;
   min-height: 500px;
 
+  .best-sellers-title {
+    color: var(--dark);
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+  }
+
+  .best-sellers-sub {
+    color: var(--dark);
+    padding-bottom: 2rem;
+  }
 }
 
 #latest-products {
   min-height: 500px;
+  background-color: var(--secondary-brown);
+
+  .latest-products-title {
+    color: var(--light);
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+  }
+
+  .latest-products-sub {
+    color: var(--light);
+    padding-bottom: 2rem;
+  }
+
+  .product-name,
+  .product-price {
+    color: var(--light);
+  }
+}
+
+.col {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+.col:hover {
+  transform: scale(1.05);
+}
+
+.col img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  padding-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+.col:hover img {
+  transform: scale(1.1);
+}
+
+h6 {
+  padding-bottom: 1rem;
 }
 
 #tags {
@@ -210,6 +288,80 @@ main {
     color: var(--secondary-brown);
   }
 }
+
+#wishlist,
+#cart {
+  min-height: 500px;
+}
+
+/* #region PRODUCT DETAILS component */
+
+#product-description {
+  background-color: var(--primary);
+  padding: 3rem 0 3rem;
+  color: var(--light);
+}
+
+.product-container {
+  width: 60%;
+}
+
+#tags {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.check-icon {
+  width: 30px;
+}
+
+.btn-add {
+  border-style: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--dark);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: var(--primary);
+}
+
+.favourites {
+  border-style: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem;
+  background: var(--accent);
+  color: var(--light);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  width: 70px;
+}
+
+.favourites:hover {
+  background-color: var(--primary);
+}
+
+h2 {
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
+.product-img {
+  width: 90% !important;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+h3 {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+/* #endregion PRODUCT DETAILS component */
+
 
 
 /* ------------ HOMEPAGE component ------------ */
@@ -221,15 +373,20 @@ main {
 
 footer {
 
-  /* DA RIMUOVERE QUANDO SI STILIZZA IL FOOTER */
   min-height: 100px;
-  background-color: var(--secondary);
+  background-image: url("/img/footer-bg.svg");
+  background-position: center;
+  background-size: cover;
   padding: 2rem;
   color: var(--dark);
 
   .footer-container {
     display: flex;
     align-items: flex-start;
+  }
+
+  .footer-logo-img {
+    width: 200px;
   }
 
   .footer-logo {
@@ -251,7 +408,7 @@ footer {
     display: flex;
     justify-content: space-around;
     gap: 3rem;
-    padding-left: 7rem;
+    padding-left: 2rem;
 
     ul {
       padding-left: 0;
@@ -280,42 +437,182 @@ footer {
   }
 
   .copyright {
-    margin-top: 1.5rem;
+    color: var(--light);
+    margin-bottom: 0;
+    font-size: 12px !important;
   }
 }
 
-  .toggler {
-    display: none;
-  }
+.toggler {
+  display: none;
+}
 
 /* #endregion FOOTER */
 
-/* schermi medi */
+/* schermi molto grandi */
 
-@media (max-width: 768px) {
-  .navbar-toggler {
-    display: none;
-  }
-  .menu-sx {
-    margin-left: 0.5rem !important;
-  }
-  .searchbar {
-    padding: 0.5rem !important;
-  }
-  main #jumbotron {
-    min-height: 250px;
-    max-height: 250px !important;
+@media (max-width: 1440px) {
+  #jumbotron {
+    max-height: 350px !important;
   }
 
   .jumbo-title {
-    font-size: 35px !important;
+    font-size: 50px !important;
     padding-bottom: 0 !important;
   }
 
   .jumbo-text {
     font-size: 25px !important;
+    padding-bottom: 1rem !important;
+    line-height: 2rem !important;
+  }
+
+  .explore-btn {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .payoff {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .payoff {
+    display: block !important;
+  }
+}
+
+/* schermi medi */
+
+@media (max-width: 770px) {
+  header {
+    padding: 0.75rem;
+
+    .logo {
+      width: 70px;
+      margin-right: 0;
+    }
+  }
+
+  .collapse.show {
+    display: block;
+  }
+
+  .hamburger {
+    width: 24px;
+    margin: 0 !important;
+  }
+
+  .search {
+    margin-left: 0.25rem !important;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu-dx {
+    display: none;
+  }
+
+  .toggler {
+    display: block;
+    z-index: 1050;
+    color: var(--secondary-brown);
+    background-color: transparent !important;
+    border-style: none;
+  }
+
+  .list-unstyled {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    /* sopra il contenuto, sotto il menu */
+    display: none;
+    /* nascondo di default */
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  .menu-container {
+    position: absolute;
+    top: 60px;
+    /* posizione dell'hamburger menu (sotto) */
+    right: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1050;
+    /* sopra l'overlay */
+    display: none;
+    /* nascondo di default */
+    width: 200px;
+  }
+
+  /* mostro il menu */
+  .menu-container.show {
+    display: block;
+  }
+
+  .menu-container ul {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .menu-container ul li {
+    margin-bottom: 1rem;
+  }
+
+  .menu-container ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 16px;
+  }
+
+  .menu-sx {
+    margin-left: 0 !important;
+  }
+
+  main #jumbotron {
+    min-height: 250px;
+    max-height: 250px !important;
+    background-size: cover;
+  }
+
+  .jumbo-container {
+    width: 100% !important;
+    padding: 1rem 0 1rem 3rem !important;
+  }
+
+  .jumbo-title {
+    font-size: 30px !important;
+    padding-bottom: 0 !important;
+    line-height: 2rem !important;
+  }
+
+  .jumbo-text {
+    font-size: 20px !important;
     padding-bottom: 0 !important;
     line-height: 1.5rem !important;
+  }
+
+  .explore-btn {
+    font-size: 10px !important;
   }
 
   .food-allergens {
@@ -363,6 +660,7 @@ footer {
 
   .payoff {
     width: 100% !important;
+    display: block !important;
   }
 
   .footer-menu {
@@ -371,6 +669,10 @@ footer {
     h4 {
       font-size: 26px;
     }
+  }
+
+  .footer-menu-ce {
+    padding-bottom: 2rem !important;
   }
 
   .footer-logo-img {
@@ -387,41 +689,53 @@ footer {
   }
 }
 
+/* schermi medio-piccoli */
 
-/* schermi piccoli */
-
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   header {
     padding: 0.75rem;
+
     .logo {
       width: 70px;
       margin-right: 0;
     }
   }
+
   .collapse.show {
     display: block;
   }
-  .navbar-toggler {
-    display: block;
-    z-index: 1050;
-  }
+
   .hamburger {
     width: 24px;
     margin: 0 !important;
   }
+
   .search {
     margin-left: 0.25rem !important;
   }
+
+  .menu {
+    display: none;
+  }
+
+  .menu-dx {
+    display: none;
+  }
+
   .toggler {
+    display: block;
+    z-index: 1050;
     color: var(--secondary-brown);
     background-color: transparent !important;
     border-style: none;
   }
+
   .list-unstyled {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
+
   .overlay {
     position: fixed;
     top: 0;
@@ -429,35 +743,46 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1040; /* sopra il contenuto, sotto il menu */
-    display: none; /* nascondo di default */
+    z-index: 1040;
+    /* sopra il contenuto, sotto il menu */
+    display: none;
+    /* nascondo di default */
   }
+
   .overlay.show {
     display: block;
   }
+
   .menu-container {
     position: absolute;
-    top: 60px; /* posizione dell'hamburger menu (sotto) */
+    top: 60px;
+    /* posizione dell'hamburger menu (sotto) */
     right: 10px;
     background-color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    z-index: 1050; /* sopra l'overlay */
-    display: none; /* nascondo di default */
+    z-index: 1050;
+    /* sopra l'overlay */
+    display: none;
+    /* nascondo di default */
     width: 200px;
   }
+
   /* mostro il menu */
   .menu-container.show {
     display: block;
   }
+
   .menu-container ul {
     list-style: none;
     padding: 1rem;
     margin: 0;
   }
+
   .menu-container ul li {
     margin-bottom: 1rem;
   }
+
   .menu-container ul li a {
     text-decoration: none;
     color: var(--dark);
@@ -467,45 +792,184 @@ footer {
   .menu-sx {
     margin-left: 0 !important;
   }
+
   main #jumbotron {
     min-height: 200px;
     max-height: 200px !important;
     background-size: cover;
   }
+
   .jumbo-container {
     width: 100% !important;
     padding: 1rem 0 1rem 3rem !important;
   }
+
   .jumbo-title {
     font-size: 25px !important;
     padding-bottom: 0 !important;
     line-height: 2rem !important;
   }
+
   .jumbo-text {
     font-size: 16px !important;
     padding-bottom: 0 !important;
     line-height: 1rem !important;
   }
+
   .explore-btn {
     font-size: 10px !important;
   }
+
+  .food-allergens {
+    width: 80px !important;
+    cursor: pointer;
+  }
+
   .img-description {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 3rem;
   }
+
+  .img-descr {
+    width: 80% !important;
+    height: auto;
+  }
+
+  .description-text {
+    font-size: 25px !important;
+    padding-left: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  footer {
+    padding: 1rem;
+    text-align: center;
+
+    a {
+      color: var(--dark);
+    }
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  .footer-logo {
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-top: 1rem;
+  }
+
+  .payoff {
+    width: 100% !important;
+  }
+
+  .footer-menu {
+    padding-left: 0 !important;
+
+    h4 {
+      font-size: 26px;
+      margin-bottom: 0.5rem !important;
+    }
+  }
+
+  .footer-menu-ce {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .footer-logo-img {
+    width: 100px !important;
+  }
+
+  .mb-4 {
+    margin-bottom: 0 !important;
+    margin-top: 1rem !important;
+  }
+
+  .copyright {
+    margin-top: 0;
+  }
+}
+
+/* schermi piccoli */
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.75rem;
+
+    .logo {
+      width: 70px;
+      margin-right: 0;
+    }
+  }
+
+  .collapse.show {
+    display: block;
+  }
+
+  .toggler {
+    display: block;
+    z-index: 1050;
+  }
+
+  .menu-sx {
+    margin-left: 0 !important;
+  }
+
+  main #jumbotron {
+    min-height: 200px;
+    max-height: 200px !important;
+    background-size: cover;
+  }
+
+  .jumbo-container {
+    width: 100% !important;
+    padding: 1rem 0 1rem 3rem !important;
+  }
+
+  .jumbo-title {
+    font-size: 25px !important;
+    padding-bottom: 0 !important;
+    line-height: 2rem !important;
+  }
+
+  .jumbo-text {
+    font-size: 16px !important;
+    padding-bottom: 0 !important;
+    line-height: 1rem !important;
+  }
+
+  .explore-btn {
+    font-size: 10px !important;
+  }
+
+  .img-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+  }
+
   .menu {
     display: none;
   }
+
   .menu-dx {
     display: none;
   }
+
   .food-allergens {
     width: 60px !important;
     cursor: pointer;
   }
-  }
+
   .payoff {
     width: 100% !important;
   }
@@ -530,3 +994,32 @@ footer {
   .copyright {
     margin-top: 0;
   }
+}
+
+/* schermi molto piccoli */
+
+@media (max-width: 360px) {
+  .logo {
+    width: 50px !important;
+  }
+
+  .searchbar {
+    padding: 0.5rem 1rem 0.5rem 0.5rem !important;
+    font-size: 9px !important;
+  }
+
+  .food-allergens {
+    width: 40px !important;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 375px) {
+  .payoff {
+    display: none !important;
+  }
+
+  .footer-menu-ce {
+    padding-bottom: 3rem !important;
+  }
+}
