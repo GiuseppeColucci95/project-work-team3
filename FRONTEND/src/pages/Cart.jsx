@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useProductContext } from "../contexts/ProductContext";
 
 //component exports
@@ -49,6 +50,9 @@ export default function Cart() {
               <h5>Total products: {totalPrice.toFixed(2)}€ </h5>
               <h5>Total order: {(totalPrice > 39.99) ? (totalPrice.toFixed(2)) : ((totalPrice + 9.99).toFixed(2))}€ </h5>
 
+              <Link to="/checkout">
+                <button type="button" className="btn btn-primary">GO CHECKOUT</button>
+              </Link>
 
             </div>
           </div>

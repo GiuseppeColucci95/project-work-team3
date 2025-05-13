@@ -9,7 +9,7 @@ import { useOrderContext } from "../contexts/OrdersContex"
 
 export default function Checkout() {
 
-  const { cart, totalPrice } = useProductContext()
+  const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
   const { order, setOrder, subtimOrder, orderResponse } = useOrderContext()
   const navigate = useNavigate()
 
@@ -42,7 +42,7 @@ export default function Checkout() {
     setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
     setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
     setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
-  }, [totalPrice, totalNotDiscounted])
+  }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted])
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
@@ -64,8 +64,8 @@ export default function Checkout() {
 
   useEffect(() => {
     if (orderResponse.orderId) {
+      clearCartTotalPrice()
       navigate("/order-confirmation")
-      return
     } else if (Object.keys(orderResponse).length > 0) {
       alert(Object.values(orderResponse).join('\n'))
     }
