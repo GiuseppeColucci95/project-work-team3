@@ -610,6 +610,13 @@ footer {
 
 /* schermi medi */
 
+@media (min-width: 826px) {
+
+  .menu-hamburger {
+    display: none !important;
+  }
+}
+
 @media (max-width: 825px) {
   header {
     padding: 0.75rem;
