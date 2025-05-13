@@ -27,7 +27,7 @@ import Contacts from "./pages/Contacts";
 import Shipping from "./pages/Shipping";
 import ReturnPolicy from "./pages/ReturnPolicy";
 import FAQs from "./pages/FAQs";
-import NotFound from "./errors/Notfound404";
+import NotFound from "./errors/NotFound";
 
 //component exports
 export default function App() {
