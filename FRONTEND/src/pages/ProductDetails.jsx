@@ -94,7 +94,7 @@ export default function ProductDetails() {
                       }
                     </div>
 
-                    <div className="d-flex gap-3 justify-content-start">
+                    <div className="d-flex gap-3 justify-content-start mt-3">
                       <div>
                         <button onClick={() => addCartProduct(selectedProduct)} className="btn-add px-5 me-1">ADD TO CART</button>
                       </div>
