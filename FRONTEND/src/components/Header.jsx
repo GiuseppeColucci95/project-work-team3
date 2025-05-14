@@ -82,9 +82,11 @@ export default function Header() {
               <NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink>
               {dropdownOpen === 'category' && (
                 <ul className="dropdown">
-                  <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
+                  <li><NavLink to="/categories/sweet-snacks">Sweet Snacks</NavLink></li>
+                  <li><NavLink to="/categories/savoury-snacks">Savoury Snacks</NavLink></li>
                   <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
                   <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
+                  <li><NavLink to="/categories/spread-creams">Spread Creams</NavLink></li>
                 </ul>
               )}
             </li>

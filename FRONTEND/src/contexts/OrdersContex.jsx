@@ -5,6 +5,7 @@ const OrderContext = createContext();
 
 //connection variables
 const api_url_orders = "http://localhost:3000/api/v1/orders"
+const api_url_promotion = "http://localhost:3000/api/v1/promotions/"
 
 //context provider
 function OrderProvider({ children }) {
@@ -12,6 +13,7 @@ function OrderProvider({ children }) {
     const [order, setOrder] = useState({})
     const [orderResponse, setOrderResponse] = useState({})
     const [flagConfetti, setFlagConfetti] = useState(false)
+    const [promotionCodeResponse, setPromotionCodeResponse] = useState({})
 
     function subtimOrder(formData) {
 
@@ -35,9 +37,31 @@ function OrderProvider({ children }) {
             .catch(err => setOrderResponse(err))
     }
 
+    function validateCode(promotionCode) {
+
+        const api_header = {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+
+        }
+
+        fetch(`${api_url_promotion}${promotionCode}`, api_header)
+            .then(res => res.json())
+            .then(data => {
+                console.log('promotionCodeResponse', data)
+                setPromotionCodeResponse(data)
+            })
+            .catch(err => setPromotionCodeResponse(err))
+
+    }
+
     return (
         <OrderContext.Provider value={{
-            order, setOrder, subtimOrder, orderResponse, setOrderResponse, flagConfetti, setFlagConfetti
+            order, setOrder, subtimOrder, orderResponse, setOrderResponse, flagConfetti,
+            setFlagConfetti, promotionCodeResponse, validateCode, setPromotionCodeResponse
         }}>
             {children}
         </OrderContext.Provider>
