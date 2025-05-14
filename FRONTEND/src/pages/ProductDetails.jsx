@@ -115,7 +115,7 @@ export default function ProductDetails() {
 
       <section id="related-products" className="my-5">
         <div className="container mt-5">
-{/*           <h2>RELATED PRODUCTS</h2>
+          {/*           <h2>RELATED PRODUCTS</h2>
           <h4>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus id quidem quod tenetur tempore nobis beatae exercitationem laborum. Sint sed et ad. Incidunt omnis alias beatae libero quas illo doloribus.
           </h4> */}
@@ -128,7 +128,7 @@ export default function ProductDetails() {
                 (tagProducts?.length > 1) ?
                   (
                     tagProducts.map((product, index) => (
-                      ((index < numberOfRelatedTagProducts) && (product.name !== selectedProduct.name)) &&
+                      ((index < numberOfRelatedTagProducts) && (product.name !== selectedProduct?.name)) &&
                       (
                         <div key={product.id} className="col">
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
