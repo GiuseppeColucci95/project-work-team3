@@ -25,6 +25,7 @@ function getByName(req, res) {
 
     connection.query(sql, categorySlug, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
+        if (results.length === 0) return res.status(404).json({ error: 'Category not found' })
 
         const category = results[0]
         category.image = `${url_base_image}${category.image}`
