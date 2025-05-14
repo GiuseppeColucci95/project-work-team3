@@ -24,11 +24,11 @@ export default function CategoryProductsList() {
   return (
     <>
 
-      <section id="tag-jumbotron">
+      <section id="tag-jumbotron" style={{ backgroundImage: selectedCategory?.image }}>
         <div className="container">
-          <h1>{`${category} Products`}</h1>
+          <h1 className="pt-5">{`${selectedCategory?.name} Products`}</h1>
         </div>
-      </section>
+      </section >
       {/* JUMBOTRON SECTION */}
 
       <section id="products" className="my-5">

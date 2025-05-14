@@ -24,7 +24,7 @@ export default function TagProductsList() {
   return (
     <>
 
-      <section id="tag-jumbotron" style={{ backgroundImage: selectedTag.image }}>
+      <section id="tag-jumbotron" style={{ backgroundImage: selectedTag?.image }}>
         <div className="container">
           <h1 className="pt-5">{`${selectedTag?.name} Products`}</h1>
         </div>
