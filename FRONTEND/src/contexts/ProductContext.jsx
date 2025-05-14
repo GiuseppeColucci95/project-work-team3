@@ -318,7 +318,9 @@ function ProductProvider({ children }) {
           id: productToAdd.id,
           image: productToAdd.image,
           name: productToAdd.name,
-          price: productToAdd.price,
+          price: ((productToAdd.discount_percentage > 0)
+            ? (productToAdd.price - productToAdd.price * (productToAdd.discount_percentage / 100)).toFixed(2)
+            : (productToAdd.price)),
           cartQuantity: 1
         };
         cartArray.push(newProductToAdd);
@@ -328,9 +330,10 @@ function ProductProvider({ children }) {
 
         //modify the order total
         let total = totalPrice;
-        total = Number(total) + Number((product.discount_percentage > 0)
-          ? (product.price - product.price * (product.discount_percentage / 100)).toFixed(2)
-          : (product.price)); const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+        total = Number(total) + Number((productToAdd.discount_percentage > 0)
+          ? (productToAdd.price - productToAdd.price * (productToAdd.discount_percentage / 100)).toFixed(2)
+          : (productToAdd.price));
+        const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
         localStorage.setItem('totalPrice', stringifiedTotalPrice);
         getTotalPrice();
       }
@@ -341,7 +344,9 @@ function ProductProvider({ children }) {
         id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
-        price: productToAdd.price,
+        price: ((productToAdd.discount_percentage > 0)
+          ? (productToAdd.price - productToAdd.price * (productToAdd.discount_percentage / 100)).toFixed(2)
+          : (productToAdd.price)),
         cartQuantity: 1
       };
       cartArray.push(newProductToAdd);
@@ -351,12 +356,13 @@ function ProductProvider({ children }) {
 
       //modify the order total
       let total = totalPrice;
-      total = Number(total) + Number(productToAdd.price);
+      total = Number(total) + Number((productToAdd.discount_percentage > 0)
+        ? (productToAdd.price - productToAdd.price * (productToAdd.discount_percentage / 100)).toFixed(2)
+        : (productToAdd.price));
       const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
       localStorage.setItem('totalPrice', stringifiedTotalPrice);
       getTotalPrice();
     }
-
   }
 
   //function to get the total

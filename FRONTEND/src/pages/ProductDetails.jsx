@@ -89,7 +89,7 @@ export default function ProductDetails() {
                           )
                           :
                           (
-                            <span>{`${selectedProduct.price}€`}</span>
+                            <span className="me-2 fs-1 fw-semibold">{`${selectedProduct.price}€`}</span>
                           )
                       }
                     </div>
@@ -140,7 +140,24 @@ export default function ProductDetails() {
                               <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4 product-img-zoom" />
                             </div>
                             <h4 className="mt-2">{product.name}</h4>
-                            <h6>{`${product.price}€`}</h6>
+                            <div className="d-flex gap-3">
+                              {
+                                (product.discount_percentage > 0)
+                                  ?
+                                  (
+                                    <div>
+                                      <span className="product-price me-2"><s>{`${product.price}€`}</s></span>
+                                      <span className="product-price">
+                                        {`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}
+                                      </span>
+                                    </div>
+                                  )
+                                  :
+                                  (
+                                    <span className="product-price">{`${product.price}€`}</span>
+                                  )
+                              }
+                            </div>
                           </Link>
                         </div>
                       )
@@ -172,7 +189,24 @@ export default function ProductDetails() {
                               <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4 product-img-zoom" />
                             </div>
                             <h4 className="mt-2">{product.name}</h4>
-                            <h6>{`${product.price}€`}</h6>
+                            <div className="d-flex gap-3">
+                              {
+                                (product.discount_percentage > 0)
+                                  ?
+                                  (
+                                    <div>
+                                      <span className="product-price me-2"><s>{`${product.price}€`}</s></span>
+                                      <span className="product-price">
+                                        {`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}
+                                      </span>
+                                    </div>
+                                  )
+                                  :
+                                  (
+                                    <span className="product-price">{`${product.price}€`}</span>
+                                  )
+                              }
+                            </div>
                           </Link>
                         </div>
                       )

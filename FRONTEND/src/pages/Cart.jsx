@@ -32,7 +32,17 @@ export default function Cart() {
                               <div id="quantity" className="mx-1">{product.cartQuantity}</div>
                               <button onClick={() => addCartProduct(product)} className="btn-quantity"><i className="bi bi-plus-circle"></i></button>
                             </div>
-                            <h3 className="product-price-cart">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>
+                            {
+                              (product.discount_percentage > 0) ?
+                                (
+                                  <div>
+                                    <span className="me-2 fs-1 fw-semibold"><s>{`${product.price}€`}</s></span>
+                                    <h3 className="product-price-cart">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</h3>
+                                  </div>
+                                )
+                                :
+                                (<h3 className="product-price-cart">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
+                            }
                           </div>
                         </div>
                       </div>
@@ -55,7 +65,7 @@ export default function Cart() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
     </>
   );
 }
