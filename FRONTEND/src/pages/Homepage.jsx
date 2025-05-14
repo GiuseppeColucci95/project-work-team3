@@ -32,12 +32,27 @@ export default function Homepage() {
       {/* JUMBOTRON SECTION */}
 
       <section id="diseases">
-        <div className="allergens">
-          <Link to={`/diseases/gluten-free`}><img src="img/gluten-free.png" className="food-allergens" alt="gluten-free" /></Link>
-          <Link to={`/diseases/sugar-free`}><img src="img/sugar-free.png" className="food-allergens" alt="sugar-free" /></Link>
-          <Link to={`/diseases/lactose-free`}><img src="img/lactose-free.png" className="food-allergens" alt="lactose-free" /></Link>
-          <Link to={`/diseases/nut-free`}><img src="img/nuts-free.png" className="food-allergens" alt="nuts-free" /></Link>
-          <Link to={`/diseases/nickel-free`}><img src="img/nickel-free.png" className="food-allergens" alt="nickel-free" /></Link>
+        <div className="allergens-container">
+          <div className="allergens">
+            <Link to={`/diseases/gluten-free`}><img src="img/gluten-free_2.svg" className="food-allergens" alt="gluten-free" /></Link>
+            <h5 className="allergens-title">GLUTEN-FREE</h5>
+          </div>
+          <div className="allergens">
+            <Link to={`/diseases/sugar-free`}><img src="img/sugar-free_2.svg" className="food-allergens" alt="sugar-free" /></Link>
+            <h5 className="allergens-title">SUGAR-FREE</h5>
+          </div>
+          <div className="allergens">
+            <Link to={`/diseases/lactose-free`}><img src="img/lactose-free_2.svg" className="food-allergens" alt="lactose-free" /></Link>
+            <h5 className="allergens-title">LACTOSE-FREE</h5>
+          </div>
+          <div className="allergens">
+            <Link to={`/diseases/nut-free`}><img src="img/nuts-free_2.svg" className="food-allergens" alt="nuts-free" /></Link>
+            <h5 className="allergens-title">NUTS-FREE</h5>
+          </div>
+          <div className="allergens">
+            <Link to={`/diseases/nickel-free`}><img src="img/nickel-free_2.svg" className="food-allergens" alt="nickel-free" /></Link>
+            <h5 className="allergens-title">NICKEL-FREE</h5>
+          </div>
         </div>
       </section>
       {/* DISEASES SECTION */}
