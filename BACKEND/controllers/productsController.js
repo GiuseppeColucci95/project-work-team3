@@ -184,8 +184,9 @@ function search(req, res) {
     const tag = req.query.tag
     let orderBy = req.query.orderby //price, name, recents
     const order = req.query.order //asc, desc
+    const promotion = req.query.promotion //true, false
 
-    console.log(category, tag, orderBy, order)
+    console.log(category, tag, orderBy, order, promotion)
 
 
     connection.query(sql, [`%${pattern}%`, `%${pattern}%`, `%${pattern}%`], async (err, results) => {
@@ -285,6 +286,11 @@ function search(req, res) {
             })
         }
 
+        if (promotion) {
+            filteredProducts = filteredProducts.filter(product => {
+                return product.discount_percentage > 0
+            })
+        }
         res.json(filteredProducts)
     })
 }
