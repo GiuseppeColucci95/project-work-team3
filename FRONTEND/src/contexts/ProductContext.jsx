@@ -8,6 +8,7 @@ const ProductContext = createContext();
 const connection = "http://localhost:3000";
 const productsPath = "/api/v1/products";
 const tagsPath = "/api/v1/tags";
+const categoriesPath = "/api/v1/categories";
 const bestSellersPath = '/best-sellers';
 const recentsPath = '/recents';
 const tagPath = '/pathologies';
@@ -131,7 +132,15 @@ function ProductProvider({ children }) {
 
   //function to get a selected category
   function getSelectedCategory(category) {
+    console.log(`${connection}${categoriesPath}/${category}`);
+    fetch(`${connection}${categoriesPath}/${category}`)
+      .then(res => res.json())
+      .then(data => {
 
+        setSelectedCategory(data);
+        console.log('related category products', data);
+      })
+      .catch(err => console.error(err));
   }
 
   //function to get wishlist products
