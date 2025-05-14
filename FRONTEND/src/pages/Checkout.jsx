@@ -95,7 +95,11 @@ export default function Checkout() {
       country,
       city,
       province,
-      postalCode
+      postalCode,
+      cardHolder,
+      cardNumber,
+      expirationDate,
+      cvv
     )
 
     //se errorList non è vuota mando un allert
