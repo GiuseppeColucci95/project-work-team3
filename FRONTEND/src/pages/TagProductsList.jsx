@@ -26,7 +26,7 @@ export default function TagProductsList() {
 
       <section id="tag-jumbotron">
         <div className="container">
-          <h1>{`${tag} Products`}</h1>
+          <h1>{`} Products`}</h1>
         </div>
       </section>
       {/* JUMBOTRON SECTION */}
