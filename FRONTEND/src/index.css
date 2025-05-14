@@ -419,6 +419,24 @@ h3 {
 
 /* #endregion ORDERCONFIRMATION component */
 
+/* #region 404 component */
+
+.notfound-code {
+  color: var(--secondary-brown);
+  font-weight: 700;
+  font-size: 60px;
+}
+.notfound-text {
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 24px;
+}
+.notfound-p {
+  padding-bottom: 2rem;
+}
+
+/* #endregion 404 component */
+
 /* ------------ HOMEPAGE component ------------ */
 
 
