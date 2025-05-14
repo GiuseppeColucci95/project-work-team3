@@ -17,7 +17,7 @@ const searchPath = '/search';
 
 //context provider
 function ProductProvider({ children }) {
-
+  
   //logic
 
   //usestate variables to use
@@ -41,6 +41,17 @@ function ProductProvider({ children }) {
     order: '',
     promotion: ''
   });
+
+    // badge cart function
+  function getCartQuantity() {
+    if (!cart) return 0;
+    return cart.reduce((total, product) => total + product.cartQuantity, 0);
+  }
+  // wishlist function
+  function getWishlistQuantity() {
+    if (!wishlist) return 0; // Se il carrello è vuoto, restituisci 0
+    return wishlist.length;
+  }
 
   //function to get all products from db
   function getAllProducts() {
@@ -256,6 +267,8 @@ function ProductProvider({ children }) {
     getTotalPrice();
   }
 
+  
+
   //function to clear cart and totalPrice
   function clearCartTotalPrice() {
 
@@ -421,7 +434,7 @@ function ProductProvider({ children }) {
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
       getCartProducts, addCartProduct, removeCartProduct, totalPrice, orderBy, setOrderBy,
-      search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice
+      search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice, getCartQuantity, getWishlistQuantity
     }}>
       {children}
     </ProductContext.Provider>
