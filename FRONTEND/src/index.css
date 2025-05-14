@@ -77,7 +77,7 @@ header {
   }
 
   .menu-icons {
-    width: 40px;
+    width: 24px;
     margin-left: 2rem;
     cursor: pointer;
   }
@@ -91,7 +91,7 @@ header {
     background-color: transparent !important;
   }
   .icon-search {
-    height: 40px;
+    height: 24px;
     margin-left: 1rem;
   }
 
@@ -1389,9 +1389,4 @@ footer {
 
 .product-img-container:hover .product-img-zoom {
   transform: scale(1.08);
-}
-
-button.favourites {
-  width: 30px;
-  padding: 0.5rem 0 0.5rem 0 !important;
 }
