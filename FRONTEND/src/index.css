@@ -221,9 +221,7 @@ main {
   }
 
   #tag-jumbotron {
-    /* DA ELIMINARE PER LO STILE */
     min-height: 500px;
-    background-color: yellow;
   }
 
   .description {
@@ -283,29 +281,6 @@ main {
   .product-price {
     color: var(--light);
   }
-}
-
-.col {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 10px;
-}
-
-.col:hover {
-  transform: scale(1.05);
-}
-
-.col img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-  padding-bottom: 1.5rem;
-  border-radius: 10px;
-}
-
-.col:hover img {
-  transform: scale(1.1);
 }
 
 h6 {
@@ -398,9 +373,11 @@ h3 {
 .confirmation-img {
   width: 250px;
 }
+
 .confirmation-text {
   padding-bottom: 1rem !important;
 }
+
 .btn-homepage {
   border-style: none;
   border-radius: 1rem;
@@ -412,6 +389,7 @@ h3 {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   text-decoration: none;
+
   &:hover {
     background-color: var(--secondary);
   }
@@ -426,11 +404,13 @@ h3 {
   font-weight: 700;
   font-size: 60px;
 }
+
 .notfound-text {
   color: var(--dark);
   font-weight: 700;
   font-size: 24px;
 }
+
 .notfound-p {
   padding-bottom: 2rem;
 }

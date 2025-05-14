@@ -22,7 +22,7 @@ export default function Homepage() {
     <>
       <section id="jumbotron" className="d-flex align-items-center jumbotron-container">
         <div className="jumbo-container">
-          <h2 className="jumbo-title">EAT <span style={{ color: "rgb(103, 139, 39" }}>YOUR </span>WAY</h2>
+          <h2 className="jumbo-title">EAT <span style={{ color: "rgb(103, 139, 39)" }}>YOUR </span>WAY</h2>
           <p className="jumbo-text">
             Don't <br />compromise.
           </p>
