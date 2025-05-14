@@ -78,7 +78,7 @@ export default function Checkout() {
     }
   }, [orderResponse])
 
-  const handleCardNumberChange = (e) => {
+  function handleCardNumberChange(e) {
     // Rimuovi tutti i caratteri non numerici
     let value = e.target.value.replace(/[^0-9]/g, "")
     // Inserisci un trattino ogni 4 cifre
