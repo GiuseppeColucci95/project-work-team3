@@ -130,9 +130,7 @@ export default function Checkout() {
       address: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    if (checkCard) {
-      alert("Congratulation! Your payment has been accepted")
-    }
+    alert("Congratulation! Your payment has been accepted")
 
     //abilito il flag per i confetti
     setFlagConfetti(true)
@@ -183,13 +181,11 @@ export default function Checkout() {
     if (cardHolder.length < 3) error.cardHolder = "card Holder must be at least 3 characters long"
     if (cardHolder.length > 20) error.cardHolder = "card Holder must be at most 20 characters long"
     if (cardNumber.length != 19) error.cardNumber = "card Number must be 19 characters long"
-    if (expirationDate.length != 7) error.expirationDate = "expiration Date must be 7 characters long"
+    if (expirationDate.length != 5) error.expirationDate = "expiration Date must be 5 characters long"
     if (cvv.length != 3) error.cvv = "cvv must be 3 characters long"
 
     //se almeno un campo ha la lunghezza sbagliata esce dalla funzione
     if (Object.keys(error).length > 0) return error
-
-    console.log("verify length");
 
     //controllo che le variabili sodisfino i requisiti di formato
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
