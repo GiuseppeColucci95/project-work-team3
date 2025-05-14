@@ -115,10 +115,6 @@ export default function ProductDetails() {
 
       <section id="related-products" className="my-5">
         <div className="container mt-5">
-          {/*           <h2>RELATED PRODUCTS</h2>
-          <h4>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus id quidem quod tenetur tempore nobis beatae exercitationem laborum. Sint sed et ad. Incidunt omnis alias beatae libero quas illo doloribus.
-          </h4> */}
 
           <section id="tag-related-products" className="my-5">
             <h3>TAG RELATED PRODUCTS</h3>
@@ -132,7 +128,9 @@ export default function ProductDetails() {
                       (
                         <div key={product.id} className="col">
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <div className="product-img-container">
+                              <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4 product-img-zoom" />
+                            </div>
                             <h4 className="mt-2">{product.name}</h4>
                             <h6>{`${product.price}€`}</h6>
                           </Link>
@@ -162,7 +160,9 @@ export default function ProductDetails() {
                       (
                         <div key={product.id} className="col">
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <div className="product-img-container">
+                              <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4 product-img-zoom" />
+                            </div>
                             <h4 className="mt-2">{product.name}</h4>
                             <h6>{`${product.price}€`}</h6>
                           </Link>
