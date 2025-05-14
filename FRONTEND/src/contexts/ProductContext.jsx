@@ -241,9 +241,11 @@ function ProductProvider({ children }) {
   //function to clear cart and totalPrice
   function clearCartTotalPrice() {
 
+    //clear cart and total price from local storage
     localStorage.removeItem('cart');
     localStorage.removeItem('totalPrice');
 
+    //clear cart and total price
     getCartProducts();
     getTotalPrice();
   }
