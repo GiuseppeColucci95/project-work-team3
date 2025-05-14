@@ -29,7 +29,7 @@ async function sendOrderConfirmationMail(order, orderId) {
     }
 
     // Invia la mail
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions)
 }
 
 module.exports = sendOrderConfirmationMail
