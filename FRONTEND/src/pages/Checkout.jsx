@@ -158,7 +158,7 @@ export default function Checkout() {
     if (userEmail.length < 10) error.userEmail = "Email must be at least 10 characters long"
     if (userEmail.length > 50) error.userEmail = "Email must be at most 50 characters long"
     if (street.length < 5) error.street = "street must be at least 5 characters long"
-    if (street.length > 20) error.street = "street must be at most 20 characters long"
+    if (street.length > 50) error.street = "street must be at most 50 characters long"
     if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
     if (streetNumber.length > 3) error.streetNumber = "streetNumber must be at most 3 characters long"
     if (country.length < 4) error.country = "country must be at least 4 characters long"
