@@ -2,6 +2,8 @@
 
 const connection = require('../data/db')
 
+const url_base_image = "http://localhost:3000/images/"
+
 
 // function index
 function index(req, res) {
@@ -26,7 +28,10 @@ function getByName(req, res) {
     connection.query(sql, tagSlug, (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
 
-        res.json(results[0])
+        const tags = results[0]
+        tags.image = `${url_base_image}${tags.image}`
+
+        res.json(tags)
     })
 }
 
