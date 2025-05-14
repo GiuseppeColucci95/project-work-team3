@@ -26,7 +26,7 @@ function promotionValidate(req, res) {
             return res.status(400).json({ error: 'Promotion code not valid for today' })
         }
 
-        res.json({ discount_percentage: results[0].discount_percentage })
+        res.json({ discount_percentage: results[0].discount_percentage, promotion_id: results[0].id })
     })
 }
 
