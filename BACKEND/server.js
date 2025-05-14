@@ -21,9 +21,9 @@ const port = 3000
 // middleware
 
 //importing the error middelware
-const serverError = require('./middelware/serverError')
+const serverError = require('./middleware/serverError')
 
-const notFound = require('./middelware/notFound')
+const notFound = require('./middleware/notFound')
 
 //attivo i permessi cors per il frontend in localhost
 app.use(cors({ origin: 'http://localhost:5173' }))
