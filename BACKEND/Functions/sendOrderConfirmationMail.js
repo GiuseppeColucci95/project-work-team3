@@ -17,8 +17,16 @@ async function sendOrderConfirmationMail(order, orderId) {
         from: process.env.MAIL_USERNAME,
         to: order.mail,
         subject: 'Conferma ordine',
-        text: `Ciao ${order.firstname}, il tuo ordine #${orderId} è stato ricevuto con successo!`
-    };
+        html: `
+            <div style="font-family: Arial, sans-serif; color: #333;">
+                <h2 style="color: #4CAF50;">Grazie per il tuo ordine!</h2>
+                <p>Ciao <strong>${order.firstname}</strong>,</p>
+                <p>Il tuo ordine <b>#${orderId}</b> è stato ricevuto con successo!</p>
+                <hr>
+                <p style="font-size: 0.9em; color: #888;">Ti contatteremo appena sarà spedito.</p>
+            </div>
+        `
+    }
 
     // Invia la mail
     await transporter.sendMail(mailOptions);
