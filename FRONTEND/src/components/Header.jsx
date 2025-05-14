@@ -105,7 +105,7 @@ export default function Header() {
               placeholder="Search your products"
               value={search.q}
             />
-            <button type="submit" className="menu-icons search"><img className="icon-search" src="/img/search.svg" alt="search image" /></button>
+            <button type="submit" className="search"><img className="icon-search" src="/img/search.svg" alt="search image" /></button>
           </form>
         </div>
         <div className="pos-f-t">
