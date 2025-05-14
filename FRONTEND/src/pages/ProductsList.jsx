@@ -122,7 +122,9 @@ export default function ProductList() {
                       products.map(product => (
                         <div key={product.id} className="col">
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                            <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4" />
+                            <div className="product-img-container">
+                              <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4 product-img-zoom" />
+                            </div>
                             <h4 className="mt-2">{product.name}</h4>
                             <h6>{`${product.price}€`}</h6>
                           </Link>
@@ -144,7 +146,9 @@ export default function ProductList() {
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                             <div className="row justify-content-start align-items-start">
                               <div className="col-1">
-                                <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt="image" />
+                                <div className="product-img-container">
+                                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4 product-img-zoom" src={product.image} alt="image" />
+                                </div>
                               </div>
                               <div className="col-11">
                                 <h4 className="p-0 m-0">{product.name}</h4>

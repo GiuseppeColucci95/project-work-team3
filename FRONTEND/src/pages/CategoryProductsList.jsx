@@ -40,7 +40,9 @@ export default function CategoryProductsList() {
                   categoryProducts.map(product => (
                     <div key={product.id} className="col" >
                       <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                        <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4" src={product.image} alt={`${product.slug} image`} />
+                        <div className="product-img-container">
+                          <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4 product-img-zoom" src={product.image} alt={`${product.slug} image`} />
+                        </div>
                         <h4 className="mt-2">{product.name}</h4>
                         <h6>{`${product.price}€`}</h6>
                       </Link>
