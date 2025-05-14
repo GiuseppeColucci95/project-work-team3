@@ -10,7 +10,7 @@ import { useOrderContext } from "../contexts/OrdersContex"
 export default function Checkout() {
 
   const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
-  const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse } = useOrderContext()
+  const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse, validateCode, promotionCodeResponse, setPromotionCodeResponse } = useOrderContext()
   const navigate = useNavigate()
 
   //varibili momentanee
@@ -42,7 +42,7 @@ export default function Checkout() {
     setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
     setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
     setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
-  }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted])
+  }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted, promotion])
 
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
@@ -93,7 +93,7 @@ export default function Checkout() {
 
     //se errorList non è vuota mando un allert
     if (Object.keys(errorList).length > 0) {
-      alert(Object.values(errorList).join('\n'));
+      alert(Object.values(errorList).join('\n'))
       return // interrompe la funzione se ci sono errori
     }
 
@@ -187,10 +187,24 @@ export default function Checkout() {
 
   function CodeValidate() {
 
+    console.log(promotion.promotionCode);
+
+
     //esegue chiamata funzion API 
-
+    validateCode(promotion.promotionCode)
     //gestisce la risposta
+    if (promotionCodeResponse.discount_percentage) {
+      setPromotion({
+        promotion_id: promotionCodeResponse.promotion_id,
+        promotionCode: promotion.promotionCode,
+        discount_percentage: promotionCodeResponse.discount_percentage
+      })
+      console.log(promotion)
 
+    } else if (promotionCodeResponse.error) {
+      alert(promotionCodeResponse.error)
+      setPromotionCodeResponse({})
+    }
 
   }
 
