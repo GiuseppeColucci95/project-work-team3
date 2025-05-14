@@ -1,5 +1,5 @@
 //react imports
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useProductContext } from "../contexts/ProductContext";
 
@@ -13,6 +13,7 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   //imports from custom context
   const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
+  const navigate = useNavigate();
 
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
@@ -32,8 +33,12 @@ export default function Header() {
 
   //function to handle submit
   function handleSubmit(e) {
+    //prevent the default behavior
     e.preventDefault();
 
+    if (search.q.length > 0) {
+      navigate(`/search?q=${search.q}`);
+    }
   }
 
   //function to handle change
@@ -58,11 +63,15 @@ export default function Header() {
               <NavLink className="text-decoration-none active" to={'/search'}>Pathology</NavLink>
               {dropdownOpen === 'pathology' && (
                 <ul className="dropdown">
-                  <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
-                  <li><NavLink to="/diseases/sugar-free">Sugar-free</NavLink></li>
-                  <li><NavLink to="/diseases/lactose-free">Lactose-free</NavLink></li>
-                  <li><NavLink to="/diseases/nut-free">Nuts-free</NavLink></li>
-                  <li><NavLink to="/diseases/nickel-free">Nickel-free</NavLink></li>
+                  <li><NavLink to="/diseases/lactose-free">Lactose free</NavLink></li>
+                  <li><NavLink to="/diseases/sugar-free">Sugar free</NavLink></li>
+                  <li><NavLink to="/diseases/gluten-free">Gluten free</NavLink></li>
+                  <li><NavLink to="/diseases/nickel-free">Nickel free</NavLink></li>
+                  <li><NavLink to="/diseases/nuts-free">Nuts free</NavLink></li>
+                  <li><NavLink to="/diseases/fish-free">Fish free</NavLink></li>
+                  <li><NavLink to="/diseases/egg-free">Egg free</NavLink></li>
+                  <li><NavLink to="/diseases/soy-free">Soy free</NavLink></li>
+                  <li><NavLink to="/diseases/shellfish-free">Shellfish free</NavLink></li>
                 </ul>
               )}
             </li>

@@ -10,7 +10,7 @@ import { useOrderContext } from "../contexts/OrdersContex"
 export default function Checkout() {
 
   const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
-  const { order, setOrder, subtimOrder, orderResponse } = useOrderContext()
+  const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse } = useOrderContext()
   const navigate = useNavigate()
 
   //varibili momentanee
@@ -65,6 +65,7 @@ export default function Checkout() {
   useEffect(() => {
     if (orderResponse.orderId) {
       clearCartTotalPrice()
+      setOrderResponse({})
       navigate("/order-confirmation")
     } else if (Object.keys(orderResponse).length > 0) {
       alert(Object.values(orderResponse).join('\n'))
@@ -75,11 +76,13 @@ export default function Checkout() {
   function formSubmit(e) {
     e.preventDefault()
 
+
     //validazione dei dati
     const errorList = Validate(
       firstName,
       lastName,
       userEmail,
+      phoneNumber,
       street,
       streetNumber,
       country,
@@ -111,14 +114,13 @@ export default function Checkout() {
       address: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    console.log("check create formData", formData)
+    setFlagConfetti(true)
 
     subtimOrder(formData)
-    console.log("checkout create order", order)
 
   }
 
-  function Validate(firstName, lastName, userEmail, street, streetNumber, country, city, province, postalCode) {
+  function Validate(firstName, lastName, userEmail, phoneNumber, street, streetNumber, country, city, province, postalCode) {
     //variabile d'appoggio
     const error = {}
 
@@ -136,6 +138,19 @@ export default function Checkout() {
     //se manca un campo esci dalla funzione restituendo l'oggetto error
     if (Object.keys(error).length > 0) return error
 
+    console.log(
+      firstName,
+      lastName,
+      userEmail,
+      phoneNumber,
+      street,
+      streetNumber,
+      country,
+      city,
+      province,
+      postalCode
+    )
+
     //verifico le grandezze
     if (firstName.length < 3) error.firstName = "first name must be at least 3 characters long"
     if (firstName.length > 20) error.firstName = "first name must be at most 20 characters long"
@@ -144,7 +159,7 @@ export default function Checkout() {
     if (userEmail.length < 10) error.userEmail = "Email must be at least 10 characters long"
     if (userEmail.length > 50) error.userEmail = "Email must be at most 50 characters long"
     if (street.length < 5) error.street = "street must be at least 5 characters long"
-    if (street.length > 20) error.street = "street must be at most 20 characters long"
+    if (street.length > 50) error.street = "street must be at most 50 characters long"
     if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
     if (streetNumber.length > 3) error.streetNumber = "streetNumber must be at most 3 characters long"
     if (country.length < 4) error.country = "country must be at least 4 characters long"
@@ -157,9 +172,14 @@ export default function Checkout() {
     //se almeno un campo ha la lunghezza sbagliata esce dalla funzione
     if (Object.keys(error).length > 0) return error
 
+    console.log("verify length");
+
     //controllo che le variabili sodisfino i requisiti di formato
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
     if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) error.street = "street must contain via or piazza"
+    if (!/^\d{5}$/.test(postalCode)) error.postalCode = "postalCode is invalid"
+    if (phoneNumber && !/^\d{10}$/.test(phoneNumber) || /^\d{9}$/.test(phoneNumber)) error.phoneNumber = "phoneNumber is invalid"
+
 
     //faccio un return di error
     return error
@@ -176,15 +196,15 @@ export default function Checkout() {
 
   return (
     <>
-      <div className="container">
+      <div className="container mb-5">
         <section className="checkout">
           <h3 className="text-center">Checkout</h3>
           <div className="row">
-            <div className="col col-8 p-3">
+            <div className="col-8 p-3 bg-body-tertiary">
 
               <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
-                <h3>Your info</h3>
+                <h3 className="text-success">Your info</h3>
 
                 <div className="col-md-6">
                   <label htmlFor="firstName" className="form-label">First name</label>
@@ -311,7 +331,7 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <h3>Payment</h3>
+                <h3 className="text-success">Payment</h3>
 
                 <div className="col-md-12">
                   <label htmlFor="cardHolder" className="form-label">Card Holder</label>
@@ -369,9 +389,9 @@ export default function Checkout() {
             </div>
 
 
-            <div className="col col-4">
+            <div className="col-4 bg-body-secondary">
               <section>
-                <h3>Summary</h3>
+                <h3 className="text-success p-3">Summary</h3>
                 <div className="summayDetails">
                   <p>
                     total products: &euro;{totalNotDiscounted}
@@ -418,7 +438,7 @@ export default function Checkout() {
                 </div>
 
 
-                <button className="btn btn-primary mt-3" type="submit">PAY NOW</button>
+                <button className="btn btn-primary mt-3" type="submit" onClick={formSubmit}>PAY NOW</button>
 
               </section>
             </div>

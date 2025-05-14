@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 //context creation
 const OrderContext = createContext();
@@ -11,6 +11,7 @@ function OrderProvider({ children }) {
 
     const [order, setOrder] = useState({})
     const [orderResponse, setOrderResponse] = useState({})
+    const [flagConfetti, setFlagConfetti] = useState(false)
 
     function subtimOrder(formData) {
 
@@ -36,7 +37,7 @@ function OrderProvider({ children }) {
 
     return (
         <OrderContext.Provider value={{
-            order, setOrder, subtimOrder, orderResponse
+            order, setOrder, subtimOrder, orderResponse, setOrderResponse, flagConfetti, setFlagConfetti
         }}>
             {children}
         </OrderContext.Provider>
