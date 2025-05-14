@@ -11,6 +11,7 @@ function OrderProvider({ children }) {
 
     const [order, setOrder] = useState({})
     const [orderResponse, setOrderResponse] = useState({})
+    const [flagConfetti, setFlagConfetti] = useState(false)
 
     function subtimOrder(formData) {
 
@@ -36,7 +37,7 @@ function OrderProvider({ children }) {
 
     return (
         <OrderContext.Provider value={{
-            order, setOrder, subtimOrder, orderResponse
+            order, setOrder, subtimOrder, orderResponse, flagConfetti, setFlagConfetti
         }}>
             {children}
         </OrderContext.Provider>

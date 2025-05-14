@@ -1,9 +1,25 @@
 //import function
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
+//funzionalità extra
+import confetti from "canvas-confetti"
+
+import { useOrderContext } from "../contexts/OrdersContex"
 
 export default function OrderConfirmation() {
 
+  const { flagConfetti, setFlagConfetti } = useOrderContext()
 
+  useEffect(() => {
+    if (flagConfetti) {
+      confetti({
+        particleCount: 200,
+        spread: 50,
+        origin: { y: 0.9 }
+      })
+      setFlagConfetti(false)
+    }
+  }, [])
 
   return (
     <>
@@ -22,5 +38,5 @@ export default function OrderConfirmation() {
         </Link>
       </div>
     </>
-  );
+  )
 }

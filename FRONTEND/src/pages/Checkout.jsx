@@ -10,7 +10,7 @@ import { useOrderContext } from "../contexts/OrdersContex"
 export default function Checkout() {
 
   const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
-  const { order, setOrder, subtimOrder, orderResponse } = useOrderContext()
+  const { setFlagConfetti, subtimOrder, orderResponse } = useOrderContext()
   const navigate = useNavigate()
 
   //varibili momentanee
@@ -113,10 +113,9 @@ export default function Checkout() {
       address: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    console.log("check create formData", formData)
+    setFlagConfetti(true)
 
     subtimOrder(formData)
-    console.log("checkout create order", order)
 
   }
 
