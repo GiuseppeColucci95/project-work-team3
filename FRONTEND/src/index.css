@@ -111,6 +111,10 @@ header {
     }
   }
 
+  ul .dropdown {
+    z-index: 1000;
+  }
+
   .menu-hamburger .dropdown {
     list-style: none;
     padding-left: 1rem;
