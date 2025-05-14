@@ -42,6 +42,13 @@ export default function Checkout() {
     setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
     setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
     setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
+    console.log("promotion discount_percentage", promotion.discount_percentage)
+
+    console.log("totalNotDiscounted", totalNotDiscounted)
+    console.log("totalDiscounted", totalDiscounted)
+    console.log("shipping", shipping)
+    console.log("finalPrice", finalPrice)
+
   }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted, promotion])
 
   //variabili del form utente
@@ -186,12 +193,13 @@ export default function Checkout() {
   }
 
   function CodeValidate() {
-
-    console.log(promotion.promotionCode);
-
-
+    console.log(promotion.promotionCode)
     //esegue chiamata funzion API 
     validateCode(promotion.promotionCode)
+
+  }
+
+  useEffect(() => {
     //gestisce la risposta
     if (promotionCodeResponse.discount_percentage) {
       setPromotion({
@@ -203,10 +211,8 @@ export default function Checkout() {
 
     } else if (promotionCodeResponse.error) {
       alert(promotionCodeResponse.error)
-      setPromotionCodeResponse({})
     }
-
-  }
+  }, [promotionCodeResponse])
 
   return (
     <>

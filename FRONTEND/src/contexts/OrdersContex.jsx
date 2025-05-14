@@ -37,18 +37,17 @@ function OrderProvider({ children }) {
             .catch(err => setOrderResponse(err))
     }
 
-    function validateCode(promotionCode) {
+    async function validateCode(promotionCode) {
 
         const api_header = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            method: "POST",
-
+            method: "POST"
         }
 
-        fetch(`${api_url_promotion}${promotionCode}`, api_header)
+        await fetch(`${api_url_promotion}${promotionCode}`, api_header)
             .then(res => res.json())
             .then(data => {
                 console.log('promotionCodeResponse', data)
