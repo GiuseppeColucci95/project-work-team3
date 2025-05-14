@@ -172,6 +172,7 @@ header {
   position: relative;
   display: inline-block;
 }
+
 .cart-badge {
   position: absolute;
   top: -5px;
@@ -186,10 +187,12 @@ header {
   text-align: center;
   z-index: 3;
 }
+
 .favourites-icon-container {
   position: relative;
   display: inline-block;
 }
+
 .favourites-badge {
   position: absolute;
   top: -5px;
@@ -204,10 +207,12 @@ header {
   text-align: center;
   z-index: 3;
 }
+
 .cart-icon-container:hover .cart-badge {
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
 }
+
 .favourites-icon-container:hover .favourites-badge {
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
@@ -344,18 +349,21 @@ h6 {
   min-height: 500px;
 }
 
-#diseases{
+#diseases {
   background-color: var(--dark);
 }
+
 .allergens-container {
   display: flex;
   justify-content: space-around;
 }
-.allergens{
+
+.allergens {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .allergens-title {
   text-decoration: none !important;
   color: var(--secondary-brown);
@@ -669,6 +677,7 @@ footer {
   .food-allergens {
     width: 100px !important;
   }
+
   .allergens-title {
     font-size: 18px;
   }
@@ -839,6 +848,7 @@ footer {
     width: 85px !important;
     cursor: pointer;
   }
+
   .allergens-title {
     font-size: 16px;
   }
@@ -924,10 +934,12 @@ footer {
     flex-wrap: wrap !important;
     justify-content: center !important;
   }
+
   .food-allergens {
     width: 70px !important;
     cursor: pointer;
   }
+
   .allergens-title {
     font-size: 14px;
   }
@@ -1061,13 +1073,16 @@ footer {
   .explore-btn {
     font-size: 12px !important;
   }
+
   .allergens {
     padding: 1.75rem 1rem 1.75rem 1rem !important;
   }
+
   .food-allergens {
     width: 80px !important;
     cursor: pointer;
   }
+
   .allergens-container {
     flex-wrap: wrap !important;
   }
@@ -1235,6 +1250,7 @@ footer {
     width: 70px !important;
     cursor: pointer;
   }
+
   .allergens-title {
     font-size: 14px !important;
   }
@@ -1302,4 +1318,26 @@ footer {
     padding: 0.65rem 1.5rem 0.65rem !important;
     font-size: 12px;
   }
+}
+
+.product-img-container {
+  width: 100%;
+  aspect-ratio: 0.75;
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.product-img-zoom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: block;
+}
+
+.product-img-container:hover .product-img-zoom {
+  transform: scale(1.08);
 }
