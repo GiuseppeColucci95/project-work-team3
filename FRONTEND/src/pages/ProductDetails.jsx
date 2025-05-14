@@ -128,7 +128,7 @@ export default function ProductDetails() {
                 (tagProducts?.length > 1) ?
                   (
                     tagProducts.map((product, index) => (
-                      ((index < numberOfRelatedTagProducts) && (product.name !== selectedProduct?.name)) &&
+                      ((index < numberOfRelatedTagProducts) && (product?.name !== selectedProduct?.name)) &&
                       (
                         <div key={product.id} className="col">
                           <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
