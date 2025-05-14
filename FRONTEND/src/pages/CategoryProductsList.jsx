@@ -24,7 +24,7 @@ export default function CategoryProductsList() {
   return (
     <>
 
-      <section id="tag-jumbotron" style={{ backgroundImage: selectedCategory?.image }}>
+      <section id="tag-jumbotron" style={{ backgroundImage: `url('${selectedCategory?.image}')`, objectFit: 'cover' }}>
         <div className="container">
           <h1 className="pt-5">{`${selectedCategory?.name} Products`}</h1>
         </div>

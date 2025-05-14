@@ -24,14 +24,14 @@ export default function TagProductsList() {
   return (
     <>
 
-      <section id="tag-jumbotron" style={{ backgroundImage: selectedTag?.image }}>
+      <section id="tag-jumbotron" style={{ backgroundImage: `url('${selectedTag?.image}')`, objectFit: 'cover' }}>
         <div className="container">
           <h1 className="pt-5">{`${selectedTag?.name} Products`}</h1>
         </div>
       </section >
       {/* JUMBOTRON SECTION */}
 
-      <section id="products" className="my-5" >
+      < section id="products" className="my-5" >
         <div className="container">
           <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
             {
@@ -54,7 +54,7 @@ export default function TagProductsList() {
             }
           </div>
         </div>
-      </section>
+      </ section >
       {/* PRODUCTS SECTION */}
     </>
   );
