@@ -77,8 +77,8 @@ header {
   }
 
   .menu-icons {
-    width: 24px;
-    margin-left: 1rem;
+    width: 40px;
+    margin-left: 2rem;
     cursor: pointer;
   }
 
@@ -89,10 +89,10 @@ header {
   .search {
     border-style: none;
     background-color: transparent !important;
-
-    .icon-search {
-      height: 24px;
-    }
+  }
+  .icon-search {
+    height: 40px;
+    margin-left: 1rem;
   }
 
   ul {

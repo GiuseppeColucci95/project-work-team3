@@ -8,17 +8,10 @@ import { useOrderContext } from "../contexts/OrdersContex"
 
 
 export default function Checkout() {
-
+  //import variable && function to contexs
   const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
   const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse, validateCode, promotionCodeResponse, setPromotionCodeResponse } = useOrderContext()
   const navigate = useNavigate()
-
-  //varibili momentanee
-  const [promotion, setPromotion] = useState({
-    promotion_id: 0,
-    promotionCode: "",
-    discount_percentage: 0
-  })
 
   const [totalNotDiscounted, setTotalNotDiscounted] = useState()
   const [totalDiscounted, setTotalDiscounted] = useState()
@@ -26,6 +19,30 @@ export default function Checkout() {
   const [finalPrice, setFinalPrice] = useState()
   const [status, setSatus] = useState("shipped")
   const [productList, setProductList] = useState([])
+  const [promotion, setPromotion] = useState({
+    promotion_id: 0,
+    promotionCode: "",
+    discount_percentage: 0
+  })
+  //variabili del form utente
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [userEmail, setUserEmail] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [street, setStreet] = useState("")
+  const [streetNumber, setStreetNumber] = useState("")
+  const [country, setCountry] = useState("")
+  const [city, setCity] = useState("")
+  const [province, setProvince] = useState("")
+  const [postalCode, setPostalCode] = useState("")
+
+  //variabili del form payment
+  const [cardHolder, setCardHolder] = useState("")
+  const [cardNumber, setCardNumber] = useState("")
+  const [expirationDate, setExpirationDate] = useState("")
+  const [cvv, setCvv] = useState("")
+  const [checkCard, setCheckCard] = useState(false)
+
 
   useEffect(() => {
     setProductList(cart?.map(product => {
@@ -51,24 +68,6 @@ export default function Checkout() {
 
   }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted, promotion])
 
-  //variabili del form utente
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [userEmail, setUserEmail] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [street, setStreet] = useState("")
-  const [streetNumber, setStreetNumber] = useState("")
-  const [country, setCountry] = useState("")
-  const [city, setCity] = useState("")
-  const [province, setProvince] = useState("")
-  const [postalCode, setPostalCode] = useState("")
-
-  //variabili del form payment
-  const [cardHolder, setCardHolder] = useState("")
-  const [cardNumber, setCardNumber] = useState("")
-  const [expirationDate, setExpirationDate] = useState("")
-  const [cvv, setCvv] = useState("")
-
   useEffect(() => {
     if (orderResponse.orderId) {
       clearCartTotalPrice()
@@ -79,10 +78,17 @@ export default function Checkout() {
     }
   }, [orderResponse])
 
+  function handleCardNumberChange(e) {
+    // Rimuovi tutti i caratteri non numerici
+    let value = e.target.value.replace(/[^0-9]/g, "")
+    // Inserisci un trattino ogni 4 cifre
+    value = value.match(/.{1,4}/g)?.join("-") || ""
+    setCardNumber(value);
+  }
+
   //function on submit form
   function formSubmit(e) {
     e.preventDefault()
-
 
     //validazione dei dati
     const errorList = Validate(
@@ -95,7 +101,11 @@ export default function Checkout() {
       country,
       city,
       province,
-      postalCode
+      postalCode,
+      cardHolder,
+      cardNumber,
+      expirationDate,
+      cvv
     )
 
     //se errorList non è vuota mando un allert
@@ -104,8 +114,7 @@ export default function Checkout() {
       return // interrompe la funzione se ci sono errori
     }
 
-    console.log("check validate")
-
+    //se non ci sono errori popolo l'oggetto formData
     const formData = {
       ...(promotion.promotion_id ? { promotion_id: promotion.promotion_id } : {}),
       total_not_discounted: totalNotDiscounted,
@@ -121,8 +130,11 @@ export default function Checkout() {
       address: `${street}, ${streetNumber}, ${postalCode} ${city} ${country}`
     }
 
-    setFlagConfetti(true)
+    alert("Congratulation! Your payment has been accepted")
 
+    //abilito il flag per i confetti
+    setFlagConfetti(true)
+    //eseguo la chiamata alla funzione per inviare l'ordine al server
     subtimOrder(formData)
 
   }
@@ -141,22 +153,13 @@ export default function Checkout() {
     if (!city) error.city = "city is require"
     if (!province) error.province = "province is require"
     if (!postalCode) error.postalCode = "postal code is require"
+    if (!cardHolder) error.cardHolder = "card Holder is require"
+    if (!cardNumber) error.cardNumber = "card Number is require"
+    if (!expirationDate) error.expirationDate = "expiration Date is require"
+    if (!cvv) error.cvv = "cvv is require"
 
     //se manca un campo esci dalla funzione restituendo l'oggetto error
     if (Object.keys(error).length > 0) return error
-
-    console.log(
-      firstName,
-      lastName,
-      userEmail,
-      phoneNumber,
-      street,
-      streetNumber,
-      country,
-      city,
-      province,
-      postalCode
-    )
 
     //verifico le grandezze
     if (firstName.length < 3) error.firstName = "first name must be at least 3 characters long"
@@ -168,27 +171,35 @@ export default function Checkout() {
     if (street.length < 5) error.street = "street must be at least 5 characters long"
     if (street.length > 50) error.street = "street must be at most 50 characters long"
     if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
-    if (streetNumber.length > 3) error.streetNumber = "streetNumber must be at most 3 characters long"
+    if (streetNumber.length > 5) error.streetNumber = "streetNumber must be at most 5 characters long"
     if (country.length < 4) error.country = "country must be at least 4 characters long"
     if (country.length > 10) error.country = "country must be at most 10 characters long"
     if (city.length < 1) error.city = "city must be at least 1 characters long"
     if (city.length > 10) error.city = "city must be at most 10 characters long"
     if (province.length !== 2) error.province = "province must be a 2 characters long"
     if (postalCode.length !== 5) error.postalCode = "postal Code must be a 5 characters long"
+    if (cardHolder.length < 3) error.cardHolder = "card Holder must be at least 3 characters long"
+    if (cardHolder.length > 20) error.cardHolder = "card Holder must be at most 20 characters long"
+    if (cardNumber.length != 19) error.cardNumber = "card Number must be 19 characters long"
+    if (expirationDate.length != 5) error.expirationDate = "expiration Date must be 5 characters long"
+    if (cvv.length != 3) error.cvv = "cvv must be 3 characters long"
 
     //se almeno un campo ha la lunghezza sbagliata esce dalla funzione
     if (Object.keys(error).length > 0) return error
 
-    console.log("verify length");
-
     //controllo che le variabili sodisfino i requisiti di formato
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
     if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) error.street = "street must contain via or piazza"
+    if (!/^\d{1,5}([\/\-]?[A-Za-z])?$/.test(streetNumber)) error.streetNumber = "street Number is invalid"
     if (!/^\d{5}$/.test(postalCode)) error.postalCode = "postalCode is invalid"
     if (phoneNumber && !/^\d{10}$/.test(phoneNumber) || /^\d{9}$/.test(phoneNumber)) error.phoneNumber = "phoneNumber is invalid"
+    if (!/^\d{4}\-\d{4}\-\d{4}\-\d{4}$/.test(cardNumber)) error.cardNumber = "card Number is invalid"
+    if (!/^\d{2}\/\d{2}$/.test(expirationDate)) error.expirationDate = "expiration Date is invalid"
+    if (!/^\d{3}$/.test(cvv)) error.cvv = "cvv is invalid"
 
+    setCheckCard(true)
 
-    //faccio un return di error
+    //faccio un return di error che è un oggetto vuoto se non ci sono errori
     return error
   }
 
@@ -232,7 +243,7 @@ export default function Checkout() {
                     placeholder="Marco"
                     value={firstName}
                     onChange={e => setFirstName(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid First name
                   </div>
@@ -244,7 +255,7 @@ export default function Checkout() {
                     placeholder="Rossi"
                     value={lastName}
                     onChange={e => setLastName(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid Last name
                   </div>
@@ -273,9 +284,10 @@ export default function Checkout() {
                     placeholder="3496587652"
                     value={phoneNumber}
                     onChange={e => setPhoneNumber(e.target.value)}
+                    maxLength={10}
                   />
                   <div className="valid-feedback">
-                    Valid Last name
+                    Valid phone Number
                   </div>
                 </div>
 
@@ -285,7 +297,7 @@ export default function Checkout() {
                     placeholder="Via Roma"
                     value={street}
                     onChange={e => setStreet(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid Street
                   </div>
@@ -297,7 +309,7 @@ export default function Checkout() {
                     placeholder="123"
                     value={streetNumber}
                     onChange={e => setStreetNumber(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid Street Number
                   </div>
@@ -309,7 +321,7 @@ export default function Checkout() {
                     placeholder="Italy"
                     value={country}
                     onChange={e => setCountry(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid Country
                   </div>
@@ -321,7 +333,7 @@ export default function Checkout() {
                     placeholder="Roma"
                     value={city}
                     onChange={e => setCity(e.target.value)}
-                    required />
+                  />
                   <div className="valid-feedback">
                     Valid City
                   </div>
@@ -333,7 +345,8 @@ export default function Checkout() {
                     placeholder="RO"
                     value={province}
                     onChange={e => setProvince(e.target.value)}
-                    required />
+                    maxLength={2}
+                  />
                   <div className="valid-feedback">
                     Valid Province
                   </div>
@@ -345,7 +358,8 @@ export default function Checkout() {
                     placeholder="00100"
                     value={postalCode}
                     onChange={e => setPostalCode(e.target.value)}
-                    required />
+                    maxLength={5}
+                  />
                   <div className="valid-feedback">
                     Valid Postal Code
                   </div>
@@ -370,7 +384,8 @@ export default function Checkout() {
                   <input type="text" className="form-control" id="cardNumber"
                     placeholder="1234-3216-7856-4545"
                     value={cardNumber}
-                    onChange={e => setCardNumber(e.target.value)}
+                    onChange={handleCardNumberChange}
+                    maxLength={19} // 16 cifre + 3 trattini
                   />
                   <div className="valid-feedback">
                     Valid card Number
@@ -383,6 +398,7 @@ export default function Checkout() {
                     placeholder="12/06"
                     value={expirationDate}
                     onChange={e => setExpirationDate(e.target.value)}
+                    maxLength={5} // 4 cifre + 1 slash
                   />
                   <div className="valid-feedback">
                     Valid Expiration Date
@@ -395,6 +411,7 @@ export default function Checkout() {
                     placeholder="360"
                     value={cvv}
                     onChange={e => setCvv(e.target.value)}
+                    maxLength={3}
                   />
                   <div className="valid-feedback">
                     Valid CVV
