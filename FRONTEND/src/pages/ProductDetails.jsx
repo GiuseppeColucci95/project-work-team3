@@ -77,16 +77,24 @@ export default function ProductDetails() {
                   </div>
 
                   <div id="buttons" className="mb-3">
-                    <div>
-                      <h2 className="mb-1">{`${selectedProduct.price}€`}</h2>
+                    <div className="d-flex gap-3">
+                      {
+                        (selectedProduct.discount_percentage > 0)
+                          ?
+                          (
+                            <div>
+                              <span className="me-2 fs-1 fw-semibold"><s>{`${selectedProduct.price}€`}</s></span>
+                              <span className="me-2 fs-1 fw-semibold">{`${(selectedProduct.price - selectedProduct.price * (selectedProduct.discount_percentage / 100)).toFixed(2)}€`}</span>
+                            </div>
+                          )
+                          :
+                          (
+                            <span>{`${selectedProduct.price}€`}</span>
+                          )
+                      }
                     </div>
 
                     <div className="d-flex gap-3 justify-content-start">
-                      {/* <div className="d-flex justify-content-center align-items-center gap-1">
-                        <button className="btn btn-primary">-</button>
-                        <div className="px-2">0</div>
-                        <button className="btn btn-primary">+</button>
-                      </div> */}
                       <div>
                         <button onClick={() => addCartProduct(selectedProduct)} className="btn-add px-5 me-1">ADD TO CART</button>
                       </div>

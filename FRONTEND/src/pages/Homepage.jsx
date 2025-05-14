@@ -46,7 +46,7 @@ export default function Homepage() {
             <h5 className="allergens-title">LACTOSE-FREE</h5>
           </div>
           <div className="allergens">
-            <Link to={`/diseases/nut-free`}><img src="img/nuts-free_2.svg" className="food-allergens" alt="nuts-free" /></Link>
+            <Link to={`/diseases/nuts-free`}><img src="img/nuts-free_2.svg" className="food-allergens" alt="nuts-free" /></Link>
             <h5 className="allergens-title">NUTS-FREE</h5>
           </div>
           <div className="allergens">
@@ -91,9 +91,23 @@ export default function Homepage() {
                           <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4 product-img-zoom" src={product.image} alt={`${product.slug} image`} />
                         </div>
                         <h4 className="mt-2 product-name">{product.name}</h4>
-                        <div>
-                          <div className="product-price">{`${product.price}€`}</div>
-                          <div className="product-price">{`${(product.price) - (product.price * product.discountPercentage)}€`}</div>
+                        <div className="d-flex gap-3">
+                          {
+                            (product.discount_percentage > 0)
+                              ?
+                              (
+                                <div>
+                                  <span className="product-price me-2"><s>{`${product.price}€`}</s></span>
+                                  <span className="product-price">
+                                    {`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}
+                                  </span>
+                                </div>
+                              )
+                              :
+                              (
+                                <span className="product-price">{`${product.price}€`}</span>
+                              )
+                          }
                         </div>
                       </Link>
                     </div>
@@ -104,11 +118,11 @@ export default function Homepage() {
 
           </div>
           {/* LATEST PRODUCTS */}
-        </div>
+        </div >
       </section >
       {/* BEST SELLERS SECTION */}
 
-      <section id="best-sellers" className="py-5" >
+      < section id="best-sellers" className="py-5" >
         <div className="container">
           <h2 className="mb-0 best-sellers-title">BEST SELLERS</h2>
           <p className="best-sellers-sub">Here you can find our best sellers!</p>
@@ -126,18 +140,32 @@ export default function Homepage() {
                           <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4 product-img-zoom" src={product.image} alt={`${product.slug} image`} />
                         </div>
                         <h4 className="mt-2">{product.name}</h4>
-                        <h6>{`${product.price}€`}</h6>
+                        <div className="d-flex gap-3">
+                          {
+                            (product.discount_percentage > 0)
+                              ?
+                              (
+                                <div>
+                                  <span className="me-2"><s>{`${product.price}€`}</s></span>
+                                  <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                </div>
+                              )
+                              :
+                              (
+                                <span>{`${product.price}€`}</span>
+                              )
+                          }
+                        </div>
                       </Link>
                     </div>
                   )
                 ))
               )
             }
-
           </div>
           {/* BEST SELLER PRODUCTS */}
         </div>
-      </section>
+      </ section>
       {/* LATEST PRODUCTS SECTION */}
     </>
   );

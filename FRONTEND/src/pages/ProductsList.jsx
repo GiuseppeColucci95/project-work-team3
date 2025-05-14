@@ -126,7 +126,22 @@ export default function ProductList() {
                               <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={product.image} alt="image" className="w-100 rounded-4 product-img-zoom" />
                             </div>
                             <h4 className="mt-2">{product.name}</h4>
-                            <h6>{`${product.price}€`}</h6>
+                            <div className="d-flex gap-3">
+                              {
+                                (product.discount_percentage > 0)
+                                  ?
+                                  (
+                                    <div>
+                                      <span className="me-2"><s>{`${product.price}€`}</s></span>
+                                      <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                    </div>
+                                  )
+                                  :
+                                  (
+                                    <span>{`${product.price}€`}</span>
+                                  )
+                              }
+                            </div>
                           </Link>
                         </div>
                       ))
@@ -153,7 +168,22 @@ export default function ProductList() {
                               <div className="col-11">
                                 <h4 className="p-0 m-0">{product.name}</h4>
                                 <p className="d-none d-md-block p-0 m-0 text-truncate">{product.description}</p>
-                                <h6 className="p-0 m-0">{`${product.price}€`}</h6>
+                                <div className="d-flex gap-3">
+                                  {
+                                    (product.discount_percentage > 0)
+                                      ?
+                                      (
+                                        <div>
+                                          <span className="me-2"><s>{`${product.price}€`}</s></span>
+                                          <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                        </div>
+                                      )
+                                      :
+                                      (
+                                        <span>{`${product.price}€`}</span>
+                                      )
+                                  }
+                                </div>
                               </div>
                             </div>
                           </Link>
@@ -164,7 +194,6 @@ export default function ProductList() {
                 </div>
               )
           }
-
         </div>
       </section >
       {/* PRODUCTS SECTION */}

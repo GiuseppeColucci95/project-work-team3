@@ -17,7 +17,7 @@ const searchPath = '/search';
 
 //context provider
 function ProductProvider({ children }) {
-  
+
   //logic
 
   //usestate variables to use
@@ -42,11 +42,12 @@ function ProductProvider({ children }) {
     promotion: ''
   });
 
-    // badge cart function
+  // badge cart function
   function getCartQuantity() {
     if (!cart) return 0;
     return cart.reduce((total, product) => total + product.cartQuantity, 0);
   }
+
   // wishlist function
   function getWishlistQuantity() {
     if (!wishlist) return 0; // Se il carrello è vuoto, restituisci 0
@@ -238,7 +239,6 @@ function ProductProvider({ children }) {
 
     console.log('cart', parsedCart);
 
-
     setCart(parsedCart);
   }
 
@@ -266,8 +266,6 @@ function ProductProvider({ children }) {
     getCartProducts();
     getTotalPrice();
   }
-
-  
 
   //function to clear cart and totalPrice
   function clearCartTotalPrice() {
@@ -306,7 +304,9 @@ function ProductProvider({ children }) {
 
             //modify the order total
             let total = totalPrice;
-            total = Number(total) + Number(product.price);
+            total = Number(total) + Number((product.discount_percentage > 0)
+              ? (product.price - product.price * (product.discount_percentage / 100)).toFixed(2)
+              : (product.price));
             const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
             localStorage.setItem('totalPrice', stringifiedTotalPrice);
             getTotalPrice();
@@ -328,8 +328,9 @@ function ProductProvider({ children }) {
 
         //modify the order total
         let total = totalPrice;
-        total = Number(total) + Number(productToAdd.price);
-        const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+        total = Number(total) + Number((product.discount_percentage > 0)
+          ? (product.price - product.price * (product.discount_percentage / 100)).toFixed(2)
+          : (product.price)); const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
         localStorage.setItem('totalPrice', stringifiedTotalPrice);
         getTotalPrice();
       }

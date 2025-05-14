@@ -44,7 +44,22 @@ export default function CategoryProductsList() {
                           <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} className="w-100 rounded-4 product-img-zoom" src={product.image} alt={`${product.slug} image`} />
                         </div>
                         <h4 className="mt-2">{product.name}</h4>
-                        <h6>{`${product.price}€`}</h6>
+                        <div className="d-flex gap-3">
+                          {
+                            (product.discount_percentage > 0)
+                              ?
+                              (
+                                <div>
+                                  <span className="me-2"><s>{`${product.price}€`}</s></span>
+                                  <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                </div>
+                              )
+                              :
+                              (
+                                <span>{`${product.price}€`}</span>
+                              )
+                          }
+                        </div>
                       </Link>
                     </div>
                   ))
