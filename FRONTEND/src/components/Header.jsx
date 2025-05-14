@@ -60,7 +60,7 @@ export default function Header() {
               onMouseEnter={() => handleMouseEnter('pathology')}
               onMouseLeave={handleMouseLeave}
             >
-              <NavLink className="text-decoration-none active" to={'/search'}>Pathology</NavLink>
+              <NavLink className="text-decoration-none active" to={'/search'}>Preferences</NavLink>
               {dropdownOpen === 'pathology' && (
                 <ul className="dropdown">
                   <li><NavLink to="/diseases/lactose-free">Lactose free</NavLink></li>
@@ -79,7 +79,7 @@ export default function Header() {
               onMouseEnter={() => handleMouseEnter('category')}
               onMouseLeave={handleMouseLeave}
             >
-              <NavLink className="text-decoration-none active" to={'/categories'}>Category</NavLink>
+              <NavLink className="text-decoration-none active" to={'/categories'}>Categories</NavLink>
               {dropdownOpen === 'category' && (
                 <ul className="dropdown">
                   <li><NavLink to="/categories/sweet-snacks">Sweet Snacks</NavLink></li>
