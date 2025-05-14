@@ -243,6 +243,9 @@ function ProductProvider({ children }) {
 
     localStorage.removeItem('cart');
     localStorage.removeItem('totalPrice');
+
+    getCartProducts();
+    getTotalPrice();
   }
 
   //function to add an element to cart
