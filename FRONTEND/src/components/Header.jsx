@@ -6,6 +6,9 @@ import { useProductContext } from "../contexts/ProductContext";
 //component exports
 export default function Header() {
 
+  // badge cart function
+  const { getCartQuantity, getWishlistQuantity } = useProductContext();
+
   //logic
 
   //usestate variables
@@ -152,8 +155,22 @@ export default function Header() {
           </nav>
         </div>
         <div className="menu-dx">
-          <Link to={'/wishlist'}><img className="text-decoration-none active menu-icons wishlist" src="/img/favourites.svg" alt="wishlist image" /></Link>
-          <Link to={'/cart'}><img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image" /></Link>
+          <div className="favourites-icon-container"> 
+            <Link to={'/wishlist'}>
+              <img className="text-decoration-none active menu-icons wishlist" src="/img/favourites.svg" alt="wishlist image" />
+            </Link>
+            {getWishlistQuantity() > 0 && (
+              <span className="favourites-badge">{getWishlistQuantity()}</span>
+            )}
+          </div>
+          <div className="cart-icon-container">
+            <Link to={'/cart'}>
+              <img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image" />
+            </Link>
+            {getCartQuantity() > 0 && (
+              <span className="cart-badge">{getCartQuantity()}</span>
+            )}
+          </div>
         </div>
       </header>
     </>
