@@ -37,7 +37,7 @@ function OrderProvider({ children }) {
 
     return (
         <OrderContext.Provider value={{
-            order, setOrder, subtimOrder, orderResponse, flagConfetti, setFlagConfetti
+            order, setOrder, subtimOrder, orderResponse, setOrderResponse, flagConfetti, setFlagConfetti
         }}>
             {children}
         </OrderContext.Provider>

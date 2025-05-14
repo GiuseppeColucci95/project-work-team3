@@ -10,7 +10,7 @@ import { useOrderContext } from "../contexts/OrdersContex"
 export default function Checkout() {
 
   const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
-  const { setFlagConfetti, subtimOrder, orderResponse } = useOrderContext()
+  const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse } = useOrderContext()
   const navigate = useNavigate()
 
   //varibili momentanee
@@ -65,6 +65,7 @@ export default function Checkout() {
   useEffect(() => {
     if (orderResponse.orderId) {
       clearCartTotalPrice()
+      setOrderResponse({})
       navigate("/order-confirmation")
     } else if (Object.keys(orderResponse).length > 0) {
       alert(Object.values(orderResponse).join('\n'))
