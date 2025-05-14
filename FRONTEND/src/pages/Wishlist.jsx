@@ -33,7 +33,17 @@ export default function Wishlist() {
                       </div>
                       <div className="col-6 d-flex flex-column align-items-start justify-content-center">
                         <h3 className="mb-0">{product.name}</h3>
-                        <div>{`${product.price}€`}</div>
+                        {
+                          (product.discount_percentage > 0) ?
+                            (
+                              <div>
+                                <span className="me-2 fs-4"><s>{`${product.price}€`}</s></span>
+                                <span className="me-2 fs-4">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                              </div>
+                            )
+                            :
+                            (<span className="me-2 fs-4">{`${product.price}€`}</span>)
+                        }
                         <button onClick={() => addCartProduct(product)} className="btn btn-primary mb-2">ADD TO CART</button>
                         <button onClick={() => removeWishlistProduct(product)} className="btn btn-primary">REMOVE FROM WISHLIST</button>
                       </div>
