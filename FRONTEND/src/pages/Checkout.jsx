@@ -91,7 +91,7 @@ export default function Checkout() {
     e.preventDefault()
 
     //validazione dei dati
-    const errorList = Validate(
+    let errorList = Validate(
       firstName,
       lastName,
       userEmail,
@@ -206,7 +206,7 @@ export default function Checkout() {
 
   function CodeValidate() {
 
-    if (promotion.promotionCode === "") {
+    if (promotion.promotionCode.length === 0) {
       alert("insert your promotion code")
       return
     }
@@ -471,6 +471,7 @@ export default function Checkout() {
                         id="Verify"
                         className="btn btn-primary btnVerify"
                         onClick={CodeValidate}
+                        disabled={promotion.promotionCode.length === 0}
                       >
                         Verify
                       </button>
