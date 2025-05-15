@@ -226,7 +226,7 @@ function search(req, res) {
             //primo filter per interare nell'array
             filteredProducts = filteredProducts.filter(product => {
                 //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
-                return product.categories.some(cat => cat.name.toLowerCase().includes(category).toLowerCase())
+                return product.categories.some(cat => cat.name.toLowerCase().includes(category.toLowerCase()))
             })
         }
 
@@ -234,7 +234,7 @@ function search(req, res) {
             //primo filter per interare nell'array
             filteredProducts = filteredProducts.filter(product => {
                 //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
-                return product.tags.some(cat => cat.name.toLowerCase().includes(tag).toLowerCase())
+                return product.tags.some(cat => cat.name.toLowerCase().includes(tag.toLowerCase()))
             })
         }
 
