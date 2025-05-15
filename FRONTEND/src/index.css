@@ -295,9 +295,14 @@ main {
     margin: 4rem;
   }
 
+  .container-description {
+    margin: 5rem;
+  }
+
   .description-text {
     font-size: 25px;
     padding-left: 2rem;
+    line-height: 2rem;
   }
 
   .allergens {
@@ -680,6 +685,14 @@ footer {
 
 @media (max-width: 1200px) {
 
+  .description {
+    margin: 0 !important;
+  }
+  .description-text {
+    margin-bottom: 0 !important;
+    font-size: 23px !important;
+  }
+
   .footer {
     padding-top: 3rem !important;
   }
@@ -733,6 +746,15 @@ footer {
   }
   .product-img {
     margin-bottom: 1rem;
+  }
+  .description {
+    margin: 0 !important;
+  }
+  .container-description {
+    margin: 2.5rem !important;
+  }
+  .description-text {
+    font-size: 21px !important;
   }
   .img-description {
     display: flex;
@@ -933,7 +955,7 @@ footer {
   }
 
   .description-text {
-    font-size: 25px !important;
+    font-size: 25px;
     padding-left: 0 !important;
     margin-bottom: 0 !important;
   }
@@ -1167,7 +1189,7 @@ footer {
   }
 
   .description-text {
-    font-size: 23px !important;
+    font-size: 23px;
     padding-left: 0 !important;
     margin-bottom: 0 !important;
   }
@@ -1400,12 +1422,17 @@ footer {
   }
 }
 
-.description-text {
-  font-size: 20px !important;
-}
-
 .description {
-  margin: 1.75rem !important;
+  margin: 0 !important;
+}
+.container-description {
+  margin: 2.5rem !important;
+}
+.description-text {
+  font-size: 18px !important;
+}
+.img-descr {
+  width: 100% !important;
 }
 
 .product-img-container {
