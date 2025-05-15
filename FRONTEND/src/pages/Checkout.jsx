@@ -234,13 +234,14 @@ export default function Checkout() {
     <>
       <div className="container mb-5">
         <section className="checkout">
-          <h3 className="text-center">Checkout</h3>
+          <h1 className="text-center pt-3 pb-4 wishlist-title">CHECKOUT</h1>
           <div className="row">
-            <div className="col-8 p-3 bg-body-tertiary col-sm-12">
+            <div className="col-8 p-3 bg-body-tertiary">
 
               <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
-                <h3 className="text-success">Your info</h3>
+                <h3 className="checkout-title"><strong>Your info</strong></h3>
+                <hr />
 
                 <div className="col-md-6">
                   <label htmlFor="firstName" className="form-label">First name</label>
@@ -284,7 +285,7 @@ export default function Checkout() {
                 </div>
 
                 <div className="col-md-4">
-                  <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+                  <label htmlFor="phoneNumber" className="form-label">Phone number</label>
                   <input type="text" className="form-control" id="phoneNumber"
                     placeholder="3496587652"
                     value={phoneNumber}
@@ -292,24 +293,24 @@ export default function Checkout() {
                     maxLength={10}
                   />
                   <div className="valid-feedback">
-                    Valid phone Number
+                    Valid phone number
                   </div>
                 </div>
 
                 <div className="col-md-6">
-                  <label htmlFor="street" className="form-label">Street</label>
+                  <label htmlFor="street" className="form-label">Address</label>
                   <input type="text" className="form-control" id="street"
                     placeholder="Via Roma"
                     value={street}
                     onChange={e => setStreet(e.target.value)}
                   />
                   <div className="valid-feedback">
-                    Valid Street
+                    Valid address
                   </div>
                 </div>
 
                 <div className="col-md-3">
-                  <label htmlFor="streetNumber" className="form-label">Street Number</label>
+                  <label htmlFor="streetNumber" className="form-label">Street number</label>
                   <input type="text" className="form-control" id="streetNumber"
                     placeholder="123"
                     value={streetNumber}
@@ -370,10 +371,11 @@ export default function Checkout() {
                   </div>
                 </div>
 
-                <h3 className="text-success">Payment</h3>
+                <h3 className="checkout-title pt-5"><strong>Payment</strong></h3>
+                <hr />
 
                 <div className="col-md-12">
-                  <label htmlFor="cardHolder" className="form-label">Card Holder</label>
+                  <label htmlFor="cardHolder" className="form-label">Card holder</label>
                   <input type="text" className="form-control" id="cardHolder"
                     placeholder="MasterCard"
                     value={cardHolder}
@@ -385,7 +387,7 @@ export default function Checkout() {
                 </div>
 
                 <div className="col-md-12">
-                  <label htmlFor="cardNumber" className="form-label">Card Number</label>
+                  <label htmlFor="cardNumber" className="form-label">Card number</label>
                   <input type="text" className="form-control" id="cardNumber"
                     placeholder="1234-3216-7856-4545"
                     value={cardNumber}
@@ -398,7 +400,7 @@ export default function Checkout() {
                 </div>
 
                 <div className="col-md-6">
-                  <label htmlFor="expirationDate" className="form-label">Expiration Date</label>
+                  <label htmlFor="expirationDate" className="form-label">Expiration date</label>
                   <input type="text" className="form-control" id="expirationDate"
                     placeholder="12/06"
                     value={expirationDate}
@@ -431,31 +433,32 @@ export default function Checkout() {
             </div>
 
 
-            <div className="col-4 bg-body-secondary col-sm-12">
+            <div className="col-4 bg-body-secondary">
               <section>
-                <h3 className="text-success p-3">Summary</h3>
-                <div className="summayDetails">
+                <h3 className="checkout-title"><strong>Summary</strong></h3>
+                <hr />
+                <div className="summaryDetails">
                   <p>
-                    total products: &euro;{totalNotDiscounted}
+                    <strong>Total products:</strong> &euro;{totalNotDiscounted}
                   </p>
                   <p>
-                    total shipping: &euro;{shipping}
+                    <strong>Total shipping:</strong> &euro;{shipping}
                   </p>
                   <p>
-                    total discounted: &euro;{totalNotDiscounted * (promotion.discount_percentage / 100)}
+                    <strong>Total discounted:</strong> &euro;{totalNotDiscounted * (promotion.discount_percentage / 100)}
                   </p>
                   <p>
-                    final price: &euro;{finalPrice}
+                    <strong>Final price:</strong> &euro;{finalPrice}
                   </p>
                   <div className="promotionValidate">
                     <div className="mb-3">
-                      <label htmlFor="promotion" className="form-label">PromotionCode</label>
+                      <label htmlFor="promotion" className="form-label pt-3"><strong>PromotionCode</strong></label>
                       <input
                         type="text"
                         className="form-control"
                         name="promotion"
                         id="promotion"
-                        placeholder="insert your promotion code"
+                        placeholder="Insert your promotion code"
                         value={promotion.promotionCode}
                         onChange={e => setPromotion({
                           promotion_id: 0,
@@ -463,25 +466,24 @@ export default function Checkout() {
                           discount_percentage: 0
                         })}
                       />
+                      <div className="d-flex justify-content-center">
+                        <button
+                          type="button"
+                          name="Verify"
+                          id="Verify"
+                          className="w-20 btn-checkout mt-3"
+                          onClick={CodeValidate}
+                          disabled={promotion.promotionCode.length === 0}
+                        >
+                          Verify
+                        </button>
+                      </div>
                     </div>
-                    <div className="d-grid gap-2 ">
-                      <button
-                        type="button"
-                        name="Verify"
-                        id="Verify"
-                        className="btn btn-primary btnVerify"
-                        onClick={CodeValidate}
-                        disabled={promotion.promotionCode.length === 0}
-                      >
-                        Verify
-                      </button>
-                    </div>
-
                   </div>
                 </div>
 
 
-                <button className="btn btn-primary mt-3" type="submit" onClick={formSubmit}>PAY NOW</button>
+                <button className="btn-pay w-100" type="submit" onClick={formSubmit}>PAY NOW</button>
 
               </section>
             </div>
