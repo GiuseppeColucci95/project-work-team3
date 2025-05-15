@@ -12,9 +12,6 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none;
-}
 
 .offcanvas_cart {
     position: fixed;
@@ -27,11 +24,19 @@
     background-color: rgba(0, 0, 0, 0.396);
 }
 
+
 .offcanvas_cart_container {
     width: 30%;
     height: 100%;
     background-color: rgb(255, 255, 255);
     color: black;
+    transform: translateX(100%);
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.offcanvas_cart_container.show {
+    transform: translateX(0);
+    /* quando show è presente, il carrello entra */
 }
 
 .offcanvas_cart-header {

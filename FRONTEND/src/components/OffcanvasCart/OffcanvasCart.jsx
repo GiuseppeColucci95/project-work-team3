@@ -1,35 +1,38 @@
 import "./OffcanvasCartStyle.css"
 import { useProductContext } from "../../contexts/ProductContext"
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react"
-
+import { useEffect, useState } from "react"
 
 export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen }) {
-
     const { cart, totalPrice, addCartProduct, removeCartProduct } = useProductContext()
-    const [isOpen, setIsOpen] = useState(offcanvasCartOpen)
+    const [show, setShow] = useState(false)
 
+    //funzione per la chiusura dell'offcanvas
+    //ho usato il set time in modo da chiudere l'offcanvas dopo l'animazione
     function handleClose() {
-        setIsOpen(!isOpen)
-        setOffcanvasCartOpen(!offcanvasCartOpen)
+        setShow(false)
+        setTimeout(() => setOffcanvasCartOpen(false), 1500)
     }
 
     useEffect(() => {
-        if (isOpen) {
+        if (offcanvasCartOpen) {
+            setShow(false)
+            //il timer qui serve per prima monta il componente
+            //e poi aggiunge la classe ahow per far partire l'animazione
+            setTimeout(() => setShow(true), 10)
             document.body.classList.add("overflow-hidden")
         } else {
             document.body.classList.remove("overflow-hidden")
         }
-        // Pulizia in caso di smontaggio
         return () => document.body.classList.remove("overflow-hidden")
-    }, [isOpen])
+    }, [offcanvasCartOpen])
 
+    if (!offcanvasCartOpen) return null
 
     return (
-        <div className={`offcanvas_cart d-flex justify-content-end ${isOpen ? "" : "hidden"}`} tabIndex="-1">
-            <div className="offcanvas_cart-bg" onClick={() => handleClose()}>
-            </div>
-            <div className="offcanvas_cart_container d-flex flex-column">
+        <div className="offcanvas_cart d-flex justify-content-end" tabIndex="-1">
+            <div className="offcanvas_cart-bg" onClick={handleClose}></div>
+            <div className={`offcanvas_cart_container d-flex flex-column${show ? " show" : ""}`}>
                 <div className="col offcanvas_cart-header">
                     <h5 className="offcanvas_cart-title text-center pt-4">Your Cart</h5>
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
