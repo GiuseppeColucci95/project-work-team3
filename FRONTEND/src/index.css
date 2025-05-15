@@ -633,6 +633,9 @@ h3 {
   cursor: pointer;
   text-decoration: none;
 }
+.form-label {
+  margin-bottom: 0 !important;
+}
 
 /* #endregion CHECKOUT component */
 
