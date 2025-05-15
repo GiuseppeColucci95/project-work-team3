@@ -37,6 +37,7 @@
 .offcanvas_cart-header {
     position: relative;
     max-height: 80px;
+    background: linear-gradient(rgb(248, 174, 41), rgb(103, 139, 39));
 }
 
 .btn-close {
@@ -49,6 +50,7 @@
 .offcanvas_cart-body {
     overflow-y: scroll;
     overflow-x: hidden;
+    background: linear-gradient(rgb(103, 139, 39), rgba(103, 139, 39, 0.08));
 }
 
 .offcanvas_cart-image {
@@ -84,6 +86,7 @@
     right: 0;
     width: 100%;
     background-color: rgba(253, 253, 253, 0.753);
+    background: linear-gradient(rgba(103, 139, 39, 0.08), rgb(103, 139, 39));
 }
 
 .offcanvas_cart_btn-cart {

@@ -40,11 +40,11 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                         cart?.map((product) => (
                             <div key={`${product.name}-product`}>
                                 <div className="row mb-2">
-                                    <div className="col-3 offcanvas_cart-image">
+                                    <div className="col-4 offcanvas_cart-image">
                                         <img src={product.image} alt="image" className="w-100 rounded-4" />
                                     </div>
 
-                                    <div className="col-9 d-flex flex-column ">
+                                    <div className="col-8 d-flex flex-column ">
                                         <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
 
                                         <div className="d-flex align-items-center gap-1 ">
