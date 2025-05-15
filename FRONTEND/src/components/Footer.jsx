@@ -62,9 +62,9 @@ export default function Footer() {
               <div className="footer-contacts">
                 <h4 className="text-gray-800 font-semibold mb-3">Contacts</h4>
                 <ul className="text-sm text-gray-600">
-                  <li><a href="mailto:info@eatyourway.com">Email: info@eatyourway.com</a></li>
-                  <li><a href="tel:+123456789">Phone: +1 234 567 89</a></li>
-                  <li><a href="#">Address: 123 Healthy Way, Food City</a></li>
+                  <li><a href="mailto:info@eatyourway.com"><strong>mail:</strong>E info@eatyourway.com</a></li>
+                  <li><a href="tel:+123456789"><strong>Phone:</strong> +1 234 567 89</a></li>
+                  <li><a href="#"><strong>Address:</strong> 123 Healthy Way, Food City</a></li>
                   <li>
                     <a href="#"><i className="bi bi-instagram"></i></a>
                     <a href="#"><i className="bi bi-twitter"></i></a>
