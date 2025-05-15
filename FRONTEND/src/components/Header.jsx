@@ -161,12 +161,14 @@ export default function Header() {
               <span className="favourites-badge">{getWishlistQuantity()}</span>
             )}
           </div>
-          <div className="cart-icon-container" onClick={() => setOffcanvasCartOpen(true)}>
-            <img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image" />
+          <div className="cart-icon-container">
+            <img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image"
+              onClick={() => setOffcanvasCartOpen(!offcanvasCartOpen)}
+            />
             {getCartQuantity() > 0 && (
               <span className="cart-badge">{getCartQuantity()}</span>
             )}
-            {offcanvasCartOpen && <OffcanvasCart setOffcanvasCartOpen={setOffcanvasCartOpen} />}
+            <OffcanvasCart setOffcanvasCartOpen={setOffcanvasCartOpen} offcanvasCartOpen={offcanvasCartOpen} />
           </div>
         </div>
       </header>
