@@ -77,7 +77,7 @@ export default function ProductList() {
           {/* SECTION DESCRIPTION */}
 
           <div className="row my-3 g-2 align-items-center justify-content-end">
-            <div className="col-12 col-sm-6 col-xl-2 mb-2">
+            <div className="col-12 col-sm-6 col-xl-2 h-100 py-2 mb-2 d-flex align-items-center">
               <label htmlFor="orderby" className="form-label mb-0 me-1">Order by:</label>
               <select
                 className="form-select select-fixed"
@@ -95,7 +95,7 @@ export default function ProductList() {
                 <option value="least recents">Least recents</option>
               </select>
             </div>
-            <div className="col-12 col-sm-6 col-xl-3 mb-2">
+            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-center">
               <label htmlFor="tag" className="form-label mb-0 me-1">Preference:</label>
               <select
                 className="form-select select-fixed"
@@ -116,7 +116,7 @@ export default function ProductList() {
                 <option value="shellfish free">Shellfish free</option>
               </select>
             </div>
-            <div className="col-12 col-sm-6 col-xl-3 mb-2">
+            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-center">
               <label htmlFor="category" className="form-label mb-0 me-1">Category:</label>
               <select
                 className="form-select select-fixed"
@@ -133,15 +133,15 @@ export default function ProductList() {
                 <option value="spread-creams">Spread Creams</option>
               </select>
             </div>
-            <div className="col-12 col-sm-3 col-xl-2 d-flex align-items-center justify-content-center justify-content-sm-start mb-2">
+            <div className="col-12 col-sm-3 col-xl-2 d-flex align-items-center justify-content-center justify-content-sm-start h-100 py-2 mb-2">
               <input className="form-check-input me-1" type="checkbox" checked={isChecked} onChange={handleChange} name="promotion" id="promotion" />
               <label className="form-check-label" htmlFor="promotion">
                 Discounted only
               </label>
             </div>
             <div className="col-12 col-sm-3 col-xl-2 d-flex align-items-center flex-row-reverse gap-2 justify-content-center justify-content-sm-start mb-2">
-              <button onClick={() => setViewMode('grid')} className="btn-add me-2"><i className="bi bi-grid"></i></button>
-              <button onClick={() => setViewMode('list')} className="btn-add"><i className="bi bi-list-task"></i></button>
+              <button onClick={() => setViewMode('grid')} className="btn-add me-2 button-grid"><i className="bi bi-grid"></i></button>
+              <button onClick={() => setViewMode('list')} className="btn-add button-list"><i className="bi bi-list-task"></i></button>
             </div>
           </div>
           {/* SELECT, GRID AND LIST BUTTONS */}

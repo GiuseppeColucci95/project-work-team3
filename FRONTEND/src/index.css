@@ -1639,8 +1639,80 @@ footer {
 
 /* ProductList */
 
-/* Select con larghezza fissa e uniforme */
+/* Label delle select */
+.form-label {
+  color: var(--dark);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  padding-bottom: 0.5rem;
+}
+
+/* Checkbox personalizzato */
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.35em;
+  border: 2px solid var(--accent);
+  background: var(--light);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-top: 0;
+}
+
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent)33;
+}
+
+.form-check-label {
+  color: var(--dark);
+  font-weight: 800;
+  margin-left: 0.5em;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Select personalizzati */
 .select-fixed {
-  min-width: 180px;
-  max-width: 100%;
+  max-width: 100% !important;
+  padding: 10px 10px !important;
+  border-radius: 16px !important;
+  border: 2px solid var(--accent) !important;
+  background: var(--light) !important;
+  color: var(--dark) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(103, 139, 39, 0.08) !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.select-fixed:focus {
+  border-color: var(--accent) !important;
+  background: #fff !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--accent)33 !important;
+}
+
+.button-grid {
+  background-color: var(--primary) !important;
+  color: #f9f9f9 !important;
+
+  &:hover {
+    background-color: var(--secondary) !important;
+    color: var(--dark);
+  }
+}
+
+.button-list {
+  background-color: var(--primary) !important;
+  color: #f9f9f9 !important;
+
+  &:hover {
+    background-color: var(--secondary) !important;
+    color: var(--dark);
+  }
 }
