@@ -33,13 +33,14 @@ function ProductProvider({ children }) {
   const [cart, setCart] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
   const [orderBy, setOrderBy] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
   const [search, setSearch] = useState({
     q: '',
     category: '',
     tag: '',
     orderby: '',
     order: '',
-    promotion: ''
+    promotion: false
   });
 
   // badge cart function
@@ -204,7 +205,8 @@ function ProductProvider({ children }) {
           id: productToAdd.id,
           image: productToAdd.image,
           name: productToAdd.name,
-          price: productToAdd.price
+          price: productToAdd.price,
+          discount_percentage: productToAdd.discount_percentage
         });
 
         const stringifiedProducts = JSON.stringify(products);
@@ -219,7 +221,8 @@ function ProductProvider({ children }) {
         id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
-        price: productToAdd.price
+        price: productToAdd.price,
+        discount_percentage: productToAdd.discount_percentage
       });
 
       //save it in local storage
@@ -258,7 +261,9 @@ function ProductProvider({ children }) {
       parsedProducts.splice(parsedProducts.indexOf(foundProduct), 1);
     }
     let total = JSON.parse(localStorage.getItem('totalPrice'));
-    total = Number(total) - Number(productToRemove.price);
+    total = Number(total) - Number((productToRemove.discount_percentage > 0)
+      ? (productToRemove.price - productToRemove.price * (productToRemove.discount_percentage / 100)).toFixed(2)
+      : (productToRemove.price));
     const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
     localStorage.setItem('totalPrice', stringifiedTotalPrice);
     const stringifiedProducts = JSON.stringify(parsedProducts);
@@ -318,9 +323,8 @@ function ProductProvider({ children }) {
           id: productToAdd.id,
           image: productToAdd.image,
           name: productToAdd.name,
-          price: ((productToAdd.discount_percentage > 0)
-            ? (productToAdd.price - productToAdd.price * (productToAdd.discount_percentage / 100)).toFixed(2)
-            : (productToAdd.price)),
+          price: productToAdd.price,
+          discount_percentage: productToAdd.discount_percentage,
           cartQuantity: 1
         };
         cartArray.push(newProductToAdd);
@@ -344,9 +348,8 @@ function ProductProvider({ children }) {
         id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
-        price: ((productToAdd.discount_percentage > 0)
-          ? (productToAdd.price - productToAdd.price * (productToAdd.discount_percentage / 100)).toFixed(2)
-          : (productToAdd.price)),
+        price: productToAdd.price,
+        discount_percentage: productToAdd.discount_percentage,
         cartQuantity: 1
       };
       cartArray.push(newProductToAdd);
@@ -382,7 +385,10 @@ function ProductProvider({ children }) {
 
     const objectToSet = search;
 
-    if (target.name === 'orderby') {
+    if (target.name === 'promotion') {
+      setIsChecked(target.checked);
+      objectToSet.promotion = target.checked;
+    } else if (target.name === 'orderby') {
       setOrderBy(target.value);
       const nameToSplit = target.value;
 
@@ -441,7 +447,8 @@ function ProductProvider({ children }) {
       selectedTag, setSelectedTag, getSelectedTag, selectedCategory, setSelectedCategory, getSelectedCategory,
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
       getCartProducts, addCartProduct, removeCartProduct, totalPrice, orderBy, setOrderBy,
-      search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice, getCartQuantity, getWishlistQuantity
+      search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice, getCartQuantity, getWishlistQuantity,
+      isChecked, setIsChecked
     }}>
       {children}
     </ProductContext.Provider>
