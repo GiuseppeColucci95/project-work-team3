@@ -251,7 +251,7 @@ export default function Checkout() {
                     onChange={e => setFirstName(e.target.value)}
                   />
                   <div className="valid-feedback">
-                    Valid First name
+                    Valid first name
                   </div>
                 </div>
 
@@ -263,7 +263,7 @@ export default function Checkout() {
                     onChange={e => setLastName(e.target.value)}
                   />
                   <div className="valid-feedback">
-                    Valid Last name
+                    Valid last name
                   </div>
                 </div>
 
