@@ -90,6 +90,7 @@ header {
     border-style: none;
     background-color: transparent !important;
   }
+
   .icon-search {
     height: 26px;
     margin-left: 1rem;
@@ -278,6 +279,7 @@ main {
     display: flex;
     align-items: center;
   }
+
   #tag-jumbotron::before {
     content: "";
     position: absolute;
@@ -285,11 +287,12 @@ main {
     background: rgba(0, 0, 0, 0.6);
     z-index: 1;
     pointer-events: none;
-}
-  #tag-jumbotron > .container {
+  }
+
+  #tag-jumbotron>.container {
     position: relative;
     z-index: 2;
-}
+  }
 
   .description {
     margin: 4rem;
@@ -517,20 +520,24 @@ h3 {
   background-color: var(--light);
   padding: 2rem 0 2rem;
 }
+
 .btn-quantity {
   border: none;
   color: var(--primary);
   background-color: transparent;
   cursor: pointer;
+
   .bi-plus-circle,
   .bi-dash-circle {
     font-size: 1.5rem;
   }
 }
+
 #quantity {
   font-size: 16px;
   font-weight: 500;
 }
+
 .btn-checkout {
   border-style: none;
   border-radius: 1rem;
@@ -688,6 +695,7 @@ footer {
   .description {
     margin: 0 !important;
   }
+
   .description-text {
     margin-bottom: 0 !important;
     font-size: 23px !important;
@@ -707,93 +715,120 @@ footer {
     padding: 0 0 0 1rem;
     font-size: 14px;
   }
+
   .searchbar {
     padding: 0.5rem 2rem 0.5rem 0.5rem !important;
   }
+
   .search {
     margin-left: 0.25rem !important;
   }
+
   .wishlist {
     margin-left: 0 !important;
   }
+
   #jumbotron {
     min-height: 280px !important;
     max-height: 300px !important;
   }
+
   .jumbo-container {
     width: 100% !important;
   }
+
   .jumbo-title {
     font-size: 40px !important;
     padding-bottom: 0 !important;
   }
+
   .jumbo-text {
     font-size: 20px !important;
     padding-bottom: 1rem !important;
     line-height: 1.5rem !important;
   }
+
   .explore-btn {
     font-size: 15px !important;
   }
+
   .food-allergens {
     width: 100px !important;
   }
+
   .allergens-title {
     font-size: 18px;
   }
+
   .product-container {
     width: 70%;
   }
+
   .product-img {
     margin-bottom: 1rem;
   }
+
   .description {
     margin: 0 !important;
   }
+
   .container-description {
     margin: 2.5rem !important;
   }
+
   .description-text {
     font-size: 21px !important;
   }
+
   .img-description {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 3rem;
   }
+
   .img-descr {
     width: 80% !important;
   }
+
   .footer-menu-ce {
     gap: 1rem !important;
   }
+
   .payoff {
     display: none !important;
   }
+
   .product-name {
     font-size: 20px !important;
   }
+
   .quantity-section {
     padding: 1rem 0 1rem;
   }
+
   .product-price-cart {
     font-size: 22px !important;
   }
+
   .product-image-cart {
     width: 100px !important;
     height: 100px !important;
   }
+
   .btn-checkout {
     font-size: 14px;
   }
+
   .your-cart {
     font-size: 24px;
   }
+
   .order-summary {
     font-size: 18px;
     margin: 2rem 0 2rem 0 !important;
   }
+
   .summary-price {
     font-size: 16px !important;
   }
@@ -1417,6 +1452,7 @@ footer {
   button.favourites {
     padding: 0.6rem 0.65rem 0.6rem 0.65rem !important;
   }
+
   .add-wishlist {
     width: 20px;
   }
@@ -1425,12 +1461,15 @@ footer {
 .description {
   margin: 0 !important;
 }
+
 .container-description {
   margin: 2.5rem !important;
 }
+
 .description-text {
   font-size: 18px !important;
 }
+
 .img-descr {
   width: 100% !important;
 }
@@ -1455,4 +1494,98 @@ footer {
 
 .product-img-container:hover .product-img-zoom {
   transform: scale(1.08);
+}
+
+/* Wishlist */
+
+#wishlist {
+  background-color: var(--light);
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+.wishlist-card {
+  background: var(--light);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(35, 25, 20, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--secondary-brown);
+  font-family: "Poppins", sans-serif;
+}
+
+.wishlist-card h3 {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.3rem;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wishlist-card {
+    padding: 1rem 0.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .wishlist-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
+.wishlist-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: var(--primary);
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  position: relative;
+}
+
+.wishlist-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin: 0.5rem auto 0 auto;
+  border-radius: 2px;
+}
+
+.img-wishlist {
+  aspect-ratio: 0.70;
+  border-radius: 1rem;
+}
+
+.button-wishlist {
+  background-color: var(--primary) !important;
+  color: #f9f9f9;
+
+  &:hover {
+    background-color: var(--secondary) !important;
+    color: var(--dark);
+  }
+}
+
+@media (max-width: 480px) {
+
+  .wishlist-title {
+    font-size: 2rem;
+  }
+
+  .btn-add {
+    font-size: 16px !important;
+    padding: 12px 32px !important;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .btn-add {
+    font-weight: 600 !important;
+    padding: 8px 10px !important;
+  }
 }
