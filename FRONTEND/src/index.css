@@ -1541,6 +1541,15 @@ footer {
 
 
 /* Responsive */
+
+@media (min-width: 1200px) {
+
+  .button-wishlist {
+    margin: 0 !important;
+    padding: 0.5rem 1.2rem 0.5rem !important;
+  }
+}
+
 @media (max-width: 768px) {
   .wishlist-card {
     padding: 1rem 0.5rem;
