@@ -6,7 +6,7 @@ import { useState } from "react"
 
 export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen }) {
 
-    const { cart, totalPrice } = useProductContext()
+    const { cart, totalPrice, addCartProduct, removeCartProduct } = useProductContext()
     const [isOpen, setIsOpen] = useState(offcanvasCartOpen)
 
     function handleClose() {
@@ -16,7 +16,9 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
 
 
     return (
-        <div className={`offcanvas_cart d-flex justify-content-end ${isOpen ? "" : "hidden"}`} tabIndex="-1" onClick={() => handleClose()}>
+        <div className={`offcanvas_cart d-flex justify-content-end ${isOpen ? "" : "hidden"}`} tabIndex="-1">
+            <div className="offcanvas_cart-bg" onClick={() => handleClose()}>
+            </div>
             <div className="offcanvas_cart_container d-flex flex-column">
                 <div className="col offcanvas_cart-header">
                     <h5 className="offcanvas_cart-title text-center pt-4">Your Cart</h5>
@@ -25,34 +27,55 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                 <div className="col offcanvas_cart-body px-3">
                     {
                         cart?.map((product) => (
-                            <div key={product.id} className="offcanvas_cart-item d-flex justify-content-between my-2">
-                                <img src={product.image} alt={product.name} />
-                                <h6 className="offcanvas_cart-item-title">{product.name}</h6>
-                                {discount_percentage > 0 ?
-                                    (<p className="offcanvas_cart-item-price">€{product.price}</p>)
-                                    :
-                                    (
-                                        <div>
-                                            <p className="offcanvas_cart-item-price me-2">€{product.price}</p>
-                                            <p className="offcanvas_cart-item-discount">{product.price - (product.price * product.discount_percentage / 100)}</p>
+                            <div key={`${product.name}-product`} className="col">
+                                <div className="row d-flex justify-content-center mb-3">
+                                    <div className="col-2 offcanvas_cart-image">
+                                        <img src={product.image} alt="image" className="w-100 rounded-4" />
+                                    </div>
+
+                                    <div className="col-6 d-flex flex-column ">
+                                        <h6 className="p-0 product-name-cart">{product.name}</h6>
+                                        <div className="d-flex align-items-center gap-1 quantity-section ">
+                                            <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
+                                            <div id="offcanvas_cart-quantity" className="mx-1">{product.cartQuantity}</div>
+                                            <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
                                         </div>
-                                    )
-                                }
+                                        {
+                                            (product.discount_percentage > 0) ?
+                                                (
+                                                    <div>
+                                                        <span className="me-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                                        <span className="me-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                                    </div>
+                                                )
+                                                :
+                                                (<h3 className="me-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         ))
                     }
                 </div>
-                <div className="col offcanvas_cart-dettails">
-                    <div className="offcanvas_cart-total d-flex justify-content-around">
-                        <h6 className="offcanvas_cart-total-title">Total:</h6>
-                        <p className="offcanvas_cart-total-price">&euro;{totalPrice}</p>
+                <div className="col-3 p-3 offcanvas_cart-footer d-flex flex-column">
+                    <div className="col offcanvas_cart-dettails">
+                        <div className="offcanvas_cart-total d-flex justify-content-around">
+                            <h6 className="offcanvas_cart-total-title">Shipping:</h6>
+                            <p className="offcanvas_cart-total-price">&euro;{(totalPrice > 39.99) ? ('0.00') : ('9.99')}</p>
+                        </div>
+                        <div className="offcanvas_cart-total d-flex justify-content-around">
+                            <h6 className="offcanvas_cart-total-title">Total:</h6>
+                            <p className="offcanvas_cart-total-price">&euro;{totalPrice}</p>
+                        </div>
                     </div>
+                    <div className="col align-self-center">
+                        <Link to="/cart" >
+                            <button className="btn btn-warning" onClick={() => setOffcanvasCartOpen(!offcanvasCartOpen)}>Go to Cart</button>
+                        </Link>
+                    </div>
+
                 </div>
-                <div className="col align-self-center">
-                    <Link to="/cart" >
-                        <button className="btn btn-warning" onClick={() => setOffcanvasCartOpen(!offcanvasCartOpen)}>Go to Cart</button>
-                    </Link>
-                </div>
+
             </div>
         </div>
     )
