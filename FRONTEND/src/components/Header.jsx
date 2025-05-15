@@ -117,11 +117,15 @@ export default function Header() {
                     Preferences
                   </button>
                   <ul className="dropdown-menu">
-                    <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
-                    <li><NavLink to="/diseases/sugar-free">Sugar-free</NavLink></li>
-                    <li><NavLink to="/diseases/lactose-free">Lactose-free</NavLink></li>
-                    <li><NavLink to="/diseases/nut-free">Nuts-free</NavLink></li>
-                    <li><NavLink to="/diseases/nickel-free">Nickel-free</NavLink></li>
+                    <li><NavLink to="/diseases/lactose-free">Lactose free</NavLink></li>
+                    <li><NavLink to="/diseases/sugar-free">Sugar free</NavLink></li>
+                    <li><NavLink to="/diseases/gluten-free">Gluten free</NavLink></li>
+                    <li><NavLink to="/diseases/nickel-free">Nickel free</NavLink></li>
+                    <li><NavLink to="/diseases/nuts-free">Nuts free</NavLink></li>
+                    <li><NavLink to="/diseases/fish-free">Fish free</NavLink></li>
+                    <li><NavLink to="/diseases/egg-free">Egg free</NavLink></li>
+                    <li><NavLink to="/diseases/soy-free">Soy free</NavLink></li>
+                    <li><NavLink to="/diseases/shellfish-free">Shellfish free</NavLink></li>
                   </ul>
                 </div>
                 <div className="dropdown-center">
