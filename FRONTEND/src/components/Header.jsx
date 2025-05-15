@@ -114,7 +114,7 @@ export default function Header() {
                 <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
                 <div className="dropdown-center">
                   <button type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Pathology
+                    Preferences
                   </button>
                   <ul className="dropdown-menu">
                     <li><NavLink to="/diseases/gluten-free">Gluten-free</NavLink></li>
@@ -129,9 +129,11 @@ export default function Header() {
                     Category
                   </button>
                   <ul className="dropdown-menu">
-                    <li><NavLink to="/categories/snacks">Snacks</NavLink></li>
+                    <li><NavLink to="/categories/sweet-snacks">Sweet Snacks</NavLink></li>
+                    <li><NavLink to="/categories/savoury-snacks">Savoury Snacks</NavLink></li>
                     <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
                     <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
+                    <li><NavLink to="/categories/spread-creams">Spread Creams</NavLink></li>
                   </ul>
                 </div>
                 <li><Link to={'/wishlist'}>Favourites</Link></li>
