@@ -16,7 +16,6 @@ export default function ProductList() {
 
     //create an empty object
     const object = {};
-    const isChecked = searchParams.get('promotion') ? searchParams.get('promotion') : false;
 
     //populate the object with searchParams values in the url if presents
     object.q = searchParams.get('q') ? object.q = searchParams.get('q') : '';
@@ -24,9 +23,13 @@ export default function ProductList() {
     object.tag = searchParams.get('tag') ? object.tag = searchParams.get('tag') : '';
     object.orderby = searchParams.get('orderby') ? object.orderby = searchParams.get('orderby') : '';
     object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
+    object.promotion = searchParams.get('promotion') ? true : false;
     // object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
+    console.log('object promotion', object.promotion);
 
     let orderByToSet = '';
+    const isChecked = object.promotion ? object.promotion : false;
+    console.log('ischecked', isChecked);
 
     if (object.orderby !== '') {
       if (object.orderby === 'price') {
@@ -56,6 +59,7 @@ export default function ProductList() {
     if (search.tag.length > 0) object.tag = search.tag;
     if (search.orderby.length > 0) object.orderby = search.orderby;
     if (search.order.length > 0) object.order = search.order;
+    if (search.promotion) object.promotion = search.promotion;
 
     setSearchParams(object);
   }
@@ -114,7 +118,7 @@ export default function ProductList() {
                 </div>
                 <div className="col-12 mb-2">
                   <input className="me-1" type="checkbox" checked={isChecked} onChange={handleChange} name="promotion" id="promotion" />
-                  <span>In promotion</span>
+                  <span>Discounted products only</span>
                 </div>
               </div>
 

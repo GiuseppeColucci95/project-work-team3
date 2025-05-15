@@ -33,14 +33,15 @@ function ProductProvider({ children }) {
   const [cart, setCart] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
   const [orderBy, setOrderBy] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
   const [search, setSearch] = useState({
     q: '',
     category: '',
     tag: '',
     orderby: '',
     order: '',
+    promotion: false
   });
-  const [isChecked, setIsChecked] = useState(false);
 
   // badge cart function
   function getCartQuantity() {
@@ -386,7 +387,7 @@ function ProductProvider({ children }) {
 
     if (target.name === 'promotion') {
       setIsChecked(target.checked);
-      // (target.checked) ? objectToSet.promotion = 'true' : objectToSet.promotion = '';
+      objectToSet.promotion = target.checked;
     } else if (target.name === 'orderby') {
       setOrderBy(target.value);
       const nameToSplit = target.value;
@@ -410,8 +411,6 @@ function ProductProvider({ children }) {
         }
       }
     } else {
-      console.log('sisi');
-
       objectToSet[target.name] = target.value;
     }
 
@@ -423,7 +422,7 @@ function ProductProvider({ children }) {
 
   //function to get searched products
   function getSearchedProducts(searchObject) {
-    fetch(`${connection}${productsPath}${searchPath}?q=${searchObject.q}&category=${searchObject.category}&tag=${searchObject.tag}&orderby=${searchObject.orderby}&order=${searchObject.order}&promotion=${isChecked}`)
+    fetch(`${connection}${productsPath}${searchPath}?q=${searchObject.q}&category=${searchObject.category}&tag=${searchObject.tag}&orderby=${searchObject.orderby}&order=${searchObject.order}&promotion=${searchObject.promotion}`)
       .then(res => res.json())
       .then(data => {
 
