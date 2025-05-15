@@ -179,17 +179,15 @@ function search(req, res) {
                     WHERE cp.product_id = ?
                 `
     //q&category&tag&orderby&order
-    const pattern = req.query.q
+    const query = req.query.q
     const category = req.query.category
     const tag = req.query.tag
     let orderBy = req.query.orderby //price, name, recents
     const order = req.query.order //asc, desc
     const promotion = Boolean(req.query.promotion) //true, false
+    const pattern = query ? query.toLowerCase() : null
 
-    console.log(category, tag, orderBy, order, promotion)
-
-
-    connection.query(sql, [`%${pattern.toLowerCase()}%`, `%${pattern.toLowerCase()}%`, `%${pattern.toLowerCase()}%`], async (err, results) => {
+    connection.query(sql, [`%${pattern}%`, `%${pattern}%`, `%${pattern}%`], async (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
 
         // Usa Promise.all per gestire le query asincrone
@@ -219,7 +217,7 @@ function search(req, res) {
             //primo filter per interare nell'array
             filteredProducts = filteredProducts.filter(product => {
                 //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
-                return product.name.toLowerCase().includes(pattern.toLowerCase())
+                return product.name.toLowerCase().includes(pattern)
             })
         }
 
