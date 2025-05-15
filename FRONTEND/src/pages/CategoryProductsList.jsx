@@ -33,9 +33,9 @@ export default function CategoryProductsList() {
         </div>
       </section >
       {/* JUMBOTRON SECTION */}
-
       <section id="products" className="my-5" >
         <div className="container">
+
           <div className="d-flex justify-content-end mb-5 gap-2">
             <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i className="bi bi-grid"></i></button>
             <button onClick={() => setViewMode('list')} className="btn btn-primary"><i className="bi bi-list-task"></i></button>

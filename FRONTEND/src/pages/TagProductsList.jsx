@@ -15,7 +15,6 @@ export default function TagProductsList() {
   const { tagProducts, getProductsByTag, selectedTag, getSelectedTag } = useProductContext();
   const [viewMode, setViewMode] = useState('grid');
 
-
   //useEffect to get products on component start
   useEffect(() => {
     getProductsByTag(tag);
@@ -36,6 +35,7 @@ export default function TagProductsList() {
 
       <section id="products" className="my-5" >
         <div className="container">
+
           <div className="d-flex justify-content-end mb-5 gap-2">
             <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i className="bi bi-grid"></i></button>
             <button onClick={() => setViewMode('list')} className="btn btn-primary"><i className="bi bi-list-task"></i></button>
