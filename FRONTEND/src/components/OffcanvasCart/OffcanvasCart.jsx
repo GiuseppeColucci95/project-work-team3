@@ -35,16 +35,16 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
                 </div>
 
-                <div className="col offcanvas_cart-body px-2">
+                <div className="col offcanvas_cart-body ">
                     {
                         cart?.map((product) => (
                             <div key={`${product.name}-product`} className="col">
-                                <div className="row mb-2">
+                                <div className="row mb-2 ps-3">
                                     <div className="col-2 offcanvas_cart-image">
                                         <img src={product.image} alt="image" className="w-100 rounded-4" />
                                     </div>
 
-                                    <div className="col-8 d-flex flex-column ">
+                                    <div className="col-10 d-flex flex-column ">
                                         <h6 className="p-0 product-name-cart">{product.name}</h6>
 
                                         <div className="d-flex align-items-center gap-1 ">
@@ -56,12 +56,12 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                             (product.discount_percentage > 0) ?
                                                 (
                                                     <div>
-                                                        <span className="mt-2 px-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
-                                                        <span className="mt-2 px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                                        <span className="px-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                                        <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
                                                     </div>
                                                 )
                                                 :
-                                                (<h3 className="mt-2 px-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
+                                                (<span className="px-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
                                         }
                                     </div>
                                 </div>
@@ -70,16 +70,14 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                     }
                 </div>
 
-                <div className="col-2 offcanvas_cart-footer d-flex flex-column align-items-start pt-2">
+                <div className="col-2 offcanvas_cart-footer d-flex align-items-between pt-3">
 
-                    <div className="col offcanvas_cart-details">
-                        <div className="offcanvas_cart-total d-flex justify-content-around">
-                            <h6 className="offcanvas_cart-total-title">Shipping:</h6>
-                            <p className="offcanvas_cart-total-price">&euro;{(totalPrice > 39.99) ? ('0.00') : ('9.99')}</p>
+                    <div className="col offcanvas_cart-details ps-3">
+                        <div className="offcanvas_cart-total d-flex justify-content-start">
+                            <p className="offcanvas_cart-total-price mb-0">Shipping: &euro;{(totalPrice > 39.99) ? ('0.00') : ('9.99')}</p>
                         </div>
-                        <div className="offcanvas_cart-shipping d-flex justify-content-around">
-                            <h6 className="offcanvas_cart-total-title">Total:</h6>
-                            <p className="offcanvas_cart-total-price">&euro;{totalPrice}</p>
+                        <div className="offcanvas_cart-shipping d-flex justify-content-start">
+                            <p className="offcanvas_cart-total-price mb-0">Total: &euro;{totalPrice}</p>
                         </div>
                     </div>
 
