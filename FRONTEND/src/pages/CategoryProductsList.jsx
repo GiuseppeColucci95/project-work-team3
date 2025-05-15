@@ -24,9 +24,10 @@ export default function CategoryProductsList() {
   return (
     <>
 
-      <section id="tag-jumbotron" style={{ backgroundImage: `url('${selectedCategory?.image}')`, objectFit: 'cover' }}>
+      <section id="tag-jumbotron" style={{ backgroundImage: `url('${selectedCategory?.image}')` }}>
         <div className="container">
-          <h1 className="pt-5">{`${selectedCategory?.name} Products`}</h1>
+          <h1 style={{ color: '#fff' }}><strong>{`${selectedCategory?.name}`}</strong></h1>
+          <h5 className="pt-3" style={{ color: '#fff' }}>{`${selectedCategory?.description}`}</h5>
         </div>
       </section >
       {/* JUMBOTRON SECTION */}
