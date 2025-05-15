@@ -96,15 +96,15 @@ export default function ProductList() {
                   <span className="me-1">Preference:</span>
                   <select value={search.tag} onChange={handleChange} name="tag" id="tag">
                     <option value="">Select a preference</option>
-                    <option value="Lactose free">Lactose free</option>
-                    <option value="Sugar free">Sugar free</option>
-                    <option value="Gluten free">Gluten free</option>
-                    <option value="Nickel free">Nickel free</option>
-                    <option value="Nuts free">Nuts free</option>
-                    <option value="Fish free">Fish free</option>
-                    <option value="Egg free">Egg free</option>
-                    <option value="Soy free">Soy free</option>
-                    <option value="Shellfish free">Shellfish free</option>
+                    <option value="lactose free">Lactose free</option>
+                    <option value="sugar free">Sugar free</option>
+                    <option value="gluten free">Gluten free</option>
+                    <option value="nickel free">Nickel free</option>
+                    <option value="nuts free">Nuts free</option>
+                    <option value="fish free">Fish free</option>
+                    <option value="egg free">Egg free</option>
+                    <option value="soy free">Soy free</option>
+                    <option value="shellfish free">Shellfish free</option>
                   </select>
                 </div>
                 <div className="col-12 mb-2">
