@@ -1510,6 +1510,10 @@ footer {
 
 @media (max-width: 480px) {
 
+  .wishlist-title {
+    font-size: 2rem;
+  }
+
   .btn-add {
     font-size: 16px !important;
     padding: 12px 32px !important;
