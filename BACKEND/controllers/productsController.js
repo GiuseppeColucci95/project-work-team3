@@ -239,15 +239,23 @@ function search(req, res) {
         }
 
         if (order && orderBy) {
+
             if (orderBy.toLowerCase() === 'recents') orderBy = "created_at"
+
             filteredProducts.sort((a, b) => {
-                let valA = a[orderBy];
-                let valB = b[orderBy];
+
+                if (orderBy.toLowerCase() === 'price') {
+                    let valA = a.discount_percentage > 0 ? a.price - (a.price * (a.discount_percentage / 100)) : a.price
+                    let valB = b.discount_percentage > 0 ? b.price - (b.price * (b.discount_percentage / 100)) : b.price
+                } else {
+                    let valA = a[orderBy]
+                    let valB = b[orderBy]
+                }
 
                 // Gestione per il campo 'name'
                 if (orderBy.toLowerCase() === 'name') {
-                    valA = valA.toLowerCase();
-                    valB = valB.toLowerCase();
+                    valA = valA.toLowerCase()
+                    valB = valB.toLowerCase()
                     if (order.toLowerCase() === 'asc') {
                         return valA.localeCompare(valB)
                     } else {
@@ -257,14 +265,14 @@ function search(req, res) {
 
                 // Gestione per il campo 'price'
                 if (orderBy.toLowerCase() === 'price') {
-                    valA = parseFloat(valA);
-                    valB = parseFloat(valB);
+                    valA = parseFloat(valA)
+                    valB = parseFloat(valB)
                 }
 
                 // Gestione per il campo 'created_at'
                 if (orderBy === 'created_at') {
-                    valA = new Date(valA);
-                    valB = new Date(valB);
+                    valA = new Date(valA)
+                    valB = new Date(valB)
                 }
 
                 //gestione dell'ordinamento
@@ -273,13 +281,13 @@ function search(req, res) {
                     //ritorna 1 se valA è maggiore di valB quindi valA è un elemento che va messo dopo valB
                     //ritorna -1 se valA è minore di valB quindi valA è un elemento che messo prima di valB
                     //ritorna 0 se valA = valB quindi hanno la stessa grandezza
-                    return valA > valB ? 1 : valA < valB ? -1 : 0;
+                    return valA > valB ? 1 : valA < valB ? -1 : 0
                 } else {
                     //descrescente
                     //ritorna 1 se valA è minore di valB quindi valA è un elemento che messo prima di valB
                     //ritorna -1 se valA è maggiore di valB quindi valA è un elemento che va messo dopo valB
                     //ritorna 0 se valA = valB quindi hanno la stessa grandezza
-                    return valA < valB ? 1 : valA > valB ? -1 : 0;
+                    return valA < valB ? 1 : valA > valB ? -1 : 0
                 }
             })
         }
