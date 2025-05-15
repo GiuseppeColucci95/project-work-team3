@@ -296,7 +296,7 @@ main {
   }
 
   .description-text {
-    font-size: 25px !important;
+    font-size: 25px;
     padding-left: 2rem;
   }
 
@@ -1167,7 +1167,7 @@ footer {
   }
 
   .description-text {
-    font-size: 25px !important;
+    font-size: 23px !important;
     padding-left: 0 !important;
     margin-bottom: 0 !important;
   }
@@ -1398,6 +1398,14 @@ footer {
   .add-wishlist {
     width: 20px;
   }
+}
+
+.description-text {
+  font-size: 20px !important;
+}
+
+.description {
+  margin: 1.75rem !important;
 }
 
 .product-img-container {

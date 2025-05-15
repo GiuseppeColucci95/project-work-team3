@@ -58,7 +58,7 @@ export default function Homepage() {
       {/* DISEASES SECTION */}
 
       <section className="description">
-        <div className="container">
+        <div className="container-description">
           <div className="row d-flex align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-6 img-description">
               <img src="img/people.svg" alt="description image" className="w-100 img-descr" />
