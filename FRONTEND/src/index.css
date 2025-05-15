@@ -683,6 +683,12 @@ footer {
   .product-img {
     margin-bottom: 1rem;
   }
+
+  .description-text {
+    margin-bottom: 0 !important;
+    font-size: 22px !important;
+    line-height: 2rem !important;
+  }
 }
 
 /* schermi grandi */
@@ -694,7 +700,8 @@ footer {
   }
   .description-text {
     margin-bottom: 0 !important;
-    font-size: 23px !important;
+    font-size: 22px !important;
+    line-height: 2rem !important;
   }
 
   .footer {
@@ -767,7 +774,7 @@ footer {
     align-items: center;
   }
   .img-descr {
-    width: 100% !important;
+    width: 100%;
   }
   .img-descr {
     width: 80% !important;
@@ -822,7 +829,7 @@ footer {
     align-items: flex-start;
   }
   .img-descr {
-    width: 50% !important;
+    width: 70% !important;
   }
 }
 
@@ -974,7 +981,7 @@ footer {
   }
 
   .img-descr {
-    width: 70% !important;
+    width: 70%;
   }
 
   .description-text {
@@ -1054,6 +1061,10 @@ footer {
 
   .allergens-title {
     font-size: 14px;
+  }
+
+  .img-descr {
+    width: 70% !important;
   }
 }
 
