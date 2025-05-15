@@ -76,9 +76,10 @@ export default function ProductList() {
           </div>
           {/* SECTION DESCRIPTION */}
 
-          <div className="row my-3 g-2 align-items-center justify-content-between">
-            <div className="col-12 col-sm-6 col-xl-2 h-100 py-2 mb-2 d-flex align-items-baseline">
-              <label htmlFor="orderby" className="form-label mb-0 me-1">Order:</label>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-xl-4 row-gap-3 mb-5">
+
+            <div className="col d-flex align-items-center">
+              <label htmlFor="orderby" className="form-label me-1 pb-0">Order:</label>
               <select
                 className="form-select select-fixed"
                 value={orderBy}
@@ -95,8 +96,9 @@ export default function ProductList() {
                 <option value="least recents">Least recents</option>
               </select>
             </div>
-            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-baseline">
-              <label htmlFor="tag" className="form-label mb-0 me-1">Preference:</label>
+            {/* ORDER BY SELECT */}
+            <div className="col d-flex align-items-center">
+              <label htmlFor="tag" className="form-label pb-0 me-1">Preference:</label>
               <select
                 className="form-select select-fixed"
                 value={search.tag}
@@ -116,33 +118,39 @@ export default function ProductList() {
                 <option value="shellfish free">Shellfish free</option>
               </select>
             </div>
-            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-baseline">
-              <label htmlFor="category" className="form-label mb-0 me-1">Category:</label>
+            {/* TAG SELECT */}
+            <div className="col d-flex align-items-center">
+              <label htmlFor="category" className="form-label pb-0 me-1">Category:</label>
               <select
                 className="form-select select-fixed"
                 value={search.category}
                 onChange={handleChange}
                 name="category"
-                id="category"
-              >
+                id="category">
                 <option value="">Select a category</option>
-                <option value="sweet-snacks">Sweet Snacks</option>
-                <option value="savoury-snacks">Savoury Snacks</option>
+                <option value="sweet snacks">Sweet Snacks</option>
+                <option value="savoury snacks">Savoury Snacks</option>
                 <option value="bakery">Bakery</option>
                 <option value="beverages">Beverages</option>
-                <option value="spread-creams">Spread Creams</option>
+                <option value="spread creams">Spread Creams</option>
               </select>
             </div>
-            <div className="col-12 col-sm-3 col-xl-2 d-flex align-items-center justify-content-center justify-content-sm-start h-100 py-2 mb-2">
-              <input className="form-check-input me-1" type="checkbox" checked={isChecked} onChange={handleChange} name="promotion" id="promotion" />
-              <label className="form-check-label" htmlFor="promotion">
-                Discounted only
-              </label>
+            {/* CATEGORY SELECT */}
+            <div className="col d-flex align-items-center justify-content-between">
+              <div className="d-flex align-items-center">
+                <input type="checkbox" checked={isChecked} onChange={handleChange} name="promotion" id="promotion" />
+                <label className="form-check-label" htmlFor="promotion">Discounted only</label>
+              </div>
+              {/* CHECKBOX */}
+
+              <div className="d-flex gap-1">
+                <button onClick={() => setViewMode('grid')} className="btn-add button-grid"><i className="bi bi-grid"></i></button>
+                <button onClick={() => setViewMode('list')} className="btn-add button-list"><i className="bi bi-list-task"></i></button>
+              </div>
+              {/* GRID AND LIST BUTTONS */}
             </div>
-            <div className="col-12 col-sm-3 col-xl-2 d-flex align-items-center flex-row-reverse gap-2 justify-content-center justify-content-sm-start mb-2">
-              <button onClick={() => setViewMode('grid')} className="btn-add me-2 button-grid"><i className="bi bi-grid"></i></button>
-              <button onClick={() => setViewMode('list')} className="btn-add button-list"><i className="bi bi-list-task"></i></button>
-            </div>
+            {/* CHECKBOX AND GRID BUTTONS */}
+
           </div>
           {/* SELECT, GRID AND LIST BUTTONS */}
 
@@ -167,13 +175,13 @@ export default function ProductList() {
                                   ?
                                   (
                                     <div>
-                                      <span className="me-2"><s>{`${product.price}€`}</s></span>
-                                      <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                      <span className="me-2 fs-5"><s>{`${product.price}€`}</s></span>
+                                      <span className="fs-5">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
                                     </div>
                                   )
                                   :
                                   (
-                                    <span>{`${product.price}€`}</span>
+                                    <span className="fs-5">{`${product.price}€`}</span>
                                   )
                               }
                             </div>
