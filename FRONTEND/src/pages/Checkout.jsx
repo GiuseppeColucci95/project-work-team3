@@ -433,7 +433,7 @@ export default function Checkout() {
             </div>
 
 
-            <div className="col-4 bg-body-secondary">
+            <div className="col-4 bg-summary">
               <section>
                 <h3 className="checkout-title"><strong>Summary</strong></h3>
                 <hr />
