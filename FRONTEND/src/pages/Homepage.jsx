@@ -97,15 +97,15 @@ export default function Homepage() {
                               ?
                               (
                                 <div>
-                                  <span className="product-price me-2"><s>{`${product.price}€`}</s></span>
-                                  <span className="product-price">
+                                  <span className="product-price me-2 fs-5"><s>{`${product.price}€`}</s></span>
+                                  <span className="product-price fs-5">
                                     {`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}
                                   </span>
                                 </div>
                               )
                               :
                               (
-                                <span className="product-price">{`${product.price}€`}</span>
+                                <span className="product-price fs-5">{`${product.price}€`}</span>
                               )
                           }
                         </div>
@@ -146,13 +146,13 @@ export default function Homepage() {
                               ?
                               (
                                 <div>
-                                  <span className="me-2"><s>{`${product.price}€`}</s></span>
-                                  <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                  <span className="me-2 fs-5"><s>{`${product.price}€`}</s></span>
+                                  <span className="fs-5">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
                                 </div>
                               )
                               :
                               (
-                                <span>{`${product.price}€`}</span>
+                                <span className="fs-5">{`${product.price}€`}</span>
                               )
                           }
                         </div>
