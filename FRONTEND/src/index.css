@@ -797,9 +797,11 @@ footer {
     justify-content: center;
     align-items: center;
   }
+
   .img-descr {
     width: 100%;
   }
+
   .img-descr {
     width: 80% !important;
   }
@@ -853,15 +855,18 @@ footer {
   .container-description {
     margin: 2rem !important;
   }
+
   .description-text {
     padding-top: 2rem;
     text-align: center;
   }
+
   .img-description {
     display: flex;
     justify-content: center;
     align-items: flex-start;
   }
+
   .img-descr {
     width: 70% !important;
   }
@@ -1487,15 +1492,19 @@ footer {
   .add-wishlist {
     width: 20px;
   }
+
   .description {
     margin: 0 !important;
   }
+
   .container-description {
     margin: 2.5rem !important;
   }
+
   .description-text {
     font-size: 18px !important;
   }
+
   .img-descr {
     width: 100% !important;
   }
@@ -1626,4 +1635,12 @@ footer {
     font-weight: 600 !important;
     padding: 8px 10px !important;
   }
+}
+
+/* ProductList */
+
+/* Select con larghezza fissa e uniforme */
+.select-fixed {
+  min-width: 180px;
+  max-width: 100%;
 }
