@@ -51,13 +51,13 @@ export default function CategoryProductsList() {
                               ?
                               (
                                 <div>
-                                  <span className="me-2"><s>{`${product.price}€`}</s></span>
-                                  <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                  <span className="me-2 fs-5"><s>{`${product.price}€`}</s></span>
+                                  <span className="fs-5">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
                                 </div>
                               )
                               :
                               (
-                                <span>{`${product.price}€`}</span>
+                                <span className="fs-5">{`${product.price}€`}</span>
                               )
                           }
                         </div>

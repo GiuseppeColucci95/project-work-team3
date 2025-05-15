@@ -605,6 +605,7 @@ h3 {
   color: var(--primary);
   margin: 0 !important;
 }
+
 .bg-summary {
   background: linear-gradient(180deg, rgba(103, 139, 39, 0.08), var(--accent));
   background-size: 100%;
@@ -613,10 +614,12 @@ h3 {
   border-radius: 1rem;
   padding: 2rem !important;
 }
+
 .noValidate {
   padding: 2rem;
   border-radius: 1rem !important;
 }
+
 .btn-pay {
   border-style: none;
   border-radius: 1rem;
@@ -630,11 +633,9 @@ h3 {
   cursor: pointer;
   text-decoration: none;
 }
+
 .form-label {
   margin-bottom: 0 !important;
-}
-.form-checkout {
-  border-radius: 1rem;
 }
 
 /* #endregion CHECKOUT component */
@@ -796,11 +797,6 @@ footer {
 
   .payoff {
     display: none !important;
-  }
-
-  .button-wishlist {
-    margin: 0 !important;
-    padding: 0.5rem 1.2rem 0.5rem !important;
   }
 }
 
@@ -1160,15 +1156,7 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
-  .wishlist-card {
-    padding: 1rem 0.5rem;
-    border-radius: 0.75rem;
-  }
-
-  .wishlist-card h3 {
-    font-size: 1.1rem;
-  }
+@media (min-width: 767px) {
   .menu-container {
     width: 80% !important;
   }
@@ -1573,8 +1561,9 @@ footer {
   }
 
   .btn-add {
-    font-weight: 600 !important;
-    padding: 8px 10px !important;
+    padding: 0.65rem 1.25rem 0.65rem !important;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   button.favourites {
@@ -1632,6 +1621,27 @@ footer {
 }
 
 
+/* Responsive */
+
+@media (min-width: 1200px) {
+
+  .button-wishlist {
+    margin: 0 !important;
+    padding: 0.5rem 1.2rem 0.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .wishlist-card {
+    padding: 1rem 0.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .wishlist-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
 .wishlist-title {
   font-family: "Poppins", sans-serif;
   font-weight: 800;
@@ -1682,7 +1692,10 @@ footer {
 
 @media (max-width: 360px) {
 
-
+  .btn-add {
+    font-weight: 600 !important;
+    padding: 8px 10px !important;
+  }
 }
 
 /* ProductList */
@@ -1711,7 +1724,7 @@ footer {
 .form-check-input:checked {
   background-color: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent)33;
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 .form-check-label {
