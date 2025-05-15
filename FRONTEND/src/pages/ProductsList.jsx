@@ -77,8 +77,8 @@ export default function ProductList() {
           {/* SECTION DESCRIPTION */}
 
           <div className="row my-3 g-2 align-items-center justify-content-between">
-            <div className="col-12 col-sm-6 col-xl-2 h-100 py-2 mb-2 d-flex align-items-center">
-              <label htmlFor="orderby" className="form-label mb-0 me-1">Order by:</label>
+            <div className="col-12 col-sm-6 col-xl-2 h-100 py-2 mb-2 d-flex align-items-baseline">
+              <label htmlFor="orderby" className="form-label mb-0 me-1">Order:</label>
               <select
                 className="form-select select-fixed"
                 value={orderBy}
@@ -95,7 +95,7 @@ export default function ProductList() {
                 <option value="least recents">Least recents</option>
               </select>
             </div>
-            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-center">
+            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-baseline">
               <label htmlFor="tag" className="form-label mb-0 me-1">Preference:</label>
               <select
                 className="form-select select-fixed"
@@ -116,7 +116,7 @@ export default function ProductList() {
                 <option value="shellfish free">Shellfish free</option>
               </select>
             </div>
-            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-center">
+            <div className="col-12 col-sm-6 col-xl-3 h-100 py-2 mb-2 d-flex align-items-baseline">
               <label htmlFor="category" className="form-label mb-0 me-1">Category:</label>
               <select
                 className="form-select select-fixed"

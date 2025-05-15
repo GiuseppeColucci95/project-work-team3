@@ -1678,7 +1678,7 @@ footer {
 .select-fixed {
   min-width: 100px !important;
   max-width: 100% !important;
-  padding: 10px 10px !important;
+  padding: 8px 10px !important;
   border-radius: 16px !important;
   border: 2px solid var(--accent) !important;
   background: var(--light) !important;
