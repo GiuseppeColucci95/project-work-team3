@@ -1,19 +1,26 @@
 import "./OffcanvasCartStyle.css"
 import { useProductContext } from "../../contexts/ProductContext"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 
 export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen }) {
 
     const { cart, totalPrice } = useProductContext()
+    const [isOpen, setIsOpen] = useState(offcanvasCartOpen)
+
+    function handleClose() {
+        setIsOpen(!isOpen)
+        setOffcanvasCartOpen(!offcanvasCartOpen)
+    }
 
 
     return (
-        <div className={`offcanvas_cart d-flex justify-content-end ${offcanvasCartOpen ? "" : "hidden"}`} tabIndex="-1" onClick={() => setOffcanvasCartOpen(false)}>
+        <div className={`offcanvas_cart d-flex justify-content-end ${isOpen ? "" : "hidden"}`} tabIndex="-1" onClick={() => handleClose()}>
             <div className="offcanvas_cart_container d-flex flex-column">
                 <div className="col offcanvas_cart-header">
                     <h5 className="offcanvas_cart-title text-center pt-4">Your Cart</h5>
-                    <button type="button" className="btn-close justify-self-end" onClick={() => setOffcanvasCartOpen(!offcanvasCartOpen)}></button>
+                    <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
                 </div>
                 <div className="col offcanvas_cart-body px-3">
                     {
