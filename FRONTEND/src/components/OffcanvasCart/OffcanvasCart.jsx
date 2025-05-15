@@ -35,17 +35,17 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
                 </div>
 
-                <div className="col offcanvas_cart-body ">
+                <div className="col offcanvas_cart-body ps-3">
                     {
                         cart?.map((product) => (
-                            <div key={`${product.name}-product`} className="col">
-                                <div className="row mb-2 ps-3">
-                                    <div className="col-2 offcanvas_cart-image">
+                            <div key={`${product.name}-product`}>
+                                <div className="row mb-2">
+                                    <div className="col-3 offcanvas_cart-image">
                                         <img src={product.image} alt="image" className="w-100 rounded-4" />
                                     </div>
 
-                                    <div className="col-10 d-flex flex-column ">
-                                        <h6 className="p-0 product-name-cart">{product.name}</h6>
+                                    <div className="col-9 d-flex flex-column ">
+                                        <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
 
                                         <div className="d-flex align-items-center gap-1 ">
                                             <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
