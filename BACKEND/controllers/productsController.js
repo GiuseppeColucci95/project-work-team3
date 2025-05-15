@@ -184,8 +184,8 @@ function search(req, res) {
     const tag = req.query.tag
     let orderBy = req.query.orderby //price, name, recents
     const order = req.query.order //asc, desc
-    const promotion = Boolean(req.query.promotion) //true, false
-    const pattern = query ? query.toLowerCase() : null
+    const promotion = req.query.promotion === 'true' ? true : false //true or false
+    const pattern = query ? query.toLowerCase() : ''
 
     connection.query(sql, [`%${pattern}%`, `%${pattern}%`, `%${pattern}%`], async (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
