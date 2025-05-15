@@ -91,7 +91,7 @@ export default function Checkout() {
     e.preventDefault()
 
     //validazione dei dati
-    const errorList = Validate(
+    let errorList = Validate(
       firstName,
       lastName,
       userEmail,
@@ -111,6 +111,7 @@ export default function Checkout() {
     //se errorList non è vuota mando un allert
     if (Object.keys(errorList).length > 0) {
       alert(Object.values(errorList).join('\n'))
+      errorList = {}
       return // interrompe la funzione se ci sono errori
     }
 
@@ -175,7 +176,7 @@ export default function Checkout() {
     if (country.length < 4) error.country = "country must be at least 4 characters long"
     if (country.length > 10) error.country = "country must be at most 10 characters long"
     if (city.length < 1) error.city = "city must be at least 1 characters long"
-    if (city.length > 10) error.city = "city must be at most 10 characters long"
+    if (city.length > 20) error.city = "city must be at most 20 characters long"
     if (province.length !== 2) error.province = "province must be a 2 characters long"
     if (postalCode.length !== 5) error.postalCode = "postal Code must be a 5 characters long"
     if (cardHolder.length < 3) error.cardHolder = "card Holder must be at least 3 characters long"
@@ -204,8 +205,12 @@ export default function Checkout() {
   }
 
   function CodeValidate() {
-    console.log(promotion.promotionCode)
-    //esegue chiamata funzion API 
+
+    if (promotion.promotionCode.length === 0) {
+      alert("insert your promotion code")
+      return
+    }
+    //esegue chiamata funzione API
     validateCode(promotion.promotionCode)
 
   }
@@ -250,7 +255,7 @@ export default function Checkout() {
                 </div>
 
                 <div className="col-md-6">
-                  <label htmlFor="lastName" className="form-label">First name</label>
+                  <label htmlFor="lastName" className="form-label">Last name</label>
                   <input type="text" className="form-control" id="lastName"
                     placeholder="Rossi"
                     value={lastName}
@@ -466,6 +471,7 @@ export default function Checkout() {
                         id="Verify"
                         className="btn btn-primary btnVerify"
                         onClick={CodeValidate}
+                        disabled={promotion.promotionCode.length === 0}
                       >
                         Verify
                       </button>
@@ -479,6 +485,7 @@ export default function Checkout() {
 
               </section>
             </div>
+
           </div>
         </section>
       </div>
