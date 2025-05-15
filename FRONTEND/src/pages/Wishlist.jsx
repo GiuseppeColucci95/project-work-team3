@@ -43,11 +43,11 @@ export default function Wishlist() {
                   </div>
                 ))
               ) : (
-                <div className="col text-center py-5">
+                <div className="col-12 d-flex align-items-center flex-column text-center py-5 mx-auto">
                   <span style={{ fontSize: "3rem", color: "#6366f1" }}>💔</span>
                   <h3 className="mt-3">Your wishlist is empty!</h3>
                   <p>Add products to see them here.</p>
-                  <Link to="/" className="btn btn-outline-primary mt-3">Back to shop</Link>
+                  <Link to="/search" className="btn-add mt-3 text-decoration-none">Back to shop</Link>
                 </div>
               )
             }
