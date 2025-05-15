@@ -115,27 +115,31 @@ header {
   ul .dropdown {
     z-index: 1000;
   }
-
+  .menu-container {
+    width: 300px;
+}
+  .menu-hamburger,
+  .menu-hamburger .list-unstyled,
+  .menu-hamburger .list-unstyled li,
+  .menu-hamburger .list-unstyled li a {
+    font-size: 32px !important;
+  }
   .menu-hamburger .dropdown {
     list-style: none;
     padding-left: 1rem;
     margin-top: 0.5rem;
   }
-
   .menu-hamburger .dropdown li {
     margin-bottom: 0.5rem;
   }
-
   .menu-hamburger .dropdown li a {
     text-decoration: none;
     color: var(--dark);
     font-size: 14px;
   }
-
   .menu-hamburger .dropdown li a:hover {
     color: var(--primary);
   }
-
   .menu .dropdown {
     position: absolute;
     background-color: white;
@@ -145,24 +149,19 @@ header {
     margin: 0;
     display: none;
   }
-
   .menu li:hover .dropdown {
     display: block;
   }
-
   .dropdown li {
     padding: 5px 10px;
   }
-
   .dropdown li a {
     text-decoration: none;
     color: black;
   }
-
   .dropdown li a:hover {
     color: var(--accent);
   }
-
   .dropdown-toggle {
     border: none;
     background-color: transparent;
