@@ -244,12 +244,14 @@ function search(req, res) {
 
             filteredProducts.sort((a, b) => {
 
+                let valA
+                let valB
                 if (orderBy.toLowerCase() === 'price') {
-                    let valA = a.discount_percentage > 0 ? a.price - (a.price * (a.discount_percentage / 100)) : a.price
-                    let valB = b.discount_percentage > 0 ? b.price - (b.price * (b.discount_percentage / 100)) : b.price
+                    valA = a.discount_percentage > 0 ? a.price - (a.price * (a.discount_percentage / 100)) : a.price
+                    valB = b.discount_percentage > 0 ? b.price - (b.price * (b.discount_percentage / 100)) : b.price
                 } else {
-                    let valA = a[orderBy]
-                    let valB = b[orderBy]
+                    valA = a[orderBy]
+                    valB = b[orderBy]
                 }
 
                 // Gestione per il campo 'name'
