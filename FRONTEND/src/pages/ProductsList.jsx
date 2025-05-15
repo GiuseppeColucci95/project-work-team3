@@ -111,9 +111,11 @@ export default function ProductList() {
                   <div className="me-1">Category:</div>
                   <select value={search.category} onChange={handleChange} name="category" id="category">
                     <option value="">Select a category</option>
-                    <option value="Snacks">Snacks</option>
-                    <option value="Beverages">Beverages</option>
-                    <option value="Bakery">Bakery</option>
+                    <option value="sweet-snacks">Sweet Snacks</option>
+                    <option value="savoury-snacks">Savoury Snacks</option>
+                    <option value="bakery">Bakery</option>
+                    <option value="beverages">Beverages</option>
+                    <option value="spread-creams">Spread Creams</option>
                   </select>
                 </div>
                 <div className="col-12 mb-2">
