@@ -28,7 +28,16 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                             <div key={product.id} className="offcanvas_cart-item d-flex justify-content-between my-2">
                                 <img src={product.image} alt={product.name} />
                                 <h6 className="offcanvas_cart-item-title">{product.name}</h6>
-                                <p className="offcanvas_cart-item-price">${product.price}</p>
+                                {discount_percentage > 0 ?
+                                    (<p className="offcanvas_cart-item-price">€{product.price}</p>)
+                                    :
+                                    (
+                                        <div>
+                                            <p className="offcanvas_cart-item-price me-2">€{product.price}</p>
+                                            <p className="offcanvas_cart-item-discount">{product.price - (product.price * product.discount_percentage / 100)}</p>
+                                        </div>
+                                    )
+                                }
                             </div>
                         ))
                     }
