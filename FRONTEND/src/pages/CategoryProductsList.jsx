@@ -1,7 +1,7 @@
 //react imports
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../contexts/ProductContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 //component export
@@ -13,6 +13,8 @@ export default function CategoryProductsList() {
   const { category } = useParams();
   //imports from custom context
   const { categoryProducts, getProductsByCategory, selectedCategory, getSelectedCategory } = useProductContext();
+  const [viewMode, setViewMode] = useState('grid');
+
 
   //useEffect to get products on component start
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function CategoryProductsList() {
       </section >
       {/* JUMBOTRON SECTION */}
 
-      <section id="products" className="my-5">
+      <section id="products" className="my-5" >
         <div className="container">
           <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
             {
@@ -51,13 +53,13 @@ export default function CategoryProductsList() {
                               ?
                               (
                                 <div>
-                                  <span className="me-2 fs-5"><s>{`${product.price}€`}</s></span>
-                                  <span className="fs-5">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
+                                  <span className="me-2"><s>{`${product.price}€`}</s></span>
+                                  <span>{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</span>
                                 </div>
                               )
                               :
                               (
-                                <span className="fs-5">{`${product.price}€`}</span>
+                                <span>{`${product.price}€`}</span>
                               )
                           }
                         </div>

@@ -81,6 +81,7 @@ export default function ProductDetails() {
                 </div>
                 {/* IMAGE */}
                 <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
+
                   <div id="image-description" className="mt-3">
                     <h2 id="product-title">{selectedProduct.name}</h2>
                     <p id="product-text">{selectedProduct.description}</p>
@@ -119,23 +120,17 @@ export default function ProductDetails() {
 
                     <div className="row mt-3">
 
-                      <div className="col-3 col-xl-4">
+                      <div className="col-5 col-md-8  ">
                         {
                           (isIncart(selectedProduct))
                             ?
-                            (<div className="w-100 d-flex align-items-center quantity-section">
-                              <div className="col-4 col-xl-5 ">
-                                <button onClick={() => removeCartProduct(selectedProduct)} className="text-dark favourites"><i className="bi bi-dash-circle"></i></button>
-                              </div>
-                              <div className="col-4 col-xl-2 text-center">
-                                <div id="quantity">{isIncart(selectedProduct).cartQuantity}</div>
-                              </div>
-                              <div className="col-4 col-xl-5 text-end">
-                                <button onClick={() => addCartProduct(selectedProduct)} className="text-dark favourites"><i className="bi bi-plus-circle"></i></button>
-                              </div>
+                            (<div className="quantity-section d-flex align-items-center">
+                              <button onClick={() => removeCartProduct(selectedProduct)} className="text-dark px-3 favourites w-25"><i className="bi bi-dash-circle"></i></button>
+                              <div id="quantity" className="w-50 text-center">{isIncart(selectedProduct).cartQuantity}</div>
+                              <button onClick={() => addCartProduct(selectedProduct)} className="text-dark px-3 favourites w-25"><i className="bi bi-plus-circle"></i></button>
                             </div>)
                             :
-                            (<button onClick={() => addCartProduct(selectedProduct)} className="w-100 btn-add">ADD TO CART</button>)
+                            (<button onClick={() => addCartProduct(selectedProduct)} className="btn-add w-100">ADD TO CART</button>)
                         }
                       </div>
                       {/* ADD TO CART BUTTONS */}
@@ -155,8 +150,7 @@ export default function ProductDetails() {
                     </div>
                   </div>
                 </div>
-                {/* PRICE, ADD TO CART AND FAVOURITES BUTTONS */}
-
+                {/* PRICE, ADD TO CART AND WISHLIST BUTTONS */}
 
               </div>
             </div>
