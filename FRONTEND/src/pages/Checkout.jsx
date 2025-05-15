@@ -205,8 +205,12 @@ export default function Checkout() {
   }
 
   function CodeValidate() {
-    console.log(promotion.promotionCode)
-    //esegue chiamata funzion API 
+
+    if (promotion.promotionCode === "") {
+      alert("insert your promotion code")
+      return
+    }
+    //esegue chiamata funzione API
     validateCode(promotion.promotionCode)
 
   }
