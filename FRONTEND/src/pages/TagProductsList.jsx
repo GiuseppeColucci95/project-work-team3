@@ -24,9 +24,10 @@ export default function TagProductsList() {
   return (
     <>
 
-      <section id="tag-jumbotron" style={{ backgroundImage: `url('${selectedTag?.image}')`, objectFit: 'cover' }}>
-        <div className="container">
-          <h1 className="pt-5">{`${selectedTag?.name} Products`}</h1>
+      <section id="tag-jumbotron" style={{ backgroundImage: `url('${selectedTag?.image}')` }}>
+        <div className="container d-flex flex-column align-items-start">
+          <h1 style={{ color: '#fff' }}><strong>{`${selectedTag?.name}`}</strong></h1>
+          <h5 className="pt-3" style={{ color: '#fff' }}>{`${selectedTag?.description}`}</h5>
         </div>
       </section >
       {/* JUMBOTRON SECTION */}

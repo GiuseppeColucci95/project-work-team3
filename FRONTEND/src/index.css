@@ -270,8 +270,26 @@ main {
   }
 
   #tag-jumbotron {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
     min-height: 500px;
+    display: flex;
+    align-items: center;
   }
+  #tag-jumbotron::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    pointer-events: none;
+}
+  #tag-jumbotron > .container {
+    position: relative;
+    z-index: 2;
+}
 
   .description {
     margin: 4rem;
