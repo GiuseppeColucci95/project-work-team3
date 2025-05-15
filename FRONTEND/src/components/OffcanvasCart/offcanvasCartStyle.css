@@ -47,9 +47,57 @@
 }
 
 .offcanvas_cart-body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
-    img {
-        width: 50px;
-        height: 50px;
+.offcanvas_cart-image {
+    width: 75px;
+    height: 75px;
+}
+
+.offcanvas_cart-button {
+    border: none;
+    color: var(--primary);
+    background-color: transparent;
+    cursor: pointer;
+
+    .bi-plus-circle,
+    .bi-dash-circle {
+        font-size: 1rem;
+    }
+}
+
+#offcanvas_cart-quantity {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.offcanvas_cart-bg {
+    width: 70%;
+    height: 100%;
+}
+
+.offcanvas_cart-footer {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(253, 253, 253, 0.753);
+}
+
+.offcanvas_cart_btn-cart {
+    border-style: none;
+    border-radius: 1rem;
+    padding: 0.5rem 3rem 0.5rem;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--dark);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        background-color: var(--secondary);
     }
 }
