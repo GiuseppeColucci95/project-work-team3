@@ -236,7 +236,7 @@ export default function Checkout() {
         <section className="checkout">
           <h1 className="text-center pt-3 pb-4 wishlist-title">CHECKOUT</h1>
           <div className="row">
-            <div className="col-8 p-3 bg-body-tertiary">
+            <div className="col-8 p-3 bg-body-tertiary form-checkout">
 
               <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
