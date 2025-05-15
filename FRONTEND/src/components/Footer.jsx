@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
         </div>
         {/* copyright */}
-        <hr style={{ color: "rgb(255, 201, 179)" }} />
+        <hr style={{ color: "rgb(183, 108, 73)" }} />
         <div className="copyright border-t border-gray-300 text-center text-sm text-gray-500">
           &copy; {new Date().getFullYear()} <strong>Eat Your Way</strong> All rights reserved.
         </div>
