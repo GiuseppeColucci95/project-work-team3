@@ -1,54 +1,52 @@
 //react imports
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useProductContext } from "../contexts/ProductContext";
+import { Link, NavLink, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { useProductContext } from "../contexts/ProductContext"
+import OffcanvasCart from "./OffcanvasCart/OffcanvasCart"
 
 //component exports
 export default function Header() {
 
   // badge cart function
-  const { getCartQuantity, getWishlistQuantity } = useProductContext();
+  const { getCartQuantity, getWishlistQuantity } = useProductContext()
 
   //logic
 
   //usestate variables
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(null)
+  const [offcanvasCartOpen, setOffcanvasCartOpen] = useState(false)
   //imports from custom context
-  const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext();
-  const navigate = useNavigate();
-
-  const toggleDropdown = (menu) => {
-    setDropdownOpen(dropdownOpen === menu ? null : menu);
-  };
+  const { search, setSearchChangeFunction, getSearchedProducts } = useProductContext()
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen)
   };
 
   const handleMouseEnter = (menu) => {
-    setDropdownOpen(menu);
+    setDropdownOpen(menu)
   };
 
   const handleMouseLeave = () => {
-    setDropdownOpen(null);
+    setDropdownOpen(null)
   };
 
   //function to handle submit
   function handleSubmit(e) {
     //prevent the default behavior
-    e.preventDefault();
+    e.preventDefault()
 
     if (search.q.length > 0) {
-      navigate(`/search?q=${search.q}`);
+      navigate(`/search?q=${search.q}`)
     }
   }
 
   //function to handle change
   function handleChange(e) {
-    console.log(e.target.value);
+    console.log(e.target.value)
 
-    setSearchChangeFunction(e.target);
+    setSearchChangeFunction(e.target)
   }
 
   //template
@@ -155,7 +153,7 @@ export default function Header() {
           </nav>
         </div>
         <div className="menu-dx">
-          <div className="favourites-icon-container"> 
+          <div className="favourites-icon-container">
             <Link to={'/wishlist'}>
               <img className="text-decoration-none active menu-icons wishlist" src="/img/favourites.svg" alt="wishlist image" />
             </Link>
@@ -163,13 +161,12 @@ export default function Header() {
               <span className="favourites-badge">{getWishlistQuantity()}</span>
             )}
           </div>
-          <div className="cart-icon-container">
-            <Link to={'/cart'}>
-              <img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image" />
-            </Link>
+          <div className="cart-icon-container" onClick={() => setOffcanvasCartOpen(true)}>
+            <img className="text-decoration-none active menu-icons" src="/img/cart.svg" alt="cart image" />
             {getCartQuantity() > 0 && (
               <span className="cart-badge">{getCartQuantity()}</span>
             )}
+            {offcanvasCartOpen && <OffcanvasCart setOffcanvasCartOpen={setOffcanvasCartOpen} />}
           </div>
         </div>
       </header>

@@ -179,15 +179,13 @@ function search(req, res) {
                     WHERE cp.product_id = ?
                 `
     //q&category&tag&orderby&order
-    const pattern = req.query.q.toLowerCase()
+    const query = req.query.q
     const category = req.query.category
     const tag = req.query.tag
     let orderBy = req.query.orderby //price, name, recents
     const order = req.query.order //asc, desc
-    const promotion = req.query.promotion //true, false
-
-    console.log(category, tag, orderBy, order, promotion)
-
+    const promotion = Boolean(req.query.promotion) //true, false
+    const pattern = query ? query.toLowerCase() : null
 
     connection.query(sql, [`%${pattern}%`, `%${pattern}%`, `%${pattern}%`], async (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' })
@@ -228,7 +226,7 @@ function search(req, res) {
             //primo filter per interare nell'array
             filteredProducts = filteredProducts.filter(product => {
                 //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
-                return product.categories.some(cat => cat.name.includes(category))
+                return product.categories.some(cat => cat.name.toLowerCase().includes(category).toLowerCase())
             })
         }
 
@@ -236,7 +234,7 @@ function search(req, res) {
             //primo filter per interare nell'array
             filteredProducts = filteredProducts.filter(product => {
                 //qui con la funzione some vado a vedere che ci sia almeno un corrispodenza
-                return product.tags.some(cat => cat.name.includes(tag))
+                return product.tags.some(cat => cat.name.toLowerCase().includes(tag).toLowerCase())
             })
         }
 
@@ -291,6 +289,7 @@ function search(req, res) {
                 return product.discount_percentage > 0
             })
         }
+
         res.json(filteredProducts)
     })
 }
