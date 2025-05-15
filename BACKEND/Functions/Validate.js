@@ -65,7 +65,7 @@ function userValidate(user) {
     if (mail.length < 10) validate.mail = "email must be at least 10 characters long"
     if (mail.length > 50) validate.mail = "email must be at most 50 characters long"
     if (address.length < 15) validate.address = "address must be at least 15 characters long"
-    if (address.length > 70) validate.address = "address must be at most 70 characters long"
+    if (address.length > 100) validate.address = "address must be at most 100 characters long"
 
     if (Object.keys(validate).length > 0) return validate
 
