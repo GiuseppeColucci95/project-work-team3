@@ -168,7 +168,7 @@ export default function Header() {
             {getCartQuantity() > 0 && (
               <span className="cart-badge">{getCartQuantity()}</span>
             )}
-            <OffcanvasCart setOffcanvasCartOpen={setOffcanvasCartOpen} offcanvasCartOpen={offcanvasCartOpen} />
+            {offcanvasCartOpen && <OffcanvasCart setOffcanvasCartOpen={setOffcanvasCartOpen} offcanvasCartOpen={offcanvasCartOpen} />}
           </div>
         </div>
       </header>
