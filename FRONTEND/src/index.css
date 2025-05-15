@@ -115,34 +115,42 @@ header {
   ul .dropdown {
     z-index: 1000;
   }
+
   .menu-container {
     width: 300px;
   }
+
   .menu-hamburger,
   .menu-hamburger .list-unstyled,
   .menu-hamburger .list-unstyled li,
   .menu-hamburger .list-unstyled li a {
     font-size: 32px !important;
   }
+
   .menu-hamburger .dropdown {
     list-style: none;
     padding-left: 0;
     margin-top: 0;
   }
+
   .menu-hamburger .dropdown li,
   .menu-hamburger .list-unstyled li {
     margin-bottom: 1rem;
   }
+
   .menu-hamburger .dropdown li {
     margin-bottom: 0.5rem;
   }
+
   .menu-hamburger .dropdown li a {
     text-decoration: none;
     color: var(--dark);
   }
+
   .menu-hamburger .dropdown li a:hover {
     color: var(--primary);
   }
+
   .menu .dropdown {
     position: absolute;
     background-color: white;
@@ -152,19 +160,24 @@ header {
     margin: 0;
     display: none;
   }
+
   .menu li:hover .dropdown {
     display: block;
   }
+
   .dropdown li {
     padding: 5px 10px;
   }
+
   .dropdown li a {
     text-decoration: none;
     color: black;
   }
+
   .dropdown li a:hover {
     color: var(--accent);
   }
+
   .dropdown-toggle {
     font-size: 32px !important;
     border: none;
@@ -592,6 +605,7 @@ h3 {
   color: var(--primary);
   margin: 0 !important;
 }
+
 .bg-summary {
   background: linear-gradient(180deg, rgba(103, 139, 39, 0.08), var(--accent));
   background-size: 100%;
@@ -600,10 +614,12 @@ h3 {
   border-radius: 1rem;
   padding: 2rem !important;
 }
+
 .noValidate {
   padding: 2rem;
   border-radius: 1rem !important;
 }
+
 .btn-pay {
   border-style: none;
   border-radius: 1rem;
@@ -940,6 +956,7 @@ footer {
       margin-right: 0;
     }
   }
+
   .hamburger {
     width: 24px;
     margin: 0 !important;
@@ -1147,6 +1164,7 @@ footer {
   .menu-container {
     width: 95% !important;
   }
+
   .footer-menu-ce {
     flex-wrap: wrap !important;
     justify-content: center !important;
@@ -1682,7 +1700,7 @@ footer {
 .form-label {
   color: var(--dark);
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 0.75rem;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
   padding-bottom: 0.5rem;
@@ -1707,6 +1725,7 @@ footer {
 
 .form-check-label {
   color: var(--dark);
+  font-size: 0.75rem;
   font-weight: 800;
   margin-left: 0.5em;
   cursor: pointer;
@@ -1717,12 +1736,12 @@ footer {
 .select-fixed {
   min-width: 100px !important;
   max-width: 100% !important;
-  padding: 8px 10px !important;
+  padding: 2px 8px !important;
   border-radius: 16px !important;
   border: 2px solid var(--accent) !important;
   background: var(--light) !important;
   color: var(--dark) !important;
-  font-size: 1.1rem !important;
+  font-size: 0.75rem !important;
   font-weight: 600 !important;
   box-shadow: 0 2px 8px rgba(103, 139, 39, 0.08) !important;
   appearance: none !important;
