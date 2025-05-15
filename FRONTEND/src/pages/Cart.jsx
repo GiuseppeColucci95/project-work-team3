@@ -13,7 +13,7 @@ export default function Cart() {
       <section id="cart" className="cart-list">
         <div className="container">
           <div className="row gx-5">
-            <div className="col-8 cart-products border">
+            <div className="col-12 col-md-8 cart-products border">
               <h1 className="text-center mt-5 your-cart"><strong>YOUR CART PRODUCTS</strong></h1>
               <div className="row row-cols-1 row-gap-3 my-5">
                 {
@@ -36,12 +36,12 @@ export default function Cart() {
                               (product.discount_percentage > 0) ?
                                 (
                                   <div>
-                                    <span className="me-2 fs-1 fw-semibold"><s>{`${product.price}€`}</s></span>
-                                    <h3 className="product-price-cart">{`${(product.price - product.price * (product.discount_percentage / 100)).toFixed(2)}€`}</h3>
+                                    <span className="me-2 fs-3 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                    <span className="me-2 fs-3 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
                                   </div>
                                 )
                                 :
-                                (<h3 className="product-price-cart">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
+                                (<h3 className="me-2 fs-3 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
                             }
                           </div>
                         </div>
@@ -51,7 +51,7 @@ export default function Cart() {
                 }
               </div>
             </div>
-            <div className="col-4 d-flex flex-column justify-content-start align-items-center pt-4 gap-3 summary border">
+            <div className="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center pt-4 gap-3 summary border text-center">
               <h3 className="mt-4 order-summary">ORDER SUMMARY</h3>
               <div className="summary-text d-flex flex-column gap-4">
                 <h5 className="summary-price"><strong>Total products:</strong> {totalPrice.toFixed(2)}€ </h5>

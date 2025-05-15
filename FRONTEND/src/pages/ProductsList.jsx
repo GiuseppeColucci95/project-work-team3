@@ -8,7 +8,7 @@ export default function ProductList() {
 
   //logic
   const [viewMode, setViewMode] = useState('grid');
-  const { orderBy, setOrderBy, products, getAllProducts, setSearchChangeFunction, search, setSearch, getSearchedProducts } = useProductContext();
+  const { orderBy, setOrderBy, products, getAllProducts, setSearchChangeFunction, search, setSearch, getSearchedProducts, isChecked, setIsChecked } = useProductContext();
   const [searchParams, setSearchParams] = useSearchParams();
 
   //useEffect on page start
@@ -23,9 +23,13 @@ export default function ProductList() {
     object.tag = searchParams.get('tag') ? object.tag = searchParams.get('tag') : '';
     object.orderby = searchParams.get('orderby') ? object.orderby = searchParams.get('orderby') : '';
     object.order = searchParams.get('order') ? object.order = searchParams.get('order') : '';
-    object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
+    object.promotion = searchParams.get('promotion') ? true : false;
+    // object.promotion = searchParams.get('promotion') ? object.promotion = searchParams.get('promotion') : '';
+    console.log('object promotion', object.promotion);
 
     let orderByToSet = '';
+    const isChecked = object.promotion ? object.promotion : false;
+    console.log('ischecked', isChecked);
 
     if (object.orderby !== '') {
       if (object.orderby === 'price') {
@@ -37,6 +41,7 @@ export default function ProductList() {
       }
     }
     setOrderBy(orderByToSet);
+    setIsChecked(isChecked);
 
     //set the new search with basically searchParams and do the search
     setSearch(object);
@@ -44,7 +49,7 @@ export default function ProductList() {
   }, [searchParams]);
 
   //function to handle select change
-  function handleSelectChange(e) {
+  function handleChange(e) {
 
     setSearchChangeFunction(e.target);
 
@@ -54,6 +59,7 @@ export default function ProductList() {
     if (search.tag.length > 0) object.tag = search.tag;
     if (search.orderby.length > 0) object.orderby = search.orderby;
     if (search.order.length > 0) object.order = search.order;
+    if (search.promotion) object.promotion = search.promotion;
 
     setSearchParams(object);
   }
@@ -70,41 +76,55 @@ export default function ProductList() {
           </div>
           {/* SECTION DESCRIPTION */}
 
-          <div className="mb-5 d-flex justify-content-between">
-            <div className="d-flex justify-content-center align-items-center gap-2">
-              Order by:
-              <select value={orderBy} onChange={handleSelectChange} name="orderby" id="orderby" className="px-1 me-3">
-                <option value="">Select an order</option>
-                <option value="ascending price">Ascending price</option>
-                <option value="descending price">Descending price</option>
-                <option value="ascending name">Ascending name</option>
-                <option value="descending name">Descending name</option>
-                <option value="most recents">Most recents</option>
-                <option value="least recents">Least recents</option>
-              </select>
-              Tag:
-              <select value={search.tag} onChange={handleSelectChange} name="tag" id="tag" className="px-1 me-3">
-                <option value="">Select a preference</option>
-                <option value="Lactose free">Lactose free</option>
-                <option value="Sugar free">Sugar free</option>
-                <option value="Gluten free">Gluten free</option>
-                <option value="Nickel free">Nickel free</option>
-                <option value="Nuts free">Nuts free</option>
-                <option value="Fish free">Fish free</option>
-                <option value="Egg free">Egg free</option>
-                <option value="Soy free">Soy free</option>
-                <option value="Shellfish free">Shellfish free</option>
-              </select>
-              Category:
-              <select value={search.category} onChange={handleSelectChange} name="category" id="category" className="px-1 me-3">
-                <option value="">Select a category</option>
-                <option value="Snacks">Snacks</option>
-                <option value="Beverages">Beverages</option>
-                <option value="Bakery">Bakery</option>
-              </select>
+          <div className="row my-3">
+            <div className="col-11">
+              <div className="row">
+
+                <div className="col-12 mb-2">
+                  <span className="me-1">Order by:</span>
+                  <select value={orderBy} onChange={handleChange} name="orderby" id="orderby">
+                    <option value="">Select an order</option>
+                    <option value="ascending price">Ascending price</option>
+                    <option value="descending price">Descending price</option>
+                    <option value="ascending name">Ascending name</option>
+                    <option value="descending name">Descending name</option>
+                    <option value="most recents">Most recents</option>
+                    <option value="least recents">Least recents</option>
+                  </select>
+                </div>
+                <div className="col-12 mb-2">
+                  <span className="me-1">Preference:</span>
+                  <select value={search.tag} onChange={handleChange} name="tag" id="tag">
+                    <option value="">Select a preference</option>
+                    <option value="Lactose free">Lactose free</option>
+                    <option value="Sugar free">Sugar free</option>
+                    <option value="Gluten free">Gluten free</option>
+                    <option value="Nickel free">Nickel free</option>
+                    <option value="Nuts free">Nuts free</option>
+                    <option value="Fish free">Fish free</option>
+                    <option value="Egg free">Egg free</option>
+                    <option value="Soy free">Soy free</option>
+                    <option value="Shellfish free">Shellfish free</option>
+                  </select>
+                </div>
+                <div className="col-12 mb-2">
+                  <div className="me-1">Category:</div>
+                  <select value={search.category} onChange={handleChange} name="category" id="category">
+                    <option value="">Select a category</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Bakery">Bakery</option>
+                  </select>
+                </div>
+                <div className="col-12 mb-2">
+                  <input className="me-1" type="checkbox" checked={isChecked} onChange={handleChange} name="promotion" id="promotion" />
+                  <span>Discounted products only</span>
+                </div>
+              </div>
+
             </div>
 
-            <div className="d-flex gap-2">
+            <div className="col-1 d-flex align-items-center">
               <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i className="bi bi-grid"></i></button>
               <button onClick={() => setViewMode('list')} className="btn btn-primary"><i className="bi bi-list-task"></i></button>
             </div>
