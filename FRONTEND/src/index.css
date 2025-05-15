@@ -117,7 +117,7 @@ header {
   }
   .menu-container {
     width: 300px;
-}
+  }
   .menu-hamburger,
   .menu-hamburger .list-unstyled,
   .menu-hamburger .list-unstyled li,
@@ -126,8 +126,12 @@ header {
   }
   .menu-hamburger .dropdown {
     list-style: none;
-    padding-left: 1rem;
-    margin-top: 0.5rem;
+    padding-left: 0;
+    margin-top: 0;
+  }
+  .menu-hamburger .dropdown li,
+  .menu-hamburger .list-unstyled li {
+    margin-bottom: 1rem;
   }
   .menu-hamburger .dropdown li {
     margin-bottom: 0.5rem;
@@ -135,7 +139,6 @@ header {
   .menu-hamburger .dropdown li a {
     text-decoration: none;
     color: var(--dark);
-    font-size: 14px;
   }
   .menu-hamburger .dropdown li a:hover {
     color: var(--primary);
@@ -163,6 +166,7 @@ header {
     color: var(--accent);
   }
   .dropdown-toggle {
+    font-size: 32px !important;
     border: none;
     background-color: transparent;
   }
@@ -398,6 +402,28 @@ h6 {
   color: var(--secondary-brown);
   padding-top: 1rem;
   font-weight: 700;
+}
+
+.product-img-container {
+  width: 100%;
+  aspect-ratio: 0.75;
+  overflow: hidden;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.product-img-zoom {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: block;
+}
+
+.product-img-container:hover .product-img-zoom {
+  transform: scale(1.08);
 }
 
 /* #region PRODUCT DETAILS component */
@@ -866,13 +892,6 @@ footer {
   }
 }
 
-@media (min-width: 826px) {
-
-  .menu-hamburger {
-    display: none !important;
-  }
-}
-
 @media (max-width: 825px) {
   header {
     padding: 0.75rem;
@@ -882,7 +901,6 @@ footer {
       margin-right: 0;
     }
   }
-
   .hamburger {
     width: 24px;
     margin: 0 !important;
@@ -1078,10 +1096,18 @@ footer {
   }
 }
 
+@media (min-width: 767px) {
+  .menu-container {
+    width: 80% !important;
+  }
+}
+
 /* schermi medio-piccoli */
 
 @media (max-width: 605px) {
-
+  .menu-container {
+    width: 95% !important;
+  }
   .footer-menu-ce {
     flex-wrap: wrap !important;
     justify-content: center !important;
@@ -1502,27 +1528,7 @@ footer {
 }
 
 
-.product-img-container {
-  width: 100%;
-  aspect-ratio: 0.75;
-  overflow: hidden;
-  border-radius: 1rem;
-  position: relative;
-}
 
-.product-img-zoom {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  display: block;
-}
-
-.product-img-container:hover .product-img-zoom {
-  transform: scale(1.08);
-}
 
 /* Wishlist */
 
