@@ -17,7 +17,8 @@ export default function ProductDetails() {
     tagProducts, getProductsByTag,
     categoryProducts, getProductsByCategory,
     addWishlistProduct, removeWishlistProduct,
-    wishlist, addCartProduct, removeCartProduct
+    wishlist, addCartProduct, removeCartProduct,
+    cart
   } = useProductContext();
   //use state variables for buttons to expands the results
   const [numberOfRelatedTagProducts, setNumberOfRelatedTagProducts] = useState(4);
@@ -47,6 +48,25 @@ export default function ProductDetails() {
     return false;
   }
 
+  //function to check if the product is in cart
+  function isIncart(selectedProduct) {
+    console.log('cart', cart);
+
+    if (cart) {
+      if (cart.length > 0) {
+
+        const nameToCheck = selectedProduct.name;
+        const isInCart = cart.find(product => {
+          return product.name === nameToCheck;
+        })
+        if (isInCart) return isInCart;
+      }
+    } else {
+      return false;
+    }
+    return false;
+  }
+
   //template
   return (
     <>
@@ -65,6 +85,7 @@ export default function ProductDetails() {
                     <h2 id="product-title">{selectedProduct.name}</h2>
                     <p id="product-text">{selectedProduct.description}</p>
                   </div>
+                  {/* IMAGE DESCRIPTION */}
 
                   <div id="tags">
                     <ul className="list-unstyled">
@@ -75,6 +96,7 @@ export default function ProductDetails() {
                       }
                     </ul>
                   </div>
+                  {/* TAGS */}
 
                   <div id="buttons" className="mb-3">
                     <div className="d-flex gap-3">
@@ -93,25 +115,47 @@ export default function ProductDetails() {
                           )
                       }
                     </div>
+                    {/* PRICE */}
 
-                    <div className="d-flex gap-3 justify-content-start mt-3">
-                      <div>
-                        <button onClick={() => addCartProduct(selectedProduct)} className="btn-add px-5 me-1">ADD TO CART</button>
+                    <div className="row mt-3">
+
+                      <div className="col-3 col-xl-4">
+                        {
+                          (isIncart(selectedProduct))
+                            ?
+                            (<div className="w-100 d-flex align-items-center quantity-section">
+                              <div className="col-4 col-xl-5 ">
+                                <button onClick={() => removeCartProduct(selectedProduct)} className="text-dark favourites"><i className="bi bi-dash-circle"></i></button>
+                              </div>
+                              <div className="col-4 col-xl-2 text-center">
+                                <div id="quantity">{isIncart(selectedProduct).cartQuantity}</div>
+                              </div>
+                              <div className="col-4 col-xl-5 text-end">
+                                <button onClick={() => addCartProduct(selectedProduct)} className="text-dark favourites"><i className="bi bi-plus-circle"></i></button>
+                              </div>
+                            </div>)
+                            :
+                            (<button onClick={() => addCartProduct(selectedProduct)} className="w-100 btn-add">ADD TO CART</button>)
+                        }
                       </div>
-                      <div>
-                        <button onClick={() => addWishlistProduct(selectedProduct)}
-                          className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
-                          <img className="menu-icons add-wishlist" src="/img/favourites-empty.svg" alt="wishlist icon" />
-                        </button>
-                        <button onClick={() => removeWishlistProduct(selectedProduct)}
-                          className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
-                          <img className="menu-icons add-wishlist" src="/img/favourites-full.svg" alt="favourites icon" />
-                        </button>
+                      {/* ADD TO CART BUTTONS */}
+                      <div className="col-1 col-md-2 d-flex align-items-center">
+                        <div>
+                          <button onClick={() => addWishlistProduct(selectedProduct)}
+                            className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
+                            <img className="menu-icons add-wishlist" src="/img/favourites-empty.svg" alt="wishlist icon" />
+                          </button>
+                          <button onClick={() => removeWishlistProduct(selectedProduct)}
+                            className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
+                            <img className="menu-icons add-wishlist" src="/img/favourites-full.svg" alt="favourites icon" />
+                          </button>
+                        </div>
                       </div>
+                      {/* WISHLIST BUTTON */}
                     </div>
                   </div>
                 </div>
-                {/* IMAGE NAME, PRICE, ADD TO CART */}
+                {/* PRICE, ADD TO CART AND FAVOURITES BUTTONS */}
 
 
               </div>
