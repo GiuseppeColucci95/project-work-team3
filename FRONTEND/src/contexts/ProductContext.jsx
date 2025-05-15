@@ -203,6 +203,7 @@ function ProductProvider({ children }) {
         //otherwise add it in the wishlist
         products.push({
           id: productToAdd.id,
+          slug: productToAdd.slug,
           image: productToAdd.image,
           name: productToAdd.name,
           price: productToAdd.price,

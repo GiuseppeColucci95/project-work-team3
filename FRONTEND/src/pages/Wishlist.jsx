@@ -27,11 +27,14 @@ export default function Wishlist() {
               (wishlist && wishlist.length > 0) ? (
                 wishlist.map(product => (
                   <div key={`${product.name}-product`} className="col">
+
                     <div className="wishlist-card d-flex flex-column align-items-center p-3 h-100">
-                      <div className="mb-3 d-flex justify-content-center w-100">
-                        <img src={product.image} alt="image" className="img-fluid w-auto img-wishlist" style={{ maxHeight: "120px" }} />
-                      </div>
-                      <h3 className="mb-1 text-center w-100">{product.name}</h3>
+                      <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                        <div className="mb-3 d-flex justify-content-center w-100">
+                          <img src={product.image} alt="image" className="img-fluid w-auto img-wishlist" style={{ maxHeight: "120px" }} />
+                        </div>
+                        <h3 className="mb-1 text-center w-100">{product.name}</h3>
+                      </Link>
                       {
                         (product.discount_percentage > 0) ?
                           (
@@ -50,6 +53,7 @@ export default function Wishlist() {
                         </button>
                       </div>
                     </div>
+
                   </div>
                 ))
               ) : (
