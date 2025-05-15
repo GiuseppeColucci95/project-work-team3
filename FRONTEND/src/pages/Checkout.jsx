@@ -236,7 +236,7 @@ export default function Checkout() {
         <section className="checkout">
           <h3 className="text-center">Checkout</h3>
           <div className="row">
-            <div className="col-8 p-3 bg-body-tertiary">
+            <div className="col-8 p-3 bg-body-tertiary col-sm-12">
 
               <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
@@ -431,7 +431,7 @@ export default function Checkout() {
             </div>
 
 
-            <div className="col-4 bg-body-secondary">
+            <div className="col-4 bg-body-secondary col-sm-12">
               <section>
                 <h3 className="text-success p-3">Summary</h3>
                 <div className="summayDetails">
