@@ -22,7 +22,7 @@ export default function Wishlist() {
         <div className="container">
           <h1 className="text-center wishlist-title">YOUR PRODUCT WISHLIST</h1>
 
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 my-5 px-4">
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 my-5 px-4">
             {
               (wishlist && wishlist.length > 0) ? (
                 wishlist.map(product => (
