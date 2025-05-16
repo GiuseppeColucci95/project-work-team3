@@ -92,7 +92,7 @@ export default function ProductDetails() {
                     <ul className="list-unstyled">
                       {
                         selectedProduct.tags.map(tag => (
-                          <li key={`${tag.name}-tag`}><img className="check-icon" src="/img/check.svg" alt="check icon" />{` ${tag.name}`}</li>
+                          <li className="tag-list" key={`${tag.name}-tag`}><img className="check-icon" src="/img/check.svg" alt="check icon" />{` ${tag.name}`}</li>
                         ))
                       }
                     </ul>
