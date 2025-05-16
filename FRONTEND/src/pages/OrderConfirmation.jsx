@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 //funzionalità extra
 import confetti from "canvas-confetti"
 
-import { useOrderContext } from "../contexts/OrdersContex"
+import { useOrderContext } from "../contexts/OrdersContext"
 
 export default function OrderConfirmation() {
 
