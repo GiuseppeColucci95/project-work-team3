@@ -37,10 +37,10 @@ export default function CategoryProductsList() {
         <div className="container">
 
           <div className="d-flex justify-content-end mb-5 gap-2">
-            <button onClick={() => setViewMode('grid')} className="btn btn-primary"><i className="bi bi-grid"></i></button>
-            <button onClick={() => setViewMode('list')} className="btn btn-primary"><i className="bi bi-list-task"></i></button>
+            <button onClick={() => setViewMode('grid')} className="btn-add button-grid"><i className="bi bi-grid"></i></button>
+            <button onClick={() => setViewMode('list')} className="btn-add button-list"><i className="bi bi-list-task"></i></button>
           </div>
-          {/* SELECT, GRID AND LIST BUTTONS */}
+          {/* GRID AND LIST BUTTONS */}
           {
             (viewMode === 'grid')
               ?
