@@ -23,6 +23,8 @@ async function sendOrderConfirmationMail(order, orderId) {
         cid: 'logo'
     })
 
+    console.log("attachments", attachments)
+
     // Imposta i dettagli della mail
     let mailOptions = {
         from: process.env.MAIL_USERNAME,
