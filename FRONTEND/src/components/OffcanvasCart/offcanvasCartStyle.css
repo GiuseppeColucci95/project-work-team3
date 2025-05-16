@@ -61,6 +61,8 @@
 .offcanvas_cart-image {
     width: 75px;
     height: 75px;
+    aspect-ratio: 1;
+    object-fit: cover;
 }
 
 .offcanvas_cart-button {
