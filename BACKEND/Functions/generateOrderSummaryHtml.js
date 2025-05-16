@@ -1,38 +1,39 @@
 function generateOrderSummaryHtml(order, orderId) {
 
-    /**
-      * order : 
-      * promotion_id,
-      * total_not_discounted,
-      * total_discounted,
-      * shipping,
-      * final_price,
-      * status,
-      * products,
-      * firstname,
-      * lastname,
-      * phone,
-      * mail,
-      * address
-     */
+  /**
+    * order : 
+    * promotion_id,
+    * total_not_discounted,
+    * total_discounted,
+    * shipping,
+    * final_price,
+    * status,
+    * products,
+    * firstname,
+    * lastname,
+    * phone,
+    * mail,
+    * address
+   */
 
-    const dataOrdine = new Date().toLocaleDateString("it-IT", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    })
+  const dataOrdine = new Date().toLocaleDateString("it-IT", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
 
-    const righeProdotti = order.products.map(p => `
+  const righeProdotti = order.products.map((p, i) => `
     <tr>
-      <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
-        <img src="cid:${p.product_name}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
-        ${p.product_name}
-      </td>
-      <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price}</td>
-    </tr>
+    <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+      <img src="cid:productd-image${i}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
+      ${p.product_name}
+    </td>
+    <td align="center" style="padding: 12px 0; border-bottom: 1px solid #eee;">${p.quantity}</td>
+    <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price}</td>
+  </tr>
   `).join("")
 
-    return `
+  return `
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -58,6 +59,7 @@ function generateOrderSummaryHtml(order, orderId) {
       <thead>
         <tr>
           <th align="left" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Prodotto</th>
+          <th align="center" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Quantità</th>
           <th align="right" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Prezzo</th>
         </tr>
       </thead>
