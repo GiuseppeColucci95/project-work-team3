@@ -1,4 +1,4 @@
-function generateOrderSummaryHtml(order) {
+function generateOrderSummaryHtml(order, orderId) {
 
     /**
       * order : 
@@ -16,7 +16,7 @@ function generateOrderSummaryHtml(order) {
       * address
      */
 
-    const dataOrdine = new Date(order.data).toLocaleDateString("it-IT", {
+    const dataOrdine = new Date().toLocaleDateString("it-IT", {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -74,7 +74,7 @@ function generateOrderSummaryHtml(order) {
 
     <p style="margin-top: 20px; font-size: 14px;">
       <strong>Stato ordine:</strong> ${order.status}<br>
-      <strong>Numero ordine:</strong> #${order.id}<br>
+      <strong>Numero ordine:</strong> #${orderId}<br>
       <strong>Data ordine:</strong> ${dataOrdine}
     </p>
 

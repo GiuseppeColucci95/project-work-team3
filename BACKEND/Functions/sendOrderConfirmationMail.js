@@ -3,7 +3,7 @@ const generateOrderSummaryHtml = require('./generateOrderSummaryHtml')
 const nodemailer = require('nodemailer')
 
 // Funzione per inviare la mail
-async function sendOrderConfirmationMail(order) {
+async function sendOrderConfirmationMail(order, orderId) {
     // Configura il trasportatore (usa credenziali reali in produzione)
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -13,7 +13,7 @@ async function sendOrderConfirmationMail(order) {
         }
     })
 
-    const paginaHTML = generateOrderSummaryHtml(order)
+    const paginaHTML = generateOrderSummaryHtml(order, orderId)
 
     // Imposta i dettagli della mail
     let mailOptions = {
