@@ -64,7 +64,9 @@ function ProductProvider({ children }) {
         console.log('all products', data);
         setProducts(data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get a selected element by slug
@@ -78,7 +80,9 @@ function ProductProvider({ children }) {
         getProductsByTag(data.tags[0].slug);
         getProductsByCategory(data.categories[0].slug);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
 
   }
 
@@ -91,7 +95,9 @@ function ProductProvider({ children }) {
         setLatestProduct(data);
         console.log('latest products', data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get all products from db ordered by best sold first
@@ -103,7 +109,9 @@ function ProductProvider({ children }) {
         setBestSellersProducts(data);
         console.log('best sellers products', data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get all products filtered by tag
@@ -115,7 +123,9 @@ function ProductProvider({ children }) {
         setTagProducts(data);
         console.log('related tag products', data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get all products filtered by category
@@ -127,7 +137,9 @@ function ProductProvider({ children }) {
         setCategoryProducts(data);
         console.log('related category products', data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get a selected tag
@@ -140,7 +152,9 @@ function ProductProvider({ children }) {
         setSelectedTag(data);
         console.log('related category products', data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get a selected category
@@ -153,7 +167,9 @@ function ProductProvider({ children }) {
         setSelectedCategory(data);
         console.log('related category products', data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //function to get wishlist products
@@ -432,7 +448,9 @@ function ProductProvider({ children }) {
 
         setProducts(data);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   //useEffect to get cart and wishlist at page start
