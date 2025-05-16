@@ -68,10 +68,13 @@
     border-radius: 2px;
 }
 
-.offcanvas_cart-image {
+.offcanvas_cart-image-container {
     width: 75px;
     height: 75px;
-    aspect-ratio: 1;
+}
+
+.offcanvas_cart-image {
+    aspect-ratio: 0.75;
     object-fit: cover;
 }
 
