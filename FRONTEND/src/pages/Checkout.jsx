@@ -258,7 +258,7 @@ export default function Checkout() {
           {(loading) ? <Loader /> :
             (
               <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8 p-3 bg-body-tertiary form-checkout ">
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8 p-3 bg-body-tertiary form-checkout rounded-start-4">
 
                   <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
@@ -454,7 +454,7 @@ export default function Checkout() {
                   </form>
                 </div>
 
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary">
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary rounded-end-4">
                   <section>
                     <h3 className="checkout-title"><strong>Summary</strong></h3>
                     <hr />
