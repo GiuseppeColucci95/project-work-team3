@@ -66,7 +66,7 @@ export default function Cart() {
             </div>
 
             {(cart && cart.length > 0) &&
-              (<div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary pt-5">
+              (<div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary pt-5 rounded-4">
                 <h3 className="checkout-title"><strong>Summary</strong></h3>
                 <hr />
                 <div className="summary-text d-flex flex-column gap-4 pt-3">
