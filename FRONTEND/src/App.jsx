@@ -1,7 +1,7 @@
 //import function
 import { Route, Routes, BrowserRouter } from "react-router-dom"
 //import context Provider
-import { OrderProvider } from './contexts/OrdersContex'
+import { OrderProvider } from './contexts/OrdersContext'
 import { ProductProvider } from './contexts/ProductContext'
 //import Layout
 import DefaultLayout from './layouts/DefaultLayout'
