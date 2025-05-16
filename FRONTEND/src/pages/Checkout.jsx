@@ -47,7 +47,6 @@ export default function Checkout() {
   const [cvv, setCvv] = useState("")
   const [checkCard, setCheckCard] = useState(false)
 
-
   useEffect(() => {
     setProductList(cart?.map(product => {
       return {
@@ -249,6 +248,15 @@ export default function Checkout() {
       alert(promotionCodeResponse.error)
     }
   }, [promotionCodeResponse])
+
+  //useEffect for having an empty promotion field each time 
+  useEffect(() => {
+    setPromotion({
+      promotion_id: 0,
+      promotionCode: "",
+      discount_percentage: 0
+    });
+  }, []);
 
   return (
     <>
@@ -461,16 +469,17 @@ export default function Checkout() {
                     <div className="summaryDetails">
 
                       <p>
-                        <strong>Total products:</strong> &euro;{totalNotDiscounted?.toFixed(2)}
+                        <strong>Subtotal:</strong> &euro;{totalNotDiscounted?.toFixed(2)}
                       </p>
                       <p>
-                        <strong>Total shipping:</strong> &euro;{shipping?.toFixed(2)}
+                        <strong>Shipping:</strong> &euro;{shipping?.toFixed(2)}
                       </p>
                       <p>
-                        <strong>Total discounted:</strong> &euro;{totalNotDiscounted * (promotion.discount_percentage / 100).toFixed(2)}
+                        <strong>Total discount:</strong> &euro;{(totalNotDiscounted?.toFixed(2) * (promotion.discount_percentage / 100)).toFixed(2)}
                       </p>
+                      <hr />
                       <p>
-                        <strong>Final price:</strong> &euro;{finalPrice?.toFixed(2)}
+                        <strong>Order total:</strong> &euro;{finalPrice?.toFixed(2)}
                       </p>
                       <div className="promotionValidate">
                         <div className="mb-3">

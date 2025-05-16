@@ -67,15 +67,16 @@ export default function Cart() {
 
             {(cart && cart.length > 0) &&
               (<div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary pt-5 rounded-4">
-                <h3 className="checkout-title"><strong>Summary</strong></h3>
-                <hr />
+                <h3 className="checkout-title mb-3"><strong>Summary</strong></h3>
                 <div className="summary-text d-flex flex-column gap-4 pt-3">
-                  <h5 className="summary-price"><strong>Total products:</strong> {totalPrice.toFixed(2)}€ </h5>
+                  <h5 className="summary-price"><strong>Subtotal:</strong> {totalPrice.toFixed(2)}€ </h5>
                   <h5 className="summary-price"><strong>Shipping:</strong> {(totalPrice > 39.99) ? ('0.00') : ('9.99')}€ </h5>
-                  <h5 className="summary-price"><strong>Total order:</strong> {(totalPrice > 39.99) ? (totalPrice.toFixed(2)) : ((totalPrice + 9.99).toFixed(2))}€ </h5>
+                  <hr className="my-0" />
+
+                  <h5 className="summary-price"><strong>Order total:</strong> {(totalPrice > 39.99) ? (totalPrice.toFixed(2)) : ((totalPrice + 9.99).toFixed(2))}€ </h5>
                   <div className="d-flex justify-content-center">
                     <Link to="/checkout">
-                      <button type="button" className="btn-gr mt-1">GO TO CHECKOUT</button>
+                      <button type="button" className="btn-gr mt-1">CHECKOUT</button>
                     </Link>
                   </div>
                 </div>
