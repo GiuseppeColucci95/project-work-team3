@@ -48,6 +48,10 @@ export default function Checkout() {
     setProductList(cart?.map(product => {
       return {
         product_id: product.id,
+        product_name: product.name,
+        product_price: product.price,
+        product_image: product.image,
+        product_description: product.description,
         quantity: product.cartQuantity
       }
 

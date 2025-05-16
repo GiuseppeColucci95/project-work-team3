@@ -12,35 +12,21 @@ async function sendOrderConfirmationMail(order, orderId) {
         }
     })
 
+    const paginaHTML = generateOrderSummaryHtml(order)
+
     // Imposta i dettagli della mail
     let mailOptions = {
         from: process.env.MAIL_USERNAME,
         to: order.mail,
         subject: 'Conferma ordine',
-        html: `
-            <div style="font-family: Arial, sans-serif; color: #333;">
-                <h2 style="color: #4CAF50;">Grazie per il tuo ordine!</h2>
-                <p>Ciao <strong>${order.firstname}</strong>,</p>
-                <p>Il tuo ordine <b>#${orderId}</b> è stato ricevuto con successo!</p>
-                <hr>
-                <p style="font-size: 0.9em; color: #888;">Ti contatteremo appena sarà spedito.</p>
-            </div>
-        `
+        html: paginaHTML
     }
 
     let mailSeller = {
         from: process.env.MAIL_USERNAME,
         to: process.env.MAIL_USERNAME,
         subject: 'Conferma ordine',
-        html: `
-            <div style="font-family: Arial, sans-serif; color: #333;">
-                <h2 style="color: #4CAF50;">Grazie per il tuo ordine!</h2>
-                <p>Ciao <strong>${order.firstname}</strong>,</p>
-                <p>Il tuo ordine <b>#${orderId}</b> è stato ricevuto con successo!</p>
-                <hr>
-                <p style="font-size: 0.9em; color: #888;">Ti contatteremo appena sarà spedito.</p>
-            </div>
-        `
+        html: paginaHTML
     }
 
     // Invia la mail
