@@ -1,8 +1,9 @@
 //importo modulo per gestire l'email
+const generateOrderSummaryHtml = require('./generateOrderSummaryHtml')
 const nodemailer = require('nodemailer')
 
 // Funzione per inviare la mail
-async function sendOrderConfirmationMail(order, orderId) {
+async function sendOrderConfirmationMail(order) {
     // Configura il trasportatore (usa credenziali reali in produzione)
     let transporter = nodemailer.createTransport({
         service: 'gmail',
