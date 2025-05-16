@@ -46,38 +46,48 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
 
                 <div className={`col ps-3 ${cart?.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>
                     {
-                        cart?.map((product) => (
-                            <div key={`${product.name}-product`}>
-                                <div className="row mb-3 offcanvas_cart-card align-items-center">
-                                    <div className="col-4 offcanvas_cart-image-container">
-                                        <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                                            <img src={product.image} alt="image" className="w-100 rounded-4 offcanvas_cart-image" />
-                                        </Link>
-                                    </div>
-                                    <div className="col-8 d-flex flex-column justify-content-center">
-                                        <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                                            <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
-                                        </Link>
-                                        <div className="d-flex align-items-center gap-1 ">
-                                            <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
-                                            <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
-                                            <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
+                        cart && cart.length > 0 ?
+                            (
+                                cart?.map((product) => (
+                                    <div key={`${product.name}-product`}>
+                                        <div className="row mb-3 offcanvas_cart-card align-items-center">
+                                            <div className="col-4 offcanvas_cart-image-container">
+                                                <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                                                    <img src={product.image} alt="image" className="w-100 rounded-4 offcanvas_cart-image" />
+                                                </Link>
+                                            </div>
+                                            <div className="col-8 d-flex flex-column justify-content-center">
+                                                <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                                                    <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
+                                                </Link>
+                                                <div className="d-flex align-items-center gap-1 ">
+                                                    <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
+                                                    <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
+                                                    <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
+                                                </div>
+                                                {
+                                                    (product.discount_percentage > 0) ?
+                                                        (
+                                                            <div>
+                                                                <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                                                <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                                            </div>
+                                                        )
+                                                        :
+                                                        (<span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
+                                                }
+                                            </div>
                                         </div>
-                                        {
-                                            (product.discount_percentage > 0) ?
-                                                (
-                                                    <div>
-                                                        <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
-                                                        <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
-                                                    </div>
-                                                )
-                                                :
-                                                (<span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
-                                        }
                                     </div>
+                                ))
+                            ) :
+                            (
+                                <div className="d-flex align-items-center flex-column text-center py-5 mx-auto">
+                                    <span style={{ fontSize: "3rem", color: "#6366f1" }}>🛒</span>
+                                    <h3 className="mt-3">Your cart is empty!</h3>
+                                    <p>Add products to see them here.</p>
                                 </div>
-                            </div>
-                        ))
+                            )
                     }
                 </div>
 
