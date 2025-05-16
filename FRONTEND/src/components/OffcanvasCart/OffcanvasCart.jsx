@@ -14,6 +14,12 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
         setTimeout(() => setOffcanvasCartOpen(false), 500)
     }
 
+    //function to instant close the offCanvase
+    function handleInstantClose() {
+        setShow(false);
+        setOffcanvasCartOpen(false)
+    }
+
     useEffect(() => {
         if (offcanvasCartOpen) {
             setShow(false)
@@ -44,12 +50,12 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                             <div key={`${product.name}-product`}>
                                 <div className="row mb-2">
                                     <div className="col-4 offcanvas_cart-image">
-                                        <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                                        <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                                             <img src={product.image} alt="image" className="w-100 rounded-4" />
                                         </Link>
                                     </div>
                                     <div className="col-8 d-flex flex-column ">
-                                        <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                                        <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                                             <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
                                         </Link>
                                         <div className="d-flex align-items-center gap-1 ">
