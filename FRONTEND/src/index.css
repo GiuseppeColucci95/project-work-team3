@@ -1162,6 +1162,13 @@ footer {
   }
 }
 
+@media (min-width: 826px) {
+
+  .menu-hamburger {
+    display: none;
+  }
+}
+
 /* schermi medio-piccoli */
 
 @media (max-width: 605px) {
