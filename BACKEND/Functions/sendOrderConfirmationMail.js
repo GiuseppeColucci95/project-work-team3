@@ -14,10 +14,10 @@ async function sendOrderConfirmationMail(order, orderId) {
     })
 
     const paginaHTML = generateOrderSummaryHtml(order, orderId)
-    let attachments = order.products.map((p, i) => ({
+    let attachments = []/* order.products.map((p, i) => ({
         path: p.product_image,
         cid: `productd-image${i}` // Assicurati che il cid sia unico per ogni immagine
-    }))
+    })) */
     attachments.push({
         path: 'http://localhost:3000/images/logo.png',
         cid: 'logo'

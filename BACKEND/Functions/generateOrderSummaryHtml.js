@@ -5,11 +5,12 @@ function generateOrderSummaryHtml(order, orderId) {
     year: "numeric",
   })
 
+  // <img src="cid:productd-image${i}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
+
   const productRows = order.products.map((p, i) => {
     return `
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
-          <img src="cid:productd-image${i}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
+        <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">      
           ${p.product_name}
         </td>
         <td align="center" style="padding: 12px 0; border-bottom: 1px solid #eee;">${p.quantity}</td>
