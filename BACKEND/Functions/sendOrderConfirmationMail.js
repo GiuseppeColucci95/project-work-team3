@@ -1,4 +1,5 @@
 //importo modulo per gestire l'email
+const generateOrderSummaryHtml = require('./generateOrderSummaryHtml')
 const nodemailer = require('nodemailer')
 
 // Funzione per inviare la mail
@@ -12,35 +13,33 @@ async function sendOrderConfirmationMail(order, orderId) {
         }
     })
 
+    const paginaHTML = generateOrderSummaryHtml(order, orderId)
+    let attachments = order.products.map((p, i) => ({
+        path: p.product_image,
+        cid: `productd-image${i}` // Assicurati che il cid sia unico per ogni immagine
+    }))
+    attachments.push({
+        path: 'http://localhost:3000/images/logo.png',
+        cid: 'logo'
+    })
+
+    console.log("attachments", attachments)
+
     // Imposta i dettagli della mail
     let mailOptions = {
         from: process.env.MAIL_USERNAME,
         to: order.mail,
         subject: 'Conferma ordine',
-        html: `
-            <div style="font-family: Arial, sans-serif; color: #333;">
-                <h2 style="color: #4CAF50;">Grazie per il tuo ordine!</h2>
-                <p>Ciao <strong>${order.firstname}</strong>,</p>
-                <p>Il tuo ordine <b>#${orderId}</b> è stato ricevuto con successo!</p>
-                <hr>
-                <p style="font-size: 0.9em; color: #888;">Ti contatteremo appena sarà spedito.</p>
-            </div>
-        `
+        html: paginaHTML,
+        attachments: attachments
     }
 
     let mailSeller = {
         from: process.env.MAIL_USERNAME,
         to: process.env.MAIL_USERNAME,
         subject: 'Conferma ordine',
-        html: `
-            <div style="font-family: Arial, sans-serif; color: #333;">
-                <h2 style="color: #4CAF50;">Grazie per il tuo ordine!</h2>
-                <p>Ciao <strong>${order.firstname}</strong>,</p>
-                <p>Il tuo ordine <b>#${orderId}</b> è stato ricevuto con successo!</p>
-                <hr>
-                <p style="font-size: 0.9em; color: #888;">Ti contatteremo appena sarà spedito.</p>
-            </div>
-        `
+        html: paginaHTML,
+        attachments: attachments
     }
 
     // Invia la mail
