@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 //import context
 import { useProductContext } from "../contexts/ProductContext"
-import { useOrderContext } from "../contexts/OrdersContex"
+import { useOrderContext } from "../contexts/OrdersContext"
 
 
 export default function Checkout() {
