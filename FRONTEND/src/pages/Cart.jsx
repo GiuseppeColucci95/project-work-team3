@@ -23,10 +23,14 @@ export default function Cart() {
                       <div key={`${product.name}-product`} className="col">
                         <div className="row d-flex justify-content-center mb-3">
                           <div className="col-2 product-image-cart">
-                            <img src={product.image} alt="image" className="w-100 rounded-4" />
+                            <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                              <img src={product.image} alt="image" className="w-100 rounded-4" />
+                            </Link>
                           </div>
                           <div className="col-6 d-flex flex-column align-items-start justify-content-between">
-                            <h3 className="mb-0 product-name-cart">{product.name}</h3>
+                            <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                              <h3 className="mb-0 product-name-cart">{product.name}</h3>
+                            </Link>
                             <div className="d-flex align-items-center gap-2 quantity-section">
                               <button onClick={() => removeCartProduct(product)} className="btn-quantity"><i className="bi bi-dash-circle"></i></button>
                               <div id="quantity" className="mx-1">{product.cartQuantity}</div>

@@ -11,7 +11,13 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
     //ho usato il set time in modo da chiudere l'offcanvas dopo l'animazione
     function handleClose() {
         setShow(false)
-        setTimeout(() => setOffcanvasCartOpen(false), 1500)
+        setTimeout(() => setOffcanvasCartOpen(false), 500)
+    }
+
+    //function to instant close the offCanvase
+    function handleInstantClose() {
+        setShow(false);
+        setOffcanvasCartOpen(false)
     }
 
     useEffect(() => {
@@ -44,12 +50,14 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                             <div key={`${product.name}-product`}>
                                 <div className="row mb-2">
                                     <div className="col-4 offcanvas_cart-image">
-                                        <img src={product.image} alt="image" className="w-100 rounded-4" />
+                                        <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                                            <img src={product.image} alt="image" className="w-100 rounded-4" />
+                                        </Link>
                                     </div>
-
                                     <div className="col-8 d-flex flex-column ">
-                                        <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
-
+                                        <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                                            <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
+                                        </Link>
                                         <div className="d-flex align-items-center gap-1 ">
                                             <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
                                             <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
@@ -59,12 +67,12 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                             (product.discount_percentage > 0) ?
                                                 (
                                                     <div>
-                                                        <span className="px-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                                        <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
                                                         <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
                                                     </div>
                                                 )
                                                 :
-                                                (<span className="px-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
+                                                (<span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
                                         }
                                     </div>
                                 </div>

@@ -436,23 +436,23 @@ export default function Checkout() {
               </form>
             </div>
 
-
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary">
               <section>
                 <h3 className="checkout-title"><strong>Summary</strong></h3>
                 <hr />
                 <div className="summaryDetails">
+
                   <p>
-                    <strong>Total products:</strong> &euro;{totalNotDiscounted}
+                    <strong>Total products:</strong> &euro;{totalNotDiscounted?.toFixed(2)}
                   </p>
                   <p>
-                    <strong>Total shipping:</strong> &euro;{shipping}
+                    <strong>Total shipping:</strong> &euro;{shipping?.toFixed(2)}
                   </p>
                   <p>
-                    <strong>Total discounted:</strong> &euro;{totalNotDiscounted * (promotion.discount_percentage / 100)}
+                    <strong>Total discounted:</strong> &euro;{totalNotDiscounted * (promotion.discount_percentage / 100).toFixed(2)}
                   </p>
                   <p>
-                    <strong>Final price:</strong> &euro;{finalPrice}
+                    <strong>Final price:</strong> &euro;{finalPrice?.toFixed(2)}
                   </p>
                   <div className="promotionValidate">
                     <div className="mb-3">
@@ -486,9 +486,7 @@ export default function Checkout() {
                   </div>
                 </div>
 
-
                 <button className="btn-pay w-100" type="submit" onClick={formSubmit}>PAY NOW</button>
-
               </section>
             </div>
 
