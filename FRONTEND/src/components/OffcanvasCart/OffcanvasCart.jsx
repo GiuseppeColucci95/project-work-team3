@@ -44,7 +44,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
                 </div>
 
-                <div className={`col ps-3 ${cart.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>
+                <div className={`col ps-3 ${cart?.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>
                     {
                         cart?.map((product) => (
                             <div key={`${product.name}-product`}>
