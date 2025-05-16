@@ -21,32 +21,34 @@ export default function Cart() {
                   (
                     cart.map(product => (
                       <div key={`${product.name}-product`} className="col">
-                        <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                          <div className="row d-flex justify-content-center mb-3">
-                            <div className="col-2 product-image-cart">
+                        <div className="row d-flex justify-content-center mb-3">
+                          <div className="col-2 product-image-cart">
+                            <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                               <img src={product.image} alt="image" className="w-100 rounded-4" />
-                            </div>
-                            <div className="col-6 d-flex flex-column align-items-start justify-content-between">
-                              <h3 className="mb-0 product-name-cart">{product.name}</h3>
-                              <div className="d-flex align-items-center gap-2 quantity-section">
-                                <button onClick={() => removeCartProduct(product)} className="btn-quantity"><i className="bi bi-dash-circle"></i></button>
-                                <div id="quantity" className="mx-1">{product.cartQuantity}</div>
-                                <button onClick={() => addCartProduct(product)} className="btn-quantity"><i className="bi bi-plus-circle"></i></button>
-                              </div>
-                              {
-                                (product.discount_percentage > 0) ?
-                                  (
-                                    <div>
-                                      <span className="me-2 fs-3 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
-                                      <span className="me-2 fs-3 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
-                                    </div>
-                                  )
-                                  :
-                                  (<h3 className="me-2 fs-3 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
-                              }
-                            </div>
+                            </Link>
                           </div>
-                        </Link>
+                          <div className="col-6 d-flex flex-column align-items-start justify-content-between">
+                            <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
+                              <h3 className="mb-0 product-name-cart">{product.name}</h3>
+                            </Link>
+                            <div className="d-flex align-items-center gap-2 quantity-section">
+                              <button onClick={() => removeCartProduct(product)} className="btn-quantity"><i className="bi bi-dash-circle"></i></button>
+                              <div id="quantity" className="mx-1">{product.cartQuantity}</div>
+                              <button onClick={() => addCartProduct(product)} className="btn-quantity"><i className="bi bi-plus-circle"></i></button>
+                            </div>
+                            {
+                              (product.discount_percentage > 0) ?
+                                (
+                                  <div>
+                                    <span className="me-2 fs-3 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                    <span className="me-2 fs-3 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                  </div>
+                                )
+                                :
+                                (<h3 className="me-2 fs-3 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
+                            }
+                          </div>
+                        </div>
                       </div>
                     ))
                   )

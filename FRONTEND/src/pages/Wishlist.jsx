@@ -29,10 +29,12 @@ export default function Wishlist() {
                   <div key={`${product.name}-product`} className="col">
 
                     <div className="wishlist-card d-flex flex-column align-items-center p-3 h-100">
-                      <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
-                        <div className="mb-3 d-flex justify-content-center w-100">
+                      <div className="mb-3 d-flex justify-content-center w-100">
+                        <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                           <img src={product.image} alt="image" className="img-fluid w-auto img-wishlist" style={{ maxHeight: "120px" }} />
-                        </div>
+                        </Link>
+                      </div>
+                      <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                         <h3 className="mb-1 text-center w-100">{product.name}</h3>
                       </Link>
                       {
