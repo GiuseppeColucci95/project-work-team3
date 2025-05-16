@@ -5,16 +5,19 @@ function generateOrderSummaryHtml(order, orderId) {
     year: "numeric",
   })
 
-  const productRows = order.products.map((p, i) => `
-    <tr>
-      <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
-        <img src="cid:productd-image${i}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
-        ${p.product_name}
-      </td>
-      <td align="center" style="padding: 12px 0; border-bottom: 1px solid #eee;">${p.quantity}</td>
-      <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price}</td>
-    </tr>
-  `).join("")
+  const productRows = order.products.map((p, i) => {
+    return `
+      <tr>
+        <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
+          <img src="cid:productd-image${i}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
+          ${p.product_name}
+        </td>
+        <td align="center" style="padding: 12px 0; border-bottom: 1px solid #eee;">${p.quantity}</td>
+        <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price.toFixed(2)}</td>
+        <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${(p.product_price * p.quantity).toFixed(2)}</td>
+      </tr>
+    `
+  }).join("")
 
   return `
 <!DOCTYPE html>
@@ -43,7 +46,8 @@ function generateOrderSummaryHtml(order, orderId) {
         <tr>
           <th align="left" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Product</th>
           <th align="center" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Quantity</th>
-          <th align="right" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Price</th>
+          <th align="right" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Unit Price</th>
+          <th align="right" style="border-bottom: 2px solid #ddd; padding: 8px 0;">Total</th>
         </tr>
       </thead>
       <tbody>
@@ -51,7 +55,7 @@ function generateOrderSummaryHtml(order, orderId) {
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="2" style="padding-top: 15px; font-weight: bold;">Total</td>
+          <td colspan="3" style="padding-top: 15px; font-weight: bold;">Order Total</td>
           <td align="right" style="padding-top: 15px; font-weight: bold;">€${order.final_price}</td>
         </tr>
       </tfoot>
@@ -63,9 +67,18 @@ function generateOrderSummaryHtml(order, orderId) {
       <strong>Order date:</strong> ${orderDate}
     </p>
 
-    <p style="margin-top: 20px;">
+    <p style="margin-top: 20px; font-size: 14px;">
+      Once your order has been shipped, you will receive a confirmation email.
+    </p>
+
+    <p style="margin-top: 10px;">
       You can return to our website from the following link:<br>
       <a href="http://localhost:5173/" style="color: #4CAF50;">Return to website</a>
+    </p>
+
+    <p style="margin-top: 40px; text-align: center; font-size: 14px; color: #555;">
+      Thank you for choosing <strong>Eat Your Way</strong>!<br>
+      &copy; ${new Date().getFullYear()} Eat Your Way – All rights reserved.
     </p>
   </div>
 
@@ -74,4 +87,4 @@ function generateOrderSummaryHtml(order, orderId) {
   `
 }
 
-module.exports = generateOrderSummaryHtml;
+module.exports = generateOrderSummaryHtml
