@@ -25,7 +25,7 @@ function generateOrderSummaryHtml(order, orderId) {
     const righeProdotti = order.products.map(p => `
     <tr>
       <td style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center;">
-        <img src="${p.product_image}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
+        <img src="cid:${p.product_name}" alt="${p.product_name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 10px;">
         ${p.product_name}
       </td>
       <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price}</td>
@@ -43,7 +43,7 @@ function generateOrderSummaryHtml(order, orderId) {
 
   <div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px;">
     <div style="text-align: center;">
-      <img src="http://localhost:3000/images/logo.png" alt="Eat Your Way" style="height: 60px; margin-bottom: 20px;">
+      <img src="cid:logo" alt="Eat Your Way" style="height: 60px; margin-bottom: 20px;">
     </div>
 
     <h1 style="color: #4CAF50; text-align: center;">Grazie per il tuo ordine!</h1>

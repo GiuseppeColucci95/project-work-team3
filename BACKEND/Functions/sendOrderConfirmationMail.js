@@ -14,20 +14,32 @@ async function sendOrderConfirmationMail(order, orderId) {
     })
 
     const paginaHTML = generateOrderSummaryHtml(order, orderId)
+    let attachments = order.products.map(p => ({
+        filename: `${p.name}.png`,
+        path: p.immagine,
+        cid: `${p.name}`
+    }))
+    attachments.push({
+        filename: 'logo.png',
+        path: 'http://localhost:3000/images/logo.png',
+        cid: 'logo'
+    })
 
     // Imposta i dettagli della mail
     let mailOptions = {
         from: process.env.MAIL_USERNAME,
         to: order.mail,
         subject: 'Conferma ordine',
-        html: paginaHTML
+        html: paginaHTML,
+        attachments: attachments
     }
 
     let mailSeller = {
         from: process.env.MAIL_USERNAME,
         to: process.env.MAIL_USERNAME,
         subject: 'Conferma ordine',
-        html: paginaHTML
+        html: paginaHTML,
+        attachments: attachments
     }
 
     // Invia la mail
