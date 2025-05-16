@@ -505,6 +505,10 @@ h3 {
   font-weight: 700;
 }
 
+.tag-list {
+  padding-bottom: 0.75rem;
+}
+
 /* #endregion PRODUCT DETAILS component */
 
 /* #region ORDERCONFIRMATION component */
