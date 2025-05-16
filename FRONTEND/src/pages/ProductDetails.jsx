@@ -77,7 +77,7 @@ export default function ProductDetails() {
             <div className="container product-container">
               <div className="row product-image">
                 <div className="col-12 col-xl-6">
-                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100 rounded-3 product-img" />
+                  <img style={{ objectFit: 'cover', aspectRatio: 0.75 }} src={selectedProduct.image} alt={`${selectedProduct.slug} image`} className="w-100 h-100 rounded-3 product-img" />
                 </div>
                 {/* IMAGE */}
                 <div className="col-12 col-xl-6 d-flex flex-column justify-content-between">
@@ -99,7 +99,7 @@ export default function ProductDetails() {
                   </div>
                   {/* TAGS */}
 
-                  <div id="buttons" className="mb-3">
+                  <div id="buttons">
                     <div className="d-flex gap-3">
                       {
                         (selectedProduct.discount_percentage > 0)
@@ -118,37 +118,39 @@ export default function ProductDetails() {
                     </div>
                     {/* PRICE */}
 
-                    <div className="row mt-3">
+                    <div className="row align-items-center mt-3">
 
-                      <div className="col-5 col-md-8  ">
+                      <div className="col-8 col-md-8">
                         {
                           (isIncart(selectedProduct))
                             ?
-                            (<div className="quantity-section d-flex align-items-center">
-                              <button onClick={() => removeCartProduct(selectedProduct)} className="text-dark px-3 favourites w-25"><i className="bi bi-dash-circle"></i></button>
-                              <div id="quantity" className="w-50 text-center">{isIncart(selectedProduct).cartQuantity}</div>
-                              <button onClick={() => addCartProduct(selectedProduct)} className="text-dark px-3 favourites w-25"><i className="bi bi-plus-circle"></i></button>
+                            (<div className="row d-flex align-items-center justify-content-center">
+                              <button onClick={() => removeCartProduct(selectedProduct)} className="col-4 col-xs-5 px-0 mx-0 text-dark btn-add"><i className="bi bi-dash-circle"></i></button>
+                              <div id="quantity" className="col-3 text-center">{isIncart(selectedProduct).cartQuantity}</div>
+                              <button onClick={() => addCartProduct(selectedProduct)} className="col-4 col-xs-5 px-0 mx-0 text-dark btn-add"><i className="bi bi-plus-circle"></i></button>
                             </div>)
                             :
-                            (<button onClick={() => addCartProduct(selectedProduct)} className="btn-add w-100">ADD TO CART</button>)
+                            (<button onClick={() => addCartProduct(selectedProduct)} className="btn-add col-12">ADD TO CART</button>)
                         }
                       </div>
                       {/* ADD TO CART BUTTONS */}
-                      <div className="col-1 col-md-2 d-flex align-items-center">
-                        <div>
-                          <button onClick={() => addWishlistProduct(selectedProduct)}
-                            className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
-                            <img className="menu-icons add-wishlist" src="/img/favourites-empty.svg" alt="wishlist icon" />
-                          </button>
-                          <button onClick={() => removeWishlistProduct(selectedProduct)}
-                            className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
-                            <img className="menu-icons add-wishlist" src="/img/favourites-full.svg" alt="favourites icon" />
-                          </button>
-                        </div>
+
+                      <div className="col-4 col-md-2">
+                        <button onClick={() => addWishlistProduct(selectedProduct)}
+                          className={`${isInWishlist(selectedProduct) ? ('d-none') : ('favourites')}`}>
+                          <img className="menu-icons add-wishlist" src="/img/favourites-empty.svg" alt="wishlist empty icon" />
+                        </button>
+                        <button onClick={() => removeWishlistProduct(selectedProduct)}
+                          className={`${isInWishlist(selectedProduct) ? ('favourites') : ('d-none')}`}>
+                          <img className="menu-icons add-wishlist" src="/img/favourites-full.svg" alt="wishlist full icon" />
+                        </button>
                       </div>
                       {/* WISHLIST BUTTON */}
+
                     </div>
+                    {/* BUTTONS */}
                   </div>
+
                 </div>
                 {/* PRICE, ADD TO CART AND WISHLIST BUTTONS */}
 
