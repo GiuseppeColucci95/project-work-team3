@@ -13,7 +13,7 @@ function generateOrderSummaryHtml(order, orderId) {
           ${p.product_name}
         </td>
         <td align="center" style="padding: 12px 0; border-bottom: 1px solid #eee;">${p.quantity}</td>
-        <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price.toFixed(2)}</td>
+        <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${p.product_price}</td>
         <td align="right" style="padding: 12px 0; border-bottom: 1px solid #eee;">€${(p.product_price * p.quantity).toFixed(2)}</td>
       </tr>
     `
