@@ -83,21 +83,22 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
 
                 <div className="col-2 offcanvas_cart-footer d-flex align-items-between pt-3">
 
-                    <div className="col offcanvas_cart-details ps-3">
-                        <div className="offcanvas_cart-total d-flex justify-content-start">
-                            <p className="offcanvas_cart-total-price mb-0">Shipping: &euro;{(totalPrice > 39.99) ? ('0.00') : ('9.99')}</p>
-                        </div>
-                        <div className="offcanvas_cart-shipping d-flex justify-content-start">
+                    <div className="row w-100 align-items-center ms-3">
+                        <div className="col-12 col-xxl-5 offcanvas_cart-details d-flex justify-content-center">
+                            {/* <div className="offcanvas_cart-total d-flex justify-content-start"> */}
+                            <p className="offcanvas_cart-total-price mb-0 me-5">Shipping: &euro;{(totalPrice > 39.99) ? ('0.00') : ('9.99')}</p>
+                            {/* </div> */}
+                            {/* <div className="offcanvas_cart-shipping d-flex justify-content-start"> */}
                             <p className="offcanvas_cart-total-price mb-0">Total: &euro;{totalPrice}</p>
+                            {/* </div> */}
+                        </div>
+
+                        <div className="col-12 col-xxl-7 d-flex justify-content-center">
+                            <Link to="/cart" >
+                                <button className="offcanvas_cart_btn-cart m-3 me-4" onClick={() => setOffcanvasCartOpen(!offcanvasCartOpen)}>Go to Cart</button>
+                            </Link>
                         </div>
                     </div>
-
-                    <div className="col align-self-center ">
-                        <Link to="/cart" >
-                            <button className="offcanvas_cart_btn-cart mb-3" onClick={() => setOffcanvasCartOpen(!offcanvasCartOpen)}>Go to Cart</button>
-                        </Link>
-                    </div>
-
                 </div>
 
             </div>
