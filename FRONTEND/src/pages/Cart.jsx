@@ -13,8 +13,8 @@ export default function Cart() {
       <section id="cart" className="cart-list">
         <div className="container">
           <div className="row gx-5">
-            <div className={`col-12 ${(cart && cart.length > 0) ? 'col-md-8' : ''} cart-products border`}>
-              <h1 className="text-center mt-5 your-cart"><strong>YOUR CART PRODUCTS</strong></h1>
+            <div className={`col-12 bg-body-tertiary ${(cart && cart.length > 0) ? 'col-md-8' : ''} cart-products`}>
+              <h1 className="text-center mt-5 wishlist-title"><strong>YOUR CART PRODUCTS</strong></h1>
               <div className="row row-cols-1 row-gap-3 my-5">
                 {
                   (cart && cart.length > 0) ?
@@ -31,7 +31,7 @@ export default function Cart() {
                               <Link style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                                 <h3 className="mb-0 product-name-cart">{product.name}</h3>
                               </Link>
-                              <div className="d-flex align-items-center gap-2 quantity-section">
+                              <div className="d-flex align-items-center gap-2 quantity-section mt-2 mb-2">
                                 <button onClick={() => removeCartProduct(product)} className="btn-quantity"><i className="bi bi-dash-circle"></i></button>
                                 <div id="quantity" className="mx-1">{product.cartQuantity}</div>
                                 <button onClick={() => addCartProduct(product)} className="btn-quantity"><i className="bi bi-plus-circle"></i></button>
@@ -40,12 +40,12 @@ export default function Cart() {
                                 (product.discount_percentage > 0) ?
                                   (
                                     <div>
-                                      <span className="me-2 fs-3 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
-                                      <span className="me-2 fs-3 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                      <span className="me-2 fs-4 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                      <span className="me-2 fs-4 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
                                     </div>
                                   )
                                   :
-                                  (<h3 className="me-2 fs-3 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
+                                  (<h3 className="me-2 fs-4 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</h3>)
                               }
                             </div>
                           </div>
@@ -66,15 +66,18 @@ export default function Cart() {
             </div>
 
             {(cart && cart.length > 0) &&
-              (<div className="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center pt-4 gap-3 summary border text-center">
-                <h3 className="mt-4 order-summary">ORDER SUMMARY</h3>
-                <div className="summary-text d-flex flex-column gap-4">
+              (<div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary pt-5">
+                <h3 className="checkout-title"><strong>Summary</strong></h3>
+                <hr />
+                <div className="summary-text d-flex flex-column gap-4 pt-3">
                   <h5 className="summary-price"><strong>Total products:</strong> {totalPrice.toFixed(2)}€ </h5>
                   <h5 className="summary-price"><strong>Shipping:</strong> {(totalPrice > 39.99) ? ('0.00') : ('9.99')}€ </h5>
                   <h5 className="summary-price"><strong>Total order:</strong> {(totalPrice > 39.99) ? (totalPrice.toFixed(2)) : ((totalPrice + 9.99).toFixed(2))}€ </h5>
-                  <Link to="/checkout">
-                    <button type="button" className="btn-checkout mt-2">GO CHECKOUT</button>
-                  </Link>
+                  <div className="d-flex justify-content-center">
+                    <Link to="/checkout">
+                      <button type="button" className="btn-gr mt-1">GO TO CHECKOUT</button>
+                    </Link>
+                  </div>
                 </div>
 
               </div>)}
