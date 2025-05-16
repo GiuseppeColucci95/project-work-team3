@@ -165,7 +165,7 @@ export default function ProductDetails() {
         <div className="container mt-5">
 
           <section id="tag-related-products" className="my-5">
-            <h3>TAG RELATED PRODUCTS</h3>
+            <h3>WITH THE SAME PREFERENCES:</h3>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
               {
 
@@ -214,7 +214,7 @@ export default function ProductDetails() {
           {/* TAG RELATED PRODUCTS */}
 
           <section id="category-related-products" className="my-5">
-            <h3>CATEGORY RELATED PRODUCTS</h3>
+            <h3>IN THE SAME CATEGORY:</h3>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
               {
 
