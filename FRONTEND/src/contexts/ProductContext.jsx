@@ -203,9 +203,9 @@ function ProductProvider({ children }) {
         //otherwise add it in the wishlist
         products.push({
           id: productToAdd.id,
-          slug: productToAdd.slug,
           image: productToAdd.image,
           name: productToAdd.name,
+          slug: productToAdd.slug,
           price: productToAdd.price,
           discount_percentage: productToAdd.discount_percentage
         });
@@ -222,6 +222,7 @@ function ProductProvider({ children }) {
         id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
+        slug: productToAdd.slug,
         price: productToAdd.price,
         discount_percentage: productToAdd.discount_percentage
       });
@@ -324,6 +325,7 @@ function ProductProvider({ children }) {
           id: productToAdd.id,
           image: productToAdd.image,
           name: productToAdd.name,
+          slug: productToAdd.slug,
           price: productToAdd.price,
           discount_percentage: productToAdd.discount_percentage,
           cartQuantity: 1
@@ -349,6 +351,7 @@ function ProductProvider({ children }) {
         id: productToAdd.id,
         image: productToAdd.image,
         name: productToAdd.name,
+        slug: productToAdd.slug,
         price: productToAdd.price,
         discount_percentage: productToAdd.discount_percentage,
         cartQuantity: 1
