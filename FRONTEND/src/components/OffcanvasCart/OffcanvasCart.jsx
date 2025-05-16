@@ -44,11 +44,11 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
                 </div>
 
-                <div className="col offcanvas_cart-body ps-3">
+                <div className={`col ps-3 ${cart.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>
                     {
                         cart?.map((product) => (
                             <div key={`${product.name}-product`}>
-                                <div className="row mb-2">
+                                <div className="row mb-3 offcanvas_cart-card">
                                     <div className="col-4 offcanvas_cart-image">
                                         <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                                             <img src={product.image} alt="image" className="w-100 rounded-4" />
