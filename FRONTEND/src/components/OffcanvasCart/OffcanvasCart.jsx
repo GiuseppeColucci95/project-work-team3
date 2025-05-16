@@ -11,7 +11,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
     //ho usato il set time in modo da chiudere l'offcanvas dopo l'animazione
     function handleClose() {
         setShow(false)
-        setTimeout(() => setOffcanvasCartOpen(false), 1500)
+        setTimeout(() => setOffcanvasCartOpen(false), 500)
     }
 
     useEffect(() => {
