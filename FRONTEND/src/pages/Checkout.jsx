@@ -6,6 +6,15 @@ import { useNavigate } from "react-router-dom"
 import { useProductContext } from "../contexts/ProductContext"
 import { useOrderContext } from "../contexts/OrdersContext"
 
+//stripe imports
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+//stripe public key
+const stripePromise = loadStripe('pk_test_51RPeJB2Hc2Py4FTFDj5MvzSunxg1BOciVdoN3RTkHdOmAlaW7aBMfvnHHzsIdB2oWHNZNRWos8iVN77flzPPU5bT00owinfs57');
+//checkout form import
+import CheckoutForm from "../components/CheckoutForm";
+
+
 //import loader
 import Loader from "../components/Loader"
 
@@ -20,7 +29,7 @@ export default function Checkout() {
   const [totalNotDiscounted, setTotalNotDiscounted] = useState()
   const [totalDiscounted, setTotalDiscounted] = useState()
   const [shipping, setShipping] = useState()
-  const [finalPrice, setFinalPrice] = useState()
+  const [finalPrice, setFinalPrice] = useState(0);
   const [status, setSatus] = useState("shipped")
   const [productList, setProductList] = useState([])
   const [promotion, setPromotion] = useState({
@@ -258,6 +267,12 @@ export default function Checkout() {
     });
   }, []);
 
+  //useEffect for payment
+  useEffect(() => {
+    //check the final price
+    setFinalPrice(totalPrice + shipping - totalDiscounted);
+  }, [totalPrice, shipping, totalDiscounted]);
+
   return (
     <>
       <div className="container mb-5">
@@ -404,7 +419,7 @@ export default function Checkout() {
                     <h3 className="checkout-title pt-5"><strong>Payment</strong></h3>
                     <hr />
 
-                    <div className="col-md-12">
+                    {/* <div className="col-md-12">
                       <label htmlFor="cardHolder" className="form-label">Card holder</label>
                       <input type="text" className="form-control" id="cardHolder"
                         placeholder="MasterCard"
@@ -453,12 +468,13 @@ export default function Checkout() {
                       <div className="valid-feedback">
                         Valid CVV
                       </div>
-                    </div>
+                    </div> */}
 
-                    {/* <div className="col-12">
-                  <button className="btn btn-primary" type="submit">PAY NOW</button>
-                </div> */}
-
+                    <Elements stripe={stripePromise}>
+                      <div className="container">
+                        <CheckoutForm finalPrice={finalPrice} firstName={firstName} lastName={lastName} />
+                      </div>
+                    </Elements>
                   </form>
                 </div>
 
