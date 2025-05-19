@@ -502,7 +502,7 @@ function ProductProvider({ children }) {
       wishlist, setWishlist, getWishlistProducts, removeWishlistProduct, addWishlistProduct, cart, setCart,
       getCartProducts, addCartProduct, removeCartProduct, totalPrice, orderBy, setOrderBy,
       search, setSearch, setSearchChangeFunction, getSearchedProducts, clearCartTotalPrice, getCartQuantity, getWishlistQuantity,
-      isChecked, setIsChecked
+      isChecked, setIsChecked, removeAllCartProduct
     }}>
       {children}
     </ProductContext.Provider>

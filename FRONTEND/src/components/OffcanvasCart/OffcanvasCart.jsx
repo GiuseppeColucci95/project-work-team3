@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen }) {
-    const { cart, totalPrice, addCartProduct, removeCartProduct } = useProductContext()
+    const { cart, totalPrice, addCartProduct, removeCartProduct, removeAllCartProduct } = useProductContext()
     const [show, setShow] = useState(false)
 
     //funzione per la chiusura dell'offcanvas
@@ -82,7 +82,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                                             )
                                                     }
                                                     <div>
-                                                        <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-trash"></i></button>
+                                                        <button onClick={() => removeAllCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-trash"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
