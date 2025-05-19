@@ -56,12 +56,13 @@
 
 .btn_chest {
     position: absolute;
-    top: 23px;
+    top: 20px;
     right: 40px;
     z-index: 1;
     background: transparent;
     border: none;
     font-size: 1.5rem;
+    color: var(--secondary-brown);
 }
 
 .offcanvas_cart-body-scroll {
@@ -104,7 +105,7 @@
         color: var(--primary);
     }
 
-    .bi-trash {
+    .bi-x-circle {
         font-size: 1rem;
         color: red;
         margin-left: 0.5rem;

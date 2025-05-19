@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen }) {
-    const { cart, totalPrice, addCartProduct, removeCartProduct, removeAllCartProduct } = useProductContext()
+    const { cart, totalPrice, addCartProduct, removeCartProduct, removeAllCartProduct, clearCartTotalPrice } = useProductContext()
     const [show, setShow] = useState(false)
 
     //funzione per la chiusura dell'offcanvas
@@ -42,7 +42,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                 <div className="col offcanvas_cart-header">
                     <h5 className="offcanvas_cart-title text-center pt-4">Your Cart</h5>
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
-                    <button type="button" className="btn_chest justify-self-end" onClick={() => handleClose()}><i class="bi bi-cart4"></i></button>
+                    <button type="button" className="btn_chest justify-self-end" onClick={() => clearCartTotalPrice()}><i class="bi bi-trash3-fill"></i></button>
                 </div>
 
                 <div className={`col ps-3 ${cart?.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>
@@ -66,7 +66,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                                     <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
                                                     <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
                                                     <div>
-                                                        <button onClick={() => removeAllCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-trash"></i></button>
+                                                        <button onClick={() => removeAllCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-x-circle"></i></button>
                                                     </div>
                                                 </div >
                                                 <div>
