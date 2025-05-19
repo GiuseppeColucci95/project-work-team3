@@ -28,6 +28,8 @@ export default function Checkout() {
     promotionCode: "",
     discount_percentage: 0
   })
+  const [isValidPromotion, setIsValidPromotion] = useState(false)
+
   //variabili del form utente
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -242,7 +244,7 @@ export default function Checkout() {
         promotionCode: promotion.promotionCode,
         discount_percentage: promotionCodeResponse.discount_percentage
       })
-      console.log(promotion)
+      setIsValidPromotion(true)
 
     } else if (promotionCodeResponse.error) {
       alert(promotionCodeResponse.error)
@@ -255,8 +257,8 @@ export default function Checkout() {
       promotion_id: 0,
       promotionCode: "",
       discount_percentage: 0
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <>
@@ -481,7 +483,7 @@ export default function Checkout() {
                       <p>
                         <strong>Order total:</strong> &euro;{finalPrice?.toFixed(2)}
                       </p>
-                      <div className="promotionValidate">
+                      <div className={`promotionValidate ${isValidPromotion ? 'hidden' : ''}`}>
                         <div className="mb-3">
                           <label htmlFor="promotion" className="form-label pt-3"><strong>PromotionCode</strong></label>
                           <input
