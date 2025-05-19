@@ -1,21 +1,19 @@
-import { useState } from "react";
+//import css
+import "./alertStyle.css"
 
 //component export
 export default function Alert({ message, setIsAlerts }) {
 
-  const [alertData, setAlertData] = useState('');
-
   function closeAlert() {
-    setAlertData('');
     setIsAlerts(false);
   }
 
   return (
     <>
       <div className="alert-container">
-        <div className={`alert`}>
+        <div className={`alert alert-primary d-flex justify-content-between align-items-center`}>
           {message}
-          <i class="bi bi-x" onClick={closeAlert}></i>
+          <i className="bi bi-x" onClick={closeAlert}></i>
         </div>
       </div>
     </>
