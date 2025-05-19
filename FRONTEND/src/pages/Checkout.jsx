@@ -189,58 +189,58 @@ export default function Checkout() {
     const error = {}
 
     // verifico che tutti i campi obligatori siano popolati
-    if (!firstName) error.firstName = "first Name is require"
-    if (!lastName) error.lastName = "last Name is require"
-    if (!userEmail) error.userEmail = "Email is require"
-    if (!street) error.street = "street is require"
-    if (!streetNumber) error.streetNumber = "street Number is require"
-    if (!country) error.country = "country is require"
-    if (!city) error.city = "city is require"
-    if (!province) error.province = "province is require"
-    if (!postalCode) error.postalCode = "postal code is require"
-    if (!cardHolder) error.cardHolder = "card Holder is require"
-    if (!cardNumber) error.cardNumber = "card Number is require"
-    if (!expirationDate) error.expirationDate = "expiration Date is require"
-    if (!cvv) error.cvv = "cvv is require"
+    if (!firstName) error.firstName = "First name is required"
+    if (!lastName) error.lastName = "Last name is required"
+    if (!userEmail) error.userEmail = "Email is required"
+    if (!street) error.street = "Street is required"
+    if (!streetNumber) error.streetNumber = "Street number is required"
+    if (!country) error.country = "Country is required"
+    if (!city) error.city = "City is required"
+    if (!province) error.province = "Province is required"
+    if (!postalCode) error.postalCode = "Postal code is required"
+    if (!cardHolder) error.cardHolder = "Card holder is required"
+    if (!cardNumber) error.cardNumber = "Card number is required"
+    if (!expirationDate) error.expirationDate = "Expiration date is required"
+    if (!cvv) error.cvv = "CVV is required"
 
     //se manca un campo esci dalla funzione restituendo l'oggetto error
     if (Object.keys(error).length > 0) return error
 
     //verifico le grandezze
-    if (firstName.length < 3) error.firstName = "first name must be at least 3 characters long"
-    if (firstName.length > 20) error.firstName = "first name must be at most 20 characters long"
-    if (lastName.length < 3) error.lastName = "last name must be at least 3 characters long"
-    if (lastName.length > 20) error.lastName = "last name must be at most 20 characters long"
+    if (firstName.length < 3) error.firstName = "First name must be at least 3 characters long"
+    if (firstName.length > 20) error.firstName = "First name must be at most 20 characters long"
+    if (lastName.length < 3) error.lastName = "Last name must be at least 3 characters long"
+    if (lastName.length > 20) error.lastName = "Last name must be at most 20 characters long"
     if (userEmail.length < 10) error.userEmail = "Email must be at least 10 characters long"
     if (userEmail.length > 50) error.userEmail = "Email must be at most 50 characters long"
-    if (street.length < 5) error.street = "street must be at least 5 characters long"
-    if (street.length > 50) error.street = "street must be at most 50 characters long"
-    if (streetNumber.length < 1) error.streetNumber = "streetNumber must be at least 1 characters long"
-    if (streetNumber.length > 5) error.streetNumber = "streetNumber must be at most 5 characters long"
-    if (country.length < 4) error.country = "country must be at least 4 characters long"
-    if (country.length > 10) error.country = "country must be at most 10 characters long"
-    if (city.length < 1) error.city = "city must be at least 1 characters long"
-    if (city.length > 20) error.city = "city must be at most 20 characters long"
-    if (province.length !== 2) error.province = "province must be a 2 characters long"
-    if (postalCode.length !== 5) error.postalCode = "postal Code must be a 5 characters long"
-    if (cardHolder.length < 3) error.cardHolder = "card Holder must be at least 3 characters long"
-    if (cardHolder.length > 20) error.cardHolder = "card Holder must be at most 20 characters long"
-    if (cardNumber.length != 19) error.cardNumber = "card Number must be 19 characters long"
-    if (expirationDate.length != 5) error.expirationDate = "expiration Date must be 5 characters long"
-    if (cvv.length != 3) error.cvv = "cvv must be 3 characters long"
+    if (street.length < 5) error.street = "Street must be at least 5 characters long"
+    if (street.length > 50) error.street = "Street must be at most 50 characters long"
+    if (streetNumber.length < 1) error.streetNumber = "Street number must be at least 1 character long"
+    if (streetNumber.length > 5) error.streetNumber = "Street number must be at most 5 characters long"
+    if (country.length < 4) error.country = "Country must be at least 4 characters long"
+    if (country.length > 10) error.country = "Country must be at most 10 characters long"
+    if (city.length < 1) error.city = "City must be at least 1 character long"
+    if (city.length > 20) error.city = "City must be at most 20 characters long"
+    if (province.length !== 2) error.province = "Province must be a 2 characters long"
+    if (postalCode.length !== 5) error.postalCode = "Postal code must be a 5 characters long"
+    if (cardHolder.length < 3) error.cardHolder = "Card holder must be at least 3 characters long"
+    if (cardHolder.length > 20) error.cardHolder = "Card holder must be at most 20 characters long"
+    if (cardNumber.length != 19) error.cardNumber = "Card Number must be 19 characters long"
+    if (expirationDate.length != 5) error.expirationDate = "Expiration date must be 5 characters long"
+    if (cvv.length != 3) error.cvv = "CVV must be 3 characters long"
 
     //se almeno un campo ha la lunghezza sbagliata esce dalla funzione
     if (Object.keys(error).length > 0) return error
 
     //controllo che le variabili sodisfino i requisiti di formato
-    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "email is invalid"
-    if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) error.street = "street must contain via or piazza"
-    if (!/^\d{1,5}([\/\-]?[A-Za-z])?$/.test(streetNumber)) error.streetNumber = "street Number is invalid"
-    if (!/^\d{5}$/.test(postalCode)) error.postalCode = "postalCode is invalid"
-    if (phoneNumber && !/^\d{10}$/.test(phoneNumber) || /^\d{9}$/.test(phoneNumber)) error.phoneNumber = "phoneNumber is invalid"
-    if (!/^\d{4}\-\d{4}\-\d{4}\-\d{4}$/.test(cardNumber)) error.cardNumber = "card Number is invalid"
-    if (!/^\d{2}\/\d{2}$/.test(expirationDate)) error.expirationDate = "expiration Date is invalid"
-    if (!/^\d{3}$/.test(cvv)) error.cvv = "cvv is invalid"
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-z]{2,}$/.test(userEmail)) error.userEmail = "Email is invalid"
+    if (!street.toLowerCase().includes('via') && !street.toLowerCase().includes('piazza')) error.street = "Street must contain via or piazza"
+    if (!/^\d{1,5}([\/\-]?[A-Za-z])?$/.test(streetNumber)) error.streetNumber = "Street number is invalid"
+    if (!/^\d{5}$/.test(postalCode)) error.postalCode = "Postal code is invalid"
+    if (phoneNumber && !/^\d{10}$/.test(phoneNumber) || /^\d{9}$/.test(phoneNumber)) error.phoneNumber = "Phone number is invalid"
+    if (!/^\d{4}\-\d{4}\-\d{4}\-\d{4}$/.test(cardNumber)) error.cardNumber = "Card number is invalid"
+    if (!/^\d{2}\/\d{2}$/.test(expirationDate)) error.expirationDate = "Expiration date is invalid"
+    if (!/^\d{3}$/.test(cvv)) error.cvv = "CVV is invalid"
 
     //faccio un return di error che è un oggetto vuoto se non ci sono errori
     return error
@@ -250,7 +250,7 @@ export default function Checkout() {
   function CodeValidate() {
 
     if (promotion.promotionCode.length === 0) {
-      setAlertMessage("insert your promotion code")
+      setAlertMessage("Insert your promotion code")
       setIsAlerts(true)
       setFlagAlertTime(true)
       return
