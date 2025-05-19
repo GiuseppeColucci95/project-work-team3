@@ -54,6 +54,16 @@
     z-index: 1;
 }
 
+.btn_chest {
+    position: absolute;
+    top: 23px;
+    right: 40px;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
 .offcanvas_cart-body-scroll {
     overflow-y: scroll;
     overflow-x: hidden;
