@@ -290,6 +290,38 @@ function ProductProvider({ children }) {
     getTotalPrice();
   }
 
+  //function to remove an element from cart with all his quantities
+  function removeAllCartProduct(productToRemove) {
+    const products = localStorage.getItem('cart');
+    const parsedProducts = JSON.parse(products);
+
+    //find the element to remove
+    const foundProduct = parsedProducts.find(product => {
+      return product.name == productToRemove.name;
+    });
+
+    if (foundProduct) {
+
+      const cartQuantity = foundProduct.cartQuantity;
+
+      let total = JSON.parse(localStorage.getItem('totalPrice'));
+      const priceOfProduct = Number((productToRemove.discount_percentage > 0)
+        ? (productToRemove.price - productToRemove.price * (productToRemove.discount_percentage / 100)).toFixed(2)
+        : (productToRemove.price));
+      const totalOfProduct = priceOfProduct * cartQuantity;
+      total = Number(total) - Number(totalOfProduct);
+
+      const stringifiedTotalPrice = JSON.stringify(total.toFixed(2));
+      localStorage.setItem('totalPrice', stringifiedTotalPrice);
+
+      parsedProducts.splice(parsedProducts.indexOf(foundProduct), 1);
+      const stringifiedProducts = JSON.stringify(parsedProducts);
+      localStorage.setItem('cart', stringifiedProducts);
+    }
+    getCartProducts();
+    getTotalPrice();
+  }
+
   //function to clear cart and totalPrice
   function clearCartTotalPrice() {
 
