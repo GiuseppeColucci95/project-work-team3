@@ -290,7 +290,7 @@ function ProductProvider({ children }) {
     getTotalPrice();
   }
 
-  //function to remove an element from cart
+  //function to remove an element from cart with all his quantities
   function removeAllCartProduct(productToRemove) {
     const products = localStorage.getItem('cart');
     const parsedProducts = JSON.parse(products);
