@@ -291,7 +291,7 @@ export default function Checkout() {
         <section className="checkout">
           <h1 className="text-center pt-3 pb-4 wishlist-title">CHECKOUT</h1>
           {
-            isAlerts && <Alert message={alertMessage} setIsAlerts={setIsAlerts} />
+            isAlerts && <Alert message={alertMessage} setIsAlerts={setIsAlerts} type={typeAlert} />
           }
           {
             (loading) ? <Loader /> :
