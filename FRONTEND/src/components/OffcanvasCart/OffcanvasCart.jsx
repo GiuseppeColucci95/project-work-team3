@@ -64,19 +64,23 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                                     <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
                                                     <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
                                                     <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
+                                                </div >
+                                                <div className="d-flex w-100 justify-content-space-between align-items-center">
+                                                    {
+                                                        (product.discount_percentage > 0) ?
+                                                            (
+                                                                <div>
+                                                                    <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                                                    <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                                                </div>
+                                                            )
+                                                            :
+                                                            (<span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
+                                                    }
+                                                    <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button "><i className="bi bi-trash"></i></button>
                                                 </div>
-                                                {
-                                                    (product.discount_percentage > 0) ?
-                                                        (
-                                                            <div>
-                                                                <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
-                                                                <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
-                                                            </div>
-                                                        )
-                                                        :
-                                                        (<span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
-                                                }
                                             </div>
+
                                         </div>
                                     </div>
                                 ))
