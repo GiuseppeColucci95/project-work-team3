@@ -117,20 +117,18 @@ export default function Checkout() {
 
   //function for handle the expiration date input
   function handleExpirationDateChange(e) {
-    let value = e.target.value.replace(/[^0-9]/g, "");
-    if (value.length === 0) {
-      setExpirationDate("");
-      return;
-    }
+    let value = e.target.value.replace(/[^0-9]/g, "")
+    // Inserisci uno slash dopo la 2 cifra
     if (value.length <= 2) {
-      setExpirationDate(value);
+      setExpirationDate(value)
     } else {
-      setExpirationDate(value.slice(0, 2) + "/" + value.slice(2, 4));
+      setExpirationDate(value.slice(0, 2) + "/" + value.slice(2, 4))
     }
   }
 
   //function on submit form
   function formSubmit(e) {
+
     e.preventDefault()
 
     //validazione dei dati
@@ -284,6 +282,7 @@ export default function Checkout() {
       promotionCode: "",
       discount_percentage: 0
     })
+    setIsValidPromotion(false)
   }, [])
 
   return (
@@ -487,10 +486,6 @@ export default function Checkout() {
                         </div>
                       </div>
 
-                      {/* <div className="col-12">
-                  <button className="btn btn-primary" type="submit">PAY NOW</button>
-                </div> */}
-
                     </form>
                   </div>
 
@@ -509,10 +504,17 @@ export default function Checkout() {
                         <p>
                           <strong>Total discount:</strong> &euro;{(totalNotDiscounted?.toFixed(2) * (promotion.discount_percentage / 100)).toFixed(2)}
                         </p>
+                        {
+                          (promotion.discount_percentage > 0) &&
+                          <p className="text-success">
+                            <strong>Promotion code:</strong> {promotion.promotionCode} <span className="text-muted">({promotion.discount_percentage}% off)</span>
+                          </p>
+                        }
                         <hr />
                         <p>
                           <strong>Order total:</strong> &euro;{finalPrice?.toFixed(2)}
                         </p>
+
                         <div className={`promotionValidate ${isValidPromotion ? 'hidden' : ''}`}>
                           <div className="mb-3">
                             <label htmlFor="promotion" className="form-label pt-3"><strong>PromotionCode</strong></label>
