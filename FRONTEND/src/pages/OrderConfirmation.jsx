@@ -30,7 +30,7 @@ export default function OrderConfirmation() {
         </div>
         <div className="container text-center py-4 confirmation-text">
           <h4 className="fw-bold">
-            Your order is <span className="text-success">placed</span>!
+            Your order is <span style={{ color: "rgb(103, 139, 39)" }}>placed</span>!
           </h4>
           <p>Check your mail for confirmation</p>
         </div>
