@@ -277,7 +277,7 @@ export default function Checkout() {
 
                     <div className="col-md-6">
                       <label htmlFor="firstName" className="form-label">First name</label>
-                      <input type="text" className="form-control" id="firstName"
+                      <input type="text" className="form-control form-input" id="firstName"
                         placeholder="Marco"
                         value={firstName}
                         onChange={e => setFirstName(e.target.value)}
@@ -289,7 +289,7 @@ export default function Checkout() {
 
                     <div className="col-md-6">
                       <label htmlFor="lastName" className="form-label">Last name</label>
-                      <input type="text" className="form-control" id="lastName"
+                      <input type="text" className="form-control form-input" id="lastName"
                         placeholder="Rossi"
                         value={lastName}
                         onChange={e => setLastName(e.target.value)}
@@ -303,7 +303,7 @@ export default function Checkout() {
                       <label htmlFor="email" className="form-label">Email</label>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control form-input"
                         name="email"
                         id="email"
                         aria-describedby="emailHelpId"
@@ -318,7 +318,7 @@ export default function Checkout() {
 
                     <div className="col-md-4">
                       <label htmlFor="phoneNumber" className="form-label">Phone number</label>
-                      <input type="text" className="form-control" id="phoneNumber"
+                      <input type="text" className="form-control form-input" id="phoneNumber"
                         placeholder="3496587652"
                         value={phoneNumber}
                         onChange={e => setPhoneNumber(e.target.value)}
@@ -331,7 +331,7 @@ export default function Checkout() {
 
                     <div className="col-md-6">
                       <label htmlFor="street" className="form-label">Address</label>
-                      <input type="text" className="form-control" id="street"
+                      <input type="text" className="form-control form-input" id="street"
                         placeholder="Via Roma"
                         value={street}
                         onChange={e => setStreet(e.target.value)}
@@ -343,7 +343,7 @@ export default function Checkout() {
 
                     <div className="col-md-3">
                       <label htmlFor="streetNumber" className="form-label">Street number</label>
-                      <input type="text" className="form-control" id="streetNumber"
+                      <input type="text" className="form-control form-input" id="streetNumber"
                         placeholder="123"
                         value={streetNumber}
                         onChange={e => setStreetNumber(e.target.value)}
@@ -355,7 +355,7 @@ export default function Checkout() {
 
                     <div className="col-md-3">
                       <label htmlFor="country" className="form-label">Country</label>
-                      <input type="text" className="form-control" id="country"
+                      <input type="text" className="form-control form-input" id="country"
                         placeholder="Italy"
                         value={country}
                         onChange={e => setCountry(e.target.value)}
@@ -367,7 +367,7 @@ export default function Checkout() {
 
                     <div className="col-md-6">
                       <label htmlFor="city" className="form-label">City</label>
-                      <input type="text" className="form-control" id="city"
+                      <input type="text" className="form-control form-input" id="city"
                         placeholder="Roma"
                         value={city}
                         onChange={e => setCity(e.target.value)}
@@ -379,7 +379,7 @@ export default function Checkout() {
 
                     <div className="col-md-3">
                       <label htmlFor="province" className="form-label">Province</label>
-                      <input type="text" className="form-control" id="province"
+                      <input type="text" className="form-control form-input" id="province"
                         placeholder="RO"
                         value={province}
                         onChange={e => setProvince(e.target.value)}
@@ -392,7 +392,7 @@ export default function Checkout() {
 
                     <div className="col-md-3">
                       <label htmlFor="postalCode" className="form-label">Postal Code</label>
-                      <input type="text" className="form-control" id="postalCode"
+                      <input type="text" className="form-control form-input" id="postalCode"
                         placeholder="00100"
                         value={postalCode}
                         onChange={e => setPostalCode(e.target.value)}
@@ -408,7 +408,7 @@ export default function Checkout() {
 
                     <div className="col-md-12">
                       <label htmlFor="cardHolder" className="form-label">Card holder</label>
-                      <input type="text" className="form-control" id="cardHolder"
+                      <input type="text" className="form-control form-input" id="cardHolder"
                         placeholder="MasterCard"
                         value={cardHolder}
                         onChange={e => setCardHolder(e.target.value)}
@@ -420,7 +420,7 @@ export default function Checkout() {
 
                     <div className="col-md-12">
                       <label htmlFor="cardNumber" className="form-label">Card number</label>
-                      <input type="text" className="form-control" id="cardNumber"
+                      <input type="text" className="form-control form-input" id="cardNumber"
                         placeholder="1234-3216-7856-4545"
                         value={cardNumber}
                         onChange={handleCardNumberChange}
@@ -433,7 +433,7 @@ export default function Checkout() {
 
                     <div className="col-md-6">
                       <label htmlFor="expirationDate" className="form-label">Expiration date</label>
-                      <input type="text" className="form-control" id="expirationDate"
+                      <input type="text" className="form-control form-input" id="expirationDate"
                         placeholder="12/06"
                         value={expirationDate}
                         onChange={handleExpirationDateChange}
@@ -446,7 +446,7 @@ export default function Checkout() {
 
                     <div className="col-md-6">
                       <label htmlFor="cvv" className="form-label">CVV</label>
-                      <input type="text" className="form-control" id="cvv"
+                      <input type="text" className="form-control form-input" id="cvv"
                         placeholder="360"
                         value={cvv}
                         onChange={e => setCvv(e.target.value)}
@@ -488,7 +488,7 @@ export default function Checkout() {
                           <label htmlFor="promotion" className="form-label pt-3"><strong>PromotionCode</strong></label>
                           <input
                             type="text"
-                            className="form-control"
+                            className="form-control form-input"
                             name="promotion"
                             id="promotion"
                             placeholder="Insert your promotion code"
@@ -515,7 +515,7 @@ export default function Checkout() {
                       </div>
                     </div>
 
-                    <button className="btn-pay w-100" type="submit" onClick={formSubmit}>PAY NOW</button>
+                    <button className="btn-pay w-100 rounded-5" type="submit" onClick={formSubmit}>PAY NOW</button>
                   </section>
                 </div>
 
