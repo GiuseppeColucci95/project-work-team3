@@ -65,9 +65,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                                     <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
                                                     <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
                                                     <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
-                                                    <div>
-                                                        <button onClick={() => removeAllCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-x-circle"></i></button>
-                                                    </div>
+                                                    <button onClick={() => removeAllCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-x-circle"></i></button>
                                                 </div >
                                                 <div>
                                                     {
