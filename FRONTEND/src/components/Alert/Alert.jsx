@@ -2,7 +2,7 @@
 import "./alertStyle.css"
 
 //component export
-export default function Alert({ message, setIsAlerts }) {
+export default function Alert({ message, setIsAlerts, type }) {
 
   function closeAlert() {
     setIsAlerts(false);
@@ -11,7 +11,7 @@ export default function Alert({ message, setIsAlerts }) {
   return (
     <>
       <div className="alert-container">
-        <div className={`alert alert-primary d-flex justify-content-between align-items-center`}>
+        <div className={`alert alert-${type} d-flex justify-content-between align-items-center`}>
           {message}
           <i className="bi bi-x" onClick={closeAlert}></i>
         </div>

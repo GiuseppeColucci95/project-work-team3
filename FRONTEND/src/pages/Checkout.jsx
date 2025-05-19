@@ -21,6 +21,7 @@ export default function Checkout() {
   const [isAlerts, setIsAlerts] = useState(false)
   const [alertMessage, setAlertMessage] = useState("")
   const [flagAtlertTime, setFlagAlertTime] = useState(false)
+  const [typeAlert, setTypeAlert] = useState("")
 
   //variable of the order
   const [totalNotDiscounted, setTotalNotDiscounted] = useState()
@@ -97,12 +98,16 @@ export default function Checkout() {
       setAlertMessage("Congratulation! Your payment has been accepted")
       setIsAlerts(true)
       setFlagAlertTime(true)
+      setTypeAlert("success")
       navigate("/order-confirmation")
+
     } else if (Object.keys(orderResponse).length > 0) {
       setAlertMessage(Object.values(orderResponse).join('\n'))
       setIsAlerts(true)
       setFlagAlertTime(false)
       setLoading(false)
+      setTypeAlert("danger")
+
     }
   }, [orderResponse])
 
@@ -153,6 +158,7 @@ export default function Checkout() {
     if (Object.keys(errorList).length > 0) {
       setAlertMessage(Object.values(errorList).join('\n'))
       setIsAlerts(true)
+      setTypeAlert("danger")
       errorList = {}
       return // interrompe la funzione se ci sono errori
     }
@@ -246,13 +252,6 @@ export default function Checkout() {
 
   //function for validate the promotion code
   function CodeValidate() {
-
-    if (promotion.promotionCode.length === 0) {
-      setAlertMessage("Insert your promotion code")
-      setIsAlerts(true)
-      setFlagAlertTime(true)
-      return
-    }
     //esegue chiamata funzione API
     validateCode(promotion.promotionCode)
 
@@ -272,6 +271,7 @@ export default function Checkout() {
     } else if (promotionCodeResponse.error) {
       setAlertMessage(promotionCodeResponse.error)
       setIsAlerts(true)
+      setTypeAlert("danger")
     }
   }, [promotionCodeResponse])
 
