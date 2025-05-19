@@ -7,7 +7,7 @@ import { useProductContext } from "../contexts/ProductContext"
 import { useOrderContext } from "../contexts/OrdersContext"
 
 //import components
-import Alert from "../components/Alert"
+import Alert from "../components/Alert/Alert"
 import Loader from "../components/Loader"
 
 
@@ -289,267 +289,268 @@ export default function Checkout() {
   return (
     <>
       <div className="container mb-5">
-        {
-          isAlerts && <Alert message={alertMessage} setIsAlerts={setIsAlerts} />
-        }
         <section className="checkout">
           <h1 className="text-center pt-3 pb-4 wishlist-title">CHECKOUT</h1>
-          {(loading) ? <Loader /> :
-            (
-              <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8 p-3 bg-body-tertiary form-checkout rounded-start-4">
+          {
+            isAlerts && <Alert message={alertMessage} setIsAlerts={setIsAlerts} />
+          }
+          {
+            (loading) ? <Loader /> :
+              (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-8 p-3 bg-body-tertiary form-checkout rounded-start-4">
 
-                  <form className="row g-3 noValidate" onSubmit={formSubmit} >
+                    <form className="row g-3 noValidate" onSubmit={formSubmit} >
 
-                    <h3 className="checkout-title"><strong>Your info</strong></h3>
-                    <hr />
+                      <h3 className="checkout-title"><strong>Your info</strong></h3>
+                      <hr />
 
-                    <div className="col-md-6">
-                      <label htmlFor="firstName" className="form-label">First name</label>
-                      <input type="text" className="form-control form-input" id="firstName"
-                        placeholder="Marco"
-                        value={firstName}
-                        onChange={e => setFirstName(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid first name
+                      <div className="col-md-6">
+                        <label htmlFor="firstName" className="form-label">First name</label>
+                        <input type="text" className="form-control form-input" id="firstName"
+                          placeholder="Marco"
+                          value={firstName}
+                          onChange={e => setFirstName(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid first name
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="lastName" className="form-label">Last name</label>
-                      <input type="text" className="form-control form-input" id="lastName"
-                        placeholder="Rossi"
-                        value={lastName}
-                        onChange={e => setLastName(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid last name
+                      <div className="col-md-6">
+                        <label htmlFor="lastName" className="form-label">Last name</label>
+                        <input type="text" className="form-control form-input" id="lastName"
+                          placeholder="Rossi"
+                          value={lastName}
+                          onChange={e => setLastName(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid last name
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-8">
-                      <label htmlFor="email" className="form-label">Email</label>
-                      <input
-                        type="text"
-                        className="form-control form-input"
-                        name="email"
-                        id="email"
-                        aria-describedby="emailHelpId"
-                        placeholder="abc@mail.com"
-                        value={userEmail}
-                        onChange={e => setUserEmail(e.target.value)}
-                      />
-                      <small id="emailHelpId" className="form-text text-muted">
-                        example@email.com
-                      </small>
-                    </div>
-
-                    <div className="col-md-4">
-                      <label htmlFor="phoneNumber" className="form-label">Phone number</label>
-                      <input type="text" className="form-control form-input" id="phoneNumber"
-                        placeholder="3496587652"
-                        value={phoneNumber}
-                        onChange={e => setPhoneNumber(e.target.value)}
-                        maxLength={10}
-                      />
-                      <div className="valid-feedback">
-                        Valid phone number
+                      <div className="col-md-8">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input
+                          type="text"
+                          className="form-control form-input"
+                          name="email"
+                          id="email"
+                          aria-describedby="emailHelpId"
+                          placeholder="abc@mail.com"
+                          value={userEmail}
+                          onChange={e => setUserEmail(e.target.value)}
+                        />
+                        <small id="emailHelpId" className="form-text text-muted">
+                          example@email.com
+                        </small>
                       </div>
-                    </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="street" className="form-label">Address</label>
-                      <input type="text" className="form-control form-input" id="street"
-                        placeholder="Via Roma"
-                        value={street}
-                        onChange={e => setStreet(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid address
+                      <div className="col-md-4">
+                        <label htmlFor="phoneNumber" className="form-label">Phone number</label>
+                        <input type="text" className="form-control form-input" id="phoneNumber"
+                          placeholder="3496587652"
+                          value={phoneNumber}
+                          onChange={e => setPhoneNumber(e.target.value)}
+                          maxLength={10}
+                        />
+                        <div className="valid-feedback">
+                          Valid phone number
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-3">
-                      <label htmlFor="streetNumber" className="form-label">Street number</label>
-                      <input type="text" className="form-control form-input" id="streetNumber"
-                        placeholder="123"
-                        value={streetNumber}
-                        onChange={e => setStreetNumber(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid Street Number
+                      <div className="col-md-6">
+                        <label htmlFor="street" className="form-label">Address</label>
+                        <input type="text" className="form-control form-input" id="street"
+                          placeholder="Via Roma"
+                          value={street}
+                          onChange={e => setStreet(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid address
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-3">
-                      <label htmlFor="country" className="form-label">Country</label>
-                      <input type="text" className="form-control form-input" id="country"
-                        placeholder="Italy"
-                        value={country}
-                        onChange={e => setCountry(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid Country
+                      <div className="col-md-3">
+                        <label htmlFor="streetNumber" className="form-label">Street number</label>
+                        <input type="text" className="form-control form-input" id="streetNumber"
+                          placeholder="123"
+                          value={streetNumber}
+                          onChange={e => setStreetNumber(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid Street Number
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="city" className="form-label">City</label>
-                      <input type="text" className="form-control form-input" id="city"
-                        placeholder="Roma"
-                        value={city}
-                        onChange={e => setCity(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid City
+                      <div className="col-md-3">
+                        <label htmlFor="country" className="form-label">Country</label>
+                        <input type="text" className="form-control form-input" id="country"
+                          placeholder="Italy"
+                          value={country}
+                          onChange={e => setCountry(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid Country
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-3">
-                      <label htmlFor="province" className="form-label">Province</label>
-                      <input type="text" className="form-control form-input" id="province"
-                        placeholder="RO"
-                        value={province}
-                        onChange={e => setProvince(e.target.value)}
-                        maxLength={2}
-                      />
-                      <div className="valid-feedback">
-                        Valid Province
+                      <div className="col-md-6">
+                        <label htmlFor="city" className="form-label">City</label>
+                        <input type="text" className="form-control form-input" id="city"
+                          placeholder="Roma"
+                          value={city}
+                          onChange={e => setCity(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid City
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-3">
-                      <label htmlFor="postalCode" className="form-label">Postal Code</label>
-                      <input type="text" className="form-control form-input" id="postalCode"
-                        placeholder="00100"
-                        value={postalCode}
-                        onChange={e => setPostalCode(e.target.value)}
-                        maxLength={5}
-                      />
-                      <div className="valid-feedback">
-                        Valid Postal Code
+                      <div className="col-md-3">
+                        <label htmlFor="province" className="form-label">Province</label>
+                        <input type="text" className="form-control form-input" id="province"
+                          placeholder="RO"
+                          value={province}
+                          onChange={e => setProvince(e.target.value)}
+                          maxLength={2}
+                        />
+                        <div className="valid-feedback">
+                          Valid Province
+                        </div>
                       </div>
-                    </div>
 
-                    <h3 className="checkout-title pt-5"><strong>Payment</strong></h3>
-                    <hr />
-
-                    <div className="col-md-12">
-                      <label htmlFor="cardHolder" className="form-label">Card holder</label>
-                      <input type="text" className="form-control form-input" id="cardHolder"
-                        placeholder="MasterCard"
-                        value={cardHolder}
-                        onChange={e => setCardHolder(e.target.value)}
-                      />
-                      <div className="valid-feedback">
-                        Valid card Holder
+                      <div className="col-md-3">
+                        <label htmlFor="postalCode" className="form-label">Postal Code</label>
+                        <input type="text" className="form-control form-input" id="postalCode"
+                          placeholder="00100"
+                          value={postalCode}
+                          onChange={e => setPostalCode(e.target.value)}
+                          maxLength={5}
+                        />
+                        <div className="valid-feedback">
+                          Valid Postal Code
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-12">
-                      <label htmlFor="cardNumber" className="form-label">Card number</label>
-                      <input type="text" className="form-control form-input" id="cardNumber"
-                        placeholder="1234-3216-7856-4545"
-                        value={cardNumber}
-                        onChange={handleCardNumberChange}
-                        maxLength={19} // 16 cifre + 3 trattini
-                      />
-                      <div className="valid-feedback">
-                        Valid card Number
+                      <h3 className="checkout-title pt-5"><strong>Payment</strong></h3>
+                      <hr />
+
+                      <div className="col-md-12">
+                        <label htmlFor="cardHolder" className="form-label">Card holder</label>
+                        <input type="text" className="form-control form-input" id="cardHolder"
+                          placeholder="MasterCard"
+                          value={cardHolder}
+                          onChange={e => setCardHolder(e.target.value)}
+                        />
+                        <div className="valid-feedback">
+                          Valid card Holder
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="expirationDate" className="form-label">Expiration date</label>
-                      <input type="text" className="form-control form-input" id="expirationDate"
-                        placeholder="12/06"
-                        value={expirationDate}
-                        onChange={handleExpirationDateChange}
-                        maxLength={5} // 4 cifre + 1 slash
-                      />
-                      <div className="valid-feedback">
-                        Valid Expiration Date
+                      <div className="col-md-12">
+                        <label htmlFor="cardNumber" className="form-label">Card number</label>
+                        <input type="text" className="form-control form-input" id="cardNumber"
+                          placeholder="1234-3216-7856-4545"
+                          value={cardNumber}
+                          onChange={handleCardNumberChange}
+                          maxLength={19} // 16 cifre + 3 trattini
+                        />
+                        <div className="valid-feedback">
+                          Valid card Number
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="cvv" className="form-label">CVV</label>
-                      <input type="text" className="form-control form-input" id="cvv"
-                        placeholder="360"
-                        value={cvv}
-                        onChange={e => setCvv(e.target.value)}
-                        maxLength={3}
-                      />
-                      <div className="valid-feedback">
-                        Valid CVV
+                      <div className="col-md-6">
+                        <label htmlFor="expirationDate" className="form-label">Expiration date</label>
+                        <input type="text" className="form-control form-input" id="expirationDate"
+                          placeholder="12/06"
+                          value={expirationDate}
+                          onChange={handleExpirationDateChange}
+                          maxLength={5} // 4 cifre + 1 slash
+                        />
+                        <div className="valid-feedback">
+                          Valid Expiration Date
+                        </div>
                       </div>
-                    </div>
 
-                    {/* <div className="col-12">
+                      <div className="col-md-6">
+                        <label htmlFor="cvv" className="form-label">CVV</label>
+                        <input type="text" className="form-control form-input" id="cvv"
+                          placeholder="360"
+                          value={cvv}
+                          onChange={e => setCvv(e.target.value)}
+                          maxLength={3}
+                        />
+                        <div className="valid-feedback">
+                          Valid CVV
+                        </div>
+                      </div>
+
+                      {/* <div className="col-12">
                   <button className="btn btn-primary" type="submit">PAY NOW</button>
                 </div> */}
 
-                  </form>
-                </div>
+                    </form>
+                  </div>
 
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary rounded-end-4">
-                  <section>
-                    <h3 className="checkout-title"><strong>Summary</strong></h3>
-                    <hr />
-                    <div className="summaryDetails">
-
-                      <p>
-                        <strong>Subtotal:</strong> &euro;{totalNotDiscounted?.toFixed(2)}
-                      </p>
-                      <p>
-                        <strong>Shipping:</strong> &euro;{shipping?.toFixed(2)}
-                      </p>
-                      <p>
-                        <strong>Total discount:</strong> &euro;{(totalNotDiscounted?.toFixed(2) * (promotion.discount_percentage / 100)).toFixed(2)}
-                      </p>
+                  <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-summary rounded-end-4">
+                    <section>
+                      <h3 className="checkout-title"><strong>Summary</strong></h3>
                       <hr />
-                      <p>
-                        <strong>Order total:</strong> &euro;{finalPrice?.toFixed(2)}
-                      </p>
-                      <div className={`promotionValidate ${isValidPromotion ? 'hidden' : ''}`}>
-                        <div className="mb-3">
-                          <label htmlFor="promotion" className="form-label pt-3"><strong>PromotionCode</strong></label>
-                          <input
-                            type="text"
-                            className="form-control form-input"
-                            name="promotion"
-                            id="promotion"
-                            placeholder="Insert your promotion code"
-                            value={promotion.promotionCode}
-                            onChange={e => setPromotion({
-                              promotion_id: 0,
-                              promotionCode: e.target.value,
-                              discount_percentage: 0
-                            })}
-                          />
-                          <div className="d-flex justify-content-center">
-                            <button
-                              type="button"
-                              name="Verify"
-                              id="Verify"
-                              className="w-20 btn-checkout mt-3"
-                              onClick={CodeValidate}
-                              disabled={promotion.promotionCode.length === 0}
-                            >
-                              Verify
-                            </button>
+                      <div className="summaryDetails">
+
+                        <p>
+                          <strong>Subtotal:</strong> &euro;{totalNotDiscounted?.toFixed(2)}
+                        </p>
+                        <p>
+                          <strong>Shipping:</strong> &euro;{shipping?.toFixed(2)}
+                        </p>
+                        <p>
+                          <strong>Total discount:</strong> &euro;{(totalNotDiscounted?.toFixed(2) * (promotion.discount_percentage / 100)).toFixed(2)}
+                        </p>
+                        <hr />
+                        <p>
+                          <strong>Order total:</strong> &euro;{finalPrice?.toFixed(2)}
+                        </p>
+                        <div className={`promotionValidate ${isValidPromotion ? 'hidden' : ''}`}>
+                          <div className="mb-3">
+                            <label htmlFor="promotion" className="form-label pt-3"><strong>PromotionCode</strong></label>
+                            <input
+                              type="text"
+                              className="form-control form-input"
+                              name="promotion"
+                              id="promotion"
+                              placeholder="Insert your promotion code"
+                              value={promotion.promotionCode}
+                              onChange={e => setPromotion({
+                                promotion_id: 0,
+                                promotionCode: e.target.value,
+                                discount_percentage: 0
+                              })}
+                            />
+                            <div className="d-flex justify-content-center">
+                              <button
+                                type="button"
+                                name="Verify"
+                                id="Verify"
+                                className="w-20 btn-checkout mt-3"
+                                onClick={CodeValidate}
+                                disabled={promotion.promotionCode.length === 0}
+                              >
+                                Verify
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <button className="btn-pay w-100 rounded-5" type="submit" onClick={formSubmit}>PAY NOW</button>
-                  </section>
+                      <button className="btn-pay w-100 rounded-5" type="submit" onClick={formSubmit}>PAY NOW</button>
+                    </section>
+                  </div>
+
                 </div>
-
-              </div>
-            )
+              )
           }
         </section>
       </div>
