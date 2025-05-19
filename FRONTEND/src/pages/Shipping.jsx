@@ -14,7 +14,7 @@ export default function Shipping() {
 
                 <section className="mb-4">
                     <h2 className="fw-semibold" style={{ color: "#444" }}>2. Shipping Costs</h2>
-                    <p>Shipping costs are calculated based on the weight of your order and the delivery location. Standard shipping is free for orders over €50. For orders below €50, a flat rate of €5 applies.</p>
+                    <p>Shipping costs are calculated based on the weight of your order and the delivery location. Standard shipping is free for orders over €39.99. For orders below €39.99, a flat rate of €9.99 applies.</p>
                 </section>
 
                 <section className="mb-4">
