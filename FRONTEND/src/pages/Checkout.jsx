@@ -1,22 +1,28 @@
 //import hooks
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 //import context
 import { useProductContext } from "../contexts/ProductContext"
 import { useOrderContext } from "../contexts/OrdersContext"
 
-//import loader
+//import components
+import Alert from "../components/Alert"
 import Loader from "../components/Loader"
 
 
 export default function Checkout() {
   //import variable && function to contexs
   const { cart, totalPrice, clearCartTotalPrice } = useProductContext()
-  const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse, validateCode, promotionCodeResponse, setPromotionCodeResponse } = useOrderContext()
+  const { setFlagConfetti, subtimOrder, setOrderResponse, orderResponse, validateCode, promotionCodeResponse } = useOrderContext()
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
+  const [isAlerts, setIsAlerts] = useState(false)
+  const [alertMessage, setAlertMessage] = useState("")
+  const [flagAtlertTime, setFlagAlertTime] = useState(false)
+
+  //variable of the order
   const [totalNotDiscounted, setTotalNotDiscounted] = useState()
   const [totalDiscounted, setTotalDiscounted] = useState()
   const [shipping, setShipping] = useState()
@@ -47,8 +53,8 @@ export default function Checkout() {
   const [cardNumber, setCardNumber] = useState("")
   const [expirationDate, setExpirationDate] = useState("")
   const [cvv, setCvv] = useState("")
-  const [checkCard, setCheckCard] = useState(false)
 
+  //useEffect for populate the productList
   useEffect(() => {
     setProductList(cart?.map(product => {
       return {
@@ -63,33 +69,44 @@ export default function Checkout() {
     }))
   }, [cart])
 
+  //useEffect for calculate the total price
   useEffect(() => {
     setTotalNotDiscounted(totalPrice)
     setTotalDiscounted(totalNotDiscounted * (promotion.discount_percentage / 100))
     setShipping(totalNotDiscounted < 39.99 ? 9.99 : 0)
     setFinalPrice(totalNotDiscounted + shipping - totalDiscounted)
-    console.log("promotion discount_percentage", promotion.discount_percentage)
-
-    console.log("totalNotDiscounted", totalNotDiscounted)
-    console.log("totalDiscounted", totalDiscounted)
-    console.log("shipping", shipping)
-    console.log("finalPrice", finalPrice)
 
   }, [totalPrice, totalNotDiscounted, shipping, totalDiscounted, promotion])
 
+  //useEffect for set the alert message
+  useEffect(() => {
+    if (flagAtlertTime) {
+      setTimeout(() => {
+        setIsAlerts(false)
+        setFlagAlertTime(false)
+      }, 3000)
+    }
+  }, [flagAtlertTime])
+
+  //useEffect for redirect to order confirmation page
   useEffect(() => {
     if (orderResponse.orderId) {
       clearCartTotalPrice()
       setOrderResponse({})
       setLoading(false)
-      alert("Congratulation! Your payment has been accepted")
+      setAlertMessage("Congratulation! Your payment has been accepted")
+      setIsAlerts(true)
+      setFlagAlertTime(true)
       navigate("/order-confirmation")
     } else if (Object.keys(orderResponse).length > 0) {
-      alert(Object.values(orderResponse).join('\n'))
+      setAlertMessage(Object.values(orderResponse).join('\n'))
+      setIsAlerts(true)
+      setFlagAlertTime(false)
       setLoading(false)
     }
   }, [orderResponse])
 
+  //function for handle the card number input
   function handleCardNumberChange(e) {
     // Rimuovi tutti i caratteri non numerici
     let value = e.target.value.replace(/[^0-9]/g, "")
@@ -98,16 +115,18 @@ export default function Checkout() {
     setCardNumber(value)
   }
 
+  //function for handle the expiration date input
   function handleExpirationDateChange(e) {
-    if (e.target.value.length <= 4) {
-      // Rimuovi tutti i caratteri non numerici
-      let value = e.target.value.replace(/[^0-9/]/g, "")
-      // Inserisci uno slash ogni 2 cifre
-      value = value.match(/.{1,2}/g)?.join("/") || ""
-      setExpirationDate(value)
-    } else (
-      setExpirationDate(e.target.value)
-    )
+    let value = e.target.value.replace(/[^0-9]/g, "");
+    if (value.length === 0) {
+      setExpirationDate("");
+      return;
+    }
+    if (value.length <= 2) {
+      setExpirationDate(value);
+    } else {
+      setExpirationDate(value.slice(0, 2) + "/" + value.slice(2, 4));
+    }
   }
 
   //function on submit form
@@ -134,7 +153,8 @@ export default function Checkout() {
 
     //se errorList non è vuota mando un allert
     if (Object.keys(errorList).length > 0) {
-      alert(Object.values(errorList).join('\n'))
+      setAlertMessage(Object.values(errorList).join('\n'))
+      setIsAlerts(true)
       errorList = {}
       return // interrompe la funzione se ci sono errori
     }
@@ -163,6 +183,7 @@ export default function Checkout() {
 
   }
 
+  //funzion for validate the user data
   function Validate(firstName, lastName, userEmail, phoneNumber, street, streetNumber, country, city, province, postalCode) {
     //variabile d'appoggio
     const error = {}
@@ -225,10 +246,13 @@ export default function Checkout() {
     return error
   }
 
+  //function for validate the promotion code
   function CodeValidate() {
 
     if (promotion.promotionCode.length === 0) {
-      alert("insert your promotion code")
+      setAlertMessage("insert your promotion code")
+      setIsAlerts(true)
+      setFlagAlertTime(true)
       return
     }
     //esegue chiamata funzione API
@@ -236,6 +260,7 @@ export default function Checkout() {
 
   }
 
+  //useEffect for set the promotion code after the response
   useEffect(() => {
     //gestisce la risposta
     if (promotionCodeResponse.discount_percentage) {
@@ -247,7 +272,8 @@ export default function Checkout() {
       setIsValidPromotion(true)
 
     } else if (promotionCodeResponse.error) {
-      alert(promotionCodeResponse.error)
+      setAlertMessage(promotionCodeResponse.error)
+      setIsAlerts(true)
     }
   }, [promotionCodeResponse])
 
@@ -263,6 +289,9 @@ export default function Checkout() {
   return (
     <>
       <div className="container mb-5">
+        {
+          isAlerts && <Alert message={alertMessage} setIsAlerts={setIsAlerts} />
+        }
         <section className="checkout">
           <h1 className="text-center pt-3 pb-4 wishlist-title">CHECKOUT</h1>
           {(loading) ? <Loader /> :
