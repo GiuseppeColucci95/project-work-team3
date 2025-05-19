@@ -42,7 +42,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                 <div className="col offcanvas_cart-header">
                     <h5 className="offcanvas_cart-title text-center pt-4">Your Cart</h5>
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
-                    <button type="button" className="btn_chest justify-self-end" onClick={() => clearCartTotalPrice()}><i class="bi bi-trash3-fill"></i></button>
+                    <button type="button" className="btn_chest justify-self-end" onClick={() => clearCartTotalPrice()}><i className="bi bi-trash3-fill"></i></button>
                 </div>
 
                 <div className={`col ps-3 ${cart?.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>

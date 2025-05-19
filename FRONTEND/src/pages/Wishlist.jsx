@@ -66,15 +66,17 @@ export default function Wishlist() {
                           :
                           (<span className="mb-2 fs-5 fw-bold text-dark text-center w-100">{`${product.price}€`}</span>)
                       }
-                      <div className="d-flex align-items-center justify-content-center gap-2 mt-auto w-100">
+                      <div className="d-flex justify-content-center gap-2 mt-auto w-100">
                         {
                           (isIncart(product))
                             ?
-                            (<div className="w-75 row d-flex align-items-center justify-content-center">
-                              <button onClick={() => removeCartProduct(product)} className="col-4 col-xs-5 px-0 mx-0 text-dark btn-add"><i className="bi bi-dash-circle"></i></button>
-                              <div id="quantity" className="col-3 text-center">{isIncart(product).cartQuantity}</div>
-                              <button onClick={() => addCartProduct(product)} className="col-4 col-xs-5 px-0 mx-0 text-dark btn-add"><i className="bi bi-plus-circle"></i></button>
-                            </div>)
+                            (
+                              <div className="w-75 row d-flex align-items-center justify-content-center">
+                                <button onClick={() => removeCartProduct(product)} className="col-4 col-xs-5 px-0 mx-0 text-dark btn-add"><i className="bi bi-dash-circle"></i></button>
+                                <div id="quantity" className="col-3 text-center">{isIncart(product).cartQuantity}</div>
+                                <button onClick={() => addCartProduct(product)} className="col-4 col-xs-5 px-0 mx-0 text-dark btn-add"><i className="bi bi-plus-circle"></i></button>
+                              </div>
+                            )
                             :
                             (<button onClick={() => addCartProduct(product)} className="btn-add w-75">ADD TO CART</button>)
                         }
@@ -82,8 +84,8 @@ export default function Wishlist() {
                           <img className="menu-icons add-wishlist" src="/img/favourites-full.svg" alt="wishlist icon" />
                         </button>
                       </div>
+                      {/* <div className="col-12 ps-5">testo</div> */}
                     </div>
-
                   </div>
                 ))
               ) : (
