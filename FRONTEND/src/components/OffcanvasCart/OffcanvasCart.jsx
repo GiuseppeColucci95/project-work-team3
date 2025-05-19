@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen }) {
-    const { cart, totalPrice, addCartProduct, removeCartProduct } = useProductContext()
+    const { cart, totalPrice, addCartProduct, removeCartProduct, removeAllCartProduct, clearCartTotalPrice } = useProductContext()
     const [show, setShow] = useState(false)
 
     //funzione per la chiusura dell'offcanvas
@@ -42,6 +42,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                 <div className="col offcanvas_cart-header">
                     <h5 className="offcanvas_cart-title text-center pt-4">Your Cart</h5>
                     <button type="button" className="btn-close justify-self-end" onClick={() => handleClose()}></button>
+                    <button type="button" className="btn_chest justify-self-end" onClick={() => clearCartTotalPrice()}><i class="bi bi-trash3-fill"></i></button>
                 </div>
 
                 <div className={`col ps-3 ${cart?.length > 0 ? "offcanvas_cart-body-scroll" : ""}`}>
@@ -56,7 +57,7 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                                     <img src={product.image} alt="image" className="w-100 rounded-4 offcanvas_cart-image" />
                                                 </Link>
                                             </div>
-                                            <div className="col-8 d-flex flex-column justify-content-center">
+                                            <div className="col-8 flex-fill d-flex flex-column justify-content-center">
                                                 <Link onClick={handleInstantClose} style={{ color: '#000' }} className="text-decoration-none" to={`/products/${product.slug}`}>
                                                     <h6 className="p-0 product-name-cart text-truncate">{product.name}</h6>
                                                 </Link>
@@ -64,19 +65,28 @@ export default function OffcanvasCart({ setOffcanvasCartOpen, offcanvasCartOpen 
                                                     <button onClick={() => removeCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-dash-circle"></i></button>
                                                     <div id="offcanvas_cart-quantity" className="px-1">{product.cartQuantity}</div>
                                                     <button onClick={() => addCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-plus-circle"></i></button>
+                                                    <button onClick={() => removeAllCartProduct(product)} className="offcanvas_cart-button"><i className="bi bi-x-circle"></i></button>
+                                                </div >
+                                                <div>
+                                                    {
+                                                        (product.discount_percentage > 0) ?
+                                                            (
+                                                                <div>
+                                                                    <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
+                                                                    <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
+                                                                </div>
+                                                            )
+                                                            :
+                                                            (
+                                                                <div>
+                                                                    <span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>
+                                                                </div>
+                                                            )
+                                                    }
+
                                                 </div>
-                                                {
-                                                    (product.discount_percentage > 0) ?
-                                                        (
-                                                            <div>
-                                                                <span className="pe-2 fs-6 fw-semibold"><s>{`${(product.price * product.cartQuantity).toFixed(2)}€`}</s></span>
-                                                                <span className="px-2 fs-6 fw-semibold">{`${((product.price - product.price * (product.discount_percentage / 100)).toFixed(2) * product.cartQuantity).toFixed(2)}€`}</span>
-                                                            </div>
-                                                        )
-                                                        :
-                                                        (<span className="pe-2 fs-6 fw-semibold">{`${(product.price * product.cartQuantity).toFixed(2)}€`}</span>)
-                                                }
                                             </div>
+
                                         </div>
                                     </div>
                                 ))
