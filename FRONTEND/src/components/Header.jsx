@@ -111,21 +111,21 @@ export default function Header() {
           <div className={`collapse menu-container ${menuOpen ? "show" : ""}`} id="exampleCollapse">
             <div className="bg-light menu-hamburger p-4">
               <ul className="list-unstyled">
-                <li><NavLink className="text-decoration-none active" to={'/'}>Home</NavLink></li>
+                <li><NavLink className="text-decoration-none active" to={'/'} onClick={toggleMenu}>Home</NavLink></li>
                 <div className="dropdown-center">
                   <button type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Preferences
                   </button>
                   <ul className="dropdown-menu">
-                    <li><NavLink to="/diseases/lactose-free">Lactose free</NavLink></li>
-                    <li><NavLink to="/diseases/sugar-free">Sugar free</NavLink></li>
-                    <li><NavLink to="/diseases/gluten-free">Gluten free</NavLink></li>
-                    <li><NavLink to="/diseases/nickel-free">Nickel free</NavLink></li>
-                    <li><NavLink to="/diseases/nuts-free">Nuts free</NavLink></li>
-                    <li><NavLink to="/diseases/fish-free">Fish free</NavLink></li>
-                    <li><NavLink to="/diseases/egg-free">Egg free</NavLink></li>
-                    <li><NavLink to="/diseases/soy-free">Soy free</NavLink></li>
-                    <li><NavLink to="/diseases/shellfish-free">Shellfish free</NavLink></li>
+                    <li><NavLink to="/diseases/lactose-free" onClick={toggleMenu}>Lactose free</NavLink></li>
+                    <li><NavLink to="/diseases/sugar-free" onClick={toggleMenu}>Sugar free</NavLink></li>
+                    <li><NavLink to="/diseases/gluten-free" onClick={toggleMenu}>Gluten free</NavLink></li>
+                    <li><NavLink to="/diseases/nickel-free" onClick={toggleMenu}>Nickel free</NavLink></li>
+                    <li><NavLink to="/diseases/nuts-free" onClick={toggleMenu}>Nuts free</NavLink></li>
+                    <li><NavLink to="/diseases/fish-free" onClick={toggleMenu}>Fish free</NavLink></li>
+                    <li><NavLink to="/diseases/egg-free" onClick={toggleMenu}>Egg free</NavLink></li>
+                    <li><NavLink to="/diseases/soy-free" onClick={toggleMenu}>Soy free</NavLink></li>
+                    <li><NavLink to="/diseases/shellfish-free" onClick={toggleMenu}>Shellfish free</NavLink></li>
                   </ul>
                 </div>
                 <div className="dropdown-center">
@@ -133,15 +133,15 @@ export default function Header() {
                     Category
                   </button>
                   <ul className="dropdown-menu">
-                    <li><NavLink to="/categories/sweet-snacks">Sweet Snacks</NavLink></li>
-                    <li><NavLink to="/categories/savoury-snacks">Savoury Snacks</NavLink></li>
-                    <li><NavLink to="/categories/beverages">Beverages</NavLink></li>
-                    <li><NavLink to="/categories/bakery">Bakery</NavLink></li>
-                    <li><NavLink to="/categories/spread-creams">Spread Creams</NavLink></li>
+                    <li><NavLink to="/categories/sweet-snacks" onClick={toggleMenu}>Sweet Snacks</NavLink></li>
+                    <li><NavLink to="/categories/savoury-snacks" onClick={toggleMenu}>Savoury Snacks</NavLink></li>
+                    <li><NavLink to="/categories/beverages" onClick={toggleMenu}>Beverages</NavLink></li>
+                    <li><NavLink to="/categories/bakery" onClick={toggleMenu}>Bakery</NavLink></li>
+                    <li><NavLink to="/categories/spread-creams" onClick={toggleMenu}>Spread Creams</NavLink></li>
                   </ul>
                 </div>
-                <li><Link to={'/wishlist'}>Favourites</Link></li>
-                <li><Link to={'/cart'}>Cart</Link></li>
+                <li><Link to={'/wishlist'} onClick={toggleMenu}>Favourites</Link></li>
+                <li><Link to={'/cart'} onClick={toggleMenu}>Cart</Link></li>
               </ul>
             </div>
           </div>
